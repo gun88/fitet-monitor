@@ -9,3 +9,5 @@ node_modules/
 *.zip
 .idea/
 *.iml
+dist/
+.phpdoc/

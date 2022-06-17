@@ -1,0 +1,7 @@
+.fm-alfa-component {
+	background-color: lightgreen;
+	padding: 1rem;
+}
+.fm-alfa-component * {
+	color: yellow;
+}

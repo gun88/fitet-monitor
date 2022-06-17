@@ -5,11 +5,19 @@
   "author": "tpomante",
   "scripts": {
     "start": "grunt default",
+    "ciao": "grunt ciao",
+    "uglify": "grunt uglify",
     "readme": "grunt readme",
     "i18n": "grunt i18n"
   },
   "devDependencies": {
+    "@floatwork/grunt-po2mo": "^0.3.0",
     "grunt": "^1.5.3",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-uglify": "^5.2.1",
+    "grunt-phpdocs": "^0.1.0",
     "grunt-wp-i18n": "^1.0.3",
     "grunt-wp-readme-to-markdown": "^2.1.0"
   }
