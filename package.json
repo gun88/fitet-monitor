@@ -4,11 +4,9 @@
   "main": "Gruntfile.js",
   "author": "tpomante",
   "scripts": {
-    "start": "grunt default",
-    "ciao": "grunt ciao",
-    "uglify": "grunt uglify",
-    "readme": "grunt readme",
-    "i18n": "grunt i18n"
+    "clean": "grunt clean:all",
+    "build": "grunt build",
+    "build-with-i18n": "grunt build-with-i18n"
   },
   "devDependencies": {
     "@floatwork/grunt-po2mo": "^0.3.0",
@@ -17,8 +15,8 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^4.0.0",
     "grunt-contrib-uglify": "^5.2.1",
-    "grunt-phpdocs": "^0.1.0",
     "grunt-wp-i18n": "^1.0.3",
-    "grunt-wp-readme-to-markdown": "^2.1.0"
+    "grunt-wp-readme-to-markdown": "^2.1.0",
+    "grunt-zip": "^0.14.0"
   }
 }
