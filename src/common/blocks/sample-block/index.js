@@ -1,4 +1,4 @@
-(function (wp) {
+(async function (wp) {
 	/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -9,11 +9,29 @@
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-element/
 	 */
 	var el = wp.element.createElement;
+	var raw = wp.element.RawHTML;
 	/**
 	 * Retrieves the translation of text.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/packages/packages-i18n/
 	 */
 	var __ = wp.i18n.__;
+
+
+	var xaxa = await wp.apiRequest({
+		path: '../?rest_route=/fitet-monitor/v1/shortcode/subscribe', // todo controlla se funziona su altri siti
+		type: 'GET',
+		data: {
+			content: 'ResTom',
+			style: 'color: green',
+		}
+	})
+		.then(r => {
+			console.log('_____________', r);
+			return r.body;
+		}).then(r => {
+			console.log('$$$$$$$$$', r);
+			return r;
+		})
 
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -55,10 +73,39 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function (props) {
+
+			async function aaa() {
+				//
+
+				/*return fetch("/?rest_route=/fitet-monitor/v1/shortcode/subscribe")*/
+				return await wp.apiRequest({
+					path: '../?rest_route=/fitet-monitor/v1/shortcode/subscribe', // todo controlla se funziona su altri siti
+					type: 'GET',
+					data: {
+						content: 'ResTom',
+						style: 'color: green',
+					}
+				})
+					.then(r => {
+						console.log('_____________', r);
+						return r.body;
+					}).then(r => {
+						console.log('$$$$$$$$$', r);
+						return r;
+					})
+			}
+
+			/*let xaxa = aaa();
+			console.log(xaxa)*/
+			console.log('edit', props)
 			//<p style='$style'>" . $str . "</p>
+
 			return el('div', {className: props.className},
 				el('p', {}, __('My Block', 'fitet-monitor')),
-				el('p', {style: {fontSize: '2rem'}}, 'foobar')
+				el('p', {style: {fontSize: '2rem'}}, 'foobar'),
+				wp.element.RawHTML({
+					children: xaxa
+				})
 			);
 		},
 

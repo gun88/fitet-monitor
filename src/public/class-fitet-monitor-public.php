@@ -1,5 +1,7 @@
 <?php
 
+require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-helper.php';
+
 /**
  * The public-facing functionality of the plugin.
  *
@@ -40,8 +42,6 @@ class Fitet_Monitor_Public {
 	 */
 	private $version;
 
-
-
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -50,11 +50,8 @@ class Fitet_Monitor_Public {
 	 * @since 1.0.0
 	 */
 	public function __construct($plugin_name, $version) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
-
 	}
 
 	/**
@@ -64,17 +61,20 @@ class Fitet_Monitor_Public {
 	 */
 	public function start() {
 
-		require_once FITET_MONITOR_DIR . 'public/general/class-fitet-monitor-general.php';
-		$general = new Fitet_Monitor_General($this->version);
-		add_action('wp_enqueue_scripts', [$general, 'initialize']);
+		// load global assets
+		add_action('wp_enqueue_scripts', [$this, 'load_assets']);
 
 		require_once FITET_MONITOR_DIR . 'public/shortcodes/sample-shortcode/class-fitet-monitor-sample-shortcode.php';
 		$shortcode = new Fitet_Monitor_Sample_Shortcode($this->version, $this->plugin_name);
-		add_shortcode('subscribe', [$shortcode, 'render_shortcode']);
+		$shortcode->initialize();
+		add_shortcode($shortcode->tag, [$shortcode, 'render_shortcode']);
 
 		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
-
 	}
 
+	public function load_assets() {
+		Fitet_Monitor_Helper::enqueue_script($this->plugin_name, FITET_MONITOR_DIR . 'public/assets/fitet-monitor.js', ['jquery'], $this->version, false);
+		Fitet_Monitor_Helper::enqueue_style($this->plugin_name, FITET_MONITOR_DIR . 'public/assets/fitet-monitor.css', [], $this->version, 'all');
+	}
 
 }

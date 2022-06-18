@@ -30,8 +30,8 @@
 	 */
 
 	$(window).load(function () {
-		$('h1').text(function (index, element) {
-			return element.text() + ' @' + index;
+		$('.fmsh').text(function (index, text) {
+			return text + '____' + index;
 		});
 	});
 

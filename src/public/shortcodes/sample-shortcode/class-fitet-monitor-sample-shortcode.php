@@ -7,21 +7,24 @@ class Fitet_Monitor_Sample_Shortcode extends Fitet_Monitor_Shortcode {
 	private $plugin_name;
 
 	public function __construct($version, $plugin_name) {
-		parent::__construct($version);
+		parent::__construct($version, $plugin_name, 'subscribe');
 		$this->plugin_name = $plugin_name;
 	}
 
+	protected function process_data($data) {
+		$attributes = $data['attributes'];
+		$content = $data['content'];
 
-	public function render_shortcode($attributes, $content = null) {
-		$default = [
-			'style' => '',
-		];
-		$style = shortcode_atts($default, $attributes)['style'];
-		$name = do_shortcode($content);
-		$name = !empty($name) ? $name : 'NOT_SET';
+		$style = shortcode_atts(['style' => ''], $attributes, $this->tag)['style'];
+
+		$name = !empty($content) ? $content : 'NOT_SET';
 
 		$from = get_option('fitet-monitor-club-code');
-		$str = sprintf(__("Hello %s! Regards from %s", $this->plugin_name, 'fitet-monitor'), $name, $from);
-		return "<p style='$style'>" . $str . "</p>";
+
+		$message = sprintf(__("Hello %s! Regards from %s", $this->plugin_name, 'fitet-monitor'), $name, $from);
+
+		return ['style' => $style, 'message' => $message,];
 	}
+
+
 }

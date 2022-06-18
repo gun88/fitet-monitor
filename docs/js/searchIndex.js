@@ -206,6 +206,11 @@ Search.appendIndex(
             "summary": "Initialize\u0020public\u0020components",
             "url": "classes/Fitet-Monitor-Public.html#method_start"
         },                {
+            "fqsen": "\\Fitet_Monitor_Public\u003A\u003Aload_assets\u0028\u0029",
+            "name": "load_assets",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Public.html#method_load_assets"
+        },                {
             "fqsen": "\\Fitet_Monitor_Public\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
@@ -215,16 +220,6 @@ Search.appendIndex(
             "name": "version",
             "summary": "The\u0020version\u0020of\u0020this\u0020plugin.",
             "url": "classes/Fitet-Monitor-Public.html#property_version"
-        },                {
-            "fqsen": "\\Fitet_Monitor_General",
-            "name": "Fitet_Monitor_General",
-            "summary": "The\u0020public\u0020plugin\u0020class.",
-            "url": "classes/Fitet-Monitor-General.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor_General\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-General.html#method_render"
         },                {
             "fqsen": "\\Fitet_Monitor_Sample_Shortcode",
             "name": "Fitet_Monitor_Sample_Shortcode",
@@ -236,10 +231,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Sample-Shortcode.html#method___construct"
         },                {
-            "fqsen": "\\Fitet_Monitor_Sample_Shortcode\u003A\u003Arender_shortcode\u0028\u0029",
-            "name": "render_shortcode",
+            "fqsen": "\\Fitet_Monitor_Sample_Shortcode\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Sample-Shortcode.html#method_render_shortcode"
+            "url": "classes/Fitet-Monitor-Sample-Shortcode.html#method_process_data"
         },                {
             "fqsen": "\\Fitet_Monitor_Sample_Shortcode\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
@@ -260,11 +255,6 @@ Search.appendIndex(
             "name": "initialize_data",
             "summary": "",
             "url": "classes/Fitet-Monitor-Page.html#method_initialize_data"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Page\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Page.html#method_render"
         },                {
             "fqsen": "\\Fitet_Monitor_Page\u003A\u003Aprocess_data\u0028\u0029",
             "name": "process_data",
@@ -341,15 +331,40 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Shortcode.html"
         },                {
+            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Shortcode.html#method___construct"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Ainitialize\u0028\u0029",
+            "name": "initialize",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Shortcode.html#method_initialize"
+        },                {
             "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Arender_shortcode\u0028\u0029",
             "name": "render_shortcode",
             "summary": "",
             "url": "classes/Fitet-Monitor-Shortcode.html#method_render_shortcode"
         },                {
-            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Arender\u0028\u0029",
-            "name": "render",
+            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Ainitialize_rest_api\u0028\u0029",
+            "name": "initialize_rest_api",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Shortcode.html#method_render"
+            "url": "classes/Fitet-Monitor-Shortcode.html#method_initialize_rest_api"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Arest_api\u0028\u0029",
+            "name": "rest_api",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Shortcode.html#method_rest_api"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003A\u0024tag",
+            "name": "tag",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Shortcode.html#property_tag"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Shortcode.html#property_plugin_name"
         },                {
             "fqsen": "\\Fitet_Monitor",
             "name": "Fitet_Monitor",
@@ -405,6 +420,21 @@ Search.appendIndex(
             "name": "version",
             "summary": "The\u0020current\u0020version\u0020of\u0020the\u0020plugin.",
             "url": "classes/Fitet-Monitor.html#property_version"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Helper",
+            "name": "Fitet_Monitor_Helper",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Helper.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Helper\u003A\u003Aenqueue_style\u0028\u0029",
+            "name": "enqueue_style",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Helper.html#method_enqueue_style"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Helper\u003A\u003Aenqueue_script\u0028\u0029",
+            "name": "enqueue_script",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Helper.html#method_enqueue_script"
         },                {
             "fqsen": "\\",
             "name": "\\",

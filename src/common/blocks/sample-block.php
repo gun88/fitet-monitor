@@ -20,7 +20,7 @@ function sample_block_block_init() {
 	$dir = dirname(__FILE__);
 
 	$index_js = 'sample-block/index.js';
-	wp_register_script('sample-block-block-editor', plugins_url($index_js, __FILE__), ['wp-blocks', 'wp-i18n', 'wp-element',], filemtime("{$dir}/{$index_js}")
+	wp_register_script('sample-block-block-editor', plugins_url($index_js, __FILE__), ['wp-blocks', 'wp-i18n', 'wp-element', 'wp-api'], filemtime("{$dir}/{$index_js}")
 	);
 
 	$editor_css = 'sample-block/editor.css';

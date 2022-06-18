@@ -1,6 +1,6 @@
 <?php
 
-require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-page.php';
+require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-helper.php';
 
 class Fitet_Monitor_Component {
 
@@ -20,37 +20,15 @@ class Fitet_Monitor_Component {
 	}
 
 	public function enqueue_styles() {
-
 		$file = (new ReflectionClass($this))->getFileName();
-
-		$default_css_file_path = plugin_dir_path($file) . basename($file, '.php') . '.min.css';
-		if (file_exists($default_css_file_path)) {
-			$default_css_file_url = plugin_dir_url($file) . basename($file, '.php') . '.min.css';
-			wp_enqueue_style(get_class($this), $default_css_file_url, [], $this->version, 'all');
-		}
-
-		$default_css_file_path = plugin_dir_path($file) . basename($file, '.php') . '.css';
-		if (file_exists($default_css_file_path)) {
-			$default_css_file_url = plugin_dir_url($file) . basename($file, '.php') . '.css';
-			wp_enqueue_style(get_class($this), $default_css_file_url, [], $this->version, 'all');
-		}
+		$file = plugin_dir_path($file) . basename($file, '.php') . '.css';
+		Fitet_Monitor_Helper::enqueue_style(get_class($this), $file, [], $this->version, 'all');
 	}
 
 	public function enqueue_scripts() {
-
 		$file = (new ReflectionClass($this))->getFileName();
-
-		$default_js_file_path = plugin_dir_path($file) . basename($file, '.php') . '.min.js';
-		if (file_exists($default_js_file_path)) {
-			$default_js_file_url = plugin_dir_url($file) . basename($file, '.php') . '.min.js';
-			wp_enqueue_script(get_class($this), $default_js_file_url, ['jquery'], $this->version, 'all');
-		}
-
-		$default_js_file_path = plugin_dir_path($file) . basename($file, '.php') . '.js';
-		if (file_exists($default_js_file_path)) {
-			$default_js_file_url = plugin_dir_url($file) . basename($file, '.php') . '.js';
-			wp_enqueue_script(get_class($this), $default_js_file_url, ['jquery'], $this->version, 'all');
-		}
+		$file = plugin_dir_path($file) . basename($file, '.php') . '.js';
+		Fitet_Monitor_Helper::enqueue_script(get_class($this), $file, ['jquery'], $this->version, false);
 	}
 
 	private function load_components() {
@@ -65,7 +43,7 @@ class Fitet_Monitor_Component {
 		}
 	}
 
-	public final function initialize() {
+	public function initialize() {
 		$this->load_components();
 		$this->load_template();
 		$this->enqueue_scripts();
@@ -73,10 +51,9 @@ class Fitet_Monitor_Component {
 		foreach ($this->components as $component) {
 			$component->initialize();
 		}
-
 	}
 
-	protected function render($data = []) {
+	protected final function render($data = []) {
 		$data = $this->process_data($data);
 		if (!is_array($data)) {
 			$data = ['content' => $data];
@@ -96,6 +73,5 @@ class Fitet_Monitor_Component {
 	protected function process_data($data) {
 		return $data;
 	}
-
 
 }
