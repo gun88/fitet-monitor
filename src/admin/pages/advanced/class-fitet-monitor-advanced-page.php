@@ -1,10 +1,10 @@
 <?php
 
-require_once FITET_MONITOR_DIR . 'admin/pages/class-fitet-monitor-page.php';
+require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-page.php';
 
 class Fitet_Monitor_Advanced_Page extends Fitet_Monitor_Page {
 
-	public function render_page() {
-		echo 'ciao';
+	public function initialize_data() {
+		return "Hello!";
 	}
 }

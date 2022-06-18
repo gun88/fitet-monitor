@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-06-18 13:56:28+00:00\n"
+"POT-Creation-Date: 2022-06-18 15:47:05+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: gun88 <gun88@hotmail.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,17 +29,17 @@ msgstr ""
 msgid "Fitet Monitor"
 msgstr ""
 
-#: src/admin/pages/club/class-fitet-monitor-club-page.php:20
-msgid "Club Page"
-msgstr "Pagina Societa'"
-
-#: src/admin/pages/club/class-fitet-monitor-club-page.php:21
+#: src/admin/pages/club/class-fitet-monitor-club-page.php:18
 msgid "Custom!"
 msgstr "Ita"
 
-#: src/admin/pages/club/class-fitet-monitor-club-page.php:26
+#: src/admin/pages/club/class-fitet-monitor-club-page.php:20
 msgid "Save"
 msgstr "Salva"
+
+#: src/admin/pages/club/class-fitet-monitor-club-page.php:21
+msgid "Club Page"
+msgstr "Pagina Societa'"
 
 #: src/public/shortcodes/sample-shortcode/class-fitet-monitor-sample-shortcode.php:24
 msgid "Hello %s! Regards from %s"

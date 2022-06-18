@@ -56,32 +56,10 @@ define('FITET_MONITOR_VERSION', '0.0.0-DEV');
 define('FITET_MONITOR_NAME', 'fitet-monitor');
 
 /**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-fitet-monitor-activator.php
- */
-function activate_fitet_monitor() {
-	require_once FITET_MONITOR_DIR . 'includes/class-fitet-monitor-activator.php';
-	Fitet_Monitor_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-fitet-monitor-deactivator.php
- */
-function deactivate_fitet_monitor() {
-	require_once FITET_MONITOR_DIR . 'includes/class-fitet-monitor-deactivator.php';
-	Fitet_Monitor_Deactivator::deactivate();
-}
-
-
-register_activation_hook(FITET_MONITOR_ROOT_FILE, 'activate_fitet_monitor');
-register_deactivation_hook(FITET_MONITOR_ROOT_FILE, 'deactivate_fitet_monitor');
-
-/**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require FITET_MONITOR_DIR . 'includes/class-fitet-monitor.php';
+require FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor.php';
 
 /**
  * Begins execution of the plugin.
@@ -94,6 +72,8 @@ require FITET_MONITOR_DIR . 'includes/class-fitet-monitor.php';
  */
 function run_fitet_monitor() {
 	$fitet_monitor = new Fitet_Monitor(FITET_MONITOR_VERSION, FITET_MONITOR_NAME);
+	register_activation_hook(FITET_MONITOR_ROOT_FILE, [$fitet_monitor, 'activate']);
+	register_deactivation_hook(FITET_MONITOR_ROOT_FILE, [$fitet_monitor, 'deactivate']);
 	$fitet_monitor->start();
 }
 

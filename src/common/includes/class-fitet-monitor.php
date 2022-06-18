@@ -53,6 +53,9 @@ class Fitet_Monitor {
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
 	 *
+	 * @param string $plugin_name The name of this plugin.
+	 * @param string $version The version of this plugin.
+	 *
 	 * @since    1.0.0
 	 */
 	public function __construct($version, $plugin_name) {
@@ -60,12 +63,15 @@ class Fitet_Monitor {
 		$this->version = $version;
 		$this->plugin_name = $plugin_name;
 
+
 	}
 
+
 	/**
-	 * Short Description. (use period)
+	 * Plugin activation
 	 *
-	 * Long Description.
+	 * The code that runs during plugin activation.
+	 * This action is documented in includes/class-fitet-monitor-activator.php
 	 *
 	 * @since    1.0.0
 	 */
@@ -77,18 +83,18 @@ class Fitet_Monitor {
 	}
 
 	/**
-	 * Short Description. (use period)
+	 * Plugin deactivation
 	 *
-	 * Long Description.
+	 * The code that runs during plugin deactivation.
+	 * This action is documented in includes/class-fitet-monitor-deactivator.php
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {
+	public function deactivate() {
 		error_log("################");
 		error_log("#  DEACTIVATE  #");
 		error_log("################");
 		delete_option('fitet-monitor-demo');
-
 	}
 
 	/**
@@ -101,11 +107,11 @@ class Fitet_Monitor {
 	 * @access   private
 	 */
 	private function set_locale() {
+		add_action('plugins_loaded', [$this, 'load_text_domain']);
+	}
 
-		add_action('plugins_loaded', function () {
-			load_plugin_textdomain($this->plugin_name, false, FITET_MONITOR_DIR . 'languages/');
-		});
-
+	public function load_text_domain() {
+		load_plugin_textdomain($this->plugin_name, false, FITET_MONITOR_DIR . 'languages/');
 	}
 
 	/**

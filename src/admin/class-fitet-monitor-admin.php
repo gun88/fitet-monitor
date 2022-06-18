@@ -40,17 +40,19 @@ class Fitet_Monitor_Admin {
 	 */
 	private $version;
 
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @param string $plugin_name The name of this plugin.
 	 * @param string $version The version of this plugin.
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct($plugin_name, $version) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+
 
 	}
 
@@ -64,7 +66,7 @@ class Fitet_Monitor_Admin {
 		$menu = new Fitet_Monitor_Menu($router, $this->plugin_name);
 		add_action('admin_menu', [$menu, 'initialize']);
 
-		require_once FITET_MONITOR_DIR . 'admin/blocks/sample-block.php';
+		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}
 
 

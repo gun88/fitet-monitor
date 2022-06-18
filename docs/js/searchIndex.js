@@ -1,11 +1,6 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\sample_block_block_init\u0028\u0029",
-            "name": "sample_block_block_init",
-            "summary": "Registers\u0020all\u0020block\u0020assets\u0020so\u0020that\u0020they\u0020can\u0020be\u0020enqueued\u0020through\u0020Gutenberg\u0020in\nthe\u0020corresponding\u0020context.",
-            "url": "namespaces/default.html#function_sample_block_block_init"
-        },                {
             "fqsen": "\\Fitet_Monitor_Admin",
             "name": "Fitet_Monitor_Admin",
             "summary": "The\u0020admin\u002Dspecific\u0020functionality\u0020of\u0020the\u0020plugin.",
@@ -46,20 +41,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Alfa-Component.html#method_components"
         },                {
-            "fqsen": "\\Fitet_Monitor_Alfa_Component\u003A\u003Arender\u0028\u0029",
-            "name": "render",
+            "fqsen": "\\Fitet_Monitor_Alfa_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Alfa-Component.html#method_render"
+            "url": "classes/Fitet-Monitor-Alfa-Component.html#method_process_data"
         },                {
             "fqsen": "\\Fitet_Monitor_Beta_Component",
             "name": "Fitet_Monitor_Beta_Component",
             "summary": "",
             "url": "classes/Fitet-Monitor-Beta-Component.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Beta_Component\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Beta-Component.html#method_render"
         },                {
             "fqsen": "\\Fitet_Monitor_Menu",
             "name": "Fitet_Monitor_Menu",
@@ -91,10 +81,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Advanced-Page.html"
         },                {
-            "fqsen": "\\Fitet_Monitor_Advanced_Page\u003A\u003Arender_page\u0028\u0029",
-            "name": "render_page",
+            "fqsen": "\\Fitet_Monitor_Advanced_Page\u003A\u003Ainitialize_data\u0028\u0029",
+            "name": "initialize_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Advanced-Page.html#method_render_page"
+            "url": "classes/Fitet-Monitor-Advanced-Page.html#method_initialize_data"
         },                {
             "fqsen": "\\Fitet_Monitor_Club_Page",
             "name": "Fitet_Monitor_Club_Page",
@@ -106,10 +96,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Page.html#method___construct"
         },                {
-            "fqsen": "\\Fitet_Monitor_Club_Page\u003A\u003Arender_page\u0028\u0029",
-            "name": "render_page",
+            "fqsen": "\\Fitet_Monitor_Club_Page\u003A\u003Ainitialize_data\u0028\u0029",
+            "name": "initialize_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Page.html#method_render_page"
+            "url": "classes/Fitet-Monitor-Club-Page.html#method_initialize_data"
         },                {
             "fqsen": "\\Fitet_Monitor_Club_Page\u003A\u003A\u0024club_code",
             "name": "club_code",
@@ -131,10 +121,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Summary-Page.html#method_components"
         },                {
-            "fqsen": "\\Fitet_Monitor_Summary_Page\u003A\u003Arender_page\u0028\u0029",
-            "name": "render_page",
+            "fqsen": "\\Fitet_Monitor_Summary_Page\u003A\u003Ainitialize_data\u0028\u0029",
+            "name": "initialize_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Summary-Page.html#method_render_page"
+            "url": "classes/Fitet-Monitor-Summary-Page.html#method_initialize_data"
         },                {
             "fqsen": "\\Fitet_Monitor_Router",
             "name": "Fitet_Monitor_Router",
@@ -196,150 +186,10 @@ Search.appendIndex(
             "summary": "Currently\u0020plugin\u0020name.",
             "url": "namespaces/default.html#constant_FITET_MONITOR_NAME"
         },                {
-            "fqsen": "\\activate_fitet_monitor\u0028\u0029",
-            "name": "activate_fitet_monitor",
-            "summary": "The\u0020code\u0020that\u0020runs\u0020during\u0020plugin\u0020activation.",
-            "url": "namespaces/default.html#function_activate_fitet_monitor"
-        },                {
-            "fqsen": "\\deactivate_fitet_monitor\u0028\u0029",
-            "name": "deactivate_fitet_monitor",
-            "summary": "The\u0020code\u0020that\u0020runs\u0020during\u0020plugin\u0020deactivation.",
-            "url": "namespaces/default.html#function_deactivate_fitet_monitor"
-        },                {
             "fqsen": "\\run_fitet_monitor\u0028\u0029",
             "name": "run_fitet_monitor",
             "summary": "Begins\u0020execution\u0020of\u0020the\u0020plugin.",
             "url": "namespaces/default.html#function_run_fitet_monitor"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component",
-            "name": "Fitet_Monitor_Component",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#method___construct"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aenqueue_styles\u0028\u0029",
-            "name": "enqueue_styles",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#method_enqueue_styles"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aenqueue_scripts\u0028\u0029",
-            "name": "enqueue_scripts",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#method_enqueue_scripts"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aload_components\u0028\u0029",
-            "name": "load_components",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#method_load_components"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Ainitialize\u0028\u0029",
-            "name": "initialize",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#method_initialize"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aenqueue_style\u0028\u0029",
-            "name": "enqueue_style",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#method_enqueue_style"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#method_render"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003A\u0024components",
-            "name": "components",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#property_components"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Component\u003A\u003A\u0024version",
-            "name": "version",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Component.html#property_version"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Page",
-            "name": "Fitet_Monitor_Page",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Page.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Page\u003A\u003Arender_page\u0028\u0029",
-            "name": "render_page",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Page.html#method_render_page"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Page\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Page.html#method_render"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Shortcode",
-            "name": "Fitet_Monitor_Shortcode",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Shortcode.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Arender_shortcode\u0028\u0029",
-            "name": "render_shortcode",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Shortcode.html#method_render_shortcode"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Shortcode.html#method_render"
-        },                {
-            "fqsen": "\\Fitet_Monitor",
-            "name": "Fitet_Monitor",
-            "summary": "The\u0020core\u0020plugin\u0020class.",
-            "url": "classes/Fitet-Monitor.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Define\u0020the\u0020core\u0020functionality\u0020of\u0020the\u0020plugin.",
-            "url": "classes/Fitet-Monitor.html#method___construct"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003Aactivate\u0028\u0029",
-            "name": "activate",
-            "summary": "Short\u0020Description.\u0020\u0028use\u0020period\u0029",
-            "url": "classes/Fitet-Monitor.html#method_activate"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003Adeactivate\u0028\u0029",
-            "name": "deactivate",
-            "summary": "Short\u0020Description.\u0020\u0028use\u0020period\u0029",
-            "url": "classes/Fitet-Monitor.html#method_deactivate"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003Aset_locale\u0028\u0029",
-            "name": "set_locale",
-            "summary": "Define\u0020the\u0020locale\u0020for\u0020this\u0020plugin\u0020for\u0020internationalization.",
-            "url": "classes/Fitet-Monitor.html#method_set_locale"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003Aload_admin\u0028\u0029",
-            "name": "load_admin",
-            "summary": "Register\u0020all\u0020of\u0020the\u0020hooks\u0020related\u0020to\u0020the\u0020admin\u0020area\u0020functionality\nof\u0020the\u0020plugin.",
-            "url": "classes/Fitet-Monitor.html#method_load_admin"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003Aload_public\u0028\u0029",
-            "name": "load_public",
-            "summary": "Register\u0020all\u0020of\u0020the\u0020hooks\u0020related\u0020to\u0020the\u0020public\u002Dfacing\u0020functionality\nof\u0020the\u0020plugin.",
-            "url": "classes/Fitet-Monitor.html#method_load_public"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003Astart\u0028\u0029",
-            "name": "start",
-            "summary": "Load\u0020the\u0020dependencies,\u0020define\u0020the\u0020locale,\u0020and\u0020set\u0020the\u0020hooks\u0020for\u0020the\u0020admin\u0020area\u0020and\nthe\u0020public\u002Dfacing\u0020side\u0020of\u0020the\u0020site.",
-            "url": "classes/Fitet-Monitor.html#method_start"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003A\u0024plugin_name",
-            "name": "plugin_name",
-            "summary": "The\u0020unique\u0020identifier\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Fitet-Monitor.html#property_plugin_name"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003A\u0024version",
-            "name": "version",
-            "summary": "The\u0020current\u0020version\u0020of\u0020the\u0020plugin.",
-            "url": "classes/Fitet-Monitor.html#property_version"
         },                {
             "fqsen": "\\Fitet_Monitor_Public",
             "name": "Fitet_Monitor_Public",
@@ -395,6 +245,166 @@ Search.appendIndex(
             "name": "plugin_name",
             "summary": "",
             "url": "classes/Fitet-Monitor-Sample-Shortcode.html#property_plugin_name"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Page",
+            "name": "Fitet_Monitor_Page",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Page.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Page\u003A\u003Arender_page\u0028\u0029",
+            "name": "render_page",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Page.html#method_render_page"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Page\u003A\u003Ainitialize_data\u0028\u0029",
+            "name": "initialize_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Page.html#method_initialize_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Page\u003A\u003Arender\u0028\u0029",
+            "name": "render",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Page.html#method_render"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Page\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Page.html#method_process_data"
+        },                {
+            "fqsen": "\\sample_block_block_init\u0028\u0029",
+            "name": "sample_block_block_init",
+            "summary": "Registers\u0020all\u0020block\u0020assets\u0020so\u0020that\u0020they\u0020can\u0020be\u0020enqueued\u0020through\u0020Gutenberg\u0020in\nthe\u0020corresponding\u0020context.",
+            "url": "namespaces/default.html#function_sample_block_block_init"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component",
+            "name": "Fitet_Monitor_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#method___construct"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aenqueue_styles\u0028\u0029",
+            "name": "enqueue_styles",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#method_enqueue_styles"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aenqueue_scripts\u0028\u0029",
+            "name": "enqueue_scripts",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#method_enqueue_scripts"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aload_components\u0028\u0029",
+            "name": "load_components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#method_load_components"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aload_template\u0028\u0029",
+            "name": "load_template",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#method_load_template"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Ainitialize\u0028\u0029",
+            "name": "initialize",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#method_initialize"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Arender\u0028\u0029",
+            "name": "render",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#method_render"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003A\u0024components",
+            "name": "components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#property_components"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#method_process_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003A\u0024version",
+            "name": "version",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#property_version"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003A\u0024template",
+            "name": "template",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#property_template"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Shortcode",
+            "name": "Fitet_Monitor_Shortcode",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Shortcode.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Arender_shortcode\u0028\u0029",
+            "name": "render_shortcode",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Shortcode.html#method_render_shortcode"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003Arender\u0028\u0029",
+            "name": "render",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Shortcode.html#method_render"
+        },                {
+            "fqsen": "\\Fitet_Monitor",
+            "name": "Fitet_Monitor",
+            "summary": "The\u0020core\u0020plugin\u0020class.",
+            "url": "classes/Fitet-Monitor.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Define\u0020the\u0020core\u0020functionality\u0020of\u0020the\u0020plugin.",
+            "url": "classes/Fitet-Monitor.html#method___construct"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aactivate\u0028\u0029",
+            "name": "activate",
+            "summary": "Plugin\u0020activation",
+            "url": "classes/Fitet-Monitor.html#method_activate"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Adeactivate\u0028\u0029",
+            "name": "deactivate",
+            "summary": "Plugin\u0020deactivation",
+            "url": "classes/Fitet-Monitor.html#method_deactivate"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aset_locale\u0028\u0029",
+            "name": "set_locale",
+            "summary": "Define\u0020the\u0020locale\u0020for\u0020this\u0020plugin\u0020for\u0020internationalization.",
+            "url": "classes/Fitet-Monitor.html#method_set_locale"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aload_text_domain\u0028\u0029",
+            "name": "load_text_domain",
+            "summary": "",
+            "url": "classes/Fitet-Monitor.html#method_load_text_domain"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aload_admin\u0028\u0029",
+            "name": "load_admin",
+            "summary": "Register\u0020all\u0020of\u0020the\u0020hooks\u0020related\u0020to\u0020the\u0020admin\u0020area\u0020functionality\nof\u0020the\u0020plugin.",
+            "url": "classes/Fitet-Monitor.html#method_load_admin"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aload_public\u0028\u0029",
+            "name": "load_public",
+            "summary": "Register\u0020all\u0020of\u0020the\u0020hooks\u0020related\u0020to\u0020the\u0020public\u002Dfacing\u0020functionality\nof\u0020the\u0020plugin.",
+            "url": "classes/Fitet-Monitor.html#method_load_public"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Astart\u0028\u0029",
+            "name": "start",
+            "summary": "Load\u0020the\u0020dependencies,\u0020define\u0020the\u0020locale,\u0020and\u0020set\u0020the\u0020hooks\u0020for\u0020the\u0020admin\u0020area\u0020and\nthe\u0020public\u002Dfacing\u0020side\u0020of\u0020the\u0020site.",
+            "url": "classes/Fitet-Monitor.html#method_start"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "The\u0020unique\u0020identifier\u0020of\u0020this\u0020plugin.",
+            "url": "classes/Fitet-Monitor.html#property_plugin_name"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003A\u0024version",
+            "name": "version",
+            "summary": "The\u0020current\u0020version\u0020of\u0020the\u0020plugin.",
+            "url": "classes/Fitet-Monitor.html#property_version"
         },                {
             "fqsen": "\\",
             "name": "\\",

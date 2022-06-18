@@ -40,17 +40,20 @@ class Fitet_Monitor_Public {
 	 */
 	private $version;
 
+
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @param string $plugin_name The name of the plugin.
 	 * @param string $version The version of this plugin.
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct($plugin_name, $version) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+
 
 	}
 
@@ -69,7 +72,7 @@ class Fitet_Monitor_Public {
 		$shortcode = new Fitet_Monitor_Sample_Shortcode($this->version, $this->plugin_name);
 		add_shortcode('subscribe', [$shortcode, 'render_shortcode']);
 
-		require_once FITET_MONITOR_DIR . 'admin/blocks/sample-block.php';
+		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 
 	}
 

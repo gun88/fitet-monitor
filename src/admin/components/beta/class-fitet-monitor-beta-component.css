@@ -2,5 +2,8 @@
 	background-color: lightcoral;
 	padding: 1rem;
 	margin-right: 2rem;
+}
+
+.fm-beta-component * {
 	color: blue !important;
 }

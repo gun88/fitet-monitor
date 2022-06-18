@@ -15,14 +15,9 @@
 // overriding definitions for development environment
 define('FITET_MONITOR_ROOT_FILE', __FILE__);
 define('FITET_MONITOR_DIR', trailingslashit(plugin_dir_path(__FILE__)) . 'src/');
-define('FITET_MONITOR_PLUGIN_DRI_REL_PATH', trailingslashit(plugin_dir_path(__FILE__)) . 'src/'); // todo che????
 
 require_once FITET_MONITOR_DIR . 'fitet-monitor.php';
 
-
-// todo block
-// todo branch
-//require_once "/var/www/html/wp-content/plugins/fitet-monitor/blocks/my-block.php";
 
 
 

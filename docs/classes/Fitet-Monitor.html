@@ -56,16 +56,6 @@
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="packages/fitet.html" class="">fitet</a>
-</h4>
-    <ul class="phpdocumentor-list">
-                    <li>
-                <a href="packages/fitet-monitor.html" class="">monitor</a>
-                
-            </li>
-            </ul>
-
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Fitet.html" class="">Fitet</a>
 </h4>
     <ul class="phpdocumentor-list">
@@ -78,6 +68,16 @@
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
 </h4>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/fitet.html" class="">fitet</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="packages/fitet-monitor.html" class="">monitor</a>
+                
+            </li>
+            </ul>
 
                         </section>
             
@@ -121,7 +121,7 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">30</span>
 
@@ -206,14 +206,21 @@ version of the plugin.</p>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Short Description. (use period)</dd>
+<dd>Plugin activation</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Fitet-Monitor.html#method_deactivate">deactivate()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Short Description. (use period)</dd>
+<dd>Plugin deactivation</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Fitet-Monitor.html#method_load_text_domain">load_text_domain()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Fitet-Monitor.html#method_start">start()</a>
@@ -272,7 +279,7 @@ of the plugin.</dd>
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">40</span>
 
@@ -330,7 +337,7 @@ of the plugin.</dd>
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">49</span>
 
@@ -392,9 +399,9 @@ of the plugin.</dd>
         <a href="classes/Fitet-Monitor.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">58</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -402,7 +409,7 @@ of the plugin.</dd>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plugin_name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plugin_name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"><p>Set the plugin name and the plugin version that can be used throughout the plugin.</p>
 </section>
@@ -411,18 +418,20 @@ of the plugin.</dd>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>The version of this plugin.</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$plugin_name</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>The name of this plugin.</p>
+</section>
 
             </dd>
             </dl>
@@ -460,68 +469,20 @@ of the plugin.</dd>
         <a href="classes/Fitet-Monitor.html#method_activate" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Short Description. (use period)</p>
+        <p class="phpdocumentor-summary">Plugin activation</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">activate</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"><p>Long Description.</p>
-</section>
-
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0.0</span>
-                                                                                
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_deactivate">
-        deactivate()
-        <a href="classes/Fitet-Monitor.html#method_deactivate" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">86</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Short Description. (use period)</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">deactivate</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-        <section class="phpdocumentor-description"><p>Long Description.</p>
+        <section class="phpdocumentor-description"><p>The code that runs during plugin activation.
+This action is documented in includes/class-fitet-monitor-activator.php</p>
 </section>
 
     
@@ -553,14 +514,97 @@ of the plugin.</dd>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_deactivate">
+        deactivate()
+        <a href="classes/Fitet-Monitor.html#method_deactivate" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">93</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Plugin deactivation</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">deactivate</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"><p>The code that runs during plugin deactivation.
+This action is documented in includes/class-fitet-monitor-deactivator.php</p>
+</section>
+
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0.0</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_load_text_domain">
+        load_text_domain()
+        <a href="classes/Fitet-Monitor.html#method_load_text_domain" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">113</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">load_text_domain</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_start">
         start()
         <a href="classes/Fitet-Monitor.html#method_start" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">152</span>
+    <span class="phpdocumentor-element-found-in__line">158</span>
 
     </aside>
 
@@ -608,9 +652,9 @@ the public-facing side of the site.</p>
         <a href="classes/Fitet-Monitor.html#method_load_admin" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">124</span>
 
     </aside>
 
@@ -665,9 +709,9 @@ of the plugin.</p>
         <a href="classes/Fitet-Monitor.html#method_load_public" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">131</span>
+    <span class="phpdocumentor-element-found-in__line">137</span>
 
     </aside>
 
@@ -722,9 +766,9 @@ of the plugin.</p>
         <a href="classes/Fitet-Monitor.html#method_set_locale" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor.php"><a href="files/src-includes-class-fitet-monitor.html"><abbr title="src/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor.php"><a href="files/src-common-includes-class-fitet-monitor.html"><abbr title="src/common/includes/class-fitet-monitor.php">class-fitet-monitor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">109</span>
 
     </aside>
 

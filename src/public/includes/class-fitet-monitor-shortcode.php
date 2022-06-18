@@ -1,6 +1,6 @@
 <?php
 
-require_once FITET_MONITOR_DIR . 'includes/class-fitet-monitor-component.php';
+require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
 
 abstract class Fitet_Monitor_Shortcode extends Fitet_Monitor_Component {
 

@@ -6,9 +6,11 @@ class Fitet_Monitor_Router {
 	private $version;
 	private $page;
 
+
 	public function __construct($plugin_name, $version) {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+
 	}
 
 	public function on_load() {
@@ -41,9 +43,8 @@ class Fitet_Monitor_Router {
 				$club_code = get_option('fitet-monitor-club-code');
 				$this->page = new Fitet_Monitor_Club_Page($this->version, $this->plugin_name, $club_code);
 				break;
-			default:
 			case 'summary':
-				//	default:
+			default:
 				require_once FITET_MONITOR_DIR . 'admin/pages/summary/class-fitet-monitor-summary-page.php';
 				$this->page = new Fitet_Monitor_Summary_Page($this->version);
 				break;
@@ -55,9 +56,7 @@ class Fitet_Monitor_Router {
 			update_option('my-op', $_GET['myVal']);
 			wp_safe_redirect(add_query_arg(['message' => 'saved'], menu_page_url('fitet-monitor', false)));
 			exit();
-
 		}
-
 	}
 
 	public function render_page() {

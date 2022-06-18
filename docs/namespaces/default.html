@@ -56,16 +56,6 @@
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="packages/fitet.html" class="">fitet</a>
-</h4>
-    <ul class="phpdocumentor-list">
-                    <li>
-                <a href="packages/fitet-monitor.html" class="">monitor</a>
-                
-            </li>
-            </ul>
-
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Fitet.html" class="">Fitet</a>
 </h4>
     <ul class="phpdocumentor-list">
@@ -78,6 +68,16 @@
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
 </h4>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/fitet.html" class="">fitet</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="packages/fitet-monitor.html" class="">monitor</a>
+                
+            </li>
+            </ul>
 
                         </section>
             
@@ -126,20 +126,20 @@
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Router.html"><abbr title="\Fitet_Monitor_Router">Fitet_Monitor_Router</abbr></a></dt>
         <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Component.html"><abbr title="\Fitet_Monitor_Component">Fitet_Monitor_Component</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Page.html"><abbr title="\Fitet_Monitor_Page">Fitet_Monitor_Page</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Shortcode.html"><abbr title="\Fitet_Monitor_Shortcode">Fitet_Monitor_Shortcode</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor.html"><abbr title="\Fitet_Monitor">Fitet_Monitor</abbr></a></dt>
-        <dd>The core plugin class.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Public.html"><abbr title="\Fitet_Monitor_Public">Fitet_Monitor_Public</abbr></a></dt>
         <dd>The public-facing functionality of the plugin.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-General.html"><abbr title="\Fitet_Monitor_General">Fitet_Monitor_General</abbr></a></dt>
         <dd>The public plugin class.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Sample-Shortcode.html"><abbr title="\Fitet_Monitor_Sample_Shortcode">Fitet_Monitor_Sample_Shortcode</abbr></a></dt>
         <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Page.html"><abbr title="\Fitet_Monitor_Page">Fitet_Monitor_Page</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Component.html"><abbr title="\Fitet_Monitor_Component">Fitet_Monitor_Component</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor-Shortcode.html"><abbr title="\Fitet_Monitor_Shortcode">Fitet_Monitor_Shortcode</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Fitet-Monitor.html"><abbr title="\Fitet_Monitor">Fitet_Monitor</abbr></a></dt>
+        <dd>The core plugin class.</dd>
     
     
     </dl>
@@ -187,33 +187,19 @@
 <dd>Currently plugin version.</dd>
 
                             <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a href="namespaces/default.html#function_run_fitet_monitor">run_fitet_monitor()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Begins execution of the plugin.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_sample_block_block_init">sample_block_block_init()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Registers all block assets so that they can be enqueued through Gutenberg in
 the corresponding context.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a href="namespaces/default.html#function_activate_fitet_monitor">activate_fitet_monitor()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>The code that runs during plugin activation.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a href="namespaces/default.html#function_deactivate_fitet_monitor">deactivate_fitet_monitor()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>The code that runs during plugin deactivation.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a href="namespaces/default.html#function_run_fitet_monitor">run_fitet_monitor()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Begins execution of the plugin.</dd>
 
     </dl>
 
@@ -379,109 +365,6 @@ Rename this for your plugin and update it as you release new versions.</p>
             <a href="namespaces/default.html#functions" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_sample_block_block_init">
-        sample_block_block_init()
-        <a href="namespaces/default.html#function_sample_block_block_init" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/blocks/sample-block.php"><a href="files/src-admin-blocks-sample-block.html"><abbr title="src/admin/blocks/sample-block.php">sample-block.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">15</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Registers all block assets so that they can be enqueued through Gutenberg in
-the corresponding context.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">sample_block_block_init</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/"><abbr title="https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/">https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_activate_fitet_monitor">
-        activate_fitet_monitor()
-        <a href="namespaces/default.html#function_activate_fitet_monitor" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/fitet-monitor.php"><a href="files/src-fitet-monitor.html"><abbr title="src/fitet-monitor.php">fitet-monitor.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">62</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">The code that runs during plugin activation.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">activate_fitet_monitor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-        <section class="phpdocumentor-description"><p>This action is documented in includes/class-fitet-monitor-activator.php</p>
-</section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_deactivate_fitet_monitor">
-        deactivate_fitet_monitor()
-        <a href="namespaces/default.html#function_deactivate_fitet_monitor" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/fitet-monitor.php"><a href="files/src-fitet-monitor.html"><abbr title="src/fitet-monitor.php">fitet-monitor.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">71</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">The code that runs during plugin deactivation.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">deactivate_fitet_monitor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-        <section class="phpdocumentor-description"><p>This action is documented in includes/class-fitet-monitor-deactivator.php</p>
-</section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_run_fitet_monitor">
         run_fitet_monitor()
         <a href="namespaces/default.html#function_run_fitet_monitor" class="headerlink"><i class="fas fa-link"></i></a>
@@ -489,7 +372,7 @@ the corresponding context.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/fitet-monitor.php"><a href="files/src-fitet-monitor.html"><abbr title="src/fitet-monitor.php">fitet-monitor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">95</span>
+    <span class="phpdocumentor-element-found-in__line">73</span>
 
     </aside>
 
@@ -517,6 +400,49 @@ not affect the page life cycle.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.0.0</span>
                                                                                 
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_sample_block_block_init">
+        sample_block_block_init()
+        <a href="namespaces/default.html#function_sample_block_block_init" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/blocks/sample-block.php"><a href="files/src-common-blocks-sample-block.html"><abbr title="src/common/blocks/sample-block.php">sample-block.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">15</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Registers all block assets so that they can be enqueued through Gutenberg in
+the corresponding context.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">sample_block_block_init</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/"><abbr title="https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/">https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/</abbr></a></span>
+                                        
                                              
                                     </dd>
                         </dl>
