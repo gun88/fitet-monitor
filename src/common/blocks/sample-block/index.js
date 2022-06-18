@@ -103,9 +103,7 @@
 			return el('div', {className: props.className},
 				el('p', {}, __('My Block', 'fitet-monitor')),
 				el('p', {style: {fontSize: '2rem'}}, 'foobar'),
-				wp.element.RawHTML({
-					children: xaxa
-				})
+				wp.element.RawHTML({children: xaxa})
 			);
 		},
 
