@@ -63,29 +63,6 @@ class Fitet_Monitor {
 	}
 
 	/**
-	 * Load the required dependencies for this plugin.
-	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Fitet_Monitor_i18n. Defines internationalization functionality.
-	 *
-	 * Create an instance of the loader which will be used to register the hooks
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function load_dependencies() {
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once FITET_MONITOR_DIR . 'includes/class-fitet-monitor-i18n.php';
-
-	}
-
-	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
 	 * Uses the Fitet_Monitor_i18n class in order to set the domain and to register the hook
@@ -95,6 +72,11 @@ class Fitet_Monitor {
 	 * @access   private
 	 */
 	private function set_locale() {
+		/**
+		 * The class responsible for defining internationalization functionality
+		 * of the plugin.
+		 */
+		require_once FITET_MONITOR_DIR . 'includes/class-fitet-monitor-i18n.php';
 
 		$plugin_i18n = new Fitet_Monitor_i18n($this->plugin_name);
 
@@ -161,7 +143,6 @@ class Fitet_Monitor {
 	 * @since    1.0.0
 	 */
 	public function start() {
-		$this->load_dependencies();
 		$this->set_locale();
 		if (is_admin()) {
 			$this->load_admin();

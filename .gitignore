@@ -13,3 +13,5 @@ fitet-monitor/
 dist/
 .phpdoc/
 .phpunit.result.cache
+vendor/
+

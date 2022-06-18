@@ -17,7 +17,7 @@
  * Plugin Name:       Fitet Monitor
  * Plugin URI:        https://github.com/gun88/fitet-monitor
  * Description:       WordPress plugin for Fitet data
- * Version:           1.0.0
+ * Version:           0.0.0-DEV
  * Author:            tpomante
  * Author URI:        https://github.com/gun88
  * License:           GPL-2.0+
@@ -27,8 +27,6 @@
  */
 
 // If this file is called directly, abort.
-use src\includes\Zzzz;
-
 if (!defined('WPINC')) {
 	die;
 }
@@ -51,11 +49,11 @@ if (!defined('FITET_MONITOR_PLUGIN_DIR_REL_PATH')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('FITET_MONITOR_VERSION', '1.0.0'); // todo da package json
+define('FITET_MONITOR_VERSION', '0.0.0-DEV');
 /**
  * Currently plugin name.
  */
-define('FITET_MONITOR_NAME', 'fitet-monitor'); // todo da package json
+define('FITET_MONITOR_NAME', 'fitet-monitor');
 
 /**
  * The code that runs during plugin activation.

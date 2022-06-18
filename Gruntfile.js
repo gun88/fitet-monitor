@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 			options: {
 				textdomain: 'fitet-monitor',
 			},
-			default: { // todo controlla cambia in default
+			default: {
 				options: {
 					updateDomains: true
 				},
@@ -127,8 +127,28 @@ module.exports = function (grunt) {
 				dir: 'tests/'
 			}
 		},
-
+		replace: {
+			version: {
+				options: {
+					patterns: [
+						{
+							match: /0.0.0-DEV/g,
+							replacement: '<%= pkg.version %>'
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%= pkg.name %>/<%= pkg.name %>.php'],
+						dest: '<%= pkg.name %>'
+					}
+				]
+			}
+		}
 	});
+
 
 	grunt.loadNpmTasks('grunt-wp-i18n');
 	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
@@ -141,6 +161,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks('grunt-composer');
+	grunt.loadNpmTasks("grunt-replace");
 
 
 	// To run i18n you need to have gettext installed.
@@ -154,7 +175,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('readme', ['wp_readme_to_markdown']);
 	grunt.registerTask('assets', ['uglify', 'cssmin', 'clean:js', 'clean:css', 'clean:pot']);
 	grunt.registerTask('unit-tests', ['composer:update', 'phpunit:unit']);
-	grunt.registerTask('build', ['unit-tests', 'clean:dist', 'readme', 'copy', 'assets', 'zip', 'clean:tmp']);
+	grunt.registerTask('build', ['unit-tests', 'clean:dist', 'readme', 'copy', 'replace:version', 'assets', 'zip', 'clean:tmp']);
 
 	// Localhost MySql DB needed. user/password/dm_name: wordpress_test
 	grunt.registerTask('integration-tests', ['exec:installWpTests', 'phpunit:integration']);

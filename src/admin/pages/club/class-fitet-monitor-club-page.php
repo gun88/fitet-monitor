@@ -14,7 +14,7 @@ class Fitet_Monitor_Club_Page extends Fitet_Monitor_Page {
 	}
 
 	public function render_page() {
-		// TODO: Implement render() method.
+
 		?>
 		<form method="post">
 			<h1 class="wp-heading-inline"><?php _e("Club Page", $this->plugin_name, 'fitet-monitor'); ?></h1>

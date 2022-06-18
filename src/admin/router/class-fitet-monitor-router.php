@@ -37,11 +37,11 @@ class Fitet_Monitor_Router {
 				$this->page = new Fitet_Monitor_Advanced_Page($this->version, $club_code);
 				break;
 			case 'club':
-			default: // todo remove default here
 				require_once FITET_MONITOR_DIR . 'admin/pages/club/class-fitet-monitor-club-page.php';
 				$club_code = get_option('fitet-monitor-club-code');
 				$this->page = new Fitet_Monitor_Club_Page($this->version, $this->plugin_name, $club_code);
 				break;
+			default:
 			case 'summary':
 				//	default:
 				require_once FITET_MONITOR_DIR . 'admin/pages/summary/class-fitet-monitor-summary-page.php';
