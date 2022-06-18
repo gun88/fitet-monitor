@@ -1,6 +1,5 @@
 <?php
 
-
 abstract class Fitet_Monitor_Component {
 
 	protected $components = [];

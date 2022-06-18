@@ -12,16 +12,16 @@
  *
  * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
-function my_block_block_init() {
+function sample_block_block_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 	$dir = dirname( __FILE__ );
 
-	$index_js = 'my-block/index.js';
+	$index_js = 'sample-block/index.js';
 	wp_register_script(
-		'my-block-block-editor',
+		'sample-block-block-editor',
 		plugins_url( $index_js, __FILE__ ),
 		[
 			'wp-blocks',
@@ -31,27 +31,27 @@ function my_block_block_init() {
 		filemtime( "{$dir}/{$index_js}" )
 	);
 
-	$editor_css = 'my-block/editor.css';
+	$editor_css = 'sample-block/editor.css';
 	wp_register_style(
-		'my-block-block-editor',
+		'sample-block-block-editor',
 		plugins_url( $editor_css, __FILE__ ),
 		[],
 		filemtime( "{$dir}/{$editor_css}" )
 	);
 
-	$style_css = 'my-block/style.css';
+	$style_css = 'sample-block/style.css';
 	wp_register_style(
-		'my-block-block',
+		'sample-block-block',
 		plugins_url( $style_css, __FILE__ ),
 		[],
 		filemtime( "{$dir}/{$style_css}" )
 	);
 
-	register_block_type( 'fitet-monitor/my-block', [
-		'editor_script' => 'my-block-block-editor',
-		'editor_style'  => 'my-block-block-editor',
-		'style'         => 'my-block-block',
+	register_block_type( 'fitet-monitor/sample-block', [
+		'editor_script' => 'sample-block-block-editor',
+		'editor_style'  => 'sample-block-block-editor',
+		'style'         => 'sample-block-block',
 	] );
 }
 
-add_action( 'init', 'my_block_block_init' );
+add_action( 'init', 'sample_block_block_init' );

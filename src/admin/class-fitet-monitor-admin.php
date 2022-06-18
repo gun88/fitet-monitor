@@ -39,10 +39,6 @@ class Fitet_Monitor_Admin {
 	 * @var      string $version The current version of this plugin.
 	 */
 	private $version;
-	/**
-	 * @var Fitet_Monitor_Page
-	 */
-	private $page;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -67,6 +63,8 @@ class Fitet_Monitor_Admin {
 		require_once FITET_MONITOR_DIR . 'admin/menu/class-fitet-monitor-menu.php';
 		$menu = new Fitet_Monitor_Menu($router, $this->plugin_name);
 		add_action('admin_menu', [$menu, 'initialize']);
+
+		require_once FITET_MONITOR_DIR . 'admin/blocks/sample-block.php';
 	}
 
 

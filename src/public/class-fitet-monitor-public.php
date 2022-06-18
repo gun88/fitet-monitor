@@ -55,49 +55,23 @@ class Fitet_Monitor_Public {
 	}
 
 	/**
-	 * Register the stylesheets for the public-facing side of the site.
+	 *  Initialize public components
 	 *
-	 * @since    1.0.0
+	 * @return void
 	 */
-	public function enqueue_styles() {
+	public function start() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Fitet_Monitor_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Fitet_Monitor_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+		require_once FITET_MONITOR_DIR . 'public/general/class-fitet-monitor-general.php';
+		$general = new Fitet_Monitor_General($this->version);
+		add_action('wp_enqueue_scripts', [$general, 'initialize']);
 
-		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/fitet-monitor-public.css', array(), $this->version, 'all');
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/sample-shortcode/class-fitet-monitor-sample-shortcode.php';
+		$shortcode = new Fitet_Monitor_Sample_Shortcode($this->version, $this->plugin_name);
+		add_shortcode('subscribe', [$shortcode, 'render_shortcode']);
+
+		require_once FITET_MONITOR_DIR . 'admin/blocks/sample-block.php';
 
 	}
 
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Fitet_Monitor_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Fitet_Monitor_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/fitet-monitor-public.js', array('jquery'), $this->version, false);
-
-	}
 
 }

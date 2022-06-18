@@ -63,6 +63,35 @@ class Fitet_Monitor {
 	}
 
 	/**
+	 * Short Description. (use period)
+	 *
+	 * Long Description.
+	 *
+	 * @since    1.0.0
+	 */
+	public function activate() {
+		error_log("################");
+		error_log("#   ACTIVATE   #");
+		error_log("################");
+		update_option('fitet-monitor-club-code', 'my default value');
+	}
+
+	/**
+	 * Short Description. (use period)
+	 *
+	 * Long Description.
+	 *
+	 * @since    1.0.0
+	 */
+	public static function deactivate() {
+		error_log("################");
+		error_log("#  DEACTIVATE  #");
+		error_log("################");
+		delete_option('fitet-monitor-demo');
+
+	}
+
+	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
 	 * Uses the Fitet_Monitor_i18n class in order to set the domain and to register the hook
@@ -72,15 +101,10 @@ class Fitet_Monitor {
 	 * @access   private
 	 */
 	private function set_locale() {
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once FITET_MONITOR_DIR . 'includes/class-fitet-monitor-i18n.php';
 
-		$plugin_i18n = new Fitet_Monitor_i18n($this->plugin_name);
-
-		add_action('plugins_loaded', [$plugin_i18n, 'load_plugin_textdomain']);
+		add_action('plugins_loaded', function () {
+			load_plugin_textdomain($this->plugin_name, false, FITET_MONITOR_DIR . 'languages/');
+		});
 
 	}
 
@@ -106,21 +130,6 @@ class Fitet_Monitor {
 	 */
 	private function load_public() {
 
-
-		add_shortcode('subscribe', function ($atts, $content = null) {
-			$default = [
-				'style' => '',
-			];
-			$style = shortcode_atts($default, $atts)['style'];
-			$name = do_shortcode($content);
-			$name = !empty($name) ? $name : 'NOT_SET';
-
-			$from = get_option('fitet-monitor-club-code');
-			$str = sprintf(__("Hello %s! Regards from %s", $this->plugin_name, 'fitet-monitor'), $name, $from);
-			return "<p style='$style'>" . $str . "</p>";
-		});
-
-
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
@@ -128,9 +137,7 @@ class Fitet_Monitor {
 		require_once FITET_MONITOR_DIR . 'public/class-fitet-monitor-public.php';
 
 		$plugin_public = new Fitet_Monitor_Public($this->plugin_name, $this->version);
-
-		add_action('wp_enqueue_scripts', [$plugin_public, 'enqueue_styles']);
-		add_action('wp_enqueue_scripts', [$plugin_public, 'enqueue_scripts']);
+		$plugin_public->start();
 
 	}
 

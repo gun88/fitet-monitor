@@ -1,6 +1,6 @@
 <?php
 
-require_once FITET_MONITOR_DIR . 'admin/pages/class-fitet-monitor-page.php';
+require_once FITET_MONITOR_DIR . 'includes/class-fitet-monitor-page.php';
 require_once FITET_MONITOR_DIR . 'admin/components/alfa/class-fitet-monitor-alfa-component.php';
 
 class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {

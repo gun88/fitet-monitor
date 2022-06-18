@@ -57,7 +57,7 @@ module.exports = function (grunt) {
 			pot: ['<%= pkg.name %>/**/*.po', '<%= pkg.name %>/**/*.pot'],
 			tmp: ['<%= pkg.name %>'],
 			doc: ['docs'],
-			composer: ['composer.lock', 'vendor'],
+			composer: ['vendor'],
 		},
 		copy: {
 			default: {
@@ -106,6 +106,7 @@ module.exports = function (grunt) {
 		exec: {
 			phpDocumentor: 'phpDocumentor -d ./src -t ./docs',
 			installWpTests: 'bin/install-wp-tests.sh wordpress_test wordpress_test wordpress_test localhost 6.0.0 true',
+			composer: 'composer update',
 		},
 		phpunit: {
 			integration: {
@@ -160,7 +161,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-zip');
 	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-phpunit');
-	grunt.loadNpmTasks('grunt-composer');
 	grunt.loadNpmTasks("grunt-replace");
 
 
@@ -174,13 +174,42 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('readme', ['wp_readme_to_markdown']);
 	grunt.registerTask('assets', ['uglify', 'cssmin', 'clean:js', 'clean:css', 'clean:pot']);
-	grunt.registerTask('unit-tests', ['composer:update', 'phpunit:unit']);
-	grunt.registerTask('build', ['unit-tests', 'clean:dist', 'readme', 'copy', 'replace:version', 'assets', 'zip', 'clean:tmp']);
 
+	// Composer command globally available needed
+	grunt.registerTask('unit-tests', ['exec:composer', 'phpunit:unit']);
+
+	grunt.registerTask('build', ['clean:dist', 'readme', 'copy', 'indexes', 'replace:version', 'assets', 'zip', 'clean:tmp']);
+
+	// Composer command globally available needed
 	// Localhost MySql DB needed. user/password/dm_name: wordpress_test
 	grunt.registerTask('integration-tests', ['exec:installWpTests', 'phpunit:integration']);
 
-	grunt.registerTask('build-full', ['clean', 'composer:update', 'i18n', 'docs', 'build', 'integration-tests']);
+	grunt.registerTask('build-full', ['clean', 'exec:composer', 'i18n', 'docs', 'unit-tests', 'build', 'integration-tests']);
+
+	grunt.registerTask('indexes', function () {
+		// adding index.php files to prevent direct access to directories
+
+		const basedir = grunt.config.data.pkg.name; // <%= pkg.version %>
+		const fs = require('fs'), path = require('path');
+
+		const walkDirectories = (dir, callback) => {
+			const files = fs.readdirSync(dir);
+			files.forEach((file) => {
+				const filepath = path.join(dir, file);
+				const stats = fs.statSync(filepath);
+				if (stats.isDirectory()) {
+					callback(filepath);
+					walkDirectories(filepath, callback);
+				}
+			});
+		};
+		walkDirectories(basedir, function (filepath) {
+			const indexFile = filepath + '/index.php';
+			fs.writeFileSync(indexFile, '<?php // Silence is golden');
+		})
+
+	});
+
 
 	grunt.util.linefeed = '\n';
 

@@ -20,6 +20,8 @@ define('FITET_MONITOR_PLUGIN_DRI_REL_PATH', trailingslashit(plugin_dir_path(__FI
 require_once FITET_MONITOR_DIR . 'fitet-monitor.php';
 
 
+// todo block
+// todo branch
 //require_once "/var/www/html/wp-content/plugins/fitet-monitor/blocks/my-block.php";
 
 

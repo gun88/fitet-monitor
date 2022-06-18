@@ -1,8 +1,8 @@
-(function( $ ) {
+(function ($) {
 	'use strict';
 
 	/**
-	 * All of the code for your public-facing JavaScript source
+	 * All of the code for your admin-facing JavaScript source
 	 * should reside in this file.
 	 *
 	 * Note: It has been assumed you will write jQuery code here, so the
@@ -29,4 +29,10 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-})( jQuery );
+	$(window).load(function () {
+		$('h1').text((index, text) => text + ' @' + index);
+	});
+
+
+})(jQuery);
+

@@ -1,4 +1,4 @@
-( function( wp ) {
+(function (wp) {
 	/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -19,12 +19,12 @@
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
 	 */
-	registerBlockType( 'fitet-monitor/my-block', {
+	registerBlockType('fitet-monitor/sample-block', {
 		/**
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'My block', 'fitet-monitor' ),
+		title: __('Sample Block', 'fitet-monitor'),
 
 		/**
 		 * An icon property should be specified to make it easier to identify a block.
@@ -54,16 +54,11 @@
 		 * @param {Object} [props] Properties passed from the editor.
 		 * @return {Element}       Element to render.
 		 */
-		edit: function( props ) {
-			/*return el(
-				'p',
-				{ className: props.className },
-				__( 'Hello from the editor!', 'fitet-monitor' )
-			);*/
-			return el(
-				'p',
-				{src: "http://archivio.fitet.org/scheda_soc.php?TEAM=3"},
-				__( 'Hello from the saved content!', 'fitet-monitor' )
+		edit: function (props) {
+			//<p style='$style'>" . $str . "</p>
+			return el('div', {className: props.className},
+				el('p', {}, __('My Block', 'fitet-monitor')),
+				el('p', {style: {fontSize: '2rem'}}, 'foobar')
 			);
 		},
 
@@ -74,10 +69,13 @@
 		 *
 		 * @return {Element}       Element to render.
 		 */
-		save: function() {
-			return 'weeeeeee [subscribe style="color: red"]Tommaso[/subscribe]';
+		save: function (props) {
+			return el('div', {/*className: props.className*/},
+				el('p', {}, __('My Block', 'fitet-monitor')),
+				el('p', {style: {fontSize: '2rem'}}, 'foobar')
+			);
 		}
-	} );
-} )(
+	});
+})(
 	window.wp
 );

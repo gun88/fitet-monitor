@@ -101,8 +101,11 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Fitet_Monitor_Component
+    Fitet_Monitor_Shortcode
 
+        <span class="phpdocumentor-element__extends">
+        extends <a href="classes/Fitet-Monitor-Component.html"><abbr title="\Fitet_Monitor_Component">Fitet_Monitor_Component</abbr></a>
+    </span>
     
             <div class="phpdocumentor-element__package">
             in package
@@ -115,9 +118,9 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor-component.php"><a href="files/src-includes-class-fitet-monitor-component.html"><abbr title="src/includes/class-fitet-monitor-component.php">class-fitet-monitor-component.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor-shortcode.php"><a href="files/src-includes-class-fitet-monitor-shortcode.html"><abbr title="src/includes/class-fitet-monitor-shortcode.php">class-fitet-monitor-shortcode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3</span>
+    <span class="phpdocumentor-element-found-in__line">5</span>
 
     </aside>
 
@@ -186,6 +189,13 @@
 </dt>
 <dd></dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Fitet-Monitor-Shortcode.html#method_render_shortcode">render_shortcode()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Fitet-Monitor-Component.html#method_components">components()</a>
     <span>
@@ -194,7 +204,7 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Fitet-Monitor-Component.html#method_render">render()</a>
+    <a href="classes/Fitet-Monitor-Shortcode.html#method_render">render()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -217,7 +227,7 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Fitet-Monitor-Component.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Fitet-Monitor-Shortcode.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="
@@ -292,7 +302,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Fitet-Monitor-Component.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Fitet-Monitor-Shortcode.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -484,6 +494,58 @@
                     <article
         class="phpdocumentor-element
             -method
+            -public
+                        -abstract                                "
+>
+    <h4 class="phpdocumentor-element__name" id="method_render_shortcode">
+        render_shortcode()
+        <a href="classes/Fitet-Monitor-Shortcode.html#method_render_shortcode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor-shortcode.php"><a href="files/src-includes-class-fitet-monitor-shortcode.html"><abbr title="src/includes/class-fitet-monitor-shortcode.php">class-fitet-monitor-shortcode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">7</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__abstract">abstract</span>                <span class="phpdocumentor-signature__name">render_shortcode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$attributes</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$attributes</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$content</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -protected
                                                         "
 >
@@ -518,26 +580,25 @@
         class="phpdocumentor-element
             -method
             -protected
-                        -abstract                                "
+                                                -final        "
 >
     <h4 class="phpdocumentor-element__name" id="method_render">
         render()
-        <a href="classes/Fitet-Monitor-Component.html#method_render" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Fitet-Monitor-Shortcode.html#method_render" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor-component.php"><a href="files/src-includes-class-fitet-monitor-component.html"><abbr title="src/includes/class-fitet-monitor-component.php">class-fitet-monitor-component.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-fitet-monitor-shortcode.php"><a href="files/src-includes-class-fitet-monitor-shortcode.html"><abbr title="src/includes/class-fitet-monitor-shortcode.php">class-fitet-monitor-shortcode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">76</span>
+    <span class="phpdocumentor-element-found-in__line">12</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__abstract">abstract</span>                <span class="phpdocumentor-signature__name">render</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+        <span class="phpdocumentor-signature__final">final</span>            <span class="phpdocumentor-signature__name">render</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -551,6 +612,20 @@
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
+                                                            
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -669,7 +744,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/Fitet-Monitor-Component.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Fitet-Monitor-Shortcode.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
