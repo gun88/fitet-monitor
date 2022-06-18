@@ -17,6 +17,7 @@ class Fitet_Monitor_Alfa_Component extends Fitet_Monitor_Component {
 	}
 
 	public function process_data($data) {
+		$data['contentBeta'] = '';
 		for ($i = 0; $i < $data['betas']; $i++) {
 			$data['contentBeta'] .= $this->components['beta']->render(['innerBeta' => "innerBetino $i"]);
 		}
