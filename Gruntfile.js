@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 			options: {
 				textdomain: 'fitet-monitor',
 			},
-			update_all_domains: { // todo controlla cambia in default
+			default: { // todo controlla cambia in default
 				options: {
 					updateDomains: true
 				},
@@ -153,7 +153,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('readme', ['wp_readme_to_markdown']);
 	grunt.registerTask('assets', ['uglify', 'cssmin', 'clean:js', 'clean:css', 'clean:pot']);
-	grunt.registerTask('unit-tests', ['phpunit:unit']);
+	grunt.registerTask('unit-tests', ['composer:update', 'phpunit:unit']);
 	grunt.registerTask('build', ['unit-tests', 'clean:dist', 'readme', 'copy', 'assets', 'zip', 'clean:tmp']);
 
 	// Localhost MySql DB needed. user/password/dm_name: wordpress_test

@@ -4,7 +4,7 @@
   "main": "Gruntfile.js",
   "author": "tpomante",
   "scripts": {
-    "clean": "grunt clean:all",
+    "clean": "grunt clean:dist",
     "unit-tests": "grunt unit-tests",
     "build": "grunt build",
     "build-full": "grunt build-full",
