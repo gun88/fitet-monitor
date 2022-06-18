@@ -5,18 +5,26 @@
   "author": "tpomante",
   "scripts": {
     "clean": "grunt clean:all",
+    "unit-tests": "grunt unit-tests",
     "build": "grunt build",
-    "build-with-i18n": "grunt build-with-i18n"
+    "build-full": "grunt build-full",
+    "i18n": "grunt i18n",
+    "docs": "grunt docs",
+    "integration-tests": "grunt integration-tests"
   },
   "devDependencies": {
     "@floatwork/grunt-po2mo": "^0.3.0",
     "grunt": "^1.5.3",
+    "grunt-composer": "^0.4.5",
     "grunt-contrib-clean": "^2.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^4.0.0",
     "grunt-contrib-uglify": "^5.2.1",
+    "grunt-exec": "^3.0.0",
+    "grunt-phpunit": "^0.3.6",
     "grunt-wp-i18n": "^1.0.3",
     "grunt-wp-readme-to-markdown": "^2.1.0",
-    "grunt-zip": "^0.14.0"
+    "grunt-zip": "^0.14.0",
+    "coffeescript": "^2.7.0"
   }
 }

@@ -12,3 +12,4 @@ node_modules/
 fitet-monitor/
 dist/
 .phpdoc/
+.phpunit.result.cache

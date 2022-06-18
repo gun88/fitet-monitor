@@ -2,13 +2,13 @@
 /**
  * Class SampleTest
  *
- * @package Fitet_Monitor
+ * @package Sample_Plugin
  */
 
 /**
  * Sample test case.
  */
-class SampleTest extends WP_UnitTestCase {
+class Fitet_Monitor_IT extends WP_UnitTestCase {
 
 	/**
 	 * A single example test.

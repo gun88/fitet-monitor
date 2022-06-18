@@ -51,11 +51,13 @@ module.exports = function (grunt) {
 			},
 		},
 		clean: {
-			all: ["<%= pkg.name %>", 'dist'],
+			dist: ['<%= pkg.name %>', 'dist'],
 			js: ['<%= pkg.name %>/**/*.js', '!<%= pkg.name %>/**/*.min.js'],
 			css: ['<%= pkg.name %>/**/*.css', '!<%= pkg.name %>/**/*.min.css'],
 			pot: ['<%= pkg.name %>/**/*.po', '<%= pkg.name %>/**/*.pot'],
 			tmp: ['<%= pkg.name %>'],
+			doc: ['docs'],
+			composer: ['composer.lock', 'vendor'],
 		},
 		copy: {
 			default: {
@@ -100,7 +102,32 @@ module.exports = function (grunt) {
 		},
 		zip: {
 			'dist/<%= pkg.name %>.zip': ['<%= pkg.name %>/**']
-		}
+		},
+		exec: {
+			phpDocumentor: 'phpDocumentor -d ./src -t ./docs',
+			installWpTests: 'bin/install-wp-tests.sh wordpress_test wordpress_test wordpress_test localhost 6.0.0 true',
+		},
+		phpunit: {
+			integration: {
+				options: {
+					bin: 'vendor/bin/phpunit',
+					configuration: 'tests/.config/integration/phpunit.xml.dist',
+					testSuffix: 'IT.php'
+
+				},
+				dir: 'tests/',
+			},
+			unit: {
+				options: {
+					bin: 'vendor/bin/phpunit',
+					configuration: 'tests/.config/unit/phpunit.xml.dist',
+					testSuffix: 'Test.php'
+
+				},
+				dir: 'tests/'
+			}
+		},
+
 	});
 
 	grunt.loadNpmTasks('grunt-wp-i18n');
@@ -111,13 +138,28 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('@floatwork/grunt-po2mo');
 	grunt.loadNpmTasks('grunt-zip');
+	grunt.loadNpmTasks('grunt-exec');
+	grunt.loadNpmTasks('grunt-phpunit');
+	grunt.loadNpmTasks('grunt-composer');
 
 
-	grunt.registerTask('i18n', ['addtextdomain', 'makepot', 'po2mo']); // To run i18n you need to have gettext installed.
+	// To run i18n you need to have gettext installed.
+	// https://www.gnu.org/software/gettext/
+	grunt.registerTask('i18n', ['addtextdomain', 'makepot', 'po2mo']);
+
+	// To run i18n you need to have phpdoc installed.
+	// https://docs.phpdoc.org/3.0/guide/getting-started/installing.html
+	grunt.registerTask('docs', ['clean:doc', 'exec:phpDocumentor']);
+
 	grunt.registerTask('readme', ['wp_readme_to_markdown']);
 	grunt.registerTask('assets', ['uglify', 'cssmin', 'clean:js', 'clean:css', 'clean:pot']);
-	grunt.registerTask('build', ['clean:all', 'readme', 'copy', 'assets', 'zip', 'clean:tmp']);
-	grunt.registerTask('build-with-i18n', ['i18n', 'build']);
+	grunt.registerTask('unit-tests', ['phpunit:unit']);
+	grunt.registerTask('build', ['unit-tests', 'clean:dist', 'readme', 'copy', 'assets', 'zip', 'clean:tmp']);
+
+	// Localhost MySql DB needed. user/password/dm_name: wordpress_test
+	grunt.registerTask('integration-tests', ['exec:installWpTests', 'phpunit:integration']);
+
+	grunt.registerTask('build-full', ['clean', 'composer:update', 'i18n', 'docs', 'build', 'integration-tests']);
 
 	grunt.util.linefeed = '\n';
 
