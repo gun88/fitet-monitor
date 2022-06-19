@@ -21,7 +21,7 @@ class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
 
 
 	public function components() {
-		return ['beta' => new Fitet_Monitor_Beta_Component($this->version)];
+		return ['beta' => new Fitet_Monitor_Beta_Component($this->plugin_name, $this->version)];
 	}
 
 	public function process_data($data) {
