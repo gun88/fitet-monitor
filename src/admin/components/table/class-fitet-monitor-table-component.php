@@ -2,11 +2,22 @@
 
 require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
 require_once FITET_MONITOR_DIR . 'admin/components/beta/class-fitet-monitor-beta-component.php';
-require_once FITET_MONITOR_DIR . 'admin/components/table/class-wp-list-table.php';
+require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-wp-table.php';
 
 class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
 
-	public $items;
+
+	private $columns = [
+		'cb' => '<input type="checkbox" />',
+		'club' => 'Club',
+		'configuration' => 'Configuration',
+		'lastUpdate' => 'Last Update',
+	];
+
+	private $bulk_actions = [
+		'delete' => 'Delete',
+		'update' => "Update"
+	];
 
 
 	public function components() {
@@ -14,14 +25,27 @@ class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
 	}
 
 	public function process_data($data) {
-		$WP_List_Table2 = new WP_List_Table2();
-		ob_start();
-		try {
-			$WP_List_Table2->display();
-		} catch (Throwable $e) {
-			$data['error'] = ($e->getMessage());
 
-		}
-		return $data;
+		$data = array_map(function ($row) {
+			$club_code = $row['clubCode'];
+			$club_name = $row['clubName'];
+			$last_update = $row['lastUpdate'];
+			return [
+				'cb' => "<input type='checkbox name='clubCode[] value='$club_code' class='fm-club-table-cb'/>",
+				'club' => "$club_name",
+				'clubCode' => $club_code,
+				'configuration' => "<b>Configuration $club_code</b>",
+				'lastUpdate' => $last_update,
+			];
+		}, $data);
+
+		$wp_table = new Fitet_Monitor_Wp_Table();
+		$wp_table->set_bulk_actions($this->bulk_actions);
+		$wp_table->set_columns($this->columns);
+		$wp_table->prepare_items($data);
+
+		return ['table' => $wp_table->display()];
 	}
+
+
 }

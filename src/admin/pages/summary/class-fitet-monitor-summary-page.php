@@ -10,6 +10,24 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 	}
 
 	public function initialize_data() {
+		$data = [];
+		for ($club_code = 0; $club_code < 10; $club_code++) {
+			$data [] = [
+				'clubCode' => $club_code,
+				'clubName' => "Club $club_code",
+				'lastUpdate' => 'Last Update',
+			];
+		}
+
+		$messagePool = $this->prepare_messages();
+		return [
+			'pageTitle' => __(get_admin_page_title()),
+			'addButton' => __('Add Club', 'plugin'),
+			'messagePool' => $messagePool,
+			'table' => $this->components['table']->render($data)];
+	}
+
+	public function prepare_messages() {
 		$messagePool = '';
 		if (isset($_GET['message']) && 'deleted' === $_GET['message']) {
 			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>Delete operation completed</p></div>';
@@ -17,20 +35,7 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 		if (isset($_GET['message']) && 'added' === $_GET['message']) {
 			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>Club added successfully</p></div>';
 		}
-		return [
-			'pageTitle' => __(get_admin_page_title()),
-			'addButton' => __('Add Club', 'plugin'),
-			'messagePool' => $messagePool,
-			'table' => $this->components['table']->render([
-					'contentino' => 'ssss!!! $$$',
-					'betas' => 3,
-				]
-			)];
-	}
-
-	public function render_page() {
-		echo parent::render();
-		//$this->table->display();
+		return $messagePool;
 	}
 
 
