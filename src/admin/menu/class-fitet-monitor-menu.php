@@ -23,7 +23,7 @@ class Fitet_Monitor_Menu {
 		add_menu_page(
 			__('Fitet Monitor', $this->plugin_name, 'fitet-monitor'),
 			__('Fitet Monitor', $this->plugin_name, 'fitet-monitor'),
-			'manage_options',
+			'edit_pages',
 			$this->plugin_name,
 			[$this->router, 'render_page'],
 			$menu_icon

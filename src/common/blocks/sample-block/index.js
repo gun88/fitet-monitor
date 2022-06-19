@@ -1,4 +1,4 @@
-(async function (wp) {
+(function (wp, $) {
 	/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/#registering-a-block
@@ -17,21 +17,9 @@
 	var __ = wp.i18n.__;
 
 
-	var xaxa = await wp.apiRequest({
-		path: '../?rest_route=/fitet-monitor/v1/shortcode/subscribe', // todo controlla se funziona su altri siti
-		type: 'GET',
-		data: {
-			content: 'ResTom',
-			style: 'color: green',
-		}
-	})
-		.then(r => {
-			console.log('_____________', r);
-			return r.body;
-		}).then(r => {
-			console.log('$$$$$$$$$', r);
-			return r;
-		})
+	const name = 'ResTom';
+	const style = 'color: green';
+
 
 	/**
 	 * Every block starts by registering a new block type definition.
@@ -74,37 +62,43 @@
 		 */
 		edit: function (props) {
 
-			async function aaa() {
-				//
-
-				/*return fetch("/?rest_route=/fitet-monitor/v1/shortcode/subscribe")*/
-				return await wp.apiRequest({
-					path: '../?rest_route=/fitet-monitor/v1/shortcode/subscribe', // todo controlla se funziona su altri siti
-					type: 'GET',
-					data: {
-						content: 'ResTom',
-						style: 'color: green',
-					}
-				})
-					.then(r => {
-						console.log('_____________', r);
-						return r.body;
-					}).then(r => {
-						console.log('$$$$$$$$$', r);
-						return r;
-					})
-			}
-
-			/*let xaxa = aaa();
-			console.log(xaxa)*/
 			console.log('edit', props)
 			//<p style='$style'>" . $str . "</p>
 
+
+			let el1 = el('div', {}, 'pool');
+
+
+			wp.apiRequest({
+				path: '../?rest_route=/fitet-monitor/v1/shortcode/subscribe', // todo controlla se funziona su altri siti
+				type: 'GET',
+				data: {
+					content: name,
+					style: style,
+				}
+			})
+				.then(r => {
+					console.log('_____________', r);
+					return r.body;
+				}).then(r => {
+				console.log('$$$$$$$$$', r);
+				//props.foobar = r;//el.ad
+				//	props.setAttributes( { foobar: 'aaa' } );
+				$('#fitet-monitor-preview').html(r)
+				console.log('caricato')
+				return r;
+			})
+
+			console.log(el1)
+			console.log(wp.element)
+			//wp.element.render(el1, document.getElementById('pool'))
+			console.log('el1', el1)
 			return el('div', {className: props.className},
 				el('p', {}, __('My Block', 'fitet-monitor')),
-				el('p', {style: {fontSize: '2rem'}}, 'foobar'),
-				wp.element.RawHTML({children: xaxa})
+				el('div', {id: 'fitet-monitor-preview'}, 'Loading...')
 			);
+
+
 		},
 
 		/**
@@ -117,10 +111,9 @@
 		save: function (props) {
 			return el('div', {/*className: props.className*/},
 				el('p', {}, __('My Block', 'fitet-monitor')),
-				el('p', {style: {fontSize: '2rem'}}, 'foobar')
+				el('p', {style: {fontSize: '2rem'}}, 'foobar'),
+				wp.element.RawHTML({children: `[subscribe style="${style}"]${name}[/subscribe]`})
 			);
 		}
 	});
-})(
-	window.wp
-);
+})(window.wp, jQuery);

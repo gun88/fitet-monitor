@@ -29,7 +29,7 @@ class Fitet_Monitor_Shortcode extends Fitet_Monitor_Component {
 				['methods' => 'GET',
 					'callback' => [$this, 'rest_api'],
 					'permission_callback' => function () {
-						return current_user_can('manage_options');
+						return current_user_can('edit_posts');
 					}
 				]
 			);
