@@ -36,7 +36,7 @@ class Fitet_Monitor_Router {
 		switch ($mode) {
 			case 'advanced':
 				require_once FITET_MONITOR_DIR . 'admin/pages/advanced/class-fitet-monitor-advanced-page.php';
-				$this->page = new Fitet_Monitor_Advanced_Page($this->version, $club_code);
+				$this->page = new Fitet_Monitor_Advanced_Page($this->plugin_name, $this->version);
 				break;
 			case 'club':
 				require_once FITET_MONITOR_DIR . 'admin/pages/club/class-fitet-monitor-club-page.php';
@@ -46,7 +46,7 @@ class Fitet_Monitor_Router {
 			case 'summary':
 			default:
 				require_once FITET_MONITOR_DIR . 'admin/pages/summary/class-fitet-monitor-summary-page.php';
-				$this->page = new Fitet_Monitor_Summary_Page($this->version);
+				$this->page = new Fitet_Monitor_Summary_Page($this->plugin_name, $this->version);
 				break;
 		}
 

@@ -6,7 +6,7 @@ require_once FITET_MONITOR_DIR . 'admin/components/table/class-fitet-monitor-tab
 class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 
 	public function components() {
-		return ['table' => new Fitet_Monitor_Table_Component($this->version)];
+		return ['table' => new Fitet_Monitor_Table_Component($this->plugin_name, $this->version)];
 	}
 
 	public function initialize_data() {
@@ -21,8 +21,8 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 
 		$messagePool = $this->prepare_messages();
 		return [
-			'pageTitle' => __(get_admin_page_title()),
-			'addButton' => __('Add Club', 'plugin'),
+			'pageTitle' => __(get_admin_page_title(), 'fitet-monitor'),
+			'addButton' => __('Add Club', 'fitet-monitor'),
 			'messagePool' => $messagePool,
 			'table' => $this->components['table']->render($data)];
 	}

@@ -4,8 +4,6 @@ require_once FITET_MONITOR_DIR . 'public/includes/class-fitet-monitor-shortcode.
 
 class Fitet_Monitor_Sample_Shortcode extends Fitet_Monitor_Shortcode {
 
-	private $plugin_name;
-
 	public function __construct($version, $plugin_name) {
 		parent::__construct($version, $plugin_name, 'subscribe');
 		$this->plugin_name = $plugin_name;
@@ -21,7 +19,7 @@ class Fitet_Monitor_Sample_Shortcode extends Fitet_Monitor_Shortcode {
 
 		$from = get_option('fitet-monitor-club-code');
 
-		$message = sprintf(__("Hello %s! Regards from %s", $this->plugin_name, 'fitet-monitor'), $name, $from);
+		$message = sprintf(__("Hello %s! Regards from %s", 'fitet-monitor'), $name, $from);
 
 		return ['style' => $style, 'message' => $message,];
 	}

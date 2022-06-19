@@ -15,7 +15,7 @@ class Fitet_Monitor_Beta_Component_Test extends Fitet_Monitor_Test_Case {
 	private $fitet_monitor_beta_component;
 
 	protected function post_construct() {
-		$this->fitet_monitor_beta_component = new Fitet_Monitor_Beta_Component('x');
+		$this->fitet_monitor_beta_component = new Fitet_Monitor_Beta_Component($this->plugin_name, 'x');
 		$this->fitet_monitor_beta_component->initialize();
 	}
 

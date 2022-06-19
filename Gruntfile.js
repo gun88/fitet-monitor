@@ -31,7 +31,7 @@ module.exports = function (grunt) {
 			default: {
 				options: {
 					domainPath: 'src/languages',
-					exclude: ['\.git/*', 'bin/*', 'node_modules/*', 'tests/*'],
+					exclude: ['\.git/*', 'bin/*', 'node_modules/*', 'tests/*', 'src/admin/includes/class-fitet-monitor-wp-table.php'],
 					mainFile: 'fitet-monitor.php',
 					potFilename: 'fitet-monitor.pot',
 					potHeaders: {

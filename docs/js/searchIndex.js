@@ -26,26 +26,6 @@ Search.appendIndex(
             "summary": "The\u0020version\u0020of\u0020this\u0020plugin.",
             "url": "classes/Fitet-Monitor-Admin.html#property_version"
         },                {
-            "fqsen": "\\Fitet_Monitor_Alfa_Component",
-            "name": "Fitet_Monitor_Alfa_Component",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Alfa-Component.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Alfa_Component\u003A\u003Aenqueue_styles\u0028\u0029",
-            "name": "enqueue_styles",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Alfa-Component.html#method_enqueue_styles"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Alfa_Component\u003A\u003Acomponents\u0028\u0029",
-            "name": "components",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Alfa-Component.html#method_components"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Alfa_Component\u003A\u003Aprocess_data\u0028\u0029",
-            "name": "process_data",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Alfa-Component.html#method_process_data"
-        },                {
             "fqsen": "\\Fitet_Monitor_Beta_Component",
             "name": "Fitet_Monitor_Beta_Component",
             "summary": "",
@@ -96,6 +76,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Page.html#method___construct"
         },                {
+            "fqsen": "\\Fitet_Monitor_Club_Page\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Page.html#method_components"
+        },                {
             "fqsen": "\\Fitet_Monitor_Club_Page\u003A\u003Ainitialize_data\u0028\u0029",
             "name": "initialize_data",
             "summary": "",
@@ -105,11 +90,6 @@ Search.appendIndex(
             "name": "club_code",
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Page.html#property_club_code"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Page\u003A\u003A\u0024plugin_name",
-            "name": "plugin_name",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Page.html#property_plugin_name"
         },                {
             "fqsen": "\\Fitet_Monitor_Summary_Page",
             "name": "Fitet_Monitor_Summary_Page",
@@ -125,6 +105,11 @@ Search.appendIndex(
             "name": "initialize_data",
             "summary": "",
             "url": "classes/Fitet-Monitor-Summary-Page.html#method_initialize_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Summary_Page\u003A\u003Aprepare_messages\u0028\u0029",
+            "name": "prepare_messages",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Summary-Page.html#method_prepare_messages"
         },                {
             "fqsen": "\\Fitet_Monitor_Router",
             "name": "Fitet_Monitor_Router",
@@ -236,11 +221,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Sample-Shortcode.html#method_process_data"
         },                {
-            "fqsen": "\\Fitet_Monitor_Sample_Shortcode\u003A\u003A\u0024plugin_name",
-            "name": "plugin_name",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Sample-Shortcode.html#property_plugin_name"
-        },                {
             "fqsen": "\\Fitet_Monitor_Page",
             "name": "Fitet_Monitor_Page",
             "summary": "",
@@ -316,6 +296,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Component.html#method_process_data"
         },                {
+            "fqsen": "\\Fitet_Monitor_Component\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Component.html#property_plugin_name"
+        },                {
             "fqsen": "\\Fitet_Monitor_Component\u003A\u003A\u0024version",
             "name": "version",
             "summary": "",
@@ -360,11 +345,6 @@ Search.appendIndex(
             "name": "tag",
             "summary": "",
             "url": "classes/Fitet-Monitor-Shortcode.html#property_tag"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Shortcode\u003A\u003A\u0024plugin_name",
-            "name": "plugin_name",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Shortcode.html#property_plugin_name"
         },                {
             "fqsen": "\\Fitet_Monitor",
             "name": "Fitet_Monitor",
@@ -435,6 +415,341 @@ Search.appendIndex(
             "name": "enqueue_script",
             "summary": "",
             "url": "classes/Fitet-Monitor-Helper.html#method_enqueue_script"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Table_Component",
+            "name": "Fitet_Monitor_Table_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Table-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Table_Component\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Table-Component.html#method_components"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Table_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Table-Component.html#method_process_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Table_Component\u003A\u003A\u0024columns",
+            "name": "columns",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Table-Component.html#property_columns"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Table_Component\u003A\u003A\u0024bulk_actions",
+            "name": "bulk_actions",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Table-Component.html#property_bulk_actions"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table",
+            "name": "Fitet_Monitor_Wp_Table",
+            "summary": "Customized\u0020version\u0020of\u0020___",
+            "url": "classes/Fitet-Monitor-Wp-Table.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method___construct"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A__get\u0028\u0029",
+            "name": "__get",
+            "summary": "Make\u0020private\u0020properties\u0020readable\u0020for\u0020backward\u0020compatibility.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method___get"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A__set\u0028\u0029",
+            "name": "__set",
+            "summary": "Make\u0020private\u0020properties\u0020settable\u0020for\u0020backward\u0020compatibility.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method___set"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A__isset\u0028\u0029",
+            "name": "__isset",
+            "summary": "Make\u0020private\u0020properties\u0020checkable\u0020for\u0020backward\u0020compatibility.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method___isset"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A__unset\u0028\u0029",
+            "name": "__unset",
+            "summary": "Make\u0020private\u0020properties\u0020un\u002Dsettable\u0020for\u0020backward\u0020compatibility.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method___unset"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A__call\u0028\u0029",
+            "name": "__call",
+            "summary": "Make\u0020private\/protected\u0020methods\u0020readable\u0020for\u0020backward\u0020compatibility.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method___call"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aajax_user_can\u0028\u0029",
+            "name": "ajax_user_can",
+            "summary": "Checks\u0020the\u0020current\u0020user\u0027s\u0020permissions",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_ajax_user_can"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aprepare_items\u0028\u0029",
+            "name": "prepare_items",
+            "summary": "Prepares\u0020the\u0020list\u0020of\u0020items\u0020for\u0020displaying.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_prepare_items"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aset_bulk_actions\u0028\u0029",
+            "name": "set_bulk_actions",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_set_bulk_actions"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aset_columns\u0028\u0029",
+            "name": "set_columns",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_set_columns"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aset_pagination_args\u0028\u0029",
+            "name": "set_pagination_args",
+            "summary": "An\u0020internal\u0020method\u0020that\u0020sets\u0020all\u0020the\u0020necessary\u0020pagination\u0020arguments",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_set_pagination_args"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_pagination_arg\u0028\u0029",
+            "name": "get_pagination_arg",
+            "summary": "Access\u0020the\u0020pagination\u0020args.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_pagination_arg"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Ahas_items\u0028\u0029",
+            "name": "has_items",
+            "summary": "Whether\u0020the\u0020table\u0020has\u0020items\u0020to\u0020display\u0020or\u0020not",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_has_items"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Ano_items\u0028\u0029",
+            "name": "no_items",
+            "summary": "Message\u0020to\u0020be\u0020displayed\u0020when\u0020there\u0020are\u0020no\u0020items",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_no_items"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Asearch_box\u0028\u0029",
+            "name": "search_box",
+            "summary": "Displays\u0020the\u0020search\u0020box.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_search_box"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A_admin_search_query\u0028\u0029",
+            "name": "_admin_search_query",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method__admin_search_query"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_views\u0028\u0029",
+            "name": "get_views",
+            "summary": "Gets\u0020the\u0020list\u0020of\u0020views\u0020available\u0020on\u0020this\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_views"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aviews\u0028\u0029",
+            "name": "views",
+            "summary": "Displays\u0020the\u0020list\u0020of\u0020views\u0020available\u0020on\u0020this\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_views"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_bulk_actions\u0028\u0029",
+            "name": "get_bulk_actions",
+            "summary": "Retrieves\u0020the\u0020list\u0020of\u0020bulk\u0020actions\u0020available\u0020for\u0020this\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_bulk_actions"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Abulk_actions\u0028\u0029",
+            "name": "bulk_actions",
+            "summary": "Displays\u0020the\u0020bulk\u0020actions\u0020dropdown.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_bulk_actions"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Acurrent_action\u0028\u0029",
+            "name": "current_action",
+            "summary": "Gets\u0020the\u0020current\u0020action\u0020selected\u0020from\u0020the\u0020bulk\u0020actions\u0020dropdown.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_current_action"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Arow_actions\u0028\u0029",
+            "name": "row_actions",
+            "summary": "Generates\u0020the\u0020required\u0020HTML\u0020for\u0020a\u0020list\u0020of\u0020row\u0020action\u0020links.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_row_actions"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Amonths_dropdown\u0028\u0029",
+            "name": "months_dropdown",
+            "summary": "Displays\u0020a\u0020dropdown\u0020for\u0020filtering\u0020items\u0020in\u0020the\u0020list\u0020table\u0020by\u0020month.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_months_dropdown"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aview_switcher\u0028\u0029",
+            "name": "view_switcher",
+            "summary": "Displays\u0020a\u0020view\u0020switcher.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_view_switcher"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Acomments_bubble\u0028\u0029",
+            "name": "comments_bubble",
+            "summary": "Displays\u0020a\u0020comment\u0020count\u0020bubble.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_comments_bubble"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_pagenum\u0028\u0029",
+            "name": "get_pagenum",
+            "summary": "Gets\u0020the\u0020current\u0020page\u0020number.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_pagenum"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_items_per_page\u0028\u0029",
+            "name": "get_items_per_page",
+            "summary": "Gets\u0020the\u0020number\u0020of\u0020items\u0020to\u0020display\u0020on\u0020a\u0020single\u0020page.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_items_per_page"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Apagination\u0028\u0029",
+            "name": "pagination",
+            "summary": "Displays\u0020the\u0020pagination.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_pagination"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_columns\u0028\u0029",
+            "name": "get_columns",
+            "summary": "Gets\u0020a\u0020list\u0020of\u0020columns.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_columns"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_sortable_columns\u0028\u0029",
+            "name": "get_sortable_columns",
+            "summary": "Gets\u0020a\u0020list\u0020of\u0020sortable\u0020columns.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_sortable_columns"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_default_primary_column_name\u0028\u0029",
+            "name": "get_default_primary_column_name",
+            "summary": "Gets\u0020the\u0020name\u0020of\u0020the\u0020default\u0020primary\u0020column.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_default_primary_column_name"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_primary_column\u0028\u0029",
+            "name": "get_primary_column",
+            "summary": "Public\u0020wrapper\u0020for\u0020WP_List_Table\u003A\u003Aget_default_primary_column_name\u0028\u0029.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_primary_column"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_primary_column_name\u0028\u0029",
+            "name": "get_primary_column_name",
+            "summary": "Gets\u0020the\u0020name\u0020of\u0020the\u0020primary\u0020column.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_primary_column_name"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_column_info\u0028\u0029",
+            "name": "get_column_info",
+            "summary": "Gets\u0020a\u0020list\u0020of\u0020all,\u0020hidden,\u0020and\u0020sortable\u0020columns,\u0020with\u0020filter\u0020applied.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_column_info"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_column_count\u0028\u0029",
+            "name": "get_column_count",
+            "summary": "Returns\u0020the\u0020number\u0020of\u0020visible\u0020columns.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_column_count"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aprint_column_headers\u0028\u0029",
+            "name": "print_column_headers",
+            "summary": "Prints\u0020column\u0020headers,\u0020accounting\u0020for\u0020hidden\u0020and\u0020sortable\u0020columns.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_print_column_headers"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Adisplay\u0028\u0029",
+            "name": "display",
+            "summary": "Displays\u0020the\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_display"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aget_table_classes\u0028\u0029",
+            "name": "get_table_classes",
+            "summary": "Gets\u0020a\u0020list\u0020of\u0020CSS\u0020classes\u0020for\u0020the\u0020WP_List_Table\u0020table\u0020tag.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_get_table_classes"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Adisplay_tablenav\u0028\u0029",
+            "name": "display_tablenav",
+            "summary": "Generates\u0020the\u0020table\u0020navigation\u0020above\u0020or\u0020below\u0020the\u0020table",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_display_tablenav"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aextra_tablenav\u0028\u0029",
+            "name": "extra_tablenav",
+            "summary": "Extra\u0020controls\u0020to\u0020be\u0020displayed\u0020between\u0020bulk\u0020actions\u0020and\u0020pagination.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_extra_tablenav"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Adisplay_rows_or_placeholder\u0028\u0029",
+            "name": "display_rows_or_placeholder",
+            "summary": "Generates\u0020the\u0020tbody\u0020element\u0020for\u0020the\u0020list\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_display_rows_or_placeholder"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Adisplay_rows\u0028\u0029",
+            "name": "display_rows",
+            "summary": "Generates\u0020the\u0020table\u0020rows.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_display_rows"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Asingle_row\u0028\u0029",
+            "name": "single_row",
+            "summary": "Generates\u0020content\u0020for\u0020a\u0020single\u0020row\u0020of\u0020the\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_single_row"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Acolumn_default\u0028\u0029",
+            "name": "column_default",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_column_default"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Acolumn_cb\u0028\u0029",
+            "name": "column_cb",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_column_cb"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Asingle_row_columns\u0028\u0029",
+            "name": "single_row_columns",
+            "summary": "Generates\u0020the\u0020columns\u0020for\u0020a\u0020single\u0020row\u0020of\u0020the\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_single_row_columns"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Ahandle_row_actions\u0028\u0029",
+            "name": "handle_row_actions",
+            "summary": "Generates\u0020and\u0020display\u0020row\u0020actions\u0020links\u0020for\u0020the\u0020list\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_handle_row_actions"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003Aajax_response\u0028\u0029",
+            "name": "ajax_response",
+            "summary": "Handles\u0020an\u0020incoming\u0020ajax\u0020request\u0020\u0028called\u0020from\u0020admin\u002Dajax.php\u0029",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method_ajax_response"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A_js_vars\u0028\u0029",
+            "name": "_js_vars",
+            "summary": "Sends\u0020required\u0020variables\u0020to\u0020JavaScript\u0020land.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#method__js_vars"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024items",
+            "name": "items",
+            "summary": "The\u0020current\u0020list\u0020of\u0020items.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property_items"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024_args",
+            "name": "_args",
+            "summary": "Various\u0020information\u0020about\u0020the\u0020current\u0020table.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property__args"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024_pagination_args",
+            "name": "_pagination_args",
+            "summary": "Various\u0020information\u0020needed\u0020for\u0020displaying\u0020the\u0020pagination.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property__pagination_args"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024screen",
+            "name": "screen",
+            "summary": "The\u0020current\u0020screen.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property_screen"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024_actions",
+            "name": "_actions",
+            "summary": "Cached\u0020bulk\u0020actions.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property__actions"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024_pagination",
+            "name": "_pagination",
+            "summary": "Cached\u0020pagination\u0020output.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property__pagination"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024modes",
+            "name": "modes",
+            "summary": "The\u0020view\u0020switcher\u0020modes.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property_modes"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024_column_headers",
+            "name": "_column_headers",
+            "summary": "Stores\u0020the\u0020value\u0020returned\u0020by\u0020\u002D\u003Eget_column_info\u0028\u0029.",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property__column_headers"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024compat_fields",
+            "name": "compat_fields",
+            "summary": "\u007B\u0040internal\u0020Missing\u0020Summary\u007D",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property_compat_fields"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024compat_methods",
+            "name": "compat_methods",
+            "summary": "\u007B\u0040internal\u0020Missing\u0020Summary\u007D",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property_compat_methods"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024_bulk_actions",
+            "name": "_bulk_actions",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property__bulk_actions"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Wp_Table\u003A\u003A\u0024_columns",
+            "name": "_columns",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Wp-Table.html#property__columns"
         },                {
             "fqsen": "\\",
             "name": "\\",

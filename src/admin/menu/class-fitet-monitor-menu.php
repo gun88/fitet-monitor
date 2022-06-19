@@ -21,8 +21,8 @@ class Fitet_Monitor_Menu {
 		$menu_icon = plugin_dir_url(__FILE__) . 'menu_icon.png';
 
 		add_menu_page(
-			__('Fitet Monitor', $this->plugin_name, 'fitet-monitor'),
-			__('Fitet Monitor', $this->plugin_name, 'fitet-monitor'),
+			__('Fitet Monitor', 'fitet-monitor'),
+			__('Fitet Monitor', 'fitet-monitor'),
 			'edit_pages',
 			$this->plugin_name,
 			[$this->router, 'render_page'],

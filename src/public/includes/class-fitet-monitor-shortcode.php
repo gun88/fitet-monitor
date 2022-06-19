@@ -5,12 +5,10 @@ require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.
 class Fitet_Monitor_Shortcode extends Fitet_Monitor_Component {
 
 	public $tag;
-	private $plugin_name;
 
 	public function __construct($version, $plugin_name, $tag) {
-		parent::__construct($version);
+		parent::__construct($this->plugin_name, $version);
 		$this->tag = $tag;
-		$this->plugin_name = $plugin_name;
 	}
 
 	public function initialize() {

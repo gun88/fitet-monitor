@@ -4,19 +4,19 @@ require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-helper.php
 
 class Fitet_Monitor_Component {
 
-	protected $components = [];
-
+	protected $plugin_name;
 	protected $version;
 
+	protected $components = [];
 	protected $template = "{{content}}";
 
-
 	/**
+	 * @param string $plugin_name
 	 * @param string $version
 	 */
-	public function __construct($version) {
+	public function __construct($plugin_name, $version) {
+		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	public function enqueue_styles() {
