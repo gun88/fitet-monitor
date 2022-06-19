@@ -178,8 +178,8 @@ class Fitet_Monitor_Wp_Table {
 
 		if (empty($this->modes)) {
 			$this->modes = array(
-				'list' => __('Compact view'),
-				'excerpt' => __('Extended view'),
+				'list' => __('Compact view', 'fitet-monitor'),
+				'excerpt' => __('Extended view', 'fitet-monitor'),
 			);
 		}
 	}
@@ -280,10 +280,7 @@ class Fitet_Monitor_Wp_Table {
 
 		$columns = $this->get_columns();
 		$this->_column_headers = [$columns, [], []];
-
 		$this->items = $items;
-
-
 	}
 
 	/**
@@ -368,7 +365,7 @@ class Fitet_Monitor_Wp_Table {
 	 * @since 3.1.0
 	 */
 	public function no_items() {
-		return __('No items found.');
+		return __('No items found.', 'fitet-monitor');
 	}
 
 	/**
@@ -408,12 +405,7 @@ class Fitet_Monitor_Wp_Table {
 	    <label class='screen-reader-text' for='$esc_attr'>$text:</label>
 		<input type='search' id='$esc_attr' name='s' value='$admin_search_query'/>
 		$get_submit_button
-		</p>"
-		?>
-
-
-		<?php
-		// 		$b .= "<input i'doaction$two' type='submit' value='" . __('Apply') . " ..todo style'>";
+		</p>";
 	}
 
 	public function _admin_search_query() {
@@ -537,9 +529,9 @@ class Fitet_Monitor_Wp_Table {
 		}
 
 
-		$b .= '<label for="bulk-action-selector-' . esc_attr($which) . '" class="screen-reader-text">' . __('Select bulk action') . '</label>';
+		$b .= '<label for="bulk-action-selector-' . esc_attr($which) . '" class="screen-reader-text">' . __('Select bulk action', 'fitet-monitor') . '</label>';
 		$b .= '<select name="action' . $two . '" id="bulk-action-selector-' . esc_attr($which) . "\">\n";
-		$b .= '<option value="-1">' . __('Bulk actions') . "</option>\n";
+		$b .= '<option value="-1">' . __('Bulk actions', 'fitet-monitor') . "</option>\n";
 
 		foreach ($this->_actions as $key => $value) {
 			if (is_array($value)) {
@@ -558,7 +550,7 @@ class Fitet_Monitor_Wp_Table {
 
 		$b .= "</select>\n";
 
-		$b .= get_submit_button(__('Apply'), 'action', '', false, array('id' => "doaction$two"));
+		$b .= get_submit_button(__('Apply', 'fitet-monitor'), 'action', '', false, array('id' => "doaction$two"));
 
 
 		$b .= "\n";
@@ -621,7 +613,7 @@ class Fitet_Monitor_Wp_Table {
 
 		$out .= '</div>';
 
-		$out .= '<button type="button" class="toggle-row"><span class="screen-reader-text">' . __('Show more details') . '</span></button>';
+		$out .= '<button type="button" class="toggle-row"><span class="screen-reader-text">' . __('Show more details', 'fitet-monitor') . '</span></button>';
 
 		return $out;
 	}
@@ -703,7 +695,7 @@ class Fitet_Monitor_Wp_Table {
 
 		$get_post_type_object = get_post_type_object($post_type);
 		$selected = selected($m, 0, false);
-		$var = __('All dates');
+		$var = __('All dates', 'fitet-monitor');
 
 		$options = '';
 		foreach ($months as $arc_row) {
@@ -721,7 +713,7 @@ class Fitet_Monitor_Wp_Table {
 				selected($m, $year . $month, false),
 				esc_attr($arc_row->year . $month),
 				/* translators: 1: Month name, 2: 4-digit year. */
-				sprintf(__('%1$s %2$d'), $wp_locale->get_month($month), $year)
+				sprintf(__('%1$s %2$d', 'fitet-monitor'), $wp_locale->get_month($month), $year)
 			);
 
 			$html = "<label for='filter-by-date' class='screen-reader-text'>$filter_by_date</label>
@@ -784,19 +776,19 @@ class Fitet_Monitor_Wp_Table {
 
 		$approved_only_phrase = sprintf(
 		/* translators: %s: Number of comments. */
-			_n('%s comment', '%s comments', $approved_comments),
+			_n('%s comment', '%s comments', $approved_comments, 'fitet-monitor'),
 			$approved_comments_number
 		);
 
 		$approved_phrase = sprintf(
 		/* translators: %s: Number of comments. */
-			_n('%s approved comment', '%s approved comments', $approved_comments),
+			_n('%s approved comment', '%s approved comments', $approved_comments, 'fitet-monitor'),
 			$approved_comments_number
 		);
 
 		$pending_phrase = sprintf(
 		/* translators: %s: Number of comments. */
-			_n('%s pending comment', '%s pending comments', $pending_comments),
+			_n('%s pending comment', '%s pending comments', $pending_comments, 'fitet-monitor'),
 			$pending_comments_number
 		);
 
@@ -804,7 +796,7 @@ class Fitet_Monitor_Wp_Table {
 			// No comments at all.
 			printf(
 				'<span aria-hidden="true">&#8212;</span><span class="screen-reader-text">%s</span>',
-				__('No comments')
+				__('No comments', 'fitet-monitor')
 			);
 		} elseif ($approved_comments && 'trash' === get_post_status($post_id)) {
 			// Don't link the comment bubble for a trashed post.
@@ -834,7 +826,7 @@ class Fitet_Monitor_Wp_Table {
 			printf(
 				'<span class="post-com-count post-com-count-no-comments"><span class="comment-count comment-count-no-comments" aria-hidden="true">%s</span><span class="screen-reader-text">%s</span></span>',
 				$approved_comments_number,
-				$pending_comments ? __('No approved comments') : __('No comments')
+				$pending_comments ? __('No approved comments', 'fitet-monitor') : __('No comments', 'fitet-monitor')
 			);
 		}
 
@@ -857,7 +849,7 @@ class Fitet_Monitor_Wp_Table {
 			printf(
 				'<span class="post-com-count post-com-count-pending post-com-count-no-pending"><span class="comment-count comment-count-no-pending" aria-hidden="true">%s</span><span class="screen-reader-text">%s</span></span>',
 				$pending_comments_number,
-				$approved_comments ? __('No pending comments') : __('No comments')
+				$approved_comments ? __('No pending comments', 'fitet-monitor') : __('No comments', 'fitet-monitor')
 			);
 		}
 	}
@@ -946,7 +938,7 @@ class Fitet_Monitor_Wp_Table {
 
 		$output = '<span class="displaying-num">' . sprintf(
 			/* translators: %s: Number of items. */
-				_n('%s item', '%s items', $total_items),
+				_n('%s item', '%s items', $total_items, 'fitet-monitor'),
 				number_format_i18n($total_items)
 			) . '</span>';
 
@@ -982,7 +974,7 @@ class Fitet_Monitor_Wp_Table {
 			$page_links[] = sprintf(
 				"<a class='first-page button' href='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></a>",
 				esc_url(remove_query_arg('paged', $current_url)),
-				__('First page'),
+				__('First page', 'fitet-monitor'),
 				'&laquo;'
 			);
 		}
@@ -993,18 +985,18 @@ class Fitet_Monitor_Wp_Table {
 			$page_links[] = sprintf(
 				"<a class='prev-page button' href='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></a>",
 				esc_url(add_query_arg('paged', max(1, $current - 1), $current_url)),
-				__('Previous page'),
+				__('Previous page', 'fitet-monitor'),
 				'&lsaquo;'
 			);
 		}
 
 		if ('bottom' === $which) {
 			$html_current_page = $current;
-			$total_pages_before = '<span class="screen-reader-text">' . __('Current Page') . '</span><span id="table-paging" class="paging-input"><span class="tablenav-paging-text">';
+			$total_pages_before = '<span class="screen-reader-text">' . __('Current Page', 'fitet-monitor') . '</span><span id="table-paging" class="paging-input"><span class="tablenav-paging-text">';
 		} else {
 			$html_current_page = sprintf(
 				"%s<input class='current-page' id='current-page-selector' type='text' name='paged' value='%s' size='%d' aria-describedby='table-paging' /><span class='tablenav-paging-text'>",
-				'<label for="current-page-selector" class="screen-reader-text">' . __('Current Page') . '</label>',
+				'<label for="current-page-selector" class="screen-reader-text">' . __('Current Page', 'fitet-monitor') . '</label>',
 				$current,
 				strlen($total_pages)
 			);
@@ -1012,7 +1004,7 @@ class Fitet_Monitor_Wp_Table {
 		$html_total_pages = sprintf("<span class='total-pages'>%s</span>", number_format_i18n($total_pages));
 		$page_links[] = $total_pages_before . sprintf(
 			/* translators: 1: Current page, 2: Total pages. */
-				_x('%1$s of %2$s', 'paging'),
+				_x('%1$s of %2$s', 'paging', 'fitet-monitor'),
 				$html_current_page,
 				$html_total_pages
 			) . $total_pages_after;
@@ -1023,7 +1015,7 @@ class Fitet_Monitor_Wp_Table {
 			$page_links[] = sprintf(
 				"<a class='next-page button' href='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></a>",
 				esc_url(add_query_arg('paged', min($total_pages, $current + 1), $current_url)),
-				__('Next page'),
+				__('Next page', 'fitet-monitor'),
 				'&rsaquo;'
 			);
 		}
@@ -1034,7 +1026,7 @@ class Fitet_Monitor_Wp_Table {
 			$page_links[] = sprintf(
 				"<a class='last-page button' href='%s'><span class='screen-reader-text'>%s</span><span aria-hidden='true'>%s</span></a>",
 				esc_url(add_query_arg('paged', $total_pages, $current_url)),
-				__('Last page'),
+				__('Last page', 'fitet-monitor'),
 				'&raquo;'
 			);
 		}
@@ -1261,7 +1253,7 @@ class Fitet_Monitor_Wp_Table {
 
 		if (!empty($columns['cb'])) {
 			static $cb_counter = 1;
-			$columns['cb'] = '<label class="screen-reader-text" for="cb-select-all-' . $cb_counter . '">' . __('Select All') . '</label>'
+			$columns['cb'] = '<label class="screen-reader-text" for="cb-select-all-' . $cb_counter . '">' . __('Select All', 'fitet-monitor') . '</label>'
 				. '<input id="cb-select-all-' . $cb_counter . '" type="checkbox" />';
 			$cb_counter++;
 		}
@@ -1534,7 +1526,7 @@ class Fitet_Monitor_Wp_Table {
 	 *
 	 */
 	protected function handle_row_actions($item, $column_name, $primary) {
-		return $column_name === $primary ? '<button type="button" class="toggle-row"><span class="screen-reader-text">' . __('Show more details') . '</span></button>' : '';
+		return $column_name === $primary ? '<button type="button" class="toggle-row"><span class="screen-reader-text">' . __('Show more details', 'fitet-monitor') . '</span></button>' : '';
 	}
 
 	/**
@@ -1556,7 +1548,7 @@ class Fitet_Monitor_Wp_Table {
 		if (isset($this->_pagination_args['total_items'])) {
 			$response['total_items_i18n'] = sprintf(
 			/* translators: Number of items. */
-				_n('%s item', '%s items', $this->_pagination_args['total_items']),
+				_n('%s item', '%s items', $this->_pagination_args['total_items'], 'fitet-monitor'),
 				number_format_i18n($this->_pagination_args['total_items'])
 			);
 		}
