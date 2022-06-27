@@ -22,8 +22,13 @@ class Fitet_Monitor_Router {
 
 		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 
-		error_log("action: $action -- " );
+
 		if ($action == 'add') {
+
+			if (!$this->manager->club_exist($_POST['clubCode'])) {
+				wp_safe_redirect(add_query_arg(['mode' => 'club', 'message' => 'invalid_club'], menu_page_url('fitet-monitor', false)));
+				exit();
+			}
 
 			if ($this->manager->get_club($_POST['clubCode'])) {
 				wp_safe_redirect(add_query_arg(['mode' => 'club', 'message' => 'already_exist'], menu_page_url('fitet-monitor', false)));

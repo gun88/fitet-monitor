@@ -1,5 +1,27 @@
 jQuery(function ($) {
 
+	$(".fm-data-config").on('keyup', 'input', function (e) {
+
+		let clubCode = $("input[name*='clubCode']").val().trim();
+		let clubName = $("input[name*='clubName']").val().trim();
+		let clubProvince = $("input[name*='clubProvince']").val().trim();
+		let clubLogo = $("input[name*='clubLogo']").val().trim();
+		let clubCron = $("input[name*='clubCron']").val().trim();
+		let clubHistorySize = $("input[name*='clubHistorySize']").val().trim();
+
+		let mandatoryFieldsEvaluated = !!clubCode && !!clubName && !!clubProvince && !!clubLogo && !!clubCron && !! clubHistorySize;
+		$('#fm-club-page #submit').prop('disabled', !mandatoryFieldsEvaluated);
+
+	}).on('click', '.fm-show-manual-config', function (e) {
+		e.preventDefault();
+		$('.fm-auto-config').hide();
+		$('.fm-manual-config').show();
+	}).on('click', '.fm-show-auto-config', function (e) {
+		e.preventDefault();
+		$('.fm-manual-config').hide();
+		$('.fm-auto-config').show();
+	})
+
 	const autoCompleteJS = new autoComplete({
 		selector: "#club-name-autocomplete",
 		debounce: 300,

@@ -2,15 +2,6 @@
 	<h1 class="wp-heading-inline">{{title}}</h1>
 	<hr class="wp-header-end">
 	{{messagePool}}
-	<form method="post">
-		<input type="hidden" name="action" value="{{action}}"/>
-		<input type="hidden" name="page" value="fitet-monitor"/>
-		{{clubDataComponent}}
-		<button type="button" class="fm-collapsible">{{advancedLabel}}</button>
-		<div class="fm-collapsible-content">
-			{{clubConfigComponent}}
-		</div>
+	{{clubDataComponent}}
 
-		{{submitButton}}
-	</form>
 </div>

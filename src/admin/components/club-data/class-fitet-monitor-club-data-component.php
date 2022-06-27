@@ -21,14 +21,24 @@ class Fitet_Monitor_Club_Data_Component extends Fitet_Monitor_Component {
 		$_data['clubCodeLabel'] = __('Club code');
 		$_data['clubNameLabel'] = __('Club name');
 		$_data['clubProvinceLabel'] = __('Club Province');
+		$_data['clubLogoLabel'] = __('Club Logo');
+		$_data['clubCronLabel'] = __('Auto Update');
+		$_data['clubHistorySizeLabel'] = __('History Size');
 		$_data['clubInfoLabel'] = __('Club information');
 		$_data['placeholder'] = __('Search for a Club...');
 		$_data['clubCode'] = $data && isset($data['clubCode']) ? $data['clubCode'] : '';
 		$_data['clubName'] = $data && isset($data['clubName']) ? $data['clubName'] : '';
 		$_data['clubProvince'] = $data && isset($data['clubProvince']) ? $data['clubProvince'] : '';
+		$_data['clubHistorySize'] = $data && isset($data['clubHistorySize']) ? $data['clubHistorySize'] : '2';
+		$_data['clubCron'] = $data && isset($data['clubCron']) ? $data['clubCron'] : 'DEFAULT';
 		$_data['clubNoLogo'] = FITET_MONITOR_CLUB_NO_LOGO;
-		$_data['clubLogo'] = $data && isset($data['clubLogo']) ? 'http://portale.fitet.org/images/societa/' . $data['clubCode'] . '.jpg' : '';
+		$_data['clubLogo'] = $data && isset($data['clubLogo']) ? $data['clubLogo'] : '';
 		$_data['readonly'] = empty($_data['clubCode']) ? '' : 'readonly';
+		$_data['action'] = $data && isset($data['clubCode']) ? 'edit' : 'add';
+
+		$_data['manualConfigLabel'] = __('Manual Configuration');
+		$_data['autoConfigLabel'] = __('Auto Configuration');
+		$_data['submitButton'] = get_submit_button(__('Save', 'fitet-monitor'), 'primary large', 'submit', true, !($data && isset($data['clubCode'])) ? 'disabled' : '');
 
 
 		return $_data;

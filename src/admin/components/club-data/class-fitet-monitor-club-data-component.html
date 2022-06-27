@@ -1,42 +1,86 @@
-<input type="hidden" name="clubCode" value="{{clubCode}}">
-<input type="hidden" name="clubName" value="{{clubName}}">
-<input type="hidden" name="clubProvince" value="{{clubProvince}}">
-<input type="hidden" name="clubLogo" value="{{clubLogo}}">
-<table class="form-table" role="presentation">
-	<tbody>
-	<tr>
-		<th scope="row"><label for="club-name-autocomplete">{{clubNameLabel}}</label></th>
-		<td>
-			<input id="club-name-autocomplete" type="text" name="club-name-autocomplete" {{readonly}}
-				   autocomplete="off" placeholder="{{placeholder}}" value="{{clubName}}" class="large-text"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row"><label for="club-name-autocomplete">{{clubInfoLabel}}</label></th>
-		<td>
-			<div class="fm-add-club-content">
-				<div class="fm-add-club-content-inner">
-					<div id="clubRecap">
-						<div style="display: flex; gap: 1rem">
-							<img class="fm-autocomplete-club-logo" src="{{clubLogo}}" alt="{{clubLName}}"
-								 onError="this.onerror=null;this.src='{{clubNoLogo}}';">
-							<div>
-								<p class="description">{{clubCodeLabel}}: <b id="clubCodeSpan">{{clubCode}}</b></p>
-								<p class="description">{{clubNameLabel}}: <b id="clubNameSpan">{{clubName}}</b></p>
-								<p class="description">{{clubProvinceLabel}}: <b
-									id="clubProvinceSpan">{{clubProvince}}</b></p>
+<form method="post" class="fm-data-config">
+	<input type="hidden" name="action" value="{{action}}"/>
+	<input type="hidden" name="page" value="fitet-monitor"/>
+	<table class="form-table fm-auto-config" role="presentation">
+		<tbody>
+		<tr>
+			<th scope="row"><label for="club-name-autocomplete">{{clubNameLabel}}</label></th>
+			<td>
+				<input id="club-name-autocomplete" type="text" name="club-name-autocomplete" {{readonly}}
+					   autocomplete="off" placeholder="{{placeholder}}" value="{{clubName}}" class="large-text"/>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="club-name-autocomplete">{{clubInfoLabel}}</label></th>
+			<td>
+				<div class="fm-add-club-content">
+					<div class="fm-add-club-content-inner">
+						<div id="clubRecap">
+							<div style="display: flex; gap: 1rem">
+								<img class="fm-autocomplete-club-logo" src="{{clubLogo}}" alt="{{clubLName}}"
+									 onError="this.onerror=null;this.src='{{clubNoLogo}}';">
+								<div>
+									<p class="description">{{clubCodeLabel}}: <b id="clubCodeSpan">{{clubCode}}</b></p>
+									<p class="description">{{clubNameLabel}}: <b id="clubNameSpan">{{clubName}}</b></p>
+									<p class="description">{{clubProvinceLabel}}: <b
+										id="clubProvinceSpan">{{clubProvince}}</b></p>
+								</div>
 							</div>
 						</div>
+
 					</div>
-
 				</div>
-			</div>
 
-		</td>
-	</tr>
-	</tbody>
-</table>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"></th>
+			<td>
+				<a class="fm-show-manual-config" href="#">{{manualConfigLabel}}</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	<table class="form-table fm-manual-config" role="presentation" style="display: none">
+		<tbody>
+		<tr>
+			<th scope="row"><label for="clubCode">{{clubCodeLabel}}</label></th>
+			<td><input type="text" name="clubCode" id="clubCode" class="large-text" value="{{clubCode}}" {{readonly}}/>
+			</td>
+		</tr>
 
-fai update...poi
-club data e club config diventano lo stesso componente
-aggiungi configurazione manuale e ralitivi check
+		<tr>
+			<th scope="row"><label for="clubName">{{clubNameLabel}}</label></th>
+			<td><input type="text" name="clubName" id="clubName" class="large-text" value="{{clubName}}"/>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="clubProvince">{{clubProvinceLabel}}</label></th>
+			<td><input type="text" name="clubProvince" id="clubProvince" class="large-text" value="{{clubProvince}}">
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="clubLogo">{{clubLogoLabel}}</label></th>
+			<td><input type="text" name="clubLogo" id="clubLogo" class="large-text" value="{{clubLogo}}">
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="clubHistorySize">{{clubHistorySizeLabel}}</label></th>
+			<td><input type="text" name="clubHistorySize" id="clubHistorySize" class="large-text" value="{{clubHistorySize}}">
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="clubCron">{{clubCronLabel}}</label></th>
+			<td><input type="text" name="clubCron" id="clubCron" class="large-text" value="{{clubCron}}">
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"></th>
+			<td>
+				<a class="fm-show-auto-config" href="#">{{autoConfigLabel}}</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	{{submitButton}}
+</form>

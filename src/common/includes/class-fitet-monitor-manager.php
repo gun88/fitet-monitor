@@ -32,7 +32,13 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($club['clubCode']);
 	}
 
-	public function edit_club($club) {
+	public function edit_club($club_update) {
+		$club = get_option($this->plugin_name . $club_update['clubCode']);
+		$club['clubName'] = $club_update['clubName'];
+		$club['clubProvince'] = $club_update['clubProvince'];
+		$club['clubLogo'] = $club_update['clubLogo'];
+		$club['clubCron'] = $club_update['clubCron'];
+		$club['clubHistorySize'] = $club_update['clubHistorySize'];
 		$this->save_club($club);
 	}
 
@@ -69,6 +75,11 @@ class Fitet_Monitor_Manager {
 		return get_option($this->plugin_name . $club_code);
 	}
 
+	public function club_exist($club_code) {
+		$club_info = $this->portal->get_club_info($club_code);
+		return $club_info['clubName'] != 'N/A';
+	}
+
 	public function get_clubs() {
 		$clubCodes = get_option($this->plugin_name . 'clubs');
 		if (!$clubCodes) {
@@ -96,7 +107,7 @@ class Fitet_Monitor_Manager {
 			try {
 				$this->logger->reset_status($club_code);
 				$club = $this->get_club($club_code);
-				$new_club = $this->get_full_club($club_code);
+				$new_club = $this->get_full_club($club_code, $club['clubHistorySize']);
 				$club = $this->merge_clubs($club, $new_club);
 				$this->logger->set_completed($club_code, 'Done');
 				$this->save_club($club);
@@ -114,7 +125,7 @@ class Fitet_Monitor_Manager {
 	}
 
 
-	public function get_full_club($club_code, $home_teams_only = false, $history_length = 2) {
+	public function get_full_club($club_code, $home_teams_only = false, $history_size = 2) {
 		if ($club_code == null)
 			throw new Exception("Club code can not be null!");
 
@@ -125,7 +136,7 @@ class Fitet_Monitor_Manager {
 
 
 		$this->logger->add_status($club_code, "Getting details for club " . $club['clubCode'] . " " . $club['clubName'], 5);
-		$club_details = $this->portal->get_club_details($club_code, $history_length);
+		$club_details = $this->portal->get_club_details($club_code, $history_size);
 
 		$club = array_merge($club, $club_details);
 
@@ -271,8 +282,6 @@ class Fitet_Monitor_Manager {
 
 		return $new_club;
 	}
-
-
 
 
 }

@@ -201,7 +201,6 @@ class Fitet_Portal_Rest {
 	}
 
 	public function get_player_history($player_id) {
-//        todo da http://archivio.fitet.org/scheda_dettaglio_atleta.php?ATLETA=587290
 
 		$url = "http://archivio.fitet.org/scheda_dettaglio_atleta.php?ATLETA=$player_id";
 		$html_string = $this->http_service->get($url);
@@ -302,7 +301,7 @@ class Fitet_Portal_Rest {
 			"affiliationDate" => $affiliation_date];
 	}
 
-	public function get_club_details($club_code, $history_length = null) {
+	public function get_club_details($club_code, $history_size = null) {
 		$url = "http://archivio.fitet.org/scheda_dettaglio_soc.php?TEAM=$club_code";
 		$html_string = $this->http_service->get($url);
 		$html_string = preg_replace('/[[:^print:]]/', '', $html_string);
@@ -333,8 +332,8 @@ class Fitet_Portal_Rest {
 			}
 		}
 
-		if ($history_length != null && !empty($championships)) {
-			$max_season_id = $championships[0]['seasonId'] - $history_length;
+		if ($history_size != null && !empty($championships)) {
+			$max_season_id = $championships[0]['seasonId'] - $history_size;
 			$championships = array_filter($championships, function ($championship) use ($max_season_id) {
 				return $championship['seasonId'] > $max_season_id;
 			});
