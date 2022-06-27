@@ -1,10 +1,17 @@
 <?php
 
+require_once FITET_MONITOR_DIR . 'admin/components/progress-bar/class-fitet-monitor-progress-bar-component.php';
 
 class Fitet_Monitor_Club_Cell_Component extends Fitet_Monitor_Component {
 
 	public function script_dependencies(): array {
 		return ['jquery', 'wp-api'];
+	}
+
+	public function components() {
+		return [
+			'progressBar' => new Fitet_Monitor_Progress_Bar_Component($this->plugin_name, $this->version),
+		];
 	}
 
 	public function process_data($data) {
@@ -30,6 +37,7 @@ class Fitet_Monitor_Club_Cell_Component extends Fitet_Monitor_Component {
 		$_data['clubLogo'] = $club_logo;
 		$_data['clubNoLogo'] = FITET_MONITOR_CLUB_NO_LOGO;
 		$_data['clubUrl'] = $club_url;
+		$_data['progressBar'] = $this->components['progressBar']->render();
 		$_data['deleteDisclaimer'] = "The club <b>$club_name</b> will be permanently deleted and all changes will be lost.";
 
 
@@ -39,7 +47,7 @@ class Fitet_Monitor_Club_Cell_Component extends Fitet_Monitor_Component {
 			"delete" => "<button type='button' class='button-link fm-btn-delete' data-club-code='$club_code' data-club-name='$club_name' data-club-logo='$club_logo'>$label_delete</button>",
 		]);
 
-		$_data['deleteRowActions'] =  $table->row_actions([
+		$_data['deleteRowActions'] = $table->row_actions([
 			'delete' => "<button type='button' class='button-link' data-value='delete' data-club-code='$club_code'>$label_delete_permanently</button>",
 			'restore' => "<button type='button' class='button-link' data-value='restore'>$label_cancel</button>",
 		]);

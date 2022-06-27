@@ -98,6 +98,24 @@ class Fitet_Monitor {
 	}
 
 	/**
+	 * @return Fitet_Monitor_Manager
+	 */
+	public function build_manager() {
+		require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-manager-logger.php';
+		$logger = new  Fitet_Monitor_Manager_Logger($this->plugin_name, $this->version);
+
+		require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-portal-rest-http-service.php';
+		$http_service = new Fitet_Portal_Rest_Http_Service();
+
+		require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-portal-rest.php';
+		$portal = new Fitet_Portal_Rest($http_service);
+
+		require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-manager.php';
+		$manager = new  Fitet_Monitor_Manager($this->plugin_name, $this->version, $logger, $portal);
+		return $manager;
+	}
+
+	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
 	 * Uses the Fitet_Monitor_i18n class in order to set the domain and to register the hook
@@ -121,21 +139,23 @@ class Fitet_Monitor {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_admin() {
+	private function load_admin($manager) {
+		require_once FITET_MONITOR_DIR . 'admin/router/class-fitet-monitor-router.php';
+		$router = new Fitet_Monitor_Router($this->plugin_name, $this->version, $manager);
+
+		require_once FITET_MONITOR_DIR . 'admin/menu/class-fitet-monitor-menu.php';
+		$menu = new Fitet_Monitor_Menu($router, $this->plugin_name);
+
 		require_once FITET_MONITOR_DIR . 'admin/class-fitet-monitor-admin.php';
-		$plugin_admin = new Fitet_Monitor_Admin($this->plugin_name, $this->version);
+
+		$plugin_admin = new Fitet_Monitor_Admin($this->plugin_name, $this->version, $router, $menu);
 		$plugin_admin->start();
 	}
 
-	private function load_rest_api() {
-		require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-portal-rest-http-service.php';
-		$http_service = new Fitet_Portal_Rest_Http_Service();
+	private function load_rest_api($manager) {
 
-		require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-portal-rest.php';
-		$portal = new Fitet_Portal_Rest($http_service);
-
-		require_once FITET_MONITOR_DIR . 'admin/services/class-fitet-monitor-api.php';
-		$api = new Fitet_Monitor_Api($this->plugin_name, $this->plugin_name, $portal);
+		require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-api.php';
+		$api = new Fitet_Monitor_Api($this->plugin_name, $this->plugin_name, $manager);
 
 		add_action('rest_api_init', [$api, 'initialize']);
 	}
@@ -169,12 +189,15 @@ class Fitet_Monitor {
 	 * @since    1.0.0
 	 */
 	public function start() {
+		$manager = $this->build_manager();
+
+
 		$this->set_locale();
-		$this->load_rest_api();
+		$this->load_rest_api($manager);
 		if (is_admin()) {
-			$this->load_admin();
+			$this->load_admin($manager);
 		} else {
-			$this->load_public();
+			$this->load_public($manager);
 		}
 
 	}

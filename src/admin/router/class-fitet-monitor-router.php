@@ -70,12 +70,16 @@ class Fitet_Monitor_Router {
 				break;
 			case 'club':
 				$club = $this->manager->get_club($club_code);
+				$club['status'] = $this->manager->get_status($club_code)['status'];
 				require_once FITET_MONITOR_DIR . 'admin/pages/club/class-fitet-monitor-club-page.php';
 				$this->page = new Fitet_Monitor_Club_Page($this->version, $this->plugin_name, $club);
 				break;
 			case 'summary':
 			default:
 				$clubs = $this->manager->get_clubs();
+				foreach ($clubs as &$club) {
+					$club['status'] = $this->manager->get_status($club['clubCode'])['status'];
+				}
 
 				require_once FITET_MONITOR_DIR . 'admin/pages/summary/class-fitet-monitor-summary-page.php';
 				$this->page = new Fitet_Monitor_Summary_Page($this->plugin_name, $this->version, $clubs);

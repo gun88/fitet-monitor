@@ -3,7 +3,7 @@
 require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
 
 
-class Fitet_Monitor_Club_Data_Add_Component extends Fitet_Monitor_Component {
+class Fitet_Monitor_Club_Data_Component extends Fitet_Monitor_Component {
 
 	public function enqueue_scripts() {
 		$file = plugin_dir_path(__FILE__) . 'autoComplete.min.js';
@@ -23,11 +23,11 @@ class Fitet_Monitor_Club_Data_Add_Component extends Fitet_Monitor_Component {
 		$_data['clubProvinceLabel'] = __('Club Province');
 		$_data['clubInfoLabel'] = __('Club information');
 		$_data['placeholder'] = __('Search for a Club...');
-		$_data['clubCode'] = $data ? $data['clubCode'] : '';
-		$_data['clubName'] = $data ? $data['clubName'] : '';
-		$_data['clubProvince'] = $data ? $data['clubProvince'] : '';
+		$_data['clubCode'] = $data && isset($data['clubCode']) ? $data['clubCode'] : '';
+		$_data['clubName'] = $data && isset($data['clubName']) ? $data['clubName'] : '';
+		$_data['clubProvince'] = $data && isset($data['clubProvince']) ? $data['clubProvince'] : '';
 		$_data['clubNoLogo'] = FITET_MONITOR_CLUB_NO_LOGO;
-		$_data['clubLogo'] = $data ? 'http://portale.fitet.org/images/societa/' . $data['clubCode'] . '.jpg' : '';
+		$_data['clubLogo'] = $data && isset($data['clubLogo']) ? 'http://portale.fitet.org/images/societa/' . $data['clubCode'] . '.jpg' : '';
 		$_data['readonly'] = empty($_data['clubCode']) ? '' : 'readonly';
 
 

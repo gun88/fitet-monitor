@@ -1449,8 +1449,6 @@ class Fitet_Monitor_Wp_Table {
 	 * @param string $column_name
 	 */
 	function column_default($item, $column_name) {
-		if ($column_name == 'lastUpdate')
-			return "2000/01/01";
 		return $item[$column_name];
 	}
 

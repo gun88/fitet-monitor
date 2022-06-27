@@ -40,35 +40,43 @@ class Fitet_Monitor_Admin {
 	 */
 	private $version;
 
+	/**
+	 * Fitet_Monitor_Router.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      Fitet_Monitor_Router $router Fitet_Monitor_Router instance.
+	 */
+	private $router;
+
+	/**
+	 * Fitet_Monitor_Menu.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      Fitet_Monitor_Menu $menu Fitet_Monitor_Menu instance.
+	 */
+	private $menu;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @param string $plugin_name The name of this plugin.
-	 * @param string $version The version of this plugin.
-	 * @since 1.0.0
+	 * @param string $plugin_name
+	 * @param string $version
+	 * @param Fitet_Monitor_Router $router
+	 * @param Fitet_Monitor_Menu $menu
 	 */
-	public function __construct($plugin_name, $version) {
+	public function __construct($plugin_name, $version, $router, $menu) {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->router = $router;
+		$this->menu = $menu;
 	}
 
 
 	public function start() {
-		require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-manager-logger.php';
-		$logger = new  Fitet_Monitor_Manager_Logger($this->plugin_name, $this->version);
-
-		require_once FITET_MONITOR_DIR . 'admin/services/class-fitet-monitor-manager.php';
-		$manager = new  Fitet_Monitor_Manager($this->plugin_name, $this->version, $logger);
-
-		require_once FITET_MONITOR_DIR . 'admin/router/class-fitet-monitor-router.php';
-		$router = new Fitet_Monitor_Router($this->plugin_name, $this->version, $manager);
-		add_action('load-toplevel_page_' . $this->plugin_name, [$router, 'on_load']);
-
-		require_once FITET_MONITOR_DIR . 'admin/menu/class-fitet-monitor-menu.php';
-		$menu = new Fitet_Monitor_Menu($router, $this->plugin_name);
-		add_action('admin_menu', [$menu, 'initialize']);
-
+		add_action('load-toplevel_page_' . $this->plugin_name, [$this->router, 'on_load']);
+		add_action('admin_menu', [$this->menu, 'initialize']);
 		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}
 

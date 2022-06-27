@@ -16,7 +16,7 @@ class Fitet_Monitor_Club_Page extends Fitet_Monitor_Page {
 	public function components() {
 
 		return [
-			'clubDataComponent' => new Fitet_Monitor_Club_Data_Add_Component($this->plugin_name, $this->version),
+			'clubDataComponent' => new Fitet_Monitor_Club_Data_Component($this->plugin_name, $this->version),
 			'clubConfigComponent' => new Fitet_Monitor_Club_Config_Component($this->plugin_name, $this->version)
 		];
 	}

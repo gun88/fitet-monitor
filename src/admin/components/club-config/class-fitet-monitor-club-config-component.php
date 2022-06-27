@@ -9,7 +9,7 @@ class Fitet_Monitor_Club_Config_Component extends Fitet_Monitor_Component {
 
 		$_data = [];
 		$_data['clubCronLabel'] = __('Auto update');
-		$_data['clubCron'] = $data ? $data['clubCron'] : '';
+		$_data['clubCron'] = $data && isset($data['clubCron']) ? $data['clubCron'] : '';
 
 		return $_data;
 	}
