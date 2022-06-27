@@ -2,7 +2,7 @@
 
 
 class Fitet_Monitor_Manager_Logger {
-
+	private $progress =0;
 	private $plugin_name;
 	private $version;
 
@@ -22,18 +22,16 @@ class Fitet_Monitor_Manager_Logger {
 	}
 
 	public function add_status($club_code, $message, $progress = 0, $status = 'updating') {
-		$_status = $this->get_status($club_code);
-		$_status['status'] = $status;
-		if (isset($_status['logs']) && !empty($_status['logs'])) {
-			$progress += end($_status['logs'])['progress'];
-		} else {
-			$progress += 0;
-		}
-		$_status['logs'][] = ['message' => $message, 'progress' => round($progress)];
-		set_transient($this->plugin_name . $club_code, $_status, 600);
+
+		$this->progress += $progress;
+		$status_log = $this->get_status($club_code);
+		$status_log['status'] = $status;
+		$status_log['logs'][] = ['message' => $message, 'progress' => round($this->progress)];
+		set_transient($this->plugin_name . $club_code, $status_log, 600);
 	}
 
 	public function reset_status($club_code) {
+		$this->progress = 0;
 		delete_transient($this->plugin_name . $club_code);
 		$status_log = $this->get_status($club_code);
 		$status_log['status'] = 'new';
@@ -42,9 +40,10 @@ class Fitet_Monitor_Manager_Logger {
 	}
 
 	public function set_completed($club_code, $message) {
+		$this->progress = 100;
 		$status_log = $this->get_status($club_code);
 		$status_log['status'] = 'ready';
-		$status_log['logs'][] = ['message' => $message, 'progress' => 100];
+		$status_log['logs'][] = ['message' => $message, 'progress' => round($this->progress)];
 		set_transient($this->plugin_name . $club_code, $status_log, 600);
 	}
 

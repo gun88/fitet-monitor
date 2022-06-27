@@ -23,7 +23,7 @@ jQuery(function ($) {
 
 		function frame() {
 			wp.apiRequest({
-				path: 'apex-api/v1/status',//todo APEX.api.url,
+				path: 'fitet-monitor/v1/status',//todo APEX.api.url,
 				type: 'GET',
 				data: {clubCode: clubCode}
 			}).done(response => {
@@ -62,6 +62,16 @@ jQuery(function ($) {
 							$clubRow.removeClass('fm-updating')
 							$clubRow.addClass('fm-ready')
 						}, 2000);
+
+						wp.apiRequest({
+							path: 'fitet-monitor/v1/club',
+							type: 'GET',
+							data: {clubCode: clubCode}
+						}).done(response => {
+							console.log(response)
+							$clubRow.find('.column-lastUpdate').text(response.lastUpdate);
+
+						});
 						return;
 					}
 					if (response.status === 'fail') {
@@ -102,7 +112,7 @@ jQuery(function ($) {
 		const clubCode = find.val();
 
 		wp.apiRequest({
-			path: 'apex-api/v1/update',//todo APEX.api.url,
+			path: 'fitet-monitor/v1/update',//todo APEX.api.url,
 			type: 'POST',
 			data: {clubCode: clubCode}
 		});

@@ -22,6 +22,7 @@ class Fitet_Monitor_Router {
 
 		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 
+		error_log("action: $action -- " );
 		if ($action == 'add') {
 
 			if ($this->manager->get_club($_POST['clubCode'])) {
@@ -69,8 +70,12 @@ class Fitet_Monitor_Router {
 				$this->page = new Fitet_Monitor_Advanced_Page($this->plugin_name, $this->version);
 				break;
 			case 'club':
-				$club = $this->manager->get_club($club_code);
-				$club['status'] = $this->manager->get_status($club_code)['status'];
+				if ($club_code) {
+					$club = $this->manager->get_club($club_code);
+					$club['status'] = $this->manager->get_status($club_code)['status'];
+				} else {
+					$club = null;
+				}
 				require_once FITET_MONITOR_DIR . 'admin/pages/club/class-fitet-monitor-club-page.php';
 				$this->page = new Fitet_Monitor_Club_Page($this->version, $this->plugin_name, $club);
 				break;

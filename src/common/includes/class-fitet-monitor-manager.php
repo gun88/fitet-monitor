@@ -17,7 +17,7 @@ class Fitet_Monitor_Manager {
 	/**
 	 * @param string $plugin_name
 	 * @param string $version
-	 * @param Fitet_Monitor_Manager_Logger $version
+	 * @param Fitet_Monitor_Manager_Logger $logger
 	 * @param Fitet_Portal_Rest $portal
 	 */
 	public function __construct($plugin_name, $version, $logger, $portal) {
@@ -111,8 +111,6 @@ class Fitet_Monitor_Manager {
 
 		}
 
-
-		return $this->get_club($club_code);
 	}
 
 

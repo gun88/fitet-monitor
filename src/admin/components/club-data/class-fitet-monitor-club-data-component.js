@@ -39,7 +39,7 @@ jQuery(function ($) {
 			src: async (query) => {
 				return await new Promise(function (resolve, reject) {
 					wp.apiRequest({
-						path: '../?rest_route=/fitet-monitor/v1/portal/clubs',
+						path: '../?rest_route=/fitet-monitor/v1/portal/find-clubs',
 						type: 'GET',
 						data: {query: query}
 					})

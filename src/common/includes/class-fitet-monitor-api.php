@@ -18,7 +18,7 @@ class Fitet_Monitor_Api { // todo sostituire con chiamate wordpress
 	}
 
 	public function initialize() {
-		register_rest_route($this->plugin_name . '/v1', '/portal/clubs',
+		register_rest_route($this->plugin_name . '/v1', '/portal/find-clubs',
 			['methods' => 'GET',
 				'callback' => [$this, 'find_clubs'],
 				'permission_callback' => function () {
@@ -26,23 +26,32 @@ class Fitet_Monitor_Api { // todo sostituire con chiamate wordpress
 				}
 			]
 		);
-		register_rest_route('apex-api/v1', '/update',
-			array(
+		register_rest_route($this->plugin_name . '/v1', '/update',
+			[
 				'methods' => 'POST',
 				'callback' => [$this, 'update'],
 				'permission_callback' => function () {
 					return current_user_can('edit_pages');
 				}
-			)
+			]
 		);
-		register_rest_route('apex-api/v1', '/status',
-			array(
+		register_rest_route($this->plugin_name . '/v1', '/status',
+			[
 				'methods' => 'GET',
 				'callback' => [$this, 'get_status'],
 				'permission_callback' => function () {
 					return current_user_can('edit_pages');
 				}
-			)
+			]
+		);
+		register_rest_route($this->plugin_name . '/v1', '/club',
+			[
+				'methods' => 'GET',
+				'callback' => [$this, 'get_club'],
+				'permission_callback' => function () {
+					return current_user_can('edit_pages');
+				}
+			]
 		);
 	}
 
@@ -52,14 +61,16 @@ class Fitet_Monitor_Api { // todo sostituire con chiamate wordpress
 		return rest_ensure_response($clubs);
 	}
 
-	public function update(WP_REST_Request $request)
-	{
-		$configuration = $this->manager->update($request->get_param('clubCode'));
-		return rest_ensure_response($configuration);
+	public function update(WP_REST_Request $request) {
+		$this->manager->update($request->get_param('clubCode'));
 	}
 
-	public function get_status(WP_REST_Request $request)
-	{
+	public function get_club(WP_REST_Request $request) {
+		$club = $this->manager->get_club($request->get_param('clubCode'));
+		return rest_ensure_response($club);
+	}
+
+	public function get_status(WP_REST_Request $request) {
 		$status = $this->manager->get_status($request->get_param('clubCode'));
 		return rest_ensure_response($status);
 	}
