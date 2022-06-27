@@ -68,7 +68,6 @@ jQuery(function ($) {
 							type: 'GET',
 							data: {clubCode: clubCode}
 						}).done(response => {
-							console.log(response)
 							$clubRow.find('.column-lastUpdate').text(response.lastUpdate);
 
 						});
