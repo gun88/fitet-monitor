@@ -5,28 +5,58 @@ class Fitet_Monitor_Router {
 	private $plugin_name;
 	private $version;
 	private $page;
+	/**
+	 * @var Fitet_Monitor_Manager
+	 */
+	private $manager;
 
 
-	public function __construct($plugin_name, $version) {
+	public function __construct($plugin_name, $version, $manager) {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->manager = $manager;
 
 	}
 
 	public function on_load() {
 
-		$action = isset($_POST['action']) ? $_POST['action'] : null;
+		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 
-		if ($action == 'save') {
-			update_option('fitet-monitor-club-code', $_POST['clubCode']);
-			wp_safe_redirect(add_query_arg(
-				[
-					'message' => 'saved',
-					'mode' => 'club',
-				], menu_page_url('fitet-monitor', false)));
+		if ($action == 'add') {
+
+			if ($this->manager->get_club($_POST['clubCode'])) {
+				wp_safe_redirect(add_query_arg(['mode' => 'club', 'message' => 'already_exist'], menu_page_url('fitet-monitor', false)));
+				exit();
+			}
+
+			$this->manager->add_club([
+				'clubCode' => $_POST['clubCode'],
+				'clubName' => $_POST['clubName'],
+				'clubProvince' => $_POST['clubProvince'],
+				'clubLogo' => $_POST['clubLogo'],
+				'clubCron' => $_POST['clubCron']
+			]);
+
+			wp_safe_redirect(add_query_arg(['message' => 'added'], menu_page_url('fitet-monitor', false)));
 			exit();
+		}
 
+		if ($action == 'edit') {
+			$this->manager->edit_club([
+				'clubCode' => $_POST['clubCode'],
+				'clubName' => $_POST['clubName'],
+				'clubProvince' => $_POST['clubProvince'],
+				'clubLogo' => $_POST['clubLogo'],
+				'clubCron' => $_POST['clubCron']
+			]);
+			wp_safe_redirect(add_query_arg(['message' => 'edited'], menu_page_url('fitet-monitor', false)));
+			exit();
+		}
 
+		if ($action == 'delete') {
+			$this->manager->delete_clubs($_REQUEST['clubCode']);
+			wp_safe_redirect(add_query_arg(['message' => 'deleted'], menu_page_url('fitet-monitor', false)));
+			exit();
 		}
 
 
@@ -39,24 +69,21 @@ class Fitet_Monitor_Router {
 				$this->page = new Fitet_Monitor_Advanced_Page($this->plugin_name, $this->version);
 				break;
 			case 'club':
+				$club = $this->manager->get_club($club_code);
 				require_once FITET_MONITOR_DIR . 'admin/pages/club/class-fitet-monitor-club-page.php';
-				$club_code = get_option('fitet-monitor-club-code');
-				$this->page = new Fitet_Monitor_Club_Page($this->version, $this->plugin_name, $club_code);
+				$this->page = new Fitet_Monitor_Club_Page($this->version, $this->plugin_name, $club);
 				break;
 			case 'summary':
 			default:
+				$clubs = $this->manager->get_clubs();
+
 				require_once FITET_MONITOR_DIR . 'admin/pages/summary/class-fitet-monitor-summary-page.php';
-				$this->page = new Fitet_Monitor_Summary_Page($this->plugin_name, $this->version);
+				$this->page = new Fitet_Monitor_Summary_Page($this->plugin_name, $this->version, $clubs);
 				break;
 		}
 
 		add_action('admin_enqueue_scripts', [$this->page, 'initialize']);
 
-		if (isset($_GET['myVal'])) {
-			update_option('my-op', $_GET['myVal']);
-			wp_safe_redirect(add_query_arg(['message' => 'saved'], menu_page_url('fitet-monitor', false)));
-			exit();
-		}
 	}
 
 	public function render_page() {

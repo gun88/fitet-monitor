@@ -55,6 +55,8 @@ define('FITET_MONITOR_VERSION', '0.0.0-DEV');
  */
 define('FITET_MONITOR_NAME', 'fitet-monitor');
 
+define('FITET_MONITOR_CLUB_NO_LOGO', plugin_dir_url(FITET_MONITOR_DIR . 'public/assets/fitet-monitor-no-logo.svg') . 'fitet-monitor-no-logo.svg');
+
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.

@@ -1,0 +1,42 @@
+<input type="hidden" name="clubCode" value="{{clubCode}}">
+<input type="hidden" name="clubName" value="{{clubName}}">
+<input type="hidden" name="clubProvince" value="{{clubProvince}}">
+<input type="hidden" name="clubLogo" value="{{clubLogo}}">
+<table class="form-table" role="presentation">
+	<tbody>
+	<tr>
+		<th scope="row"><label for="club-name-autocomplete">{{clubNameLabel}}</label></th>
+		<td>
+			<input id="club-name-autocomplete" type="text" name="club-name-autocomplete" {{readonly}}
+				   autocomplete="off" placeholder="{{placeholder}}" value="{{clubName}}" class="large-text"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row"><label for="club-name-autocomplete">{{clubInfoLabel}}</label></th>
+		<td>
+			<div class="fm-add-club-content">
+				<div class="fm-add-club-content-inner">
+					<div id="clubRecap">
+						<div style="display: flex; gap: 1rem">
+							<img class="fm-autocomplete-club-logo" src="{{clubLogo}}" alt="{{clubLName}}"
+								 onError="this.onerror=null;this.src='{{clubNoLogo}}';">
+							<div>
+								<p class="description">{{clubCodeLabel}}: <b id="clubCodeSpan">{{clubCode}}</b></p>
+								<p class="description">{{clubNameLabel}}: <b id="clubNameSpan">{{clubName}}</b></p>
+								<p class="description">{{clubProvinceLabel}}: <b
+									id="clubProvinceSpan">{{clubProvince}}</b></p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+fai update...poi
+club data e club config diventano lo stesso componente
+aggiungi configurazione manuale e ralitivi check

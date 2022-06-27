@@ -127,6 +127,19 @@ class Fitet_Monitor {
 		$plugin_admin->start();
 	}
 
+	private function load_rest_api() {
+		require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-portal-rest-http-service.php';
+		$http_service = new Fitet_Portal_Rest_Http_Service();
+
+		require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-portal-rest.php';
+		$portal = new Fitet_Portal_Rest($http_service);
+
+		require_once FITET_MONITOR_DIR . 'admin/services/class-fitet-monitor-api.php';
+		$api = new Fitet_Monitor_Api($this->plugin_name, $this->plugin_name, $portal);
+
+		add_action('rest_api_init', [$api, 'initialize']);
+	}
+
 	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
@@ -157,6 +170,7 @@ class Fitet_Monitor {
 	 */
 	public function start() {
 		$this->set_locale();
+		$this->load_rest_api();
 		if (is_admin()) {
 			$this->load_admin();
 		} else {

@@ -5,35 +5,36 @@ require_once FITET_MONITOR_DIR . 'admin/components/table/class-fitet-monitor-tab
 
 class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 
+	private $clubs;
+
+	public function __construct($plugin_name, $version, $clubs) {
+		parent::__construct($plugin_name, $version);
+		$this->clubs = $clubs;
+	}
+
 	public function components() {
 		return ['table' => new Fitet_Monitor_Table_Component($this->plugin_name, $this->version)];
 	}
 
 	public function initialize_data() {
-		$data = [];
-		for ($club_code = 0; $club_code < 10; $club_code++) {
-			$data [] = [
-				'clubCode' => $club_code,
-				'clubName' => "Club $club_code",
-				'lastUpdate' => 'Last Update',
-			];
-		}
 
-		$messagePool = $this->prepare_messages();
 		return [
 			'pageTitle' => __(get_admin_page_title(), 'fitet-monitor'),
 			'addButton' => __('Add Club', 'fitet-monitor'),
-			'messagePool' => $messagePool,
-			'table' => $this->components['table']->render($data)];
+			'messagePool' => $this->prepare_messages(),
+			'table' => $this->components['table']->render($this->clubs)];
 	}
 
 	public function prepare_messages() {
 		$messagePool = '';
 		if (isset($_GET['message']) && 'deleted' === $_GET['message']) {
-			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>Delete operation completed</p></div>';
+			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Delete operation completed') . '</p></div>';
 		}
 		if (isset($_GET['message']) && 'added' === $_GET['message']) {
-			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>Club added successfully</p></div>';
+			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Club added successfully') . '</p></div>';
+		}
+		if (isset($_GET['message']) && 'edited' === $_GET['message']) {
+			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Club edited successfully') . '</p></div>';
 		}
 		return $messagePool;
 	}

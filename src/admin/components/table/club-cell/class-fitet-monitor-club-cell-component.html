@@ -1,0 +1,25 @@
+<div class="fm-club-cell fm-{{status}}">
+	<a href="{{clubUrl}}">
+		<img class="fm-club-logo" src="{{clubLogo}}" alt="{{clubName}}"
+			 onError="this.onerror=null;this.src='{{clubNoLogo}}';">
+	</a>
+	<div class="fm-main-content">
+		<a href="{{clubUrl}}">{{clubName}}</a>
+		<p class="description">Code: {{clubCode}} - Province: {{clubProvince}}</p>
+		{{mainRowActions}}
+	</div>
+	<div class="fm-delete-content">
+		<!--La pagina verrà eliminata definitivamente e tutte le modifiche andranno perse. Procedere?-->
+		<p>{{deleteDisclaimer}}</p>
+		{{deleteRowActions}}
+	</div>
+	<div class="fm-update-content">
+		<a href="{{clubUrl}}">{{clubName}}</a>
+		<p class="description">Code: {{clubCode}} - Province: {{clubProvince}}</p>
+		<div class="fm-progressbar"></div>
+		<div class="fm-progressbar-inner-outer">
+			<div class="fm-progressbar-inner"></div>
+		</div>
+		<pre style="margin-top: 2px; white-space: break-spaces" class="fm-progressbar-log">...</pre>
+	</div>
+</div>

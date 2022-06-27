@@ -1,75 +1,16 @@
-<div class="wrap" id="fm-club-page">
+<div id="fm-club-page" class="wrap">
 	<h1 class="wp-heading-inline">{{title}}</h1>
 	<hr class="wp-header-end">
-
+	{{messagePool}}
 	<form method="post">
-		{{clubComponent}}
-		{{configurationComponent}}
+		<input type="hidden" name="action" value="{{action}}"/>
+		<input type="hidden" name="page" value="fitet-monitor"/>
+		{{clubDataComponent}}
+		<button type="button" class="fm-collapsible">{{advancedLabel}}</button>
+		<div class="fm-collapsible-content">
+			{{clubConfigComponent}}
+		</div>
+
 		{{submitButton}}
 	</form>
 </div>
-
-<div>
-	<!--
-	<form method="post">
-		<h1 class="wp-heading-inline">{{title}}</h1>
-		<p>{{custom}}</p>
-		<hr class="wp-header-end">
-		<input type="hidden" name="page" value="fitet-monitor">
-		<input type="hidden" name="action" value="save">
-		<input type="text" name="clubCode" value="{{clubCode}}"/>
-		<input type="submit" value="{{saveLabel}}">
-	</form>
-	</div>
-
-
-
-
-
-	<form method="get">
-		<input type="hidden" name="action" value="add"/>
-		<input type="hidden" name="page" value="fitet-monitor"/>
-		<input type="hidden" id="clubCodeInput" name="clubCode" value="{{clubCode}}">
-		<input type="hidden" id="clubNameInput" name="clubName" value="{{clubName}}">
-		<input type="hidden" id="clubProvinceInput" name="clubProvince" value="{{clubProvince}}">
-		<div class="fm-add-club-content">
-			<div class="fm-add-club-content-inner">
-				<label for="clubName"><?php echo('Add Club'); ?></label>
-				<div id="clubNameInputWrapper">
-					<input name="clubNameAutocomplete" type="text" id="clubNameAutocomplete"
-						   autocomplete="off"
-						   placeholder="<?php echo('Add Club'); ?>..."
-						   value="" class="large-text"/>
-				</div>
-				<div id="clubRecap" style="display: none">
-					<div style="display: flex; gap: 1rem">
-						<object class="fm-club-logo" data="" type="image/png">
-							<img class="fm-club-logo"
-								 src="https://tennistavolosilvi.com/wp-content/uploads/2022/02/logo-tennistavolo-silvi-2019-squared-150x150.png"
-								 alt="Stack Overflow logo and icons and such">
-						</object>
-						<div>
-							<p class="description"><?php echo 'Code'; ?>: <span
-								id="clubCode"></span></p>
-							<p class="description"><?php echo 'Name'; ?>: <span
-								id="clubName"></span></p>
-							<p class="description"><?php echo 'Province'; ?>: <span
-								id="clubProvince"></span>
-							</p>
-							<a href="#edit" id="editClub"
-							   style="line-height: 2rem"><?php echo 'Edit'; ?></a>
-						</div>
-					</div>
-				</div>
-				<div class="fm-buttons-pool">
-					<button id="apexSubmit" disabled type="submit" class="button button-primary">Save
-					</button>
-					<button id="fmAddCancel" type="button" class="button button-secondary">Cancel</button>
-				</div>
-
-			</div>
-		</div>
-
-	</form>
-
-		-->

@@ -1455,10 +1455,8 @@ class Fitet_Monitor_Wp_Table {
 	}
 
 	protected function column_cb($item) {
-		return sprintf(
-			'<input type="checkbox" name="clubCode[]" value="%s" class="fm-club-code-input"/>',
-			$item['clubCode']
-		);
+		$clubCode = $item['clubCode'];
+		return "<input type='checkbox' name='clubCode[]' value='$clubCode' class='fm-club-code-input'/>";
 	}
 
 	/**

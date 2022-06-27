@@ -28,14 +28,14 @@ class Fitet_Monitor_Component {
 	public function enqueue_scripts() {
 		$file = (new ReflectionClass($this))->getFileName();
 		$file = plugin_dir_path($file) . basename($file, '.php') . '.js';
-		Fitet_Monitor_Helper::enqueue_script(get_class($this), $file, ['jquery'], $this->version, false);
+		Fitet_Monitor_Helper::enqueue_script(get_class($this), $file, $this->script_dependencies(), $this->version, false);
 	}
 
-	private function load_components() {
+	protected function load_components() {
 		$this->components = $this->components();
 	}
 
-	private function load_template() {
+	protected function load_template() {
 		$file = (new ReflectionClass($this))->getFileName();
 		$template_path = plugin_dir_path($file) . basename($file, '.php') . '.html';
 		if (file_exists($template_path)) {
@@ -51,6 +51,10 @@ class Fitet_Monitor_Component {
 		foreach ($this->components as $component) {
 			$component->initialize();
 		}
+	}
+
+	protected function script_dependencies(): array {
+		return ['jquery'];
 	}
 
 	protected final function render($data = []) {
