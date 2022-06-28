@@ -7,15 +7,15 @@ require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-bootstrap-
 
 class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 
+	protected function script_dependencies(): array {
+		return ['jquery', 'wp-api'];
+	}
+
 	public function enqueue_scripts() {
 		parent::enqueue_scripts();
 		$file = FITET_MONITOR_DIR . "public/assets/bootstrap-table.js";
 		$file = plugin_dir_path($file) . basename($file);
 		Fitet_Monitor_Helper::enqueue_script("bootstrap-table.js", $file, ['jquery'], $this->version, false);
-	}
-
-	protected function script_dependencies(): array {
-		return ['jquery', 'wp-api'];
 	}
 
 	public function enqueue_styles() {

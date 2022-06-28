@@ -1,0 +1,17 @@
+.fm-sc-athletes-list .fm-sc-athlete {
+	display: flex;
+	gap: 1rem;
+}
+
+@media (max-width: 767px) {
+	.fm-sc-athletes-list .fm-sc-athlete {
+		flex-direction: column;
+	}
+}
+
+.fm-sc-athletes-list .fm-sc-athlete-img {
+	height: auto;
+	width: 8rem;
+}
+
+

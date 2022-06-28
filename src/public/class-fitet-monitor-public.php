@@ -75,15 +75,20 @@ class Fitet_Monitor_Public {
 		// load global assets
 		add_action('wp_enqueue_scripts', [$this, 'load_assets']);
 
-		require_once FITET_MONITOR_DIR . 'public/shortcodes/sample-shortcode/class-fitet-monitor-sample-shortcode.php';
-		$shortcode = new Fitet_Monitor_Sample_Shortcode($this->version, $this->plugin_name);
-		$shortcode->initialize();
-		add_shortcode($shortcode->tag, [$shortcode, 'render_shortcode']);
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/athletes-list/class-fitet-monitor-athletes-list-shortcode.php';
+		$athletes_list_shortcode = new Fitet_Monitor_Athletes_List_Shortcode($this->version, $this->plugin_name, $this->manager);
+		$athletes_list_shortcode->initialize();
+		add_shortcode($athletes_list_shortcode->tag, [$athletes_list_shortcode, 'render_shortcode']);
 
-		require_once FITET_MONITOR_DIR . 'public/shortcodes/athletes/class-fitet-monitor-athletes-shortcode.php';
-		$athletes_shortcode = new Fitet_Monitor_Athletes_Shortcode($this->version, $this->plugin_name, $this->manager);
-		$athletes_shortcode->initialize();
-		add_shortcode($athletes_shortcode->tag, [$athletes_shortcode, 'render_shortcode']);
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/athletes-table/class-fitet-monitor-athletes-table-shortcode.php';
+		$athletes_table_shortcode = new Fitet_Monitor_Athletes_Table_Shortcode($this->version, $this->plugin_name, $this->manager);
+		$athletes_table_shortcode->initialize();
+		add_shortcode($athletes_table_shortcode->tag, [$athletes_table_shortcode, 'render_shortcode']);
+
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/athlete-detail/class-fitet-monitor-athlete-detail-shortcode.php';
+		$athlete_detail_shortcode = new Fitet_Monitor_Athlete_Detail_Shortcode($this->version, $this->plugin_name, $this->manager);
+		$athlete_detail_shortcode->initialize();
+		add_shortcode($athlete_detail_shortcode->tag, [$athlete_detail_shortcode, 'render_shortcode']);
 
 		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}

@@ -106,9 +106,11 @@ class Fitet_Portal_Rest {
 
 		// mapping objects with actual names
 		return array_map(function ($rank) use ($sex, $type_id) {
+			$r = intval($rank['Classifica']);
+			$r = $r == 0 ? "N/A" : $r;
 			return [
 				'name' => $rank['NomeAtleta'],
-				'rank' => intval($rank['Classifica']),
+				'rank' => $r,
 				'points' => intval($rank['Punti']),
 				'category' => intval($rank['Categoria']),
 				'sector' => $rank['Settore'],
