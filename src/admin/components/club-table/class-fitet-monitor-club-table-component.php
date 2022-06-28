@@ -10,7 +10,6 @@ class Fitet_Monitor_Club_Table_Component extends Fitet_Monitor_Component {
 	private $columns = [
 		'cb' => '<input type="checkbox" />',
 		'club' => 'Club',
-		'configuration' => 'Configuration',
 		'lastUpdate' => 'Last Update',
 	];
 
@@ -22,7 +21,6 @@ class Fitet_Monitor_Club_Table_Component extends Fitet_Monitor_Component {
 	public function initialize() {
 		parent::initialize();
 		$this->columns['club'] = __('Club');
-		$this->columns['configuration'] = __('Configuration');
 		$this->columns['lastUpdate'] = __('Last Update');
 
 		$this->bulk_actions['delete'] = __('Delete');
@@ -44,16 +42,14 @@ class Fitet_Monitor_Club_Table_Component extends Fitet_Monitor_Component {
 		$items = array_map(function ($row) use ($wp_table) {
 
 			$club_code = $row['clubCode'];
-			$club_name = $row['clubName'];
 			$last_update = isset($row['lastUpdate']) ? $row['lastUpdate'] : "N/A";
 
 			$row['parentTable'] = $wp_table;
 
 			return [
 				'cb' => "<input type='checkbox name='clubCode[] value='$club_code' class='fm-club-table-cb'/>",
-				'club' =>  $this->components['clubCell']->render($row),
+				'club' => $this->components['clubCell']->render($row),
 				'clubCode' => $club_code,
-				'configuration' => "<b>Configuration $club_code</b>",
 				'lastUpdate' => $last_update,
 			];
 		}, $data);

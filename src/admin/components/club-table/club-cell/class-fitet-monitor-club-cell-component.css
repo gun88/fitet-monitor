@@ -36,6 +36,13 @@
 	color: #b32d2e;
 }
 
+.fm-club-cell .row-actions .retry button,
+.fm-club-cell .row-actions .retry button:active,
+.fm-club-cell .row-actions .retry button:focus,
+.fm-club-cell .row-actions .retry button:hover {
+	color: #b32d2e;
+}
+
 .fm-club-cell .row-actions .update button,
 .fm-club-cell .row-actions .update button:active,
 .fm-club-cell .row-actions .update button:focus,
@@ -43,99 +50,11 @@
 	color: #007017;
 }
 
-
 .fm-update-content,
 .fm-delete-content {
 	display: none
 }
 
-
-/*
-
-button.updating:before {
-	background: url("http://localhost:8080/wp-content/plugins/apex/img/loading.svg") no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
-	!* todo  cambia url *!
-	content: "";
-	display: inline-block;
-	color: red !important;
-	height: 20px;
-	margin-right: 2px;
-	position: relative;
-	top: -2px;
-	left: -2px;
-	vertical-align: middle;
-	width: 20px;
+.fm-update-actions-container {
+	display: none;
 }
-
-
-.fm-delete-row .row-actions {
-	left: unset;
-}
-
-.fm-delete-row .fm-content {
-	display: flex;
-	gap: 1rem;
-}
-
-
-
-
-.fm-club-cell .update a {
-	color: #007017;
-}
-
-span.fm-configuration {
-	border: 2px solid #646970;
-	color: #646970;
-	border-radius: 2px;
-	padding: 3px;
-	font-size: 10px;
-	cursor: default !important;
-}
-
-span.fm-active {
-	color: #2271b1;
-	border-color: #2271b1;
-}
-
-
-
-
-.fm-progressbar-inner-outer {
-	width: 100%;
-	min-width: 15rem;
-	background-color: #c5c5c5;
-	border-radius: 1rem;
-	overflow: hidden;
-}
-
-.fm-progressbar-inner {
-	width: 1%;
-	height: 1.2rem;
-	background-color: #2271b1;
-	border-radius: 1rem;
-	text-align: center;
-	line-height: 1.2rem;
-	color: white;
-	-webkit-transition: width,background-color 200ms ease-out;
-	-moz-transition: width,background-color 200ms ease-out;
-	-o-transition: width,background-color 200ms ease-out;
-	transition: width,background-color 200ms ease-out;
-}
-
-.fm-progressbar-inner.idle {
-	background-color: #228bb1;
-}
-.fm-progressbar-inner.warning {
-	background-color: #ce5c05;
-}
-.fm-progressbar-inner.fail {
-	background-color: #b32d2e;
-}
-
-.fm-progressbar-inner.completed {
-	background-color: #007017;
-}
-
-
-*/

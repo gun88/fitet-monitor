@@ -101,7 +101,7 @@ class Fitet_Monitor_Manager {
 		return $this->logger->get_status($club_code);
 	}
 
-	public function update($club_code) {
+	public function update($club_code, $mode = '') {
 
 		$status_log = $this->logger->get_status($club_code);
 
@@ -109,9 +109,7 @@ class Fitet_Monitor_Manager {
 
 			try {
 				$this->logger->reset_status($club_code);
-				$club = $this->get_club($club_code);
-				$new_club = $this->retrieve_club_data($club_code, $club['clubHistorySize']);
-				$club = $this->merge_clubs($club, $new_club);
+				$club = $this->retrieve_club_data($club_code, $mode);
 				$this->logger->set_completed($club_code, 'Done');
 				$this->save_club($club);
 
@@ -128,10 +126,7 @@ class Fitet_Monitor_Manager {
 	}
 
 
-	public function retrieve_club_data($club_code, $history_size = 2, $home_teams_only = false) {
-		sleep(1);
-		return ;
-
+	public function retrieve_club_data($club_code, $mode, $home_teams_only = false) {
 		if ($club_code == null)
 			throw new Exception("Club code can not be null!");
 
@@ -140,6 +135,8 @@ class Fitet_Monitor_Manager {
 		$this->logger->add_status($club_code, "Getting info for club $club_code", 0);
 
 		$club = $this->get_club($club_code);
+		$history_size = $mode == 'full-history' ? null : $club['clubHistorySize'];
+
 		$club_info = $this->portal->get_club_info($club_code);
 		$club['email'] = $club_info['email'];
 		$club['affiliationDate'] = $club_info['affiliationDate'];
@@ -147,6 +144,9 @@ class Fitet_Monitor_Manager {
 
 		$this->logger->add_status($club_code, "Getting details for club " . $club['clubCode'] . " " . $club['clubName'], 5);
 		$club_details = $this->portal->get_club_details($club_code, $history_size);
+
+		usort($club_details['nationalTitles'], [$this, 'sort_titles']);
+		usort($club_details['regionalTitles'], [$this, 'sort_titles']);
 
 		$old_championships = isset($club['championships']) ? $club['championships'] : [];
 		$club['championships'] = $club_details['championships'];
@@ -315,7 +315,7 @@ class Fitet_Monitor_Manager {
 
 	}
 
-	private function merge_clubs($club, $new_club) {
+	private function merge_clubs($club, $new_club) { //todo togli
 		$new_club['clubLogo'] = $club['clubLogo'];
 		$new_club['clubName'] = $club['clubName'];
 
@@ -331,6 +331,15 @@ class Fitet_Monitor_Manager {
 		}
 		return utf8_encode($text);
 
+	}
+
+	private function sort_titles($a, $b): int {
+		foreach (['season', 'tournament', 'competition', 'player'] as $field) {
+			if ($a[$field] != $b[$field]) {
+				return strcmp($b[$field], $a[$field]);
+			}
+		}
+		return 0;
 	}
 
 

@@ -17,7 +17,6 @@ class Fitet_Monitor_Club_Page extends Fitet_Monitor_Page {
 
 		return [
 			'clubDataComponent' => new Fitet_Monitor_Club_Data_Component($this->plugin_name, $this->version),
-			'clubDetailsComponent' => new Fitet_Monitor_Club_Details_Component($this->plugin_name, $this->version)
 		];
 	}
 
@@ -25,7 +24,6 @@ class Fitet_Monitor_Club_Page extends Fitet_Monitor_Page {
 		return [
 			'title' => __("Club Page", 'fitet-monitor'),
 			'clubDataComponent' => $this->components['clubDataComponent']->render($this->club),
-			'clubDetailsComponent' => $this->club? $this->components['clubDetailsComponent']->render($this->club) : '',
 			'messagePool' => $this->prepare_messages(),
 		];
 	}

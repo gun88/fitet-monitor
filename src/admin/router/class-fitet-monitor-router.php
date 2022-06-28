@@ -72,10 +72,6 @@ class Fitet_Monitor_Router {
 		$club_code = isset($_GET['clubCode']) ? $_GET['clubCode'] : null;
 
 		switch ($mode) {
-			case 'advanced': // todo rimuovi advanced?
-				require_once FITET_MONITOR_DIR . 'admin/pages/advanced/class-fitet-monitor-advanced-page.php';
-				$this->page = new Fitet_Monitor_Advanced_Page($this->plugin_name, $this->version);
-				break;
 			case 'club':
 				if ($club_code) {
 					$club = $this->manager->get_club($club_code);
@@ -85,6 +81,14 @@ class Fitet_Monitor_Router {
 				}
 				require_once FITET_MONITOR_DIR . 'admin/pages/club/class-fitet-monitor-club-page.php';
 				$this->page = new Fitet_Monitor_Club_Page($this->version, $this->plugin_name, $club);
+				break;
+			case 'detail':
+				if ($club_code) {
+					$club = $this->manager->get_club($club_code);
+					$club['status'] = $this->manager->get_status($club_code)['status'];
+				}
+				require_once FITET_MONITOR_DIR . 'admin/pages/detail/class-fitet-monitor-detail-page.php';
+				$this->page = new Fitet_Monitor_Detail_Page($this->version, $this->plugin_name, $club);
 				break;
 			case 'summary':
 			default:

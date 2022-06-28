@@ -599,7 +599,9 @@ class Fitet_Monitor_Wp_Table {
 			$always_visible = true;
 		}
 
-		$out = '<div class="' . ($always_visible ? 'row-actions visible' : 'row-actions') . '">';
+		$out = '<div class="' . ($always_visible ? 'row-actions visible' : 'row-actions') . '" ' .
+			($always_visible ? 'style="left: 0"' : '') .
+			'>';
 
 		$i = 0;
 

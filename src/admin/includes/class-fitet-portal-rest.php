@@ -18,6 +18,10 @@ class Fitet_Portal_Rest {
 		['id' => 'F', 'name' => 'Femminile']
 	];
 
+
+	/**
+	 * @var Fitet_Portal_Rest_Http_Service
+	 */
 	public $http_service;
 
 	public function __construct($http_service) {

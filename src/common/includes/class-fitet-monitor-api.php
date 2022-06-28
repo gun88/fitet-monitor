@@ -1,6 +1,6 @@
 <?php
 
-class Fitet_Monitor_Api { // todo sostituire con chiamate wordpress
+class Fitet_Monitor_Api {
 
 	private $plugin_name;
 	private $version;
@@ -62,7 +62,7 @@ class Fitet_Monitor_Api { // todo sostituire con chiamate wordpress
 	}
 
 	public function update(WP_REST_Request $request) {
-		$this->manager->update($request->get_param('clubCode'));
+		$this->manager->update($request->get_param('clubCode'), $request->get_param('mode'));
 	}
 
 	public function get_club(WP_REST_Request $request) {

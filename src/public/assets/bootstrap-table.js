@@ -1727,7 +1727,7 @@
 		return call$7.apply(apply$2, arguments);
 	});
 
-	// TODO: Remove from `core-js@4` since it's moved to entry points
+	// xTODO: Remove from `core-js@4` since it's moved to entry points
 
 	var uncurryThis$l = functionUncurryThis;
 	var defineBuiltIn$6 = defineBuiltIn$8;
@@ -3330,7 +3330,7 @@
 	var replace = uncurryThis$6(''.replace);
 	var stringIndexOf = uncurryThis$6(''.indexOf);
 	var stringSlice$1 = uncurryThis$6(''.slice);
-	// TODO: Use only propper RegExpIdentifierName
+	// xTODO: Use only propper RegExpIdentifierName
 	var IS_NCG = /^\?<[^\s\d!#%&*+<=>@^][^\s!#%&*+<=>@^]*>/;
 	var re1 = /a/g;
 	var re2 = /a/g;
@@ -7900,7 +7900,7 @@
 				var _this16 = this;
 
 				// horizontal scroll event
-				// TODO: it's probably better improving the layout than binding to scroll event
+				// xTODO: it's probably better improving the layout than binding to scroll event
 				this.$tableBody.off('scroll').on('scroll', function () {
 					var scrollLeft = _this16.$tableBody.scrollLeft();
 

@@ -52,9 +52,6 @@ jQuery(function ($) {
 
 					if (response.status === 'ready') {
 						progressBar.addClass('completed');
-						/* progressBar.width(logs[logs.length - 1] + "%");
-						 progressBar.text(logs[logs.length - 1] + "%");
-						 logLine.text(logs[logs.length - 1].message);*/
 						clearInterval(id);
 						setTimeout(function () {
 							updateContent.hide();
@@ -76,13 +73,7 @@ jQuery(function ($) {
 					if (response.status === 'fail') {
 						progressBar.addClass('fail');
 						clearInterval(id);
-						// todo retry on fail
-						/*setTimeout(function () {
-							updateContent.hide();
-							mainContent.show();
-							$clubRow.removeClass('fm-updating')
-							$clubRow.addClass('fm-ready')
-						}, 2000);*/
+						$clubRow.find('.fm-update-actions-container').show();
 						return;
 					}
 
@@ -108,6 +99,7 @@ jQuery(function ($) {
 	function update($clubRow) {
 
 		let find = $clubRow.find('.fm-club-code-input');
+		$clubRow.find('.fm-update-actions-container').hide();
 		const clubCode = find.val();
 
 		wp.apiRequest({
@@ -121,6 +113,23 @@ jQuery(function ($) {
 		attachStatusMonitor($clubRow);
 	}
 
+	$('.fm-club-table-form').submit(function (e, a, b, c) {
+		const $form = $(e.currentTarget);
+		const action = $form.find('select[name="action"] option:selected').val();
+		if (action === 'update') {
+			e.preventDefault();
+			$form.find('input[name="clubCode[]"]')
+				.each((x, el) => {
+					if (el.checked) {
+						const $this = $(el);
+						const $clubRow = $this.closest('tr');
+						update($clubRow);
+					}
+				});
+		}
+	})
+
+
 	$('.fm-club-cell').on('click', '.fm-btn-delete', function () {
 		const $this = $(this);
 		const $clubRow = $this.closest('td');
@@ -132,7 +141,7 @@ jQuery(function ($) {
 		update($clubRow);
 	});
 
-	$('.fm-club-cell .fm-delete-content ').on('click', '.button-link', function () {
+	$('.fm-club-cell .fm-delete-content').on('click', '.button-link', function () {
 		const $this = $(this);
 		const action = $this.data('value');
 		const clubCode = $this.data('club-code');
@@ -146,6 +155,13 @@ jQuery(function ($) {
 			$clubRow.find('.fm-main-content').show();
 			$clubRow.find('.fm-delete-content').hide();
 		}
+	});
+	$('.fm-club-cell .fm-update-content').on('click', '.fm-btn-cancel', function () {
+		const $this = $(this);
+		const $clubRow = $this.closest('td');
+		$clubRow.find('.fm-main-content').show();
+		$clubRow.find('.fm-update-content').hide();
+
 	});
 
 	$('.fm-updating').each(function (i, el) {
