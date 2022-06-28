@@ -2,6 +2,7 @@
 
 require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-page.php';
 require_once FITET_MONITOR_DIR . 'admin/components/club-data/class-fitet-monitor-club-data-component.php';
+require_once FITET_MONITOR_DIR . 'admin/components/club-details/class-fitet-monitor-club-details-component.php';
 
 class Fitet_Monitor_Club_Page extends Fitet_Monitor_Page {
 
@@ -15,7 +16,8 @@ class Fitet_Monitor_Club_Page extends Fitet_Monitor_Page {
 	public function components() {
 
 		return [
-			'clubDataComponent' => new Fitet_Monitor_Club_Data_Component($this->plugin_name, $this->version)
+			'clubDataComponent' => new Fitet_Monitor_Club_Data_Component($this->plugin_name, $this->version),
+			'clubDetailsComponent' => new Fitet_Monitor_Club_Details_Component($this->plugin_name, $this->version)
 		];
 	}
 
@@ -23,6 +25,7 @@ class Fitet_Monitor_Club_Page extends Fitet_Monitor_Page {
 		return [
 			'title' => __("Club Page", 'fitet-monitor'),
 			'clubDataComponent' => $this->components['clubDataComponent']->render($this->club),
+			'clubDetailsComponent' => $this->club? $this->components['clubDetailsComponent']->render($this->club) : '',
 			'messagePool' => $this->prepare_messages(),
 		];
 	}

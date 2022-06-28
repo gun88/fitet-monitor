@@ -65,14 +65,12 @@ class Fitet_Portal_Rest {
 	public function get_ranking($ranking_id, $sex, $type_id, $club_code = null) {
 		$url = "http://portale.fitet.org/fpdf2/excel_classifica.php?SESSO=$sex&TIPO=$type_id&CLASSIFICA=$ranking_id";
 		$csv_string = $this->http_service->get($url);
-
+		//$csv_string = mb_convert_encoding($csv_string, "UTF-8","Windows-1252");
 		// splitting result by line
 		$csv = array_filter(preg_split("/[\r\n]+/", $csv_string));
 
 		// removing non printable lines
-		$csv = array_map(function ($csv_row) {
-			return preg_replace('/[[:^print:]]/', '', $csv_row);
-		}, $csv);
+		$csv[0] = preg_replace('/[[:^print:]]/', '', $csv[0]);
 
 		// converting CSV lines to array
 		$csv = array_map(function ($csv_row) {
@@ -339,7 +337,6 @@ class Fitet_Portal_Rest {
 			});
 		}
 
-
 		// retrieving national tournaments data
 		$national_titles = $html->find('#nazionali tr');
 
@@ -396,7 +393,7 @@ class Fitet_Portal_Rest {
 
 		// creating object
 		$attendances = array_map(function ($row) {
-			return array_combine(['palyerCode', 'playerName', 'count'], $row);
+			return array_combine(['playerCode', 'playerName', 'count'], $row);
 		}, $attendances);
 
 		return [
@@ -475,12 +472,14 @@ class Fitet_Portal_Rest {
 		// removing useless header
 		array_shift($tables);
 
-		$tables = array_map(function ($table) {
-			return array_map(function ($row) {
-				return array_map(function ($cell) {
+		$tables = array_map(function ($table) use ($url) {
+			return array_map(function ($row) use ($url) {
+				return array_map(function ($cell) use ($url) {
 					$link = $cell->find('a', 0);
 					if ($link != null) {
 						preg_match('/.+INCONTRO=(-?\d+)/', $link->href, $matches);
+						if (!isset($matches[1]))
+							return [];
 						$match = $matches[1];
 						preg_match('/.+FORMULA=(-?\d+)/', $link->href, $matches);
 						$formula = $matches[1];
@@ -510,14 +509,20 @@ class Fitet_Portal_Rest {
 
 			return array_map(function ($row) use ($championship_day) {
 
-				$row[0] = $row[0] ?? '';
-				$row[1] = $row[1] ?? '';
-				$row[2] = $row[2] ?? ['result' => '', 'match' => '', 'formula' => ''];
-				$row[3] = $row[3] ?? '';
-				$row[4] = $row[4] ?? '';
-				$row[5] = $row[5] ?? ['result' => '', 'match' => '', 'formula' => ''];
-				$row[6] = $row[6] ?? '';
-				$row[7] = $row[7] ?? '';
+				$row[0] = isset($row[0]) ? $row[0] : '';
+				$row[1] = isset($row[1]) ? $row[1] : '';
+				$row[2] = isset($row[2]) && is_array($row[2]) ? $row[2] : ['result' => '', 'match' => '', 'formula' => ''];
+				$row[2]['result'] = isset($row[2]['result']) ? $row[2]['result'] : '';
+				$row[2]['match'] = isset($row[2]['match']) ? $row[2]['match'] : '';
+				$row[2]['formula'] = isset($row[2]['formula']) ? $row[2]['formula'] : '';
+				$row[3] = isset($row[3]) ? $row[3] : '';
+				$row[4] = isset($row[4]) ? $row[4] : '';
+				$row[5] = isset($row[5]) && is_array($row[5]) ? $row[5] : ['result' => '', 'match' => '', 'formula' => ''];
+				$row[5]['result'] = isset($row[5]['result']) ? $row[5]['result'] : '';
+				$row[5]['match'] = isset($row[5]['match']) ? $row[5]['match'] : '';
+				$row[5]['formula'] = isset($row[5]['formula']) ? $row[5]['formula'] : '';
+				$row[6] = isset($row[6]) ? $row[6] : '';
+				$row[7] = isset($row[7]) ? $row[7] : '';
 
 				return [
 					'championshipDay' => $championship_day,

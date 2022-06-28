@@ -1,5 +1,8 @@
 <?php
 
+define('FITET_MONITOR_MB_CONVERT_ENCODING_EXIST', function_exists('mb_convert_encoding'));
+define('FITET_MONITOR_ICONV_EXIST', function_exists('iconv'));
+
 class Fitet_Monitor_Manager {
 
 	private $plugin_name;
@@ -107,7 +110,7 @@ class Fitet_Monitor_Manager {
 			try {
 				$this->logger->reset_status($club_code);
 				$club = $this->get_club($club_code);
-				$new_club = $this->get_full_club($club_code, $club['clubHistorySize']);
+				$new_club = $this->retrieve_club_data($club_code, $club['clubHistorySize']);
 				$club = $this->merge_clubs($club, $new_club);
 				$this->logger->set_completed($club_code, 'Done');
 				$this->save_club($club);
@@ -125,20 +128,33 @@ class Fitet_Monitor_Manager {
 	}
 
 
-	public function get_full_club($club_code, $home_teams_only = false, $history_size = 2) {
+	public function retrieve_club_data($club_code, $history_size = 2, $home_teams_only = false) {
+		sleep(1);
+		return ;
+
 		if ($club_code == null)
 			throw new Exception("Club code can not be null!");
 
 		$this->logger->add_status($club_code, 'Start updating');
 
 		$this->logger->add_status($club_code, "Getting info for club $club_code", 0);
-		$club = $this->portal->get_club_info($club_code);
+
+		$club = $this->get_club($club_code);
+		$club_info = $this->portal->get_club_info($club_code);
+		$club['email'] = $club_info['email'];
+		$club['affiliationDate'] = $club_info['affiliationDate'];
 
 
 		$this->logger->add_status($club_code, "Getting details for club " . $club['clubCode'] . " " . $club['clubName'], 5);
 		$club_details = $this->portal->get_club_details($club_code, $history_size);
 
+		$old_championships = isset($club['championships']) ? $club['championships'] : [];
+		$club['championships'] = $club_details['championships'];
+		$club['nationalTitles'] = $club_details['nationalTitles'];
+		$club['regionalTitles'] = $club_details['regionalTitles'];
+		$club['attendances'] = $club_details['attendances'];
 		$club = array_merge($club, $club_details);
+
 
 		for ($i = 0, $count = count($club['championships']); $i < $count; $i++) {
 			$championship = $club['championships'][$i];
@@ -195,6 +211,8 @@ class Fitet_Monitor_Manager {
 				$this->logger->add_status($club_code, "Getting team details (" . ++$standing_cursor . "/$total_standings): $season_name - $championship_name - $team_name", 8 / $total_standings);
 				$team_details = $this->portal->get_team_details($team_id, $championship_id, $season_id);
 				$club['championships'][$i]['standings'][$j] = array_merge($standing, $team_details);
+				$club['championships'][$i]['standings'][$j]['teamName'] = $this->to_utf8($club['championships'][$i]['standings'][$j]['teamName']);
+				$club['championships'][$i]['standings'][$j]['clubName'] = $this->to_utf8($club['championships'][$i]['standings'][$j]['clubName']);
 			}
 		}
 
@@ -217,6 +235,20 @@ class Fitet_Monitor_Manager {
 			$standings = $this->portal->get_championship_calendar($championship_id, $season_id, $team_names);
 			$club['championships'][$i]['calendar'] = $standings;
 		}
+
+		$merged_championship = $club['championships'];
+		foreach ($old_championships as $old_championship) {
+			$season_id = $old_championship['seasonId'];
+			$championship_id = $old_championship['id'];
+			$common = array_filter($club['championships'], function ($championship) use ($season_id, $championship_id) {
+				return $championship['seasonId'] == $season_id && $championship['id'] == $championship_id;
+			});
+			if ((empty($common))) {
+				$merged_championship[] = $old_championship;
+			}
+		}
+		$club['championships'] = $merged_championship;
+
 
 		$this->logger->add_status($club_code, "Getting ranking id list", 5);
 		$players = $this->portal->find_rankings();
@@ -247,8 +279,10 @@ class Fitet_Monitor_Manager {
 			$player = $players[$i];
 			$player_name = $player['name'];
 			$this->logger->add_status($club_code, "Getting player info (" . ($i + 1) . "/$count): $player_name", 20 / $count);
+
 			$player_info = $this->portal->find_players($player['name'], $player['birthDate'])[0];
 			$players[$i] = array_merge($player, $player_info);
+			$players[$i]['name'] = $this->to_utf8($players[$i]['name']);
 		}
 
 		for ($i = 0, $count = count($players); $i < $count; $i++) {
@@ -257,7 +291,11 @@ class Fitet_Monitor_Manager {
 			$player_code = $player['code'];
 			$this->logger->add_status($club_code, "Getting player season (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
 			$players[$i]['season'] = $this->portal->get_player_season($player['id'], $last_ranking['id']);
-			// todo prova a usare $player
+
+			foreach ($players[$i]['season'] as &$season) {
+				$season['opponent'] = $this->to_utf8($season['opponent']);
+				$season['match'] = $this->to_utf8($season['match']);
+			}
 		}
 
 		for ($i = 0, $count = count($players); $i < $count; $i++) {
@@ -266,21 +304,33 @@ class Fitet_Monitor_Manager {
 			$player_code = $player['code'];
 			$this->logger->add_status($club_code, "Getting player history (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
 			$players[$i]['history'] = $this->portal->get_player_history($player['id']);
-			// todo prova a usare $player
-
 		}
 
 		$club['players'] = $players;
-		$club['lastUpdate'] = date("Y-m-d H:i:s");
+
+		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
+		$last_update->setTimestamp(time()); //adjust the object to correct timestamp
+		$club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
 		return $club;
 
 	}
 
-	private function merge_clubs($club, array $new_club) {
+	private function merge_clubs($club, $new_club) {
 		$new_club['clubLogo'] = $club['clubLogo'];
 		$new_club['clubName'] = $club['clubName'];
 
 		return $new_club;
+	}
+
+	private function to_utf8($text) {
+		if (FITET_MONITOR_MB_CONVERT_ENCODING_EXIST) {
+			return mb_convert_encoding($text, "UTF-8", "ISO-8859-15");
+		}
+		if (FITET_MONITOR_ICONV_EXIST) {
+			return iconv("ISO-8859-15", "UTF-8", $text);
+		}
+		return utf8_encode($text);
+
 	}
 
 

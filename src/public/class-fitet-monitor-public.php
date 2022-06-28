@@ -43,15 +43,26 @@ class Fitet_Monitor_Public {
 	private $version;
 
 	/**
+	 * The version of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      Fitet_Monitor_Manager $manager
+	 */
+	private $manager;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @param string $plugin_name The name of the plugin.
 	 * @param string $version The version of this plugin.
+	 * @param Fitet_Monitor_Manager $manager .
 	 * @since 1.0.0
 	 */
-	public function __construct($plugin_name, $version) {
+	public function __construct($plugin_name, $version, $manager) {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->manager = $manager;
 	}
 
 	/**
@@ -68,6 +79,11 @@ class Fitet_Monitor_Public {
 		$shortcode = new Fitet_Monitor_Sample_Shortcode($this->version, $this->plugin_name);
 		$shortcode->initialize();
 		add_shortcode($shortcode->tag, [$shortcode, 'render_shortcode']);
+
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/athletes/class-fitet-monitor-athletes-shortcode.php';
+		$athletes_shortcode = new Fitet_Monitor_Athletes_Shortcode($this->version, $this->plugin_name, $this->manager);
+		$athletes_shortcode->initialize();
+		add_shortcode($athletes_shortcode->tag, [$athletes_shortcode, 'render_shortcode']);
 
 		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}

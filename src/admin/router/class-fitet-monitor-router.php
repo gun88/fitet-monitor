@@ -40,6 +40,7 @@ class Fitet_Monitor_Router {
 				'clubName' => $_POST['clubName'],
 				'clubProvince' => $_POST['clubProvince'],
 				'clubLogo' => $_POST['clubLogo'],
+				'clubHistorySize' => $_POST['clubHistorySize'],
 				'clubCron' => $_POST['clubCron']
 			]);
 
@@ -53,6 +54,7 @@ class Fitet_Monitor_Router {
 				'clubName' => $_POST['clubName'],
 				'clubProvince' => $_POST['clubProvince'],
 				'clubLogo' => $_POST['clubLogo'],
+				'clubHistorySize' => $_POST['clubHistorySize'],
 				'clubCron' => $_POST['clubCron']
 			]);
 			wp_safe_redirect(add_query_arg(['message' => 'edited'], menu_page_url('fitet-monitor', false)));
@@ -70,7 +72,7 @@ class Fitet_Monitor_Router {
 		$club_code = isset($_GET['clubCode']) ? $_GET['clubCode'] : null;
 
 		switch ($mode) {
-			case 'advanced':
+			case 'advanced': // todo rimuovi advanced?
 				require_once FITET_MONITOR_DIR . 'admin/pages/advanced/class-fitet-monitor-advanced-page.php';
 				$this->page = new Fitet_Monitor_Advanced_Page($this->plugin_name, $this->version);
 				break;

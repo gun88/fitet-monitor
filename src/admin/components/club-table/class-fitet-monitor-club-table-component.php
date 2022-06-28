@@ -1,10 +1,10 @@
 <?php
 
 require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
-require_once FITET_MONITOR_DIR . 'admin/components/table/club-cell/class-fitet-monitor-club-cell-component.php';
+require_once FITET_MONITOR_DIR . 'admin/components/club-table/club-cell/class-fitet-monitor-club-cell-component.php';
 require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-wp-table.php';
 
-class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
+class Fitet_Monitor_Club_Table_Component extends Fitet_Monitor_Component {
 
 
 	private $columns = [
@@ -18,6 +18,17 @@ class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
 		'delete' => 'Delete',
 		'update' => "Update"
 	];
+
+	public function initialize() {
+		parent::initialize();
+		$this->columns['club'] = __('Club');
+		$this->columns['configuration'] = __('Configuration');
+		$this->columns['lastUpdate'] = __('Last Update');
+
+		$this->bulk_actions['delete'] = __('Delete');
+		$this->bulk_actions['update'] = __('Update');
+
+	}
 
 
 	public function components() {

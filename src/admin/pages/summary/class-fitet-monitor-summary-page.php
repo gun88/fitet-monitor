@@ -1,7 +1,7 @@
 <?php
 
 require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-page.php';
-require_once FITET_MONITOR_DIR . 'admin/components/table/class-fitet-monitor-table-component.php';
+require_once FITET_MONITOR_DIR . 'admin/components/club-table/class-fitet-monitor-club-table-component.php';
 
 class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 
@@ -13,7 +13,7 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 	}
 
 	public function components() {
-		return ['table' => new Fitet_Monitor_Table_Component($this->plugin_name, $this->version)];
+		return ['table' => new Fitet_Monitor_Club_Table_Component($this->plugin_name, $this->version)];
 	}
 
 	public function initialize_data() {

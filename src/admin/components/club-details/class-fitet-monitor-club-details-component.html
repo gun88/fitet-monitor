@@ -1,0 +1,34 @@
+<h1>Details</h1>
+<table class="form-table" role="presentation">
+	<tbody>
+	<tr><th scope="row">{{clubNameLabel}}</th><td>{{clubName}}</td></tr>
+	<tr><th scope="row">{{affiliationDateLabel}}</th><td>{{affiliationDate}}</td></tr>
+	<tr><th scope="row">{{emailLabel}}</th><td>{{email}}</td></tr>
+	<tr><th scope="row">{{statusLabel}}</th><td>{{status}}</td></tr>
+	<tr><th scope="row">{{lastUpdateLabel}}</th><td>{{lastUpdate}}</td></tr>
+	</tbody>
+</table>
+
+<div style="display: {{displayPlayers}}">
+	<h1>{{playersLabel}}</h1>
+	{{players}}
+</div>
+<div style="display: {{displayChampionships}}">
+	<h1>{{championshipsLabel}}</h1>
+	{{championships}}
+</div>
+<div style="display: {{displayNationalTitles}}">
+	<h1>{{nationalTitlesLabel}}</h1>
+	{{nationalTitles}}
+</div>
+<div style="display: {{displayRegionalTitles}}">
+	<h1>{{regionalTitlesLabel}}</h1>
+	{{regionalTitles}}
+</div>
+<div style="display: {{displayAttendances}}">
+	<h1>{{attendancesLabel}}</h1>
+	{{attendances}}
+
+</div>
+
+<pre>{{json}}</pre>

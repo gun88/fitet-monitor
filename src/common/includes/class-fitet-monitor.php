@@ -167,7 +167,7 @@ class Fitet_Monitor {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_public() {
+	private function load_public($manager) {
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -175,7 +175,7 @@ class Fitet_Monitor {
 		 */
 		require_once FITET_MONITOR_DIR . 'public/class-fitet-monitor-public.php';
 
-		$plugin_public = new Fitet_Monitor_Public($this->plugin_name, $this->version);
+		$plugin_public = new Fitet_Monitor_Public($this->plugin_name, $this->version, $manager);
 		$plugin_public->start();
 
 	}
