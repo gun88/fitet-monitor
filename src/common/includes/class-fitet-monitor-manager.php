@@ -266,7 +266,7 @@ class Fitet_Monitor_Manager {
 				$sex_name = $sex['name'];
 				$date = $last_ranking['date'];
 				$this->logger->add_status($club_code, "Getting ranking (" . ++$standing_cursor . ",$total_rankings): $date - $type_name - $sex_name", 8 / $total_rankings);
-				$players[] = $this->portal->get_ranking($last_ranking['id'], $sex['id'], $type['id'], $club_code);
+				$players[] = $this->portal->get_ranking($last_ranking['id'], $sex, $type, $club_code);
 			}
 		}
 		$players = array_merge(...$players);
@@ -280,7 +280,20 @@ class Fitet_Monitor_Manager {
 			$player_name = $player['name'];
 			$this->logger->add_status($club_code, "Getting player info (" . ($i + 1) . "/$count): $player_name", 20 / $count);
 
-			$player_info = $this->portal->find_players($player['name'], $player['birthDate'])[0];
+			$player_infos = $this->portal->find_players($player['name'], $player['birthDate']);
+			$player_info = $player_infos[0];
+			if (count($player_infos) > 1) {
+				foreach ($player_infos as $info) {
+					$ranking = $this->portal->get_player_history($info['id'])['ranking'];
+					if (empty($ranking)) {
+						continue;
+					}
+					if ($ranking[0]['position'] == $player['rank']) {
+						$player_info = $info;
+						break;
+					}
+				}
+			}
 			$players[$i] = array_merge($player, $player_info);
 			$players[$i]['name'] = $this->to_utf8($players[$i]['name']);
 		}

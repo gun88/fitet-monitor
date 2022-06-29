@@ -155,7 +155,8 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		foreach ($players as &$player) {
 			$name = $player['name'];
 			$json = json_encode($player);
-			$player['name'] = "<a href='#' onclick='showPlayer(event, $json)'>$name</a>";
+			$url = "http://localhost/atleta/?atleta=" . $player['code'] . "-XXX";
+			$player['name'] = "<a href='$url' onclick='showPlayer(event, $json)'>$name</a>";
 
 		}
 

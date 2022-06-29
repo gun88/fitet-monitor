@@ -30,7 +30,7 @@
 	 */
 
 	$(window).load(function () {
-		$('h1').text((index, text) => text + ' @' + index);
+
 	});
 
 

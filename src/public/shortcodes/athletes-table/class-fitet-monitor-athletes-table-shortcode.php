@@ -46,7 +46,7 @@ class Fitet_Monitor_Athletes_Table_Shortcode extends Fitet_Monitor_Shortcode {
 				throw new Exception("No club found");
 			$club = $clubs[0];
 		} else {
-			$club = $this->manager->get_clubs($club_code);
+			$club = $this->manager->get_club($club_code);
 		}
 
 		$players_table = $this->player_table();

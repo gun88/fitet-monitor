@@ -65,6 +65,9 @@ class Fitet_Monitor_Component {
 		$keys = array_keys($data);
 		$template = $this->template;
 		foreach ($keys as $key) {
+			if (!is_scalar($data[$key])) {
+				continue;
+			}
 			$template = str_replace("{{" . $key . "}}", $data[$key], $template);
 		}
 		return $template;

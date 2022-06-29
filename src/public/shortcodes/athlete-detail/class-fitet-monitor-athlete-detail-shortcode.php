@@ -1,6 +1,9 @@
 <?php
 
 require_once FITET_MONITOR_DIR . 'public/includes/class-fitet-monitor-shortcode.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-card/class-fitet-monitor-athlete-card-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-season/class-fitet-monitor-athlete-season-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-ranking/class-fitet-monitor-athlete-ranking-component.php';
 
 class Fitet_Monitor_Athlete_Detail_Shortcode extends Fitet_Monitor_Shortcode {
 
@@ -14,6 +17,15 @@ class Fitet_Monitor_Athlete_Detail_Shortcode extends Fitet_Monitor_Shortcode {
 		$this->manager = $manager;
 	}
 
+	protected function components() {
+		return [
+			'athleteCard' => new Fitet_Monitor_Athlete_Card_Component($this->plugin_name, $this->version, []),
+			'athleteRanking' => new Fitet_Monitor_Athlete_Ranking_Component($this->plugin_name, $this->version),
+			'athleteSeason' => new Fitet_Monitor_Athlete_Season_Component($this->plugin_name, $this->version),
+		];
+	}
+
+
 	public function enqueue_scripts() {
 		$file = FITET_MONITOR_DIR . "public/assets/chart.min.js";
 		$file = plugin_dir_path($file) . basename($file);
@@ -26,7 +38,7 @@ class Fitet_Monitor_Athlete_Detail_Shortcode extends Fitet_Monitor_Shortcode {
 	}
 
 
-	public function find_player(array $clubs, $player_code) {
+	public function find_player($clubs, $player_code) {
 		foreach ($clubs as $club) {
 			foreach ($club['players'] as $player) {
 				if ($player['code'] == $player_code) {
@@ -39,92 +51,60 @@ class Fitet_Monitor_Athlete_Detail_Shortcode extends Fitet_Monitor_Shortcode {
 
 	protected function process_data($data) {
 
-		//echo add_query_arg( $wp->query_vars, home_url() );
-		//error_log(json_decode($wp->query_vars));
 
-		/*$attributes = $data['attributes'];
+		$attributes = $data['attributes'];
 		$content = $data['content'];
 
 		$attributes = shortcode_atts(
-			['club-code' => '',]
+			['club-code' => '', 'show-club' => false, 'detail-page' => 'atleta']
 			, $attributes, $this->tag);
 
+		$show_club = $attributes['show-club'];
 		$club_code = $attributes['club-code'];
 		if (empty($club_code)) {
 			$clubs = $this->manager->get_clubs();
-			if (!isset($clubs[0]))
-				throw new Exception("No club found");
-			$club = $clubs[0];
 		} else {
-			$club = $this->manager->get_clubs($club_code);
-		}*/
+			$clubs = [$this->manager->get_club($club_code)];
+		}
+
+		$detail_page = $attributes['detail-page'];
+
+		$get_pages = get_pages();
+		$get_pages = array_filter($get_pages, function ($page) use ($detail_page) {
+			return $page->post_name == $detail_page;
+		});
+
+		if (empty($get_pages)) {
+			$guid = null;
+		} else {
+			$guid = $get_pages[0]->guid;
+		}
+
+		if (!$_GET['atleta']) {
+			// todo gestire
+			return [];
+		}
 
 		$player_code = explode('-', $_GET['atleta'])[0];
 
-		$clubs = $this->manager->get_clubs();
 		$player = $this->find_player($clubs, $player_code);
 
 
-		$rankings = array_map(function ($ranking) {
-			return empty($ranking['position']) ? null : $ranking['position'];
-		}, $player['history']['ranking']);
-		$points = array_map(function ($ranking) {
-			return $ranking['points'];
-		}, $player['history']['ranking']);
-		$points_label = array_map(function ($ranking) {
-			return $ranking['date'];
-		}, $player['history']['ranking']);
+
+		$player['link'] = $guid != null ? ($guid . '&atleta=' . $player['code'] . "-" . str_replace(' ', '-', $player['name'])) : null;
 
 
-		$bestRanking = min(array_filter($rankings, function ($r) {
-			return $r != null;
-		}));
-		$bestPoints = max(array_filter($points, function ($p) {
-			return $p != null;
-		}));
+		$rankings = $player['history']['ranking'];
+
+
+		$season = $player['season'];
 		return [
-			'bestRanking' => $bestRanking,
-			'bestPoints' => $bestPoints,
-			'rankings' => json_encode($rankings),
-			'points' => json_encode($points),
-			'labels' => json_encode($points_label),
-			'content' => $this->to_content($player, $bestRanking),
-			'json' => json_encode($player['history']['ranking'])
+			'mainContent' => $this->components['athleteCard']->render($player),
+			'ranking' => empty($rankings) ? '' : $this->components['athleteRanking']->render($rankings),
+			'season' => empty($season) ? '' : $this->components['athleteSeason']->render($season),
+			'json' => json_encode($player)
 		];
 	}
 
-
-	private function to_content($player, $bestRanking) {
-		$content = "";
-		$content .= "<div class='fm-sc-athlete'>";
-
-		$player_name = $player['name'];
-		$player_img = $this->to_player_img($player);
-
-		$content .= $player_img;
-$player_code = $player['code'];
-		$content .= "<div>";
-		$content .= "<b>$player_name - $player_code</b>";
-		$content .= "<div><b>" . __('Rank') . "</b>: <span>" . $player['rank'] . " (Record: $bestRanking)</span></div>";
-		$content .= "<div><b>" . __('Points') . "</b>: <span>" . $player['points'] . "</span></div>";
-		$content .= "<div><b>" . __('Category') . "</b>: <span>" . $player['category'] . "</span></div>";
-		$content .= "<div><b>" . __('Sector') . "</b>: <span>" . $player['sector'] . "</span></div>";
-		$content .= "<div><b>" . __('Birth date') . "</b>: <span>" . $player['birthDate'] . "</span></div>";
-
-		$content .= "</div>";
-		$content .= "</div><hr>";
-
-
-		return $content;
-	}
-
-
-	public function to_player_img($player) {
-		$id = $player['id'];
-		$player_name = $player['name'];
-		$player_image = "http://portale.fitet.org/images/atleti/$id.jpg";
-		$player_no_image = "http://portale.fitet.org/images/atleti/m-vuoto.png";
-		return "<div><img class='fm-sc-athlete-img' alt='$player_name' src='$player_image' onError='this.onerror=null;this.src=\"$player_no_image\";'/></div>";
-	}
 
 }

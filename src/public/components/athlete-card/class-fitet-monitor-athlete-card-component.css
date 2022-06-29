@@ -1,0 +1,17 @@
+.fm-sc-athlete-card {
+	display: flex;
+	gap: 1rem;
+}
+
+@media (max-width: 767px) {
+	.fm-sc-athlete-card {
+		flex-direction: column;
+	}
+}
+
+.fm-sc-athlete-card .fm-sc-athlete-image {
+	height: auto;
+	width: 12rem;
+}
+
+

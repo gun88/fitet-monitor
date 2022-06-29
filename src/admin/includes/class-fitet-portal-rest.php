@@ -66,8 +66,10 @@ class Fitet_Portal_Rest {
 		return $ranking_id_list;
 	}
 
-	public function get_ranking($ranking_id, $sex, $type_id, $club_code = null) {
-		$url = "http://portale.fitet.org/fpdf2/excel_classifica.php?SESSO=$sex&TIPO=$type_id&CLASSIFICA=$ranking_id";
+	public function get_ranking($ranking_id, $sex, $type, $club_code = null) {
+		$sex_id = $sex['id'];
+		$type_id = $type['id'];
+		$url = "http://portale.fitet.org/fpdf2/excel_classifica.php?SESSO=$sex_id&TIPO=$type_id&CLASSIFICA=$ranking_id";
 		$csv_string = $this->http_service->get($url);
 		//$csv_string = mb_convert_encoding($csv_string, "UTF-8","Windows-1252");
 		// splitting result by line
@@ -105,7 +107,7 @@ class Fitet_Portal_Rest {
 		$ranking = array_values($ranking);
 
 		// mapping objects with actual names
-		return array_map(function ($rank) use ($sex, $type_id) {
+		return array_map(function ($rank) use ($sex, $type) {
 			$r = intval($rank['Classifica']);
 			$r = $r == 0 ? "N/A" : $r;
 			return [
@@ -119,8 +121,8 @@ class Fitet_Portal_Rest {
 				'region' => $rank['RegioneComitato'],
 				'clubCode' => intval($rank['IdSocieta']),
 				'clubName' => $rank['NomeSocieta'],
-				'sex' => $sex,
-				'type' => $type_id
+				'sex' => $sex['id'],
+				'type' => $type['name']
 			];
 		}, $ranking);
 	}
@@ -168,7 +170,13 @@ class Fitet_Portal_Rest {
 		}
 
 		// restoring indexes
-		return array_values($players);
+		$players = array_values($players);
+
+		// sort by recent player code
+		usort($players, function ($a, $b) {
+			return intval($b['code']) - intval($a['code']);
+		});
+		return $players;
 	}
 
 

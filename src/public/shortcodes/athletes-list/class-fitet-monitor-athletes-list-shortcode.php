@@ -1,12 +1,12 @@
 <?php
 
 require_once FITET_MONITOR_DIR . 'public/includes/class-fitet-monitor-shortcode.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-card/class-fitet-monitor-athlete-card-component.php';
+
 
 class Fitet_Monitor_Athletes_List_Shortcode extends Fitet_Monitor_Shortcode {
 
-	/**
-	 * @var Fitet_Monitor_Manager
-	 */
+
 	private $manager;
 
 	public function __construct($version, $plugin_name, $manager) {
@@ -14,19 +14,12 @@ class Fitet_Monitor_Athletes_List_Shortcode extends Fitet_Monitor_Shortcode {
 		$this->manager = $manager;
 	}
 
-
-	public function to_player_img($player, $player_url) {
-		$id = $player['id'];
-		$player_name = $player['name'];
-		$player_image = "http://portale.fitet.org/images/atleti/$id.jpg";
-		$player_no_image = "http://portale.fitet.org/images/atleti/m-vuoto.png";
-		$player_img = "<img class='fm-sc-athlete-img' alt='$player_name' src='$player_image' onError='this.onerror=null;this.src=\"$player_no_image\";'/>";
-		if ($player_url) {
-			return "<a href='$player_url'>$player_img</a>";
-		} else {
-			return "<div>$player_img</div>";
-		}
+	protected function components() {
+		return [
+			'athleteCard' => new Fitet_Monitor_Athlete_Card_Component($this->plugin_name, $this->version, []),
+		];
 	}
+
 
 	public function retrieve_club($club_code) {
 		if (empty($club_code)) {
@@ -74,23 +67,9 @@ class Fitet_Monitor_Athletes_List_Shortcode extends Fitet_Monitor_Shortcode {
 	private function to_content($players, $guid) {
 		$content = "";
 		foreach ($players as $player) {
-			$content .= "<div class='fm-sc-athlete'>";
-
-			$player_name = $player['name'];
-			$player_url = $guid != null ? ($guid . '&atleta=' . $player['code'] . "-" . str_replace(' ', '-', $player_name)) : null;
-			$player_img = $this->to_player_img($player, $player_url);
-
-			$content .= $player_img;
-
-			$content .= "<div>";
-			$content .= ($player_url != null ? "<a href='$player_url'><b>$player_name</b></a>" : "<b>$player_name</b>");
-			$content .= "<div><b>" . __('Rank') . "</b>: <span>" . $player['rank'] . "</span></div>";
-			$content .= "<div><b>" . __('Points') . "</b>: <span>" . $player['points'] . "</span></div>";
-			$content .= "<div><b>" . __('Category') . "</b>: <span>" . $player['category'] . "</span></div>";
-			$content .= "<div><b>" . __('Sector') . "</b>: <span>" . $player['sector'] . "</span></div>";
-
-			$content .= "</div>";
-			$content .= "</div><hr>";
+			$player['link'] = $guid != null ? ($guid . '&atleta=' . $player['code'] . "-" . str_replace(' ', '-', $player['name'])) : null;
+			$content .= $this->components['athleteCard']->render($player);
+			$content .= "<hr>";
 		}
 
 

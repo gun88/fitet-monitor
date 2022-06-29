@@ -90,6 +90,23 @@ class Fitet_Monitor_Public {
 		$athlete_detail_shortcode->initialize();
 		add_shortcode($athlete_detail_shortcode->tag, [$athlete_detail_shortcode, 'render_shortcode']);
 
+		add_filter('the_title', function ($data)  {
+
+			if ( $data == 'Atleta' && isset($_GET['atleta'])) {
+				$player_code = explode('-', $_GET['atleta'])[0];
+				$clubs = $this->manager->get_clubs();
+				foreach ($clubs as $club) {
+					foreach ($club['players'] as $player) {
+						if ($player['code'] == $player_code) {
+							return $player['name'];
+						}
+					}
+				}
+			}
+
+			return  $data;
+		});
+
 		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}
 
