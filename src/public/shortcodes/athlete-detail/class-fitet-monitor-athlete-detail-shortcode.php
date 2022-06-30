@@ -2,8 +2,12 @@
 
 require_once FITET_MONITOR_DIR . 'public/includes/class-fitet-monitor-shortcode.php';
 require_once FITET_MONITOR_DIR . 'public/components/athlete-card/class-fitet-monitor-athlete-card-component.php';
-require_once FITET_MONITOR_DIR . 'public/components/athlete-season/class-fitet-monitor-athlete-season-component.php';
 require_once FITET_MONITOR_DIR . 'public/components/athlete-ranking/class-fitet-monitor-athlete-ranking-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-season/class-fitet-monitor-athlete-season-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-championships/class-fitet-monitor-athlete-championships-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-tournaments/class-fitet-monitor-athlete-regional-tournaments-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-tournaments/class-fitet-monitor-athlete-national-tournaments-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/athlete-tournaments/class-fitet-monitor-athlete-national-doubles-tournaments-component.php';
 
 class Fitet_Monitor_Athlete_Detail_Shortcode extends Fitet_Monitor_Shortcode {
 
@@ -22,6 +26,10 @@ class Fitet_Monitor_Athlete_Detail_Shortcode extends Fitet_Monitor_Shortcode {
 			'athleteCard' => new Fitet_Monitor_Athlete_Card_Component($this->plugin_name, $this->version, []),
 			'athleteRanking' => new Fitet_Monitor_Athlete_Ranking_Component($this->plugin_name, $this->version),
 			'athleteSeason' => new Fitet_Monitor_Athlete_Season_Component($this->plugin_name, $this->version),
+			'championships' => new Fitet_Monitor_Athlete_Championships_Component($this->plugin_name, $this->version),
+			'regionalTournaments' => new Fitet_Monitor_Athlete_Regional_Tournament_Component($this->plugin_name, $this->version),
+			'nationalTournaments' => new Fitet_Monitor_Athlete_National_Tournament_Component($this->plugin_name, $this->version),
+			'nationalDoublesTournaments' => new Fitet_Monitor_Athlete_National_Doubles_Tournament_Component($this->plugin_name, $this->version),
 		];
 	}
 
@@ -95,12 +103,26 @@ class Fitet_Monitor_Athlete_Detail_Shortcode extends Fitet_Monitor_Shortcode {
 
 		$rankings = $player['history']['ranking'];
 
-
+		$has_rankings = !empty($rankings);
+		$has_season = !empty($player['season']);
+		$has_championships = !empty($player['history']['championships']);
+		$has_national_tournaments = !empty($player['history']['nationalTournaments']);
+		$has_national_double_tournaments = !empty($player['history']['nationalDoublesTournaments']);
+		$has_regional_tournaments = !empty($player['history']['regionalTournaments']);
 		return [
+			'rankingClass' => $has_rankings ? '' : 'fm-athlete-detail-hidden',
+			'seasonClass' => $has_season ? '' : 'fm-athlete-detail-hidden',
+			'championshipsClass' => $has_championships ? '' : 'fm-athlete-detail-hidden',
+			'nationalTournamentsClass' => $has_national_tournaments ? '' : 'fm-athlete-detail-hidden',
+			'nationalDoublesTournamentsClass' => $has_national_double_tournaments ? '' : 'fm-athlete-detail-hidden',
+			'regionalTournamentsClass' => $has_regional_tournaments ? '' : 'fm-athlete-detail-hidden',
 			'mainContent' => $this->components['athleteCard']->render($player),
-			'ranking' => empty($rankings) ? '' : $this->components['athleteRanking']->render($rankings),
-			'season' => empty($player['season']) ? '' : $this->components['athleteSeason']->render($player),
-			'json' => json_encode($this->manager->portal->get_player_history($player['id']))
+			'ranking' => $has_rankings ? $this->components['athleteRanking']->render($rankings) : '',
+			'season' => $has_season ? $this->components['athleteSeason']->render($player) : '',
+			'championships' => $has_championships ? $this->components['championships']->render($player) : '',
+			'regionalTournaments' => $has_regional_tournaments ? $this->components['regionalTournaments']->render($player) : '',
+			'nationalTournaments' => $has_national_tournaments ? $this->components['nationalTournaments']->render($player) : '',
+			'nationalDoublesTournaments' => $has_national_double_tournaments ? $this->components['nationalDoublesTournaments']->render($player) : '',
 		];
 	}
 

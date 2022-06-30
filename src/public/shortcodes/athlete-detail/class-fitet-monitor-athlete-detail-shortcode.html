@@ -1,21 +1,47 @@
 <div class="fm-sc-athlete-detail">
-	<div style="display: flex">
-		{{mainContent}}
-		<div>
-			<a id="top-x"></a>
-			<ul>
-				<li><a href="#ranking">Ranking History</a></li>
-				<li><a href="#season">Season</a></li>
-			</ul>
+	<div class="fm-sc-athlete-detail-top">
+		<div class="fm-sc-athlete-detail-main-content">{{mainContent}}</div>
+		<div class="fm-sc-athlete-detail-menu">
+			<b>Menu</b>
+			<a class="{{rankingClass}}" href="#ranking">Ranking</a>
+			<a class="{{seasonClass}}" href="#season">Season</a>
+			<a class="{{championshipsClass}}" href="#championships">Championships</a>
+			<a class="{{nationalTournamentsClass}}" href="#nationalTournaments">National Tournaments</a>
+			<a class="{{nationalDoublesTournamentsClass}}" href="#nationalDoublesTournaments">National Doubles Tournaments</a>
+			<a class="{{regionalTournamentsClass}}" href="#regionalTournaments">Regional Tournaments</a>
 		</div>
 	</div>
 
-	<hr>
-	{{ranking}}
-	<hr>
-	{{season}}
-	<a href="#top-x">top</a>
-	<hr>
+	<div class="{{rankingClass}}">
+		<a id="ranking"></a>
+		<hr>
+		{{ranking}}
+	</div>
+	<div class="{{seasonClass}}">
+		<a id="season"></a>
+		<hr>
+		{{season}}
+	</div>
+	<div class="{{championshipsClass}}">
+		<a id="championships"></a>
+		<hr>
+		{{championships}}
+	</div>
+	<div class="{{nationalTournamentsClass}}">
+		<a id="nationalTournaments"></a>
+		<hr>
+		{{nationalTournaments}}
+	</div>
+	<div class="{{nationalDoublesTournamentsClass}}">
+		<a id="nationalDoublesTournaments"></a>
+		<hr>
+		{{nationalDoublesTournaments}}
+	</div>
+	<div class="{{regionalTournamentsClass}}">
+		<a id="regionalTournaments"></a>
+		<hr>
+		{{regionalTournaments}}
+	</div>
 
-	<div><code>{{json}}</code></div>
+
 </div>
