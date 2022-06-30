@@ -14,7 +14,7 @@ class Fitet_Monitor_Manager {
 	/**
 	 * @var Fitet_Portal_Rest
 	 */
-	protected $portal;
+	public $portal; // todo restore protected
 
 
 	/**

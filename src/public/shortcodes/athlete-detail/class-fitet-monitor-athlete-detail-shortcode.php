@@ -90,19 +90,17 @@ class Fitet_Monitor_Athlete_Detail_Shortcode extends Fitet_Monitor_Shortcode {
 		$player = $this->find_player($clubs, $player_code);
 
 
-
 		$player['link'] = $guid != null ? ($guid . '&atleta=' . $player['code'] . "-" . str_replace(' ', '-', $player['name'])) : null;
 
 
 		$rankings = $player['history']['ranking'];
 
 
-		$season = $player['season'];
 		return [
 			'mainContent' => $this->components['athleteCard']->render($player),
 			'ranking' => empty($rankings) ? '' : $this->components['athleteRanking']->render($rankings),
-			'season' => empty($season) ? '' : $this->components['athleteSeason']->render($season),
-			'json' => json_encode($player)
+			'season' => empty($player['season']) ? '' : $this->components['athleteSeason']->render($player),
+			'json' => json_encode($this->manager->portal->get_player_history($player['id']))
 		];
 	}
 

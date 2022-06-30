@@ -1,6 +1,21 @@
 <div class="fm-sc-athlete-detail">
-	{{mainContent}}
+	<div style="display: flex">
+		{{mainContent}}
+		<div>
+			<a id="top-x"></a>
+			<ul>
+				<li><a href="#ranking">Ranking History</a></li>
+				<li><a href="#season">Season</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<hr>
 	{{ranking}}
-	<div>{{season}}</div>
-	<!--<div><code>{{json}}</code></div>-->
+	<hr>
+	{{season}}
+	<a href="#top-x">top</a>
+	<hr>
+
+	<div><code>{{json}}</code></div>
 </div>

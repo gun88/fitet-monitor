@@ -1,63 +1,46 @@
 <?php
 
 require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/table/class-fitet-monitor-table-component.php';
 
 
 class Fitet_Monitor_Athlete_Season_Component extends Fitet_Monitor_Component {
-	protected function script_dependencies(): array {
-		return ['jquery', 'jquery.dynatable.js'];
+
+	protected function components() {
+		return [
+			'table' => new Fitet_Monitor_Table_Component($this->plugin_name, $this->version),
+		];
 	}
 
-
-	public function enqueue_scripts() {
-		$file = FITET_MONITOR_DIR . "public/assets/jquery.dynatable.js";
-		$file = plugin_dir_path($file) . basename($file);
-		Fitet_Monitor_Helper::enqueue_script("jquery.dynatable.js", $file, ['jquery'], $this->version, false);
-		parent::enqueue_scripts();
-	}
-
-	public function enqueue_styles() {
-		parent::enqueue_styles();
-		$file = FITET_MONITOR_DIR . "public/assets/jquery.dynatable.css";
-		$file = plugin_dir_path($file) . basename($file);
-		Fitet_Monitor_Helper::enqueue_style("jquery.dynatable.css", $file, [], $this->version, 'all');
-
-	}
 
 	protected function process_data($data) {
 
-		$table = "
+		$name = $data['code'];
+		$rows = $data['season'];
 
+		$rows = array_map(function ($row) {
+			$row['outcome'] = $row['win'] ? __('W') : __('L');
+			return $row;
+		}, $rows);
 
-<table id='my-table' class='table table-striped'>
-<thead>
-	<tr>
-		<th>" . __("Opponent") . "</th>
-		<th>" . __("Date") . "</th>
-		<th>" . __("Match") . "</th>
-		<th>" . __("Outcome") . "</th>
-		<th>" . __("Points") . "</th>
-	</tr>
-	</thead>
-	<tbody>
-	";
+		$table = [
+			'name' => $name,
+			'columns' => [
+				'opponent' => __("Opponent"),
+				'date' => __("Date"),
+				'match' => __("Match"),
+				'outcome' => __("Outcome"),
+				'points' => __("Points"),
+			],
+			'rows' => $rows,
 
+		];
 
-		for ($i = 0; $i < 10; $i++) {
-			foreach ($data as $item) {
-				$table .= "
-	<tr>
-		<td>" . $item['opponent'] . "</td>
-		<td>" . $item['date'] . "</td>
-		<td>" . $item['match'] . "</td>
-		<td>" . ($item['win'] ? "V" : "P") . "</td>
-		<td>" . $item['points'] . "</td>
-	</tr>";
-			}
-		}
+		return [
+			'seasonLabel' => __('Season'),
+			'table' => $this->components['table']->render($table),
 
-		$table .= "</tbody></table>";
-		return ['table' => $table];
+		];
 	}
 
 

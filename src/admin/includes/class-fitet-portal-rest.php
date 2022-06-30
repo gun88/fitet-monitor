@@ -28,6 +28,27 @@ class Fitet_Portal_Rest {
 		$this->http_service = $http_service;
 	}
 
+	/**
+	 * @param string $bgcolor
+	 * @return string
+	 */
+	function calculate_marker(string $bgcolor): string {
+		switch ($bgcolor) {
+			case '#FFD700':
+				$marker = 'gold';
+				break;
+			case '#C0C0C0':
+				$marker = 'silver';
+				break;
+			case '#CD7F32':
+				$marker = 'bronze';
+				break;
+			default:
+				$marker = 'blank';
+		}
+		return $marker;
+	}
+
 	private function setHttpService($http_service) {
 		$this->http_service = $http_service;
 	}
@@ -218,16 +239,14 @@ class Fitet_Portal_Rest {
 		$html_string = $this->http_service->get($url);
 		$html = str_get_html($html_string);
 
-		$history = $html->find('#fragment-4 tr');
+		$ranking = $html->find('#fragment-4 tr');
 
 		// skipping table header
-		array_shift($history);
+		array_shift($ranking);
 
-		$history = array_map(function ($row) {
+		$ranking = array_map(function ($row) {
 			return $row->find('p');
-		}, $history);
-
-		// todo add naz reg e camp
+		}, $ranking);
 
 		// mapping to history object
 		$ranking = array_map(function ($column) {
@@ -236,12 +255,118 @@ class Fitet_Portal_Rest {
 				'position' => $column[1]->innertext,
 				'points' => $column[2]->innertext,
 				'category' => $column[3]->innertext];
-		}, $history);
+		}, $ranking);
+
+		$championships = $html->find('#fragment-3 tr');
+
+		// skipping table header
+		array_shift($championships);
+
+		$championships = array_map(function ($row) {
+			return $row->find('p');
+		}, $championships);
+
+		// mapping to history object
+		$championships = array_map(function ($column) {
+			$href = $column[1]->find('a')[0]->href;
+			preg_match('/.+CAMP=(-?\d+)/', $href, $matches);
+			$championship_id = $matches[1];
+			preg_match('/.+ANNATA=(-?\d+)/', $href, $matches);
+			$season_id = $matches[1];
+			return [
+				'season' => $column[0]->innertext,
+				'championshipName' => $column[1]->plaintext,
+				'championshipId' => $championship_id,
+				'seasonId' => $season_id,
+				'type' => $column[2]->innertext,
+				'teamName' => $column[3]->innertext,
+				'playerPosition' => $column[4]->innertext,
+				'matchCount' => $column[5]->innertext,
+				'matchWin' => $column[6]->innertext,
+				'matchLost' => $column[7]->innertext,
+				'matchPercentage' => $column[8]->innertext,
+			];
+		}, $championships);
+
+		$regionalTournaments = $html->find('#fragment-2 tr');
+
+		// skipping table headers
+		array_shift($regionalTournaments);
+		array_shift($regionalTournaments);
+
+		$regionalTournaments = array_map(function ($row) {
+			return $row->find('td');
+		}, $regionalTournaments);
+
+		// mapping to history object
+		$regionalTournaments = array_map(function ($column) {
+			$marker = $this->calculate_marker(isset($column[5]) ? $column[5]->bgcolor : '');
+			return [
+				'season' => trim($column[0]->plaintext),
+				'date' => trim($column[1]->plaintext),
+				'region' => trim($column[2]->plaintext),
+				'tournament' => trim($column[3]->plaintext),
+				'competition' => trim($column[4]->plaintext),
+				'round' => isset($column[5]) ? trim($column[5]->plaintext) : '',
+				'marker' => $marker,
+			];
+		}, $regionalTournaments);
+
+
+		$nationalTournaments = $html->find('#fragment-1 table')[0]->find('tr');
+
+		// skipping table headers
+		array_shift($nationalTournaments);
+		array_shift($nationalTournaments);
+
+		$nationalTournaments = array_map(function ($row) {
+			return $row->find('td');
+		}, $nationalTournaments);
+
+		// mapping to history object
+		$nationalTournaments = array_map(function ($column) {
+			$marker = $this->calculate_marker(isset($column[4]) ? $column[4]->bgcolor : '');
+			return [
+				'season' => trim($column[0]->plaintext),
+				'date' => trim($column[1]->plaintext),
+				'tournament' => trim($column[2]->plaintext),
+				'competition' => trim($column[3]->plaintext),
+				'round' => isset($column[4]) ? trim($column[4]->plaintext) : '',
+				'marker' => $marker,
+			];
+		}, $nationalTournaments);
+
+
+		$nationalDoublesTournaments = $html->find('#fragment-1 table')[1]->find('tr');
+
+		// skipping table headers
+		array_shift($nationalDoublesTournaments);
+		array_shift($nationalDoublesTournaments);
+
+		$nationalDoublesTournaments = array_map(function ($row) {
+			return $row->find('td');
+		}, $nationalDoublesTournaments);
+
+		// mapping to history object
+		$nationalDoublesTournaments = array_map(function ($column) {
+			$marker = $this->calculate_marker(isset($column[5]) ? $column[5]->bgcolor : '');
+			return [
+				'season' => trim($column[0]->plaintext),
+				'date' => trim($column[1]->plaintext),
+				'team' => trim($column[2]->plaintext),
+				'tournament' => trim($column[3]->plaintext),
+				'competition' => trim($column[4]->plaintext),
+				'round' => isset($column[5]) ? trim($column[5]->plaintext) : '',
+				'marker' => $marker,
+			];
+		}, $nationalDoublesTournaments);
+
 		return [
 			'ranking' => $ranking,
-			'nationalTournaments' => [],
-			'regionalTournaments' => [],
-			'championships' => [],
+			'nationalTournaments' => $nationalTournaments,
+			'nationalDoublesTournaments' => $nationalDoublesTournaments,
+			'regionalTournaments' => $regionalTournaments,
+			'championships' => $championships,
 		];
 
 
