@@ -1,0 +1,16 @@
+.fm-points-lost:after {
+	content: '\2BC6';
+	margin-left: 5px;
+	color: darkred;
+
+}
+
+.fm-points-gain:after {
+	content: '\2BC5';
+	margin-left: 5px;
+	color: darkgreen;
+}
+
+#player-season .fm-table-column-points {
+	text-align: right;
+}
