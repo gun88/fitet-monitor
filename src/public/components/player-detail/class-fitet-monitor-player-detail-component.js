@@ -1,6 +1,6 @@
 jQuery(function ($) {
 
-	$('.fm-sc-athlete-detail-menu a').click(function (event) {
+	$('.fm-player-detail-menu a').click(function (event) {
 		event.preventDefault();
 
 		$('html, body').animate({

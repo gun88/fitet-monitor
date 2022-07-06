@@ -1,0 +1,10 @@
+.fm-player-detail-menu {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+
+.fm-player-detail-hidden {
+	display: none
+}
+
