@@ -1,0 +1,18 @@
+#championships td.fm-table-column-matchCount ,
+#championships td.fm-table-column-matchWin ,
+#championships td.fm-table-column-matchLost ,
+#championships td.fm-table-column-matchPercentage {
+	text-align: right !important;
+}
+#championships th.fm-table-column-matchCount ,
+#championships th.fm-table-column-matchWin ,
+#championships th.fm-table-column-matchLost ,
+#championships th.fm-table-column-matchPercentage {
+	text-align: center;
+}
+
+
+#championships td.fm-table-column-championship {
+	padding-top: 0;
+	padding-bottom: 0;
+}
