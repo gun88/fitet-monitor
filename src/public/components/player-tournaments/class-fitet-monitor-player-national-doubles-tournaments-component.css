@@ -23,12 +23,4 @@
 #national-doubles-tournaments td.fm-table-column-competition {
 	padding-top: 0;
 	padding-bottom: 0;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 25rem;
-}
-
-#national-doubles-tournaments td.fm-table-column-partner {
-	max-width: 20rem;
 }
