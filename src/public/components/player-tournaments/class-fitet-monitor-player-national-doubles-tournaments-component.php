@@ -43,14 +43,14 @@ class Fitet_Monitor_Player_National_Doubles_Tournament_Component extends Fitet_M
 	public function sort() {
 		return [
 			'date' => 'date',
-			'round' => 'numberOnly',
+			'round' => 'number',
 		];
 	}
 
 	public function rows($data) {
 		return array_map(function ($row) use ($data) {
 			$row['round'] = $this->round($row['round'], $row['marker']);
-			$row['partner'] = $this->partner($row['team'], $data['name'], $data['clubCode']);
+			$row['partner'] = $this->partner($row['team'], $data['name'], $data['clubCode'], $data['baseUrl'], );
 			$row['competition'] = $this->competition($row['competition'], $row['tournament']);
 			return $row;
 		}, $data['history']['nationalDoublesTournaments']);
@@ -64,7 +64,7 @@ class Fitet_Monitor_Player_National_Doubles_Tournament_Component extends Fitet_M
 		return "<span class='fm-points-$marker'>" . $round . "</span>";
 	}
 
-	private function partner($team, $player_name, $club_code) {
+	private function partner($team, $player_name, $club_code,$base_url) {
 		$players = explode("/", $team);
 		$players = array_map(function ($player) {
 			return trim($player);
@@ -72,7 +72,7 @@ class Fitet_Monitor_Player_National_Doubles_Tournament_Component extends Fitet_M
 		$players = array_values(array_filter($players, function ($player) use ($player_name) {
 			return $player != $player_name;
 		}));
-		return Fitet_Monitor_Utils::player_cell_by_name_and_club($players[0], $club_code, "index.php?page_id=56");
+		return Fitet_Monitor_Utils::player_cell_by_name_and_club($players[0], $club_code, $base_url);
 
 	}
 

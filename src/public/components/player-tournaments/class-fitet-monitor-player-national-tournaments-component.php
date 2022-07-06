@@ -42,7 +42,7 @@ class Fitet_Monitor_Player_National_Tournament_Component extends Fitet_Monitor_C
 	public function sort() {
 		return [
 			'date' => 'date',
-			'round' => 'numberOnly',
+			'round' => 'number',
 		];
 	}
 
