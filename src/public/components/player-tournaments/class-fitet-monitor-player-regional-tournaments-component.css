@@ -1,0 +1,35 @@
+#regional-tournaments .fm-points-silver:after {
+	content: '\2B24';
+	margin-left: 5px;
+	color: silver;
+}
+
+#regional-tournaments .fm-points-gold:after {
+	content: '\2B24';
+	margin-left: 5px;
+	color: darkgoldenrod;
+}
+
+#regional-tournaments .fm-points-bronze:after {
+	content: '\2B24';
+	margin-left: 5px;
+	color: saddlebrown;
+}
+
+#regional-tournaments .fm-table-column-round {
+	text-align: right;
+}
+
+/*todo sposta in tema*/
+#regional-tournaments td.fm-table-column-competition {
+	padding-top: 0;
+	padding-bottom: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 25rem;
+}
+
+#regional-tournaments td.fm-table-column-partner {
+	max-width: 20rem;
+}
