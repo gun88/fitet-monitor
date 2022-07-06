@@ -1,0 +1,13 @@
+.fm-player-card {
+	display: flex;
+	gap: 1rem;
+}
+
+
+.fm-player-card .fm-player-image img {
+	height: auto;
+	width: 12rem;
+	min-width: 12rem;
+}
+
+
