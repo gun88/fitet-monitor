@@ -6,45 +6,22 @@ require_once FITET_MONITOR_DIR . 'public/components/table/class-fitet-monitor-ta
 
 class Fitet_Monitor_Player_Championships_Component extends Fitet_Monitor_Component {
 
-
 	protected function components() {
-		return [
-			'table' => new Fitet_Monitor_Table_Component($this->plugin_name, $this->version),
-		];
+		return ['table' => new Fitet_Monitor_Table_Component($this->plugin_name, $this->version),];
 	}
 
 	protected function process_data($data) {
-
-		$rows = $data['history']['championships'];
-
-		$rows = array_map(function ($row) {
-			if (is_numeric($row['matchPercentage']))
-				$row['matchPercentage'] = round($row['matchPercentage']) . '%';
-			$row['type'] = $this->type($row['type']);
-			$row['championship'] = $this->championship($row['championshipName'],$row['type']);
-			$row['team'] = $this->team($row['teamName'], $row['seasonId'], $row['championshipId']);
-			return $row;
-		}, $rows);
-
 		$table = [
 			'name' => "championships",
-			'columns' => [
-				'season' => __("Season"),
-				'championship' => __("Championship"),
-				'team' => __("Team"),
-				'matchCount' => __('Match'),
-				'matchWin' => __('Won'),
-				'matchLost' => __('Lost'),
-				'matchPercentage' => __('Percentage'),
-			],
-			'rows' => $rows,
+			'columns' => $this->columns(),
+			'sort' => $this->sort(),
+			'rows' => $this->rows($data['history']['championships']),
 
 		];
 
 		return [
 			'championshipsLabel' => __('Championships'),
 			'table' => $this->components['table']->render($table),
-
 		];
 	}
 
@@ -60,6 +37,40 @@ class Fitet_Monitor_Player_Championships_Component extends Fitet_Monitor_Compone
 
 	private function championship($championship_name, string $type) {
 		return "<b>$championship_name</b><br><span>$type</span>";
+	}
+
+	private function rows($rows) {
+		return array_map(function ($row) {
+			if (is_numeric($row['matchPercentage']))
+				$row['matchPercentage'] = round($row['matchPercentage']) . '%';
+			$row['type'] = $this->type($row['type']);
+			$row['championship'] = $this->championship($row['championshipName'], $row['type']);
+			$row['team'] = $this->team($row['teamName'], $row['seasonId'], $row['championshipId']);
+			return $row;
+		}, $rows);
+	}
+
+
+	private function columns() {
+		return [
+			'season' => __("Season"),
+			'championship' => __("Championship"),
+			'team' => __("Team"),
+			'matchCount' => __('Match'),
+			'matchWin' => __('Won'),
+			'matchLost' => __('Lost'),
+			'matchPercentage' => __('Percentage'),
+		];
+	}
+
+
+	private function sort() {
+		return [
+			'matchCount' => 'number',
+			'matchWin' => 'number',
+			'matchLost' => 'number',
+			'matchPercentage' => 'number',
+		];
 	}
 
 
