@@ -20,9 +20,10 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
 	}
 
 	protected function process_data($data) {
-		$data = array_merge(['filter' => '', 'players' => [], 'tableUrl' => '#', 'capsUrl' => '#'], $data);
+		$data = array_merge(['filter' => '', 'players' => [], 'tableUrl' => '#', 'capsUrl' => '#', 'showFilter' => false], $data);
 		return [
-			'pageMenu' => $this->menu($data['filter'], $data['tableUrl'], $data['capsUrl']),
+			'pageMenu' => $this->menu($data['tableUrl'], $data['capsUrl']),
+			'filter' => $data['showFilter'] ? $this->getFilter($data['filter']) : '',
 			'mainContent' => $this->main_content($data['players']),
 		];
 	}
@@ -37,10 +38,9 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
 		return implode('<hr>', $data);
 	}
 
-	private function menu($filter, $table_url, $caps_url) {
+	private function menu($table_url, $caps_url) {
 		$menu_entries = [];
-		$filters = $this->filter($filter);
-		$menu_entries[] = '<div><img alt="filter" src="' . FITET_MONITOR_ICON_FILTER . '"/><span>' . __('Filter') . '</span>' . $filters . '</div>';
+		$menu_entries[] = '<span><img alt="list" src="' . FITET_MONITOR_ICON_LIST . '"/>' . __('List') . '</span>';
 		$menu_entries[] = '<a href="' . $table_url . '"><img alt="table" src="' . FITET_MONITOR_ICON_TABLE . '"/><span>' . __('Table') . '</span></a>';
 		$menu_entries[] = '<a href="' . $caps_url . '"><img alt="caps" src="' . FITET_MONITOR_ICON_HASHTAG . '"/><span>' . __('Caps') . '</span></a>';
 
@@ -48,15 +48,17 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
 	}
 
 
-	private function filter($filter): string {
-		$str = "<select id='fm-player-list-filter'>";
-		$str .= "<option " . empty($filter) . " value='none'>" . __('None') . "</option>";
-		$str .= "<option " . ($filter == 'Italiani' ? 'selected' : '') . " value='Italiani'>" . __('Italiani') . "</option>";
-		$str .= "<option " . ($filter == 'Stranieri' ? 'selected' : '') . " value='Stranieri'>" . __('Stranieri') . "</option>";
-		$str .= "<option " . ($filter == 'Fuori Quadro' ? 'selected' : '') . " value='Fuori Quadro'>" . __('Fuori Quadro') . "</option>";
-		$str .= "<option " . ($filter == 'Provvisori' ? 'selected' : '') . " value='Provvisori'>" . __('Provvisori') . "</option>";
-		$str .= "</select>";
-		return $str;
+	private function getFilter($filter): string {
+		$filters = '<div><img alt="filter" src="' . FITET_MONITOR_ICON_FILTER . '"/><span>' . __('Filter') . '</span>';
+		$filters .= "<select id='fm-player-list-filter'>";
+		$filters .= "<option " . empty($filter) . " value='none'>" . __('None') . "</option>";
+		$filters .= "<option " . ($filter == 'Italiani' ? 'selected' : '') . " value='Italiani'>" . __('Italiani') . "</option>";
+		$filters .= "<option " . ($filter == 'Stranieri' ? 'selected' : '') . " value='Stranieri'>" . __('Stranieri') . "</option>";
+		$filters .= "<option " . ($filter == 'Fuori Quadro' ? 'selected' : '') . " value='Fuori Quadro'>" . __('Fuori Quadro') . "</option>";
+		$filters .= "<option " . ($filter == 'Provvisori' ? 'selected' : '') . " value='Provvisori'>" . __('Provvisori') . "</option>";
+		$filters .= "</select>";
+		$filters .= '</div>';
+		return $filters;
 	}
 
 }

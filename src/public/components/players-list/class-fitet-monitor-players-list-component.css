@@ -4,12 +4,7 @@
 	flex-wrap: wrap;
 }
 
-.fm-player-list-menu > div {
-	display: flex;
-	gap: .5rem;
-	align-items: center;
-}
-
+.fm-player-list-menu > span,
 .fm-player-list-menu > a {
 	display: flex;
 	gap: .5rem;
@@ -20,3 +15,22 @@
 	height: 1rem;
 }
 
+.fm-player-list-filter {
+	margin-bottom: 1rem;
+	display: flex;
+}
+
+.fm-player-list-filter > div {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+	margin-left: auto;
+}
+
+.fm-player-list-filter > div img {
+	height: 1rem;
+}
+
+.fm-player-list-filter > div select {
+	width: auto;
+}
