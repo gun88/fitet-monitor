@@ -1,6 +1,6 @@
 <?php
 
-require_once FITET_MONITOR_DIR . 'public/includes/class-fitet-monitor-shortcode.php';
+require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
 require_once FITET_MONITOR_DIR . 'public/components/player-card/class-fitet-monitor-player-card-component.php';
 
 
@@ -9,7 +9,6 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
 	public function components() {
 		return [
 			'playerCard' => new Fitet_Monitor_Player_Card_Component($this->plugin_name, $this->version, [
-				'showBest' => false,
 				'showDiff' => false,
 				'showPlayerCode' => false,
 				'showRegion' => false,
