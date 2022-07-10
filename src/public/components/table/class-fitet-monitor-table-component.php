@@ -4,11 +4,16 @@ require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.
 
 
 class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
+	protected function script_dependencies(): array {
+		return ['wp-i18n', 'jquery'];
+	}
+
 
 	protected function process_data($data) {
 
 		$name = $data['name'];
 		$columns = $data['columns'];
+		$sort = isset($data['sort']) ? $data['sort'] : [];
 		$keys = array_keys($columns);
 		$rows = $data['rows'];
 
@@ -17,7 +22,8 @@ class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
 		$table .= "<thead>";
 		$table .= "<tr>";
 		foreach ($keys as $key) {
-			$table .= "<th class='fm-table-column-$key'>" . $columns[$key] . "</th>";
+			$sort_type = isset($sort[$key]) ? "data-sort-type='" . $sort[$key] . "'" : "";
+			$table .= "<th class='fm-table-column-$key' data-dynatable-column='$key' $sort_type>" . $columns[$key] . "</th>";
 		}
 		$table .= "</tr>";
 		$table .= "</thead>";

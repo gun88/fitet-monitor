@@ -7,6 +7,11 @@
 	margin: 0;
 }
 
+.dynatable-wrapper th,
+.dynatable-wrapper td {
+	white-space: nowrap;
+}
+
 .dynatable-header,
 .dynatable-footer {
 	display: flex;
@@ -82,7 +87,8 @@
 }
 
 .dynatable-active-page {
-	background: #13aff0;
+	/*background: #13aff0;*/
+	background: #d10014;
 	border-radius: 5px;
 	color: #fff;
 }

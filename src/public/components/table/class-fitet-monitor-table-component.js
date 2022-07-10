@@ -1009,7 +1009,22 @@ jQuery(function ($) {
 		// (the most common use-cases I could think of)
 		this.functions = {
 			number: function (a, b, attr, direction) {
-				return a[attr] === b[attr] ? 0 : (direction > 0 ? a[attr] - b[attr] : b[attr] - a[attr]);
+				a = +a[attr].replace(/.*?(-?\d+).*/g, (_, x) => x);
+				b = +b[attr].replace(/.*?(-?\d+).*/g, (_, x) => x);
+				if (isNaN(a)) {
+					a = direction > 0 ? 0 : Number.MAX_SAFE_INTEGER;
+				}
+				if (isNaN(b)) {
+					b = direction > 0 ? 0 : Number.MAX_SAFE_INTEGER;
+				}
+				return a === b ? 0 : (direction < 0 ? a - b : b - a);
+			},
+			date: function (a, b, attr, direction) {
+				a = a[attr].split('/');
+				b = b[attr].split('/');
+				a = +(a[2] + a[1] + a[0])
+				b = +(b[2] + b[1] + b[0])
+				return a === b ? 0 : (direction < 0 ? a - b : b - a);
 			},
 			string: function (a, b, attr, direction) {
 				var aAttr = (a['dynatable-sortable-text'] && a['dynatable-sortable-text'][attr]) ? a['dynatable-sortable-text'][attr] : a[attr],
@@ -1847,13 +1862,51 @@ jQuery(function ($) {
 	$.dynatable(dt);
 
 
-	$('.fm-table').dynatable({
-		features: {pushState: false,},
-		inputs: {
-			pageText: '',
-			searchText: '',
-			searchPlaceholderText: 'Search'
-		}
+	const __ = wp.i18n.__;
+
+
+	$('.fm-table').each(function (index, element) {
+
+		const $element = $(element);
+
+		const sortTypes = $element.find('th')
+			.map(function () {
+				if (this.dataset.sortType) {
+					return {'key': this.dataset.dynatableColumn, 'value': this.dataset.sortType}
+				}
+				return null;
+			})
+			.get()
+			.reduce((accumulator, value) => {
+				return {...accumulator, [value.key]: value.value};
+			}, {});
+
+		$element.dynatable({
+			table: {
+				copyHeaderClass: true
+			},
+			features: {pushState: false},
+			inputs: {
+				pageText: '',
+				searchText: '',
+				searchPlaceholderText: __('Search'),
+				paginationPrev: __('Previous'),
+				paginationNext: __('Next'),
+				perPageText: __('Show: '),
+				recordCountPageBoundTemplate: __('{pageLowerBound} to {pageUpperBound} of'),
+				recordCountPageUnboundedTemplate: __('{recordsShown} of'),
+				recordCountTotalTemplate: __('{recordsQueryCount} {collectionName}'),
+				recordCountFilteredTemplate: __(' (filtered from {recordsTotal} total records)'),
+				recordCountText: __('Showing'),
+				recordCountTextTemplate: __('{text} {pageTemplate} {totalTemplate} {filteredTemplate}'),
+				processingText: __('Processing...'),
+			},
+			dataset: {
+				sortTypes: sortTypes
+			}
+		});
+
 	});
+
 
 });
