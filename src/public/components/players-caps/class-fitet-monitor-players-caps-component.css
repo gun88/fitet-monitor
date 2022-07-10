@@ -1,0 +1,21 @@
+.fm-player-caps-menu {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.fm-player-caps-menu > span,
+.fm-player-caps-menu > a {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+}
+
+.fm-player-caps-menu img {
+	height: 1rem;
+}
+#fm-players-caps .fm-table-column-tournaments,
+#fm-players-caps .fm-table-column-championships,
+#fm-players-caps .fm-table-column-total {
+	text-align: right;
+}
