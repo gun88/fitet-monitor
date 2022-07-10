@@ -1,73 +1,105 @@
 <?php
 
 require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/common/class-fitet-monitor-player-image-component.php';
 
 
 class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 
 	private $deault_confing = [
-		'nameClass' => '',
-		'codeClass' => '',
-		'categoryClass' => '',
-		'rankClass' => '',
-		'pointsClass' => '',
-		'diffClass' => '',
-		'sectorClass' => '',
-		'typeClass' => '',
-		'sexClass' => '',
-		'birthDateClass' => '',
-		'clubClass' => '',
-		'clubCodeClass' => '',
-		'regionClass' => '',
-		'playerImage' => '',
+		'showClub' => true,
+		'showClubCode' => true,
+		'showPoints' => true,
+		'showRank' => true,
+		'showBest' => true,
+		'showCategory' => true,
+		'showDiff' => true,
+		'showPlayerCode' => true,
+		'showSector' => true,
+		'showRegion' => true,
+		'showSex' => true,
+		'showBirthDate' => true,
+		'playerImage' => FITET_MONITOR_PLAYER_NO_IMAGE,
+		'playerUrl' => null,
+		'playerName' => 'N/A',
+		'playerCode' => 'N/A',
+		'clubName' => 'N/A',
+		'clubCode' => 'N/A',
+		'points' => 'N/A',
+		'rank' => 'N/A',
+		'best' => 'N/A',
+		'category' => 'N/A',
+		'diff' => 'N/A',
+		'sector' => 'N/A',
+		'type' => 'N/A',
+		'region' => 'N/A',
+		'sex' => 'N/A',
+		'birthDate' => 'N/A',
 	];
-
-	private $labels = [];
 
 	private $config;
 
 	public function __construct($plugin_name, $version, $config) {
 		parent::__construct($plugin_name, $version);
 		$this->config = $config;
-		$this->labels();
+	}
+
+	protected function components() {
+		return ['image' => new Fitet_Monitor_Player_Image_Component($this->plugin_name, $this->version)];
 	}
 
 	protected function process_data($data) {
-		$data = array_merge($this->labels, $this->deault_confing, $this->config, $data);
-
-		$data['playerImage'] = Fitet_Monitor_Utils::player_image($data, $data['link']);
-		$data['playerUrl'] = Fitet_Monitor_Utils::player_page_url($data, $data['link']);
-
-		$best_ranking = Fitet_Monitor_Utils::calculate_best_ranking($data['history']['ranking']);
-		if ($best_ranking != null) {
-			$position = $best_ranking['position'];
-			$date = $best_ranking['date'];
-			$onLabel = __('on');
-			$data['best'] = "$position $onLabel $date";
-		} else {
-			$data['best'] = "N/A";
-		}
-
+		$data = array_merge($this->deault_confing, $this->config, $data);
+		$data['playerImage'] = $this->components['image']->render($data);
+		$data['playerContent'] = $this->player_content($data);
 
 		return $data;
 	}
 
-	private function labels() {
-		$this->labels = [
-			'clubLabel' => __('Club'),
-			'clubCodeLabel' => __('Code'),
-			'categoryLabel' => __('Category'),
-			'rankLabel' => __('Rank'),
-			'bestLabel' => __('Best'),
-			'pointsLabel' => __('Points'),
-			'diffLabel' => __('Difference'),
-			'sectorLabel' => __('Sector'),
-			'regionLabel' => __('Region'),
-			'typeLabel' => __('Type'),
-			'sexLabel' => __('Sex'),
-			'birthDateLabel' => __('Birth Date'),
-		];
+
+	private function player_content($data) {
+		$content = "<div>" . $this->name($data) . "</div>";
+		if ($data['multiClub'])
+			$content .= $data['showClub'] ? $this->club($data) : '';
+		$content .= $data['showPoints'] ? $this->row(__('Points'), $data['points']) : '';
+		$content .= $data['showRank'] ? $this->row(__('Rank'), $this->rank($data['rank'], $data['type'])) : '';
+		$content .= $data['showBest'] ? $this->row(__('Best'), $data['best']) : '';
+		$content .= $data['showCategory'] ? $this->row(__('Category'), $data['category']) : '';
+		$content .= $data['showDiff'] ? $this->row(__('Difference'), $data['diff']) : '';
+		$content .= $data['showSector'] ? $this->row(__('Sector'), $data['sector']) : '';
+		$content .= $data['showPlayerCode'] ? $this->row(__('Player Code'), $data['playerCode']) : '';
+		$content .= $data['showRegion'] ? $this->row(__('Region'), $data['region']) : '';
+		$content .= $data['showSex'] ? $this->row(__('Sex'), $data['sex']) : '';
+		$content .= $data['showBirthDate'] ? $this->row(__('Birth Date'), $data['birthDate']) : '';
+		return $content;
 	}
 
+	public function name($data) {
+		$player_page_url = ($data['playerUrl']);
+		if ($player_page_url != null) {
+			return "<a href='$player_page_url'><b>" . $data['playerName'] . "</b></a>";
+		} else {
+			return "<span><b>" . $data['playerName'] . "</b></span>";
+		}
+	}
+
+
+	private function club($data) {
+		$club_name = $data['clubName'];
+		if ($data['showClubCode']) {
+			$club_name .= '<span> - ' . __('Code') . ': ' . $data['clubCode'] . '</span>';
+		}
+		return $this->row(__('Club'), $club_name);
+
+	}
+
+	private function row($label, $value) {
+		return "<div><b>$label</b>: <span>$value</span></div>";
+	}
+
+
+	private function rank($rank, $type): string {
+		return $type == 'Italiani' ? $rank : $type;
+	}
 
 }

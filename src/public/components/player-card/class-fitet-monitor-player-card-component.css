@@ -5,9 +5,11 @@
 
 
 .fm-player-card .fm-player-image img {
-	height: auto;
-	width: 12rem;
+	object-fit: cover;
 	min-width: 12rem;
+	width: 12rem;
+	height: 12rem;
+	object-position: top;
 }
 
 
