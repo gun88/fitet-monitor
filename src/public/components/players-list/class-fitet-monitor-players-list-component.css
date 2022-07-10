@@ -1,0 +1,22 @@
+.fm-player-list-menu {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.fm-player-list-menu > div {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+}
+
+.fm-player-list-menu > a {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+}
+
+.fm-player-list-menu img {
+	height: 1rem;
+}
+
