@@ -1,0 +1,16 @@
+.fm-player-table-menu {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.fm-player-table-menu > span,
+.fm-player-table-menu > a {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+}
+
+.fm-player-table-menu img {
+	height: 1rem;
+}
