@@ -10,7 +10,7 @@ class Fitet_Monitor_Team_Cell_Component extends Fitet_Monitor_Component {
 	}
 
 	protected function process_data($data) {
-		$data = array_merge(['clubCode' => '', 'teamName' => 'N/A', 'teamPageUrl' => ''], $data);
+		$data = array_merge(['clubCode' => '', 'teamName' => 'N/A', 'teamPageUrl' => '', 'clubLogo' => ''], $data);
 		$team_name = $data['teamName'];
 		$image = $this->components['image']->render($data);
 		$team_page_url = $data['teamPageUrl'];

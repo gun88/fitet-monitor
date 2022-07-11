@@ -10,7 +10,7 @@ class Fitet_Monitor_Player_Cell_Component extends Fitet_Monitor_Component {
 	}
 
 	protected function process_data($data) {
-		$data = array_merge(['playerId' => '', 'playerName' => 'N/A', 'playerPageUrl' => ''], $data);
+		$data = array_merge(['playerId' => '', 'playerName' => 'N/A', 'playerPageUrl' => '', 'playerImage'=>''], $data);
 		$player_name = $data['playerName'];
 		$image = $this->components['image']->render($data);
 		$player_page_url = $data['playerPageUrl'];
