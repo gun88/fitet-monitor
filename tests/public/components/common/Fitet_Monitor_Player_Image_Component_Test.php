@@ -55,4 +55,40 @@ class Fitet_Monitor_Player_Image_Component_Test extends Fitet_Monitor_Test_Case 
 
 	}
 
+	/** @test */
+	public function player_image_test() {
+		$expected = "<span class='fm-player-image'><img src='customLogo.jpg' onError='this.onerror=null;this.src=\"/fitet-monitor-no-player-image.svg\";' alt='N/A'/></span>";
+		$actual = Fitet_Monitor_Component_Wrapper::render_wrapper($this->component, ['playerImage'=>'customLogo.jpg']);
+		$this->assertXmlStringEqualsXmlString($expected, $actual);
+
+		$expected = "<span class='fm-player-image'><img src='customLogo.jpg' onError='this.onerror=null;this.src=\"/fitet-monitor-no-player-image.svg\";' alt='N/A'/></span>";
+		$actual = Fitet_Monitor_Component_Wrapper::render_wrapper($this->component, ['clubCode' => '1','playerImage'=>'customLogo.jpg']);
+		$this->assertXmlStringEqualsXmlString($expected, $actual);
+
+		$expected = "<span class='fm-player-image'><img src='customLogo.jpg' onError='this.onerror=null;this.src=\"/fitet-monitor-no-player-image.svg\";' alt='Foo Bar'/></span>";
+		$actual = Fitet_Monitor_Component_Wrapper::render_wrapper($this->component, ['playerName' => 'Foo Bar','playerImage'=>'customLogo.jpg']);
+		$this->assertXmlStringEqualsXmlString($expected, $actual);
+
+		$expected = "<span class='fm-player-image'><img src='customLogo.jpg' onError='this.onerror=null;this.src=\"/fitet-monitor-no-player-image.svg\";' alt='Foo Bar'/></span>";
+		$actual = Fitet_Monitor_Component_Wrapper::render_wrapper($this->component, ['clubCode' => '1', 'playerName' => 'Foo Bar','playerImage'=>'customLogo.jpg']);
+		$this->assertXmlStringEqualsXmlString($expected, $actual);
+
+		$expected = "<a class='fm-player-image' href='/club.html'><img src='customLogo.jpg' onError='this.onerror=null;this.src=\"/fitet-monitor-no-player-image.svg\";' alt='N/A'/></a>";
+		$actual = Fitet_Monitor_Component_Wrapper::render_wrapper($this->component, ['playerPageUrl' => '/club.html','playerImage'=>'customLogo.jpg']);
+		$this->assertXmlStringEqualsXmlString($expected, $actual);
+
+		$expected = "<a class='fm-player-image' href='/club.html'><img src='customLogo.jpg' onError='this.onerror=null;this.src=\"/fitet-monitor-no-player-image.svg\";' alt='N/A'/></a>";
+		$actual = Fitet_Monitor_Component_Wrapper::render_wrapper($this->component, ['clubCode' => '1', 'playerPageUrl' => '/club.html','playerImage'=>'customLogo.jpg']);
+		$this->assertXmlStringEqualsXmlString($expected, $actual);
+
+		$expected = "<a class='fm-player-image' href='/club.html'><img src='customLogo.jpg' onError='this.onerror=null;this.src=\"/fitet-monitor-no-player-image.svg\";' alt='Foo Bar'/></a>";
+		$actual = Fitet_Monitor_Component_Wrapper::render_wrapper($this->component, ['playerName' => 'Foo Bar', 'playerPageUrl' => '/club.html','playerImage'=>'customLogo.jpg']);
+		$this->assertXmlStringEqualsXmlString($expected, $actual);
+
+		$expected = "<a class='fm-player-image' href='/club.html'><img src='customLogo.jpg' onError='this.onerror=null;this.src=\"/fitet-monitor-no-player-image.svg\";' alt='Foo Bar'/></a>";
+		$actual = Fitet_Monitor_Component_Wrapper::render_wrapper($this->component, ['clubCode' => '1', 'playerName' => 'Foo Bar', 'playerPageUrl' => '/club.html','playerImage'=>'customLogo.jpg']);
+		$this->assertXmlStringEqualsXmlString($expected, $actual);
+
+	}
+
 }
