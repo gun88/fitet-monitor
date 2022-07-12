@@ -195,7 +195,7 @@ class simple_html_dom_node
         if (count($this->_) > 0) {
             $string .= ' $_ (';
             foreach ($this->_ as $k => $v) {
-                if (is_array($v, 'fitet-monitor')) {
+                if (is_array($v)) {
                     $string .= "[$k]=>(";
                     foreach ($v as $k2 => $v2) {
                         $string .= "[$k2]=>\"$v2\", ";
@@ -220,7 +220,7 @@ class simple_html_dom_node
             $string .= ' NULL ';
         }
 
-        $string .= ' children: ' . count($this->children, 'fitet-monitor');
+        $string .= ' children: ' . count($this->children);
         $string .= ' nodes: ' . count($this->nodes);
         $string .= ' tag_start: ' . $this->tag_start;
         $string .= "\n";
@@ -360,7 +360,7 @@ class simple_html_dom_node
     {
         global $debug_object;
 
-        if (is_object($debug_object, 'fitet-monitor')) {
+        if (is_object($debug_object)) {
             $text = '';
 
             if ($this->tag === 'text') {
@@ -392,7 +392,7 @@ class simple_html_dom_node
         $ret = '';
 
         if ($this->dom && $this->dom->nodes[$this->_[HDOM_INFO_BEGIN]]) {
-            $ret = $this->dom->nodes[$this->_[HDOM_INFO_BEGIN]]->makeup(, 'fitet-monitor');
+            $ret = $this->dom->nodes[$this->_[HDOM_INFO_BEGIN]]->makeup();
         }
 
         if (isset($this->_[HDOM_INFO_INNER])) {
@@ -400,7 +400,7 @@ class simple_html_dom_node
             if ($this->tag !== 'br') {
                 $ret .= $this->_[HDOM_INFO_INNER];
             }
-        } elseif ($this->nodes, 'fitet-monitor') {
+        } elseif ($this->nodes) {
             foreach ($this->nodes as $n) {
                 $ret .= $this->convert_text($n->outertext());
             }
@@ -419,13 +419,13 @@ class simple_html_dom_node
             return $this->_[HDOM_INFO_INNER];
         }
 
-        switch ($this->nodetype, 'fitet-monitor') {
+        switch ($this->nodetype) {
             case HDOM_TYPE_TEXT: return $this->dom->restore_noise($this->_[HDOM_INFO_TEXT]);
             case HDOM_TYPE_COMMENT: return '';
             case HDOM_TYPE_UNKNOWN: return '';
         }
 
-        if (strcasecmp($this->tag, 'script', 'fitet-monitor') === 0) { return ''; }
+        if (strcasecmp($this->tag, 'script') === 0) { return ''; }
         if (strcasecmp($this->tag, 'style') === 0) { return ''; }
 
         $ret = '';
@@ -482,7 +482,7 @@ class simple_html_dom_node
             $ret .= $this->_[HDOM_INFO_SPACE][$i][0];
 
             //no value attr: nowrap, checked selected...
-            if ($val === true, 'fitet-monitor') {
+            if ($val === true) {
                 $ret .= $key;
             } else {
                 switch ($this->_[HDOM_INFO_QUOTE][$i])
@@ -502,11 +502,11 @@ class simple_html_dom_node
             }
         }
 
-        $ret = $this->dom->restore_noise($ret, 'fitet-monitor');
+        $ret = $this->dom->restore_noise($ret);
         return $ret . $this->_[HDOM_INFO_ENDSPACE] . '>';
     }
 
-    function find($selector, $idx = null, $lowercase = false, 'fitet-monitor')
+    function find($selector, $idx = null, $lowercase = false)
     {
         $selectors = $this->parse_selector($selector);
         if (($count = count($selectors)) === 0) { return array(); }
@@ -538,7 +538,7 @@ class simple_html_dom_node
             }
 
             foreach ($head as $k => $v) {
-                if (!isset($found_keys[$k], 'fitet-monitor')) {
+                if (!isset($found_keys[$k])) {
                     $found_keys[$k] = 1;
                 }
             }
@@ -570,7 +570,7 @@ class simple_html_dom_node
             // Find parent closing tag if the current element doesn't have a closing
             // tag (i.e. void element)
             $end = (!empty($this->_[HDOM_INFO_END])) ? $this->_[HDOM_INFO_END] : 0;
-            if ($end == 0, 'fitet-monitor') {
+            if ($end == 0) {
                 $parent = $this->parent;
                 while (!isset($parent->_[HDOM_INFO_END]) && $parent !== null) {
                     $end -= 1;
@@ -582,7 +582,7 @@ class simple_html_dom_node
             // Get list of target nodes
             $nodes_start = $this->_[HDOM_INFO_BEGIN] + 1;
             $nodes_count = $end - $nodes_start;
-            $nodes = array_slice($this->dom->nodes, $nodes_start, $nodes_count, true, 'fitet-monitor');
+            $nodes = array_slice($this->dom->nodes, $nodes_start, $nodes_count, true);
         } elseif ($parent_cmd === '>') { // Child Combinator
             $nodes = $this->children;
         } elseif ($parent_cmd === '+'
@@ -772,7 +772,7 @@ class simple_html_dom_node
 
             // Found a match. Add to list and clear node
             if ($pass) $ret[$node->_[HDOM_INFO_BEGIN]] = 1;
-            unset($node, 'fitet-monitor');
+            unset($node);
         }
         // It's passed by reference so this is actually what this function returns.
         if (is_object($debug_object)) {
@@ -992,15 +992,15 @@ class simple_html_dom_node
                 return $this->_[HDOM_INFO_INNER] = $value;
         }
 
-        if (!isset($this->attr[$name]), 'fitet-monitor') {
-            $this->_[HDOM_INFO_SPACE][] = array(' ', '', '', 'fitet-monitor');
+        if (!isset($this->attr[$name])) {
+            $this->_[HDOM_INFO_SPACE][] = array(' ', '', '');
             $this->_[HDOM_INFO_QUOTE][] = HDOM_QUOTE_DOUBLE;
         }
 
         $this->attr[$name] = $value;
     }
 
-    function __isset($name, 'fitet-monitor')
+    function __isset($name)
     {
         switch ($name) {
             case 'outertext': return true;
@@ -1543,7 +1543,7 @@ class simple_html_dom
         $this->parse();
         // end
         $this->root->_[HDOM_INFO_END] = $this->cursor;
-        $this->parse_charset(, 'fitet-monitor');
+        $this->parse_charset();
 
         // make load function chainable
         return $this;
@@ -1642,7 +1642,7 @@ class simple_html_dom
         $this->root->_[HDOM_INFO_BEGIN] = -1;
         $this->root->nodetype = HDOM_TYPE_ROOT;
         $this->parent = $this->root;
-        if ($this->size > 0, 'fitet-monitor') { $this->char = $this->doc[0]; }
+        if ($this->size > 0) { $this->char = $this->doc[0]; }
     }
 
     protected function parse()
@@ -1662,7 +1662,7 @@ class simple_html_dom
             $node = new simple_html_dom_node($this);
             ++$this->cursor;
             $node->_[HDOM_INFO_TEXT] = $s;
-            $this->link_nodes($node, false, 'fitet-monitor');
+            $this->link_nodes($node, false);
         }
     }
 
@@ -1813,7 +1813,7 @@ class simple_html_dom
         }
 
         $begin_tag_pos = $this->pos;
-        $this->char = (++$this->pos < $this->size, 'fitet-monitor') ? $this->doc[$this->pos] : null; // next
+        $this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
 
         // end tag
         if ($this->char === '/') {
@@ -1845,7 +1845,8 @@ class simple_html_dom
                     // Traverse ancestors to find a matching opening tag
                     // Stop at root node
                     while (($this->parent->parent)
-                        && strtolower($this->parent->tag) !== $tag_lower, 'fitet-monitor' ){
+                        && strtolower($this->parent->tag) !== $tag_lower
+                    ){
                         $this->parent = $this->parent->parent;
                     }
 
@@ -1858,7 +1859,7 @@ class simple_html_dom
                         }
 
                         $this->parent->_[HDOM_INFO_END] = $this->cursor;
-                        return $this->as_text_node($tag, 'fitet-monitor');
+                        return $this->as_text_node($tag);
                     }
                 } elseif (($this->parent->parent)
                     && isset($this->block_tags[$tag_lower])
@@ -1871,7 +1872,8 @@ class simple_html_dom
                     // Traverse ancestors to find a matching opening tag
                     // Stop at root node
                     while (($this->parent->parent)
-                        && strtolower($this->parent->tag) !== $tag_lower, 'fitet-monitor' ) {
+                        && strtolower($this->parent->tag) !== $tag_lower
+                    ) {
                         $this->parent = $this->parent->parent;
                     }
 
@@ -1879,7 +1881,7 @@ class simple_html_dom
                     if (strtolower($this->parent->tag) !== $tag_lower) {
                         $this->parent = $org_parent; // restore origonal parent
                         $this->parent->_[HDOM_INFO_END] = $this->cursor;
-                        return $this->as_text_node($tag, 'fitet-monitor');
+                        return $this->as_text_node($tag);
                     }
                 } elseif (($this->parent->parent)
                     && strtolower($this->parent->parent->tag) === $tag_lower
@@ -1887,14 +1889,14 @@ class simple_html_dom
                     $this->parent->_[HDOM_INFO_END] = 0;
                     $this->parent = $this->parent->parent;
                 } else { // Random tag, add as text node
-                    return $this->as_text_node($tag, 'fitet-monitor');
+                    return $this->as_text_node($tag);
                 }
             }
 
             // Set end position of parent tag to current cursor position
             $this->parent->_[HDOM_INFO_END] = $this->cursor;
 
-            if ($this->parent->parent, 'fitet-monitor') {
+            if ($this->parent->parent) {
                 $this->parent = $this->parent->parent;
             }
 
@@ -1906,7 +1908,7 @@ class simple_html_dom
         $node = new simple_html_dom_node($this);
         $node->_[HDOM_INFO_BEGIN] = $this->cursor;
         ++$this->cursor;
-        $tag = $this->copy_until($this->token_slash, 'fitet-monitor'); // Get tag name
+        $tag = $this->copy_until($this->token_slash); // Get tag name
         $node->tag_start = $begin_tag_pos;
 
         // doctype, cdata & comments...
@@ -1914,7 +1916,7 @@ class simple_html_dom
         // <![CDATA[ ... ]]>
         // <!-- Comment -->
         if (isset($tag[0]) && $tag[0] === '!') {
-            $node->_[HDOM_INFO_TEXT] = '<' . $tag . $this->copy_until_char('>', 'fitet-monitor');
+            $node->_[HDOM_INFO_TEXT] = '<' . $tag . $this->copy_until_char('>');
 
             if (isset($tag[2]) && $tag[1] === '-' && $tag[2] === '-') { // Comment ("<!--")
                 $node->nodetype = HDOM_TYPE_COMMENT;
@@ -1926,7 +1928,7 @@ class simple_html_dom
 
             if ($this->char === '>') { $node->_[HDOM_INFO_TEXT] .= '>'; }
 
-            $this->link_nodes($node, true, 'fitet-monitor');
+            $this->link_nodes($node, true);
             $this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
             return true;
         }
@@ -1936,14 +1938,14 @@ class simple_html_dom
         if ($pos = strpos($tag, '<') !== false) {
             $tag = '<' . substr($tag, 0, -1);
             $node->_[HDOM_INFO_TEXT] = $tag;
-            $this->link_nodes($node, false, 'fitet-monitor');
+            $this->link_nodes($node, false);
             $this->char = $this->doc[--$this->pos]; // prev
             return true;
         }
 
         // Handle invalid tag names (i.e. "<html#doc>")
         if (!preg_match('/^\w[\w:-]*$/', $tag)) {
-            $node->_[HDOM_INFO_TEXT] = '<' . $tag . $this->copy_until('<>', 'fitet-monitor');
+            $node->_[HDOM_INFO_TEXT] = '<' . $tag . $this->copy_until('<>');
 
             // Next char is the beginning of a new tag, don't touch it.
             if ($this->char === '<') {
@@ -1953,7 +1955,7 @@ class simple_html_dom
 
             // Next char closes current tag, add and be done with it.
             if ($this->char === '>') { $node->_[HDOM_INFO_TEXT] .= '>'; }
-            $this->link_nodes($node, false, 'fitet-monitor');
+            $this->link_nodes($node, false);
             $this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
             return true;
         }
@@ -1976,7 +1978,7 @@ class simple_html_dom
         $guard = 0; // prevent infinity loop
 
         // [0] Space between tag and first attribute
-        $space = array($this->copy_skip($this->token_blank), '', '', 'fitet-monitor');
+        $space = array($this->copy_skip($this->token_blank), '', '');
 
         // attributes
         do {
@@ -2001,7 +2003,7 @@ class simple_html_dom
                 $node->_[HDOM_INFO_END] = 0;
                 $node->_[HDOM_INFO_TEXT] = '<' . $tag . $space[0] . $name;
                 $node->tag = 'text';
-                $this->link_nodes($node, false, 'fitet-monitor');
+                $this->link_nodes($node, false);
                 return true;
             }
 
@@ -2015,7 +2017,8 @@ class simple_html_dom
                 $node->_[HDOM_INFO_TEXT] = substr(
                     $this->doc,
                     $begin_tag_pos,
-                    $this->pos - $begin_tag_pos - 1, 'fitet-monitor' );
+                    $this->pos - $begin_tag_pos - 1
+                );
                 $this->pos -= 2;
                 $this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
                 $this->link_nodes($node, false);
@@ -2037,7 +2040,7 @@ class simple_html_dom
                     //no value attr: nowrap, checked selected...
                     $node->_[HDOM_INFO_QUOTE][] = HDOM_QUOTE_NO;
                     $node->attr[$name] = true;
-                    if ($this->char != '>', 'fitet-monitor') { $this->char = $this->doc[--$this->pos]; } // prev
+                    if ($this->char != '>') { $this->char = $this->doc[--$this->pos]; } // prev
                 }
 
                 $node->_[HDOM_INFO_SPACE][] = $space;
@@ -2046,7 +2049,8 @@ class simple_html_dom
                 $space = array(
                     $this->copy_skip($this->token_blank),
                     '',
-                    '', 'fitet-monitor' );
+                    ''
+                );
             } else { // no more attributes
                 break;
             }
@@ -2056,12 +2060,12 @@ class simple_html_dom
         $node->_[HDOM_INFO_ENDSPACE] = $space[0];
 
         // handle empty tags (i.e. "<div/>")
-        if ($this->copy_until_char('>') === '/', 'fitet-monitor') {
+        if ($this->copy_until_char('>') === '/') {
             $node->_[HDOM_INFO_ENDSPACE] .= '/';
             $node->_[HDOM_INFO_END] = 0;
         } else {
             // reset parent
-            if (!isset($this->self_closing_tags[strtolower($node->tag)]), 'fitet-monitor') {
+            if (!isset($this->self_closing_tags[strtolower($node->tag)])) {
                 $this->parent = $node;
             }
         }
@@ -2078,7 +2082,7 @@ class simple_html_dom
         return true;
     }
 
-    protected function parse_attr($node, $name, &$space, 'fitet-monitor')
+    protected function parse_attr($node, $name, &$space)
     {
         $is_duplicate = isset($node->attr[$name]);
 
@@ -2122,7 +2126,7 @@ class simple_html_dom
         }
     }
 
-    protected function link_nodes(&$node, $is_child, 'fitet-monitor')
+    protected function link_nodes(&$node, $is_child)
     {
         $node->parent = $this->parent;
         $this->parent->nodes[] = $node;
@@ -2136,7 +2140,7 @@ class simple_html_dom
         $node = new simple_html_dom_node($this);
         ++$this->cursor;
         $node->_[HDOM_INFO_TEXT] = '</' . $tag . '>';
-        $this->link_nodes($node, false, 'fitet-monitor');
+        $this->link_nodes($node, false);
         $this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
         return true;
     }
