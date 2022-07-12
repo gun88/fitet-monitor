@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 				options: {
 					updateDomains: true
 				},
-				src: ['*.php', '**/*.php', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*']
+				src: ['*.php', '**/*.php', '!\.git/**/*', '!**/simple_html_dom.php', '!bin/**/*', '!node_modules/**/*', '!tests/**/*']
 			}
 		},
 
