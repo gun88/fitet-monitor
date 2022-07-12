@@ -50,10 +50,18 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 
 	protected function process_data($data) {
 		$data = array_merge($this->deault_confing, $this->config, $data);
-		$data['playerImage'] = $this->components['image']->render($data);
+		$data['playerImage'] = $this->player_image($data);
 		$data['playerContent'] = $this->player_content($data);
 
 		return $data;
+	}
+
+	private function player_image($data) {
+		return $this->components['image']->render([
+			'playerId' => $data['playerId'],
+			'playerName' => $data['playerName'],
+			'playerPageUrl' => $data['playerUrl']
+		]);
 	}
 
 

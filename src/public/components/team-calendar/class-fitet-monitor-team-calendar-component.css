@@ -1,0 +1,24 @@
+.fm-team-calendar thead {
+	display: none;
+}
+
+.fm-team-calendar .dynatable-footer {
+	display: none;
+}
+
+.fm-team-calendar-match {
+	display: flex;
+	flex-flow: column;
+	gap: .5rem;
+}
+
+.fm-team-calendar .fm-table-column-time,
+.fm-team-calendar .fm-table-column-date,
+.fm-team-calendar .fm-table-column-result {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.fm-team-calendar .fm-team-calendar-main-team {
+	font-weight: bold;
+}

@@ -48,7 +48,7 @@ jQuery(function ($) {
 				item.innerHTML = `
 <div class="fm-autocomplete-result"">
 	<img class="fm-autocomplete-club-logo" src="${data.value['clubLogo']}"  alt="${data.value['clubName']}"
-		onError="this.onerror=null;this.src='/wp-content/plugins/fitet-monitor/src/public/assets/fitet-monitor-no-logo.svg';">
+		onError="this.onerror=null;this.src='/wp-content/plugins/fitet-monitor/src/public/assets/fitet-monitor-no-club-image.svg';">
 	<div class="fm-autocomplete-club-name">${data.match}</div>
 	<div class="fm-autocomplete-club-province">${data.value['clubProvince']}</div>
 </div>
@@ -87,7 +87,7 @@ jQuery(function ($) {
 					const province = event.detail.selection.value['clubProvince'];
 					const clubLogo = 'http://portale.fitet.org/images/societa/' + code + '.jpg';
 					// todo script localization
-					const clubNoLogo = "http://localhost/wp-content/plugins/fitet-monitor/src/public/assets/fitet-monitor-no-logo.svg";
+					const clubNoLogo = "/wp-content/plugins/fitet-monitor/src/public/assets/fitet-monitor-no-club-image.svg";
 
 					$('#clubCodeSpan').text(code);
 					$('#clubNameSpan').text(name);

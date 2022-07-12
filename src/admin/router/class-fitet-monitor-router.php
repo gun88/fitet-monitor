@@ -1,5 +1,7 @@
 <?php
 
+require_once FITET_MONITOR_DIR . 'public/utils/class-fitet-monitor-utils.php';
+
 class Fitet_Monitor_Router {
 
 	private $plugin_name;
@@ -15,6 +17,14 @@ class Fitet_Monitor_Router {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->manager = $manager;
+
+		add_filter('query_vars', function ($vars) {
+			$vars[] = "team";
+			$vars[] = "player";
+			$vars[] = "championship";
+			$vars[] = "clubName";
+			return $vars;
+		});
 
 	}
 
@@ -49,6 +59,7 @@ class Fitet_Monitor_Router {
 		}
 
 		if ($action == 'edit') {
+
 			$this->manager->edit_club([
 				'clubCode' => $_POST['clubCode'],
 				'clubName' => $_POST['clubName'],
@@ -74,7 +85,16 @@ class Fitet_Monitor_Router {
 		switch ($mode) {
 			case 'club':
 				if ($club_code) {
-					$club = $this->manager->get_club($club_code);
+					$template = [
+						'clubCode' => '',
+						'clubProvince' => '',
+						'clubName' => '',
+						'clubLogo' => '',
+						'lastUpdate' => '',
+						'clubHistorySize' => '',
+						'clubCron' => '',
+					];
+					$club = $this->manager->get_club($club_code, $template);
 					$club['status'] = $this->manager->get_status($club_code)['status'];
 				} else {
 					$club = null;
@@ -92,7 +112,14 @@ class Fitet_Monitor_Router {
 				break;
 			case 'summary':
 			default:
-				$clubs = $this->manager->get_clubs();
+				$template = [
+					'clubCode' => '',
+					'clubProvince' => '',
+					'clubName' => '',
+					'clubLogo' => '',
+					'lastUpdate' => '',
+				];
+				$clubs = $this->manager->get_clubs($template);
 				foreach ($clubs as &$club) {
 					$club['status'] = $this->manager->get_status($club['clubCode'])['status'];
 				}
@@ -108,5 +135,7 @@ class Fitet_Monitor_Router {
 
 	public function render_page() {
 		$this->page->render_page();
+		memory_dump();
 	}
 }
+

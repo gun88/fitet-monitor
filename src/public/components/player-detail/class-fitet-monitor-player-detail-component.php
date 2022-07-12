@@ -24,53 +24,9 @@ class Fitet_Monitor_Player_Detail_Component extends Fitet_Monitor_Component {
 	}
 
 	protected function process_data($data) {
-		/*
 
-				$attributes = $data['attributes'];
-				$content = $data['content'];
-
-				$attributes = shortcode_atts(
-					['club-code' => '', 'show-club' => false, 'detail-page' => 'atleta']
-					, $attributes, $this->tag);
-
-				$show_club = $attributes['show-club'];
-				$club_code = $attributes['club-code'];
-				if (empty($club_code)) {
-					$clubs = $this->manager->get_clubs();
-				} else {
-					$clubs = [$this->manager->get_club($club_code)];
-				}
-
-				$detail_page = $attributes['detail-page'];
-
-				$get_pages = get_pages();
-				$get_pages = array_filter($get_pages, function ($page) use ($detail_page) {
-					return $page->post_name == $detail_page;
-				});
-
-				if (empty($get_pages)) {
-					$guid = null;
-				} else {
-					$guid = $get_pages[0]->guid;
-				}
-
-				if (!$_GET['atleta']) {
-					// todo gestire
-					return [];
-				}
-
-				$player_id = explode('-', $_GET['atleta'])[0];
-
-				$player = $this->find_player($clubs, $player_id);*/
-
-
+		$data = array_merge(['history' => ['ranking' => [], 'championships' => [], 'nationalTournaments' => [], 'nationalDoublesTournaments' => [], 'regionalTournaments' => [],], 'season' => []], $data);
 		$player = $data;
-		global $post;
-
-
-		$player['link'] = ("index.php?page_id=$post->ID" . '&player=' . $player['code'] . "-" . str_replace(' ', '-', $player['name']));
-
-
 		$rankings = $player['history']['ranking'];
 
 		$has_rankings = !empty($rankings);
@@ -80,7 +36,7 @@ class Fitet_Monitor_Player_Detail_Component extends Fitet_Monitor_Component {
 		$has_national_double_tournaments = !empty($player['history']['nationalDoublesTournaments']);
 		$has_regional_tournaments = !empty($player['history']['regionalTournaments']);
 		return [
-			'pageMenu' => $this->menu($has_rankings, $has_season, $has_championships, $has_national_tournaments, $has_national_double_tournaments, $has_regional_tournaments),
+			'pageMenu' => $this->menu($has_rankings, $has_season, $has_championships, $has_national_tournaments | $has_national_double_tournaments | $has_regional_tournaments),
 			'rankingClass' => $has_rankings ? '' : 'fm-player-detail-hidden',
 			'seasonClass' => $has_season ? '' : 'fm-player-detail-hidden',
 			'championshipsClass' => $has_championships ? '' : 'fm-player-detail-hidden',
@@ -97,14 +53,13 @@ class Fitet_Monitor_Player_Detail_Component extends Fitet_Monitor_Component {
 		];
 	}
 
-	private function menu($has_rankings, $has_season, $has_championships, $has_national_tournaments, $has_national_double_tournaments, $has_regional_tournaments) {
+	private function menu($has_rankings, $has_season, $has_championships, $has_tournaments): string {
 		$menu_entries = [];
 
-		if ($has_rankings) $menu_entries[] = '<a href="#ranking">' . __('Ranking') . '</a>';
-		if ($has_season) $menu_entries[] = '<a href="#season">' . __('Season') . '</a>';
-		if ($has_championships) $menu_entries[] = '<a href="#championships">' . __('Championships') . '</a>';
-		if ($has_national_tournaments | $has_national_double_tournaments | $has_regional_tournaments)
-			$menu_entries[] = '<a href="#tournaments">' . __('Tournaments') . '</a>';
+		if ($has_rankings) $menu_entries[] = '<a href="#ranking"><img alt="ranking" src="' . FITET_MONITOR_ICON_CHART . '"/>' . __('Ranking') . '</a>';
+		if ($has_season) $menu_entries[] = '<a href="#season"><img alt="season" src="' . FITET_MONITOR_ICON_LIST . '"/>' . __('Season') . '</a>';
+		if ($has_championships) $menu_entries[] = '<a href="#championships"><img alt="championships" src="' . FITET_MONITOR_ICON_CALENDAR . '"/>' . __('Championships') . '</a>';
+		if ($has_tournaments) $menu_entries[] = '<a href="#tournaments"><img alt="tournaments" src="' . FITET_MONITOR_ICON_TROPHY . '"/>' . __('Tournaments') . '</a>';
 
 		return implode('|', $menu_entries);
 	}

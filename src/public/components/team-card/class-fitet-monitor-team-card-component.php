@@ -18,6 +18,17 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 		'showBirthDate' => false,
 	];
 
+	private $default_config = [
+		'addAnchor' => false,
+	];
+	private $config = [];
+
+	public function __construct($plugin_name, $version, $config) {
+		parent::__construct($plugin_name, $version);
+		$this->config = $config;
+	}
+
+
 	protected function components() {
 		return [
 			'playerCard' => new Fitet_Monitor_Player_Card_Component($this->plugin_name, $this->version, $this->player_card_config),
@@ -26,6 +37,7 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 
 
 	protected function process_data($data) {
+		$data = array_merge($this->default_config, $this->config, $data);
 		return [
 			'teamCardHeader' => $this->header($data),
 			'teamCardInfo' => $this->info($data),
@@ -35,8 +47,8 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 
 	private function header($team) {
 		$team_name = $team['teamName'];
-		if (isset($team['teamUrl']))
-			$team_name = "<a href='" . $team['teamUrl'] . "'>" . $team['teamName'] . "</a>";
+		if (isset($team['teamPageUrl']))
+			$team_name = "<a href='" . $team['teamPageUrl'] . "'>" . $team['teamName'] . "</a>";
 		return "<h2>$team_name</h2>";
 	}
 
@@ -44,22 +56,14 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 		$players = isset($team['players']) ? $team['players'] : [];
 
 		$players = array_map(function ($player) use ($team) {
-			/*$_player = Fitet_Monitor_Utils::player_by_id($player['playerId']);
-			if ($_player != null) {
-				$player = $_player;
-			//	$player['playerUrl'] = $team['playerUrl'];
-			} else {
-				$player['name'] = $player['playerName'];
-			}*/
-
-			//if ($player == null) return "";
 			return $this->components['playerCard']->render($player);
 		}, $players);
 
 		$players = array_values($players);
 
-		return "<h3>" . __("Players") . "</h3>" .
-			"<div class='fm-team-card-players'>" . implode('', $players) . "</div>";
+		$anchor = $team['addAnchor'] ? "<a id='players'></a>" : "";
+		return $anchor . "<h3>" . __("Players") . "</h3>" .
+			"<div class='fm-team-card-players-content'>" . implode('', $players) . "</div>";
 	}
 
 	private function info($team) {
@@ -67,8 +71,8 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 		$content .= $this->row(__('Season'), $team['seasonName']);
 		$content .= $this->ranking($team);
 
-		if (isset($team['teamUrl'])) {
-			$content .= "<div><a class='fm-team-card-details-link' href='" . $team['teamUrl'] . "'>" . __('Open Team Details') . "</a></div>";
+		if (isset($team['teamPageUrl'])) {
+			$content .= "<div><a class='fm-team-card-details-link' href='" . $team['teamPageUrl'] . "'>" . __('Open Team Details') . "</a></div>";
 		}
 
 		$content .= "<br>";

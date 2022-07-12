@@ -3,7 +3,7 @@
 require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
 
 
-class Fitet_Monitor_Athlete_Ranking_Component extends Fitet_Monitor_Component {
+class Fitet_Monitor_Player_Ranking_Component extends Fitet_Monitor_Component {
 
 
 	public function enqueue_scripts() {
@@ -30,9 +30,12 @@ class Fitet_Monitor_Athlete_Ranking_Component extends Fitet_Monitor_Component {
 		}, $data);
 
 
-		$bestRanking = min(array_filter($rankings, function ($ranking) {
+		$best_ranking = array_filter($rankings, function ($ranking) {
 			return $ranking != null;
-		}));
+		});
+
+		// todo !!!!!!!!!!!!!!!!!
+		$bestRanking = empty($best_ranking) ? 130000 : min($best_ranking);
 		$bestPoints = max(array_filter($points, function ($point) {
 			return $point != null;
 		}));

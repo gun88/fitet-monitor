@@ -42,6 +42,9 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		$attendances = $data['status'] == 'ready' ? $data['attendances'] : [];
 		$displayUpdatingDisclaimer = $data['status'] == 'updating';
 
+
+		$championships = $this->rework_championships($championships);
+
 		return [
 			'clubNameLabel' => __('Club name'),
 			'affiliationDateLabel' => __('Affiliation date'),
@@ -56,6 +59,7 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 			'regionalTitlesLabel' => __('Regional Titles'),
 			'attendancesLabel' => __('Attendances'),
 			'updatingDisclaimer' => __('INFO: Data not available while updating'),
+			'resetStatusLabel' => __('Reset Status'),
 
 			'clubCode' => $data['clubCode'],
 			'clubName' => $data['clubName'],
@@ -69,7 +73,7 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 			'regionalTitles' => $regional_titles_table->render($regionalTitles),
 			'attendances' => $attendances_table->render($attendances),
 
-			'displayUpdatingDisclaimer' => $displayUpdatingDisclaimer,
+			'displayUpdatingDisclaimer' => $displayUpdatingDisclaimer ? 'block' : 'none',
 			'displayPlayers' => !empty($players) ? 'block' : 'none',
 			'displayChampionships' => !empty($championships) ? 'block' : 'none',
 			'displayNationalTitles' => !empty($nationalTitles) ? 'block' : 'none',
@@ -81,7 +85,7 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 
 	public function player_table() {
 		$columns = [];
-		$columns['name'] = __('Name');
+		$columns['playerName'] = __('Name');
 		$columns['rank'] = __('Rank');
 		$columns['points'] = __('Points');
 		$columns['category'] = __('Category');
@@ -89,7 +93,8 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		$columns['diff'] = __('Diff');
 		$columns['birthDate'] = __('BirthDate');
 		$columns['sex'] = __('Sex');
-		$columns['code'] = __('Code');
+		$columns['playerCode'] = __('Code');
+		$columns['playerId'] = __('Id');
 		return new Fitet_Monitor_Bootstrap_Table([
 			'columns' => $columns
 		]);
@@ -98,8 +103,8 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 
 	public function championships_table() {
 		$columns = [];
-		$columns['name'] = __('Name');
 		$columns['seasonName'] = __('Season');
+		$columns['names'] = __('Names');
 		return new Fitet_Monitor_Bootstrap_Table([
 			'columns' => $columns
 		]);
@@ -153,14 +158,33 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 
 
 		foreach ($players as &$player) {
-			$name = $player['name'];
-			$json = json_encode($player);
-			$url = "http://localhost/atleta/?atleta=" . $player['code'] . "-XXX";
-			$player['name'] = "<a href='$url' onclick='showPlayer(event, $json)'>$name</a>";
+			$name = $player['playerName'];
+			$url = "#";
+			$player['playerName'] = "<a href='$url' >$name</a>";
 
 		}
 
 		return $players;
+	}
+
+	private function rework_championships($championships) {
+		$g = [];
+
+		foreach ($championships as $championship) {
+			if (isset($g[$championship['seasonName']])) {
+				$g[$championship['seasonName']] .= ' - ' . $championship['championshipName'];
+			} else {
+				$g[$championship['seasonName']] = $championship['championshipName'];
+			}
+		}
+		$y = [];
+		foreach ($g as $k => $v) {
+			$y[] = [
+				'seasonName' => $k,
+				'names' => $v,
+			];
+		}
+		return $y;
 	}
 
 

@@ -13,12 +13,13 @@ class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
 
 		$name = $data['name'];
 		$columns = $data['columns'];
+		$paginate = isset($data['paginate']) && ($data['paginate'] == false) ? 'data-paginate="false"' : '';
+		$search = isset($data['search']) && ($data['search'] == false) ? 'data-search="false"' : '';
 		$sort = isset($data['sort']) ? $data['sort'] : [];
 		$keys = array_keys($columns);
 		$rows = $data['rows'];
 
-		$table = "";
-		$table .= "<table id='$name' class='table table-striped fm-table fm-table-$name'>";
+		$table = "<table id='$name' class='table table-striped fm-table fm-table-$name' $paginate $search>";
 		$table .= "<thead>";
 		$table .= "<tr>";
 		foreach ($keys as $key) {
@@ -30,7 +31,7 @@ class Fitet_Monitor_Table_Component extends Fitet_Monitor_Component {
 		$table .= "<tbody>";
 
 		foreach ($rows as $item) {
-			$table .= "<tr>";
+			$table .= empty($item['_rowClass']) ? '<tr>' : "<tr class='" . $item['_rowClass'] . "'>";
 			foreach ($keys as $key) {
 				$table .= "<td class='fm-table-column-$key'>" . $item[$key] . "</td>";
 			}

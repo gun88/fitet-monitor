@@ -1,0 +1,14 @@
+.fm-team-cell,
+.fm-club-cell,
+.fm-player-cell {
+	display: flex;
+	gap: 1rem;
+}
+
+.fm-team-cell .fm-team-image,
+.fm-club-cell .fm-club-image,
+.fm-player-cell .fm-player-image {
+	height: auto;
+	width: 2rem;
+	min-width: 2rem;
+}

@@ -1869,6 +1869,12 @@ jQuery(function ($) {
 
 		const $element = $(element);
 
+		let paginate = $element.data('paginate');
+		paginate = typeof paginate == "undefined" ? 'true' : paginate;
+
+		let search = $element.data('search');
+		search = typeof search == "undefined" ? 'true' : search;
+
 		const sortTypes = $element.find('th')
 			.map(function () {
 				if (this.dataset.sortType) {
@@ -1885,7 +1891,11 @@ jQuery(function ($) {
 			table: {
 				copyHeaderClass: true
 			},
-			features: {pushState: false},
+			features: {
+				pushState: false,
+				paginate: paginate,
+				search: search,
+			},
 			inputs: {
 				pageText: '',
 				searchText: '',
@@ -1903,6 +1913,26 @@ jQuery(function ($) {
 			},
 			dataset: {
 				sortTypes: sortTypes
+			},
+			writers: {
+				_rowWriter: function (rowIndex, record, columns, cellWriter) {
+					var tr = '';
+
+					// grab the record's attribute for each column
+					for (var i = 0, len = columns.length; i < len; i++) {
+						tr += cellWriter(columns[i], record);
+					}
+
+					let tag = record.cssClass ? '<tr class="' + record.cssClass + '">' : '<tr>';
+					return tag + tr + '</tr>';
+				}
+			},
+			readers: {
+				_rowReader: function (index, aThis, record) {
+					if (aThis.className)
+						record.cssClass = aThis.className;
+
+				}
 			}
 		});
 

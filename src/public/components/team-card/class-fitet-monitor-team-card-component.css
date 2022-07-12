@@ -1,16 +1,16 @@
-.fm-team-card-players {
+.fm-team-card-players-content {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
 }
 
-.fm-team-card-players .fm-player-card {
+.fm-team-card-players-content .fm-player-card {
 	flex-flow: column;
 	width: 12rem;
 
 }
 
-.fm-team-card-players .fm-player-content {
+.fm-team-card-players-content .fm-player-content {
 	text-align: center;
 }
 

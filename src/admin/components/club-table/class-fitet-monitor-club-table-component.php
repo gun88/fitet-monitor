@@ -42,7 +42,7 @@ class Fitet_Monitor_Club_Table_Component extends Fitet_Monitor_Component {
 		$items = array_map(function ($row) use ($wp_table) {
 
 			$club_code = $row['clubCode'];
-			$last_update = isset($row['lastUpdate']) ? $row['lastUpdate'] : "N/A";
+			$last_update = !empty($row['lastUpdate']) ? $row['lastUpdate'] : "N/A";
 
 			$row['parentTable'] = $wp_table;
 

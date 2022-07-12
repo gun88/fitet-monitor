@@ -112,6 +112,7 @@ class Fitet_Monitor {
 
 		require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-manager.php';
 		$manager = new  Fitet_Monitor_Manager($this->plugin_name, $this->version, $logger, $portal);
+
 		return $manager;
 	}
 

@@ -1,12 +1,9 @@
-.fm-points-lost:after {
-	content: '\2BC6';
+.fm-points-lost {
 	margin-left: 5px;
 	color: darkred;
-
 }
 
-.fm-points-gain:after {
-	content: '\2BC5';
+.fm-points-gain {
 	margin-left: 5px;
 	color: darkgreen;
 }

@@ -5,7 +5,6 @@ jQuery(function ($) {
 	$('.fm-download-full-history').click(function (e) {
 		e.preventDefault();
 		const clubCode = $(this).data('club-code');
-		console.log(clubCode)
 
 		wp.apiRequest({
 			path: 'fitet-monitor/v1/update',//todo APEX.api.url,

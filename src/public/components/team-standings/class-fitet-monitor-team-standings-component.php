@@ -15,6 +15,10 @@ class Fitet_Monitor_Team_Standings_Component extends Fitet_Monitor_Component {
 	protected function process_data($data) {
 		return [
 			'teamStandingsLabel' => __("Standings"),
+			'promoLabel' => __("Promotion"),
+			'playOffLabel' => __("Playoff"),
+			'playOutLabel' => __("Playout"),
+			'relegationLabel' => __("Relegation"),
 			'table' => $this->table($data),
 		];
 	}
@@ -23,6 +27,8 @@ class Fitet_Monitor_Team_Standings_Component extends Fitet_Monitor_Component {
 		return $this->components['table']->render(
 			[
 				'name' => 'fm-team-standings',
+				'paginate' => false,
+				'search' => false,
 				'columns' => $this->columns(),
 				'sort' => $this->sort(),
 				'rows' => $this->rows($data),
@@ -83,6 +89,11 @@ class Fitet_Monitor_Team_Standings_Component extends Fitet_Monitor_Component {
 				'clubLogo' => $standing['clubLogo'],
 			]);
 			unset($standing['teamName']);
+			$standing['_rowClass'] = 'fm-team-status-' . $standing['teamStatus'];
+			if ($standing['mainTeam']) {
+				$standing['_rowClass'] .= ' fm-team-main-team';
+
+			}
 			return $standing;
 		}, $data);
 	}

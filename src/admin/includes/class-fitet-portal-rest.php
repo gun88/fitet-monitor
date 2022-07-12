@@ -67,7 +67,7 @@ class Fitet_Portal_Rest {
 			preg_match('/ID_CLASS=(-?\d+)/', $href, $matches);
 			if (array_key_exists(1, $matches)) {
 				$id = $matches[1];
-				return ['date' => $date, 'id' => $id];
+				return ['date' => $date, 'rankingId' => $id];
 			} else {
 				return "";
 			}
@@ -81,7 +81,7 @@ class Fitet_Portal_Rest {
 
 		// sorting rankings
 		usort($ranking_id_list, function ($r1, $r2) {
-			return intval($r2['id']) - intval($r1['id']);
+			return intval($r2['rankingId']) - intval($r1['rankingId']);
 		});
 
 		return $ranking_id_list;
@@ -132,7 +132,7 @@ class Fitet_Portal_Rest {
 			$r = intval($rank['Classifica']);
 			$r = $r == 0 ? "N/A" : $r;
 			return [
-				'name' => $rank['NomeAtleta'],
+				'playerName' => $rank['NomeAtleta'],
 				'rank' => $r,
 				'points' => intval($rank['Punti']),
 				'category' => intval($rank['Categoria']),
@@ -170,9 +170,9 @@ class Fitet_Portal_Rest {
 			$player_name = $matches[2];
 			$player_birth_date = $matches[3];
 			return [
-				'id' => $player_id,
-				'code' => $player_code,
-				'name' => $player_name,
+				'playerId' => $player_id,
+				'playerCode' => $player_code,
+				'playerName' => $player_name,
 				'birthDate' => $player_birth_date,
 			];
 
@@ -180,7 +180,7 @@ class Fitet_Portal_Rest {
 
 		// filtering by exact name
 		$players = array_filter($players, function ($player) use ($name) {
-			return strcasecmp($player['name'], $name) == 0;
+			return strcasecmp($player['playerName'], $name) == 0;
 		});
 
 		// filtering by birth date if provided
@@ -195,7 +195,7 @@ class Fitet_Portal_Rest {
 
 		// sort by recent player code
 		usort($players, function ($a, $b) {
-			return intval($b['code']) - intval($a['code']);
+			return intval($b['playerCode']) - intval($a['playerCode']);
 		});
 		return $players;
 	}
@@ -463,8 +463,8 @@ class Fitet_Portal_Rest {
 				$championships[] = [
 					'seasonId' => intval($season_id),
 					'seasonName' => $season_name,
-					'id' => intval($championship_id),
-					'name' => $championship_name,
+					'championshipId' => intval($championship_id),
+					'championshipName' => $championship_name,
 				];
 			}
 		}
@@ -570,7 +570,7 @@ class Fitet_Portal_Rest {
 			else if ($team_status_cell->hasClass('dettagli_Playoff'))
 				$team_status = 'playoff';
 			else if ($team_status_cell->hasClass('dettagli_Playout'))
-				$team_status = 'playoff';
+				$team_status = 'playout';
 			else if ($team_status_cell->hasClass('dettagli_retroc'))
 				$team_status = 'relegation';
 			else
@@ -719,15 +719,14 @@ class Fitet_Portal_Rest {
 
 	public function get_team_details($team_id, $championship_id, $season_id) {
 		$url = "http://portale.fitet.org/risultati/archivio/Percentuali.asp?SQUADRA=$team_id&CAMP=$championship_id&ANNATA=$season_id";
+
 		$html_string = $this->http_service->get($url);
 		$html = str_get_html($html_string);
 
 		$rows = $html->find('tr');
-		$header = array_shift($rows);
 
-		$team_name = trim(explode(':', $header->find('p', 0)->plaintext)[1]);
-
-		// removing header
+		// removing header rows
+		array_shift($rows);
 		array_shift($rows);
 
 		$players = array_map(function ($row) {
@@ -751,7 +750,6 @@ class Fitet_Portal_Rest {
 		}, $rows);
 
 		return [
-			'teamName' => $team_name,
 			'players' => $players,
 		];
 	}

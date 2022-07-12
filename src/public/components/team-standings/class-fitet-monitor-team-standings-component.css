@@ -1,7 +1,70 @@
+.fm-team-standings .dynatable-footer {
+	display: none;
+}
+
 #fm-team-standings td {
 	text-align: right;
 }
 
 #fm-team-standings .fm-table-column-teamName {
 	text-align: left;
+}
+
+#fm-team-standings .fm-team-status-promotion {
+	background-color: #72b6ff;
+}
+
+#fm-team-standings .fm-team-status-playoff {
+	background-color: #a2efa2;
+}
+
+#fm-team-standings .fm-team-status-playout {
+	background-color: #fbe39f;
+}
+
+#fm-team-standings .fm-team-status-relegation {
+	background-color: #df8484;
+}
+
+#fm-team-standings .fm-team-main-team {
+	font-weight: bold;
+}
+
+.fm-standing-legend {
+	display: flex;
+	gap: .5rem;
+}
+
+.fm-standing-legend > span {
+	display: flex;
+	align-items: baseline;
+	gap: .25rem;
+}
+
+.fm-standing-legend-promotion {
+	width: 1rem;
+	height: 1rem;
+	border: 1px #505050 solid;
+	background-color: #72b6ff;
+}
+
+.fm-standing-legend-playoff {
+	width: 1rem;
+	height: 1rem;
+	border: 1px #505050 solid;
+	background-color: #a2efa2;
+}
+
+.fm-standing-legend-playout {
+	width: 1rem;
+	height: 1rem;
+	border: 1px #505050 solid;
+	background-color: #fbe39f;
+}
+
+.fm-standing-legend-relegation {
+	width: 1rem;
+	height: 1rem;
+	border: 1px #505050 solid;
+	background-color: #df8484;
 }

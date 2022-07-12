@@ -73,39 +73,22 @@ class Fitet_Monitor_Public {
 	public function start() {
 
 		// load global assets
-		add_action('wp_enqueue_scripts', [$this, 'load_assets']);
+		add_action('wp_enqueue_scripts', [$this, 'load_assets']); /// todo rimuovi se non ci sono asset globali
 
-		require_once FITET_MONITOR_DIR . 'public/shortcodes/athletes-list/class-fitet-monitor-athletes-list-shortcode.php';
-		$athletes_list_shortcode = new Fitet_Monitor_Athletes_List_Shortcode($this->version, $this->plugin_name, $this->manager);
-		$athletes_list_shortcode->initialize();
-		add_shortcode($athletes_list_shortcode->tag, [$athletes_list_shortcode, 'render_shortcode']);
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-teams-shortcode.php';
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-players-shortcode.php';
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-titles-shortcode.php';
 
-		require_once FITET_MONITOR_DIR . 'public/shortcodes/athletes-table/class-fitet-monitor-athletes-table-shortcode.php';
-		$athletes_table_shortcode = new Fitet_Monitor_Athletes_Table_Shortcode($this->version, $this->plugin_name, $this->manager);
-		$athletes_table_shortcode->initialize();
-		add_shortcode($athletes_table_shortcode->tag, [$athletes_table_shortcode, 'render_shortcode']);
+		$shortcodes = [
+			new Fitet_Monitor_Teams_Shortcode($this->version, $this->plugin_name, $this->manager),
+			new Fitet_Monitor_Players_Shortcode($this->version, $this->plugin_name, $this->manager),
+			new Fitet_Monitor_Titles_Shortcode($this->version, $this->plugin_name, $this->manager),
+		];
 
-		require_once FITET_MONITOR_DIR . 'public/shortcodes/athlete-detail/class-fitet-monitor-athlete-detail-shortcode.php';
-		$athlete_detail_shortcode = new Fitet_Monitor_Athlete_Detail_Shortcode($this->version, $this->plugin_name, $this->manager);
-		$athlete_detail_shortcode->initialize();
-		add_shortcode($athlete_detail_shortcode->tag, [$athlete_detail_shortcode, 'render_shortcode']);
-
-		add_filter('the_title', function ($data)  {
-
-			if ( $data == 'Atleta' && isset($_GET['atleta'])) {
-				$player_code = explode('-', $_GET['atleta'])[0];
-				$clubs = $this->manager->get_clubs();
-				foreach ($clubs as $club) {
-					foreach ($club['players'] as $player) {
-						if ($player['code'] == $player_code) {
-							return $player['name'];
-						}
-					}
-				}
-			}
-
-			return  $data;
-		});
+		foreach ($shortcodes as $shortcode) {
+			$shortcode->initialize_rest_api();
+			add_shortcode($shortcode->tag, [$shortcode, 'render_shortcode']);
+		}
 
 		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}

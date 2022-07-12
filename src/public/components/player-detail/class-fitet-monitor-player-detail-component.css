@@ -1,6 +1,18 @@
 .fm-player-detail-menu {
 	display: flex;
 	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.fm-player-detail-menu > span,
+.fm-player-detail-menu > a {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+}
+
+.fm-player-detail-menu img {
+	height: 1rem;
 }
 
 

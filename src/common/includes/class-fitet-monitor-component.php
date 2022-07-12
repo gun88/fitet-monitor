@@ -35,12 +35,8 @@ class Fitet_Monitor_Component {
 		$this->components = $this->components();
 	}
 
-	protected function load_template() {
-		$file = (new ReflectionClass($this))->getFileName();
-		$template_path = plugin_dir_path($file) . basename($file, '.php') . '.html';
-		if (file_exists($template_path)) {
-			$this->template = file_get_contents($template_path);
-		}
+	private function load_template() {
+		$this->template = $this->template();
 	}
 
 	public function initialize() {
@@ -75,6 +71,15 @@ class Fitet_Monitor_Component {
 
 	protected function components() {
 		return [];
+	}
+
+	protected function template() {
+		$file = (new ReflectionClass($this))->getFileName();
+		$template_path = plugin_dir_path($file) . basename($file, '.php') . '.html';
+		if (file_exists($template_path)) {
+			return file_get_contents($template_path);
+		}
+		return "{{content}}";
 	}
 
 	protected function process_data($data) {
