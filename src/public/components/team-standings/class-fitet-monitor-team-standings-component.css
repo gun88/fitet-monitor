@@ -1,0 +1,7 @@
+#fm-team-standings td {
+	text-align: right;
+}
+
+#fm-team-standings .fm-table-column-teamName {
+	text-align: left;
+}
