@@ -27,9 +27,9 @@ class Fitet_Monitor_Team_Detail_Component extends Fitet_Monitor_Component {
 
 	private function menu() {
 		$menu_entries = [];
-		$menu_entries[] = '<a href="#players"><img alt="players" src="' . FITET_MONITOR_ICON_PLAYER . '"/>' . __('Players') . '</a>';
-		$menu_entries[] = '<a href="#standings"><img alt="standings" src="' . FITET_MONITOR_ICON_CHART . '"/>' . __('Standings') . '</a>';
-		$menu_entries[] = '<a href="#calendar"><img alt="calendar" src="' . FITET_MONITOR_ICON_CALENDAR . '"/>' . __('Calendar') . '</a>';
+		$menu_entries[] = '<a href="#players"><img alt="players" src="' . FITET_MONITOR_ICON_PLAYER . '"/>' . __('Players', 'fitet-monitor') . '</a>';
+		$menu_entries[] = '<a href="#standings"><img alt="standings" src="' . FITET_MONITOR_ICON_CHART . '"/>' . __('Standings', 'fitet-monitor') . '</a>';
+		$menu_entries[] = '<a href="#calendar"><img alt="calendar" src="' . FITET_MONITOR_ICON_CALENDAR . '"/>' . __('Calendar', 'fitet-monitor') . '</a>';
 
 		return implode('|', $menu_entries);
 	}

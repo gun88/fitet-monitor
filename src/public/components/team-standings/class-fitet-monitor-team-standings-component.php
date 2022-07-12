@@ -14,11 +14,11 @@ class Fitet_Monitor_Team_Standings_Component extends Fitet_Monitor_Component {
 
 	protected function process_data($data) {
 		return [
-			'teamStandingsLabel' => __("Standings"),
-			'promoLabel' => __("Promotion"),
-			'playOffLabel' => __("Playoff"),
-			'playOutLabel' => __("Playout"),
-			'relegationLabel' => __("Relegation"),
+			'teamStandingsLabel' => __("Standings", 'fitet-monitor'),
+			'promoLabel' => __("Promotion", 'fitet-monitor'),
+			'playOffLabel' => __("Playoff", 'fitet-monitor'),
+			'playOutLabel' => __("Playout", 'fitet-monitor'),
+			'relegationLabel' => __("Relegation", 'fitet-monitor'),
 			'table' => $this->table($data),
 		];
 	}
@@ -41,22 +41,22 @@ class Fitet_Monitor_Team_Standings_Component extends Fitet_Monitor_Component {
 		return [
 			'ranking' => '#',
 			// "teamId" => __('teamId'),
-			"team" => __('Team'),
+			"team" => __('Team', 'fitet-monitor'),
 			// "clubCode" => __('clubCode'),
 			// "clubName" => __('clubName'),
 			// "teamStatus" => __('teamStatus'),
-			"points" => __('Points'),
-			"id" => __('ID'),
-			"iv" => __('IV'),
-			"ipa" => __('IPA'),
-			"ip" => __('IP'),
-			"pav" => __('PAV'),
-			"pap" => __('PAP'),
-			"sv" => __('SV'),
-			"sp" => __('SP'),
-			"pv" => __('PV'),
-			"pp" => __('PP'),
-			"pe" => __('PE'),
+			"points" => __('Points', 'fitet-monitor'),
+			"id" => __('ID', 'fitet-monitor'),
+			"iv" => __('IV', 'fitet-monitor'),
+			"ipa" => __('IPA', 'fitet-monitor'),
+			"ip" => __('IP', 'fitet-monitor'),
+			"pav" => __('PAV', 'fitet-monitor'),
+			"pap" => __('PAP', 'fitet-monitor'),
+			"sv" => __('SV', 'fitet-monitor'),
+			"sp" => __('SP', 'fitet-monitor'),
+			"pv" => __('PV', 'fitet-monitor'),
+			"pp" => __('PP', 'fitet-monitor'),
+			"pe" => __('PE', 'fitet-monitor'),
 
 
 		];

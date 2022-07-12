@@ -20,11 +20,11 @@ class Fitet_Monitor_Club_Table_Component extends Fitet_Monitor_Component {
 
 	public function initialize() {
 		parent::initialize();
-		$this->columns['club'] = __('Club');
-		$this->columns['lastUpdate'] = __('Last Update');
+		$this->columns['club'] = __('Club', 'fitet-monitor');
+		$this->columns['lastUpdate'] = __('Last Update', 'fitet-monitor');
 
-		$this->bulk_actions['delete'] = __('Delete');
-		$this->bulk_actions['update'] = __('Update');
+		$this->bulk_actions['delete'] = __('Delete', 'fitet-monitor');
+		$this->bulk_actions['update'] = __('Update', 'fitet-monitor');
 
 	}
 

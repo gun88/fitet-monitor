@@ -20,14 +20,14 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 		foreach ([true, false] as $first_leg) {
 			foreach ($data['calendar'] as $day) {
 				$championshipDay = $day[0]['championshipDay'];
-				$tables .= "<h4>" . __('Day') . ' ' . $championshipDay . ' - ' . ($first_leg ? __('First Leg') : __('Return Match')) . "</h4>";
+				$tables .= "<h4>" . __('Day', 'fitet-monitor') . ' ' . $championshipDay . ' - ' . ($first_leg ? __('First Leg', 'fitet-monitor') : __('Return Match', 'fitet-monitor')) . "</h4>";
 				$tables .= $this->components['table']->render($this->table($day, $first_leg, $data['teamId'], $data['teamName'], $data['standings']));
 
 			}
 		}
 
 		return [
-			'teamCalendarLabel' => "<h3>" . __('Calendar') . "</h3>",
+			'teamCalendarLabel' => "<h3>" . __('Calendar', 'fitet-monitor') . "</h3>",
 			'table' => $tables,
 		];
 	}
@@ -39,10 +39,10 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 			'paginate' => false,
 			'search' => false,
 			'columns' => [
-				'match' => __('Home'),
-				'date' => __('Date'),
-				'time' => __('Time'),
-				'result' => __('Result'),
+				'match' => __('Home', 'fitet-monitor'),
+				'date' => __('Date', 'fitet-monitor'),
+				'time' => __('Time', 'fitet-monitor'),
+				'result' => __('Result', 'fitet-monitor'),
 			],
 			'rows' => array_map(function ($match) use ($first_leg, $standings, $main_team_name) {
 				return [

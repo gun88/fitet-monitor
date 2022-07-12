@@ -23,19 +23,19 @@ class Fitet_Monitor_Titles_Component extends Fitet_Monitor_Component {
 		$sections = [];
 
 		if (!empty($data['nationalTitles'])) {
-			$header = "<h1>" . __('National Titles') . "</h1>";
+			$header = "<h1>" . __('National Titles', 'fitet-monitor') . "</h1>";
 			$table = $this->table($data['nationalTitles'], 'nationalTitles');
 			$sections[] = $header . $this->components['table']->render($table);
 		}
 
 		if (!empty($data['regionalTitles'])) {
-			$header = "<h1>" . __('Regional Titles') . "</h1>";
+			$header = "<h1>" . __('Regional Titles', 'fitet-monitor') . "</h1>";
 			$table = $this->table($data['regionalTitles'], 'regionalTitles');
 			$sections[] = $header . $this->components['table']->render($table);
 		}
 
 		if (empty($sections)) {
-			return "<div class='fm-titles'>" . __('No results found') . "</div>";
+			return "<div class='fm-titles'>" . __('No results found', 'fitet-monitor') . "</div>";
 		}
 
 		$sections = implode('<hr>', $sections);
@@ -54,12 +54,12 @@ class Fitet_Monitor_Titles_Component extends Fitet_Monitor_Component {
 	private function columns() {
 
 		$columns = [];
-		$columns['season'] = __('Season');
-		$columns['tournament'] = __('Tournament');
-		$columns['competition'] = __('Competition');
-		$columns['player'] = __('Player');
+		$columns['season'] = __('Season', 'fitet-monitor');
+		$columns['tournament'] = __('Tournament', 'fitet-monitor');
+		$columns['competition'] = __('Competition', 'fitet-monitor');
+		$columns['player'] = __('Player', 'fitet-monitor');
 		if ($this->multi_club) {
-			$columns['club'] = __('Club');
+			$columns['club'] = __('Club', 'fitet-monitor');
 		}
 		return $columns;
 

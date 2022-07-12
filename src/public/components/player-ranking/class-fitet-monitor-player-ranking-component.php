@@ -41,7 +41,7 @@ class Fitet_Monitor_Player_Ranking_Component extends Fitet_Monitor_Component {
 		}));
 
 		return [
-			'rankingLabel' => __('Ranking History'),
+			'rankingLabel' => __('Ranking History', 'fitet-monitor'),
 			'bestRanking' => $bestRanking,
 			'bestPoints' => $bestPoints,
 			'rankings' => json_encode($rankings),

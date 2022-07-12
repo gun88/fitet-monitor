@@ -32,10 +32,10 @@ class Fitet_Monitor_Club_Page extends Fitet_Monitor_Page {
 	public function prepare_messages() {
 		$messagePool = '';
 		if (isset($_GET['message']) && 'already_exist' === $_GET['message']) {
-			$messagePool = '<div id="message" class="notice notice-error is-dismissible"><p>' . __('Chosen club already exist') . '</p></div>';
+			$messagePool = '<div id="message" class="notice notice-error is-dismissible"><p>' . __('Chosen club already exist', 'fitet-monitor') . '</p></div>';
 		}
 		if (isset($_GET['message']) && 'invalid_club' === $_GET['message']) {
-			$messagePool = '<div id="message" class="notice notice-error is-dismissible"><p>' . __('Invalid club code') . '</p></div>';
+			$messagePool = '<div id="message" class="notice notice-error is-dismissible"><p>' . __('Invalid club code', 'fitet-monitor') . '</p></div>';
 		}
 		return $messagePool;
 	}

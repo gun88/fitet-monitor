@@ -25,17 +25,17 @@ class Fitet_Monitor_Player_National_Tournament_Component extends Fitet_Monitor_C
 		];
 
 		return [
-			'nationalTournamentsLabel' => __('National Tournaments'),
+			'nationalTournamentsLabel' => __('National Tournaments', 'fitet-monitor'),
 			'table' => $this->components['table']->render($table),
 		];
 	}
 
 	public function columns() {
 		return [
-			'season' => __("Season"),
-			'date' => __("Date"),
-			'competition' => __("Competition"),
-			'round' => __("Round")
+			'season' => __("Season", 'fitet-monitor'),
+			'date' => __("Date", 'fitet-monitor'),
+			'competition' => __("Competition", 'fitet-monitor'),
+			'round' => __("Round", 'fitet-monitor')
 		];
 	}
 

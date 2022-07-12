@@ -124,7 +124,7 @@ add_filter('cron_schedules', 'example_add_cron_interval');
 function example_add_cron_interval($schedules) {
 	$schedules['five_seconds'] = array(
 		'interval' => 5,
-		'display' => esc_html__('Every Five Seconds'),);
+		'display' => esc_html__('Every Five Seconds', 'fitet-monitor'),);
 	return $schedules;
 }
 

@@ -130,7 +130,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/pages/club/class-fitet-monitor-club-page.php"><a href="files/src-admin-pages-club-class-fitet-monitor-club-page.html"><abbr title="src/admin/pages/club/class-fitet-monitor-club-page.php">class-fitet-monitor-club-page.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5</span>
+    <span class="phpdocumentor-element-found-in__line">7</span>
 
     </aside>
 
@@ -179,7 +179,7 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/Fitet-Monitor-Club-Page.html#property_club_code">$club_code</a>
+    <a href="classes/Fitet-Monitor-Club-Page.html#property_club">$club</a>
     <span>
                         &nbsp;: mixed            </span>
 </dt>
@@ -228,7 +228,21 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Fitet-Monitor-Club-Page.html#method_prepare_messages">prepare_messages()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Fitet-Monitor-Page.html#method_render_page">render_page()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Fitet-Monitor-Component.html#method_load_components">load_components()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -248,8 +262,15 @@
 </dt>
 <dd></dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fitet-Monitor-Component.html#method_load_components">load_components()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Fitet-Monitor-Component.html#method_script_dependencies">script_dependencies()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Fitet-Monitor-Component.html#method_template">template()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -417,16 +438,16 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_club_code">
-        $club_code
-        <a href="classes/Fitet-Monitor-Club-Page.html#property_club_code" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_club">
+        $club
+        <a href="classes/Fitet-Monitor-Club-Page.html#property_club" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/pages/club/class-fitet-monitor-club-page.php"><a href="files/src-admin-pages-club-class-fitet-monitor-club-page.html"><abbr title="src/admin/pages/club/class-fitet-monitor-club-page.php">class-fitet-monitor-club-page.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7</span>
+    <span class="phpdocumentor-element-found-in__line">9</span>
 
     </aside>
 
@@ -434,7 +455,7 @@
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$club_code</span>
+    <span class="phpdocumentor-signature__name">$club</span>
     </code>
 
         <section class="phpdocumentor-description"></section>
@@ -464,14 +485,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/pages/club/class-fitet-monitor-club-page.php"><a href="files/src-admin-pages-club-class-fitet-monitor-club-page.html"><abbr title="src/admin/pages/club/class-fitet-monitor-club-page.php">class-fitet-monitor-club-page.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">9</span>
+    <span class="phpdocumentor-element-found-in__line">11</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plugin_name</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$club_code</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plugin_name</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$club</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -494,7 +515,7 @@
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$club_code</span>
+                <span class="phpdocumentor-signature__argument__name">$club</span>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -524,7 +545,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/pages/club/class-fitet-monitor-club-page.php"><a href="files/src-admin-pages-club-class-fitet-monitor-club-page.html"><abbr title="src/admin/pages/club/class-fitet-monitor-club-page.php">class-fitet-monitor-club-page.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 
     </aside>
 
@@ -623,7 +644,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor-component.php"><a href="files/src-common-includes-class-fitet-monitor-component.html"><abbr title="src/common/includes/class-fitet-monitor-component.php">class-fitet-monitor-component.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
@@ -656,7 +677,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/pages/club/class-fitet-monitor-club-page.php"><a href="files/src-admin-pages-club-class-fitet-monitor-club-page.html"><abbr title="src/admin/pages/club/class-fitet-monitor-club-page.php">class-fitet-monitor-club-page.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">21</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
@@ -664,6 +685,39 @@
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">initialize_data</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_prepare_messages">
+        prepare_messages()
+        <a href="classes/Fitet-Monitor-Club-Page.html#method_prepare_messages" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/pages/club/class-fitet-monitor-club-page.php"><a href="files/src-admin-pages-club-class-fitet-monitor-club-page.html"><abbr title="src/admin/pages/club/class-fitet-monitor-club-page.php">class-fitet-monitor-club-page.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">32</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">prepare_messages</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -715,6 +769,39 @@
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_load_components">
+        load_components()
+        <a href="classes/Fitet-Monitor-Component.html#method_load_components" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor-component.php"><a href="files/src-common-includes-class-fitet-monitor-component.html"><abbr title="src/common/includes/class-fitet-monitor-component.php">class-fitet-monitor-component.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">load_components</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_process_data">
         process_data()
         <a href="classes/Fitet-Monitor-Component.html#method_process_data" class="headerlink"><i class="fas fa-link"></i></a>
@@ -722,7 +809,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor-component.php"><a href="files/src-common-includes-class-fitet-monitor-component.html"><abbr title="src/common/includes/class-fitet-monitor-component.php">class-fitet-monitor-component.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">73</span>
+    <span class="phpdocumentor-element-found-in__line">85</span>
 
     </aside>
 
@@ -800,24 +887,57 @@
                     <article
         class="phpdocumentor-element
             -method
-            -private
+            -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_load_components">
-        load_components()
-        <a href="classes/Fitet-Monitor-Component.html#method_load_components" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_script_dependencies">
+        script_dependencies()
+        <a href="classes/Fitet-Monitor-Component.html#method_script_dependencies" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor-component.php"><a href="files/src-common-includes-class-fitet-monitor-component.html"><abbr title="src/common/includes/class-fitet-monitor-component.php">class-fitet-monitor-component.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">52</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">load_components</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">script_dependencies</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_template">
+        template()
+        <a href="classes/Fitet-Monitor-Component.html#method_template" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/common/includes/class-fitet-monitor-component.php"><a href="files/src-common-includes-class-fitet-monitor-component.html"><abbr title="src/common/includes/class-fitet-monitor-component.php">class-fitet-monitor-component.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">76</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">template</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 

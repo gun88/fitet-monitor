@@ -62,17 +62,17 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 		$players = array_values($players);
 
 		$anchor = $team['addAnchor'] ? "<a id='players'></a>" : "";
-		return $anchor . "<h3>" . __("Players") . "</h3>" .
+		return $anchor . "<h3>" . __("Players", 'fitet-monitor') . "</h3>" .
 			"<div class='fm-team-card-players-content'>" . implode('', $players) . "</div>";
 	}
 
 	private function info($team) {
-		$content = $this->row(__('Championship'), $team['championshipName']);
-		$content .= $this->row(__('Season'), $team['seasonName']);
+		$content = $this->row(__('Championship', 'fitet-monitor'), $team['championshipName']);
+		$content .= $this->row(__('Season', 'fitet-monitor'), $team['seasonName']);
 		$content .= $this->ranking($team);
 
 		if (isset($team['teamPageUrl'])) {
-			$content .= "<div><a class='fm-team-card-details-link' href='" . $team['teamPageUrl'] . "'>" . __('Open Team Details') . "</a></div>";
+			$content .= "<div><a class='fm-team-card-details-link' href='" . $team['teamPageUrl'] . "'>" . __('Open Team Details', 'fitet-monitor') . "</a></div>";
 		}
 
 		$content .= "<br>";
@@ -83,23 +83,23 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 		$ranking = $team['ranking'];
 		switch ($team['teamStatus']) {
 			case 'playoff':
-				$ranking .= " (" . __('Playoff') . ")";
+				$ranking .= " (" . __('Playoff', 'fitet-monitor') . ")";
 				break;
 			case 'playout':
-				$ranking .= " (" . __('Playout') . ")";
+				$ranking .= " (" . __('Playout', 'fitet-monitor') . ")";
 				break;
 			case 'relegation':
-				$ranking .= " (" . __('Relegation') . ")";
+				$ranking .= " (" . __('Relegation', 'fitet-monitor') . ")";
 				break;
 			case 'promo':
-				$ranking .= " (" . __('Promotion') . ")";
+				$ranking .= " (" . __('Promotion', 'fitet-monitor') . ")";
 				break;
 			case 'neutral':
 			default:
 				break;
 		}
 
-		return $this->row(__('Ranking'), $ranking);
+		return $this->row(__('Ranking', 'fitet-monitor'), $ranking);
 	}
 
 

@@ -31,7 +31,7 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 
 	private function main_content($players, $multi_club, $show_tournaments) {
 		if (empty($players)) {
-			return "<p style='text-align: center'>" . __('No Results') . "</p>";
+			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
 
 		$players = $this->rows($players, $multi_club);
@@ -48,26 +48,26 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 
 	private function menu($list_url, $table_url) {
 		$menu_entries = [];
-		$menu_entries[] = '<a href="' . $list_url . '"><img alt="list" src="' . FITET_MONITOR_ICON_LIST . '"/><span>' . __('List') . '</span></a>';
-		$menu_entries[] = '<a href="' . $table_url . '"><img alt="caps" src="' . FITET_MONITOR_ICON_TABLE . '"/><span>' . __('Table') . '</span></a>';
-		$menu_entries[] = '<span><img alt="caps" src="' . FITET_MONITOR_ICON_HASHTAG . '"/>' . __('Caps') . '</span>';
+		$menu_entries[] = '<a href="' . $list_url . '"><img alt="list" src="' . FITET_MONITOR_ICON_LIST . '"/><span>' . __('List', 'fitet-monitor') . '</span></a>';
+		$menu_entries[] = '<a href="' . $table_url . '"><img alt="caps" src="' . FITET_MONITOR_ICON_TABLE . '"/><span>' . __('Table', 'fitet-monitor') . '</span></a>';
+		$menu_entries[] = '<span><img alt="caps" src="' . FITET_MONITOR_ICON_HASHTAG . '"/>' . __('Caps', 'fitet-monitor') . '</span>';
 
 		return implode('|', $menu_entries);
 	}
 
 	private function columns($multi_club, $show_tournaments) {
 		$columns = [];
-		$columns  ['playerName'] = __('Name');
+		$columns  ['playerName'] = __('Name', 'fitet-monitor');
 		if ($show_tournaments) { // todo terminare quando non ci saranno problemi di connessione sul sito fitet
-			$columns  ['tournaments'] = __('Tournaments');
-			$columns  ['championships'] = __('Championships');
-			$columns  ['total'] = __('Total');
+			$columns  ['tournaments'] = __('Tournaments', 'fitet-monitor');
+			$columns  ['championships'] = __('Championships', 'fitet-monitor');
+			$columns  ['total'] = __('Total', 'fitet-monitor');
 		} else {
-			$columns  ['total'] = __('Caps');
+			$columns  ['total'] = __('Caps', 'fitet-monitor');
 		}
 
 		if ($multi_club) {
-			$columns['club'] = __('Club');
+			$columns['club'] = __('Club', 'fitet-monitor');
 		}
 		return $columns;
 	}

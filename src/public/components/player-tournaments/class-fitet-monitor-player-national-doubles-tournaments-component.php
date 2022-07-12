@@ -23,18 +23,18 @@ class Fitet_Monitor_Player_National_Doubles_Tournament_Component extends Fitet_M
 		];
 
 		return [
-			'nationalDoubleTournamentsLabel' => __('National Double Tournaments'),
+			'nationalDoubleTournamentsLabel' => __('National Double Tournaments', 'fitet-monitor'),
 			'table' => $this->components['table']->render($table),
 		];
 	}
 
 	public function columns() {
 		return [
-			'season' => __("Season"),
-			'date' => __("Date"),
-			'partner' => __("Doubles Partner"),
-			'competition' => __("Competition"),
-			'round' => __("Round")
+			'season' => __("Season", 'fitet-monitor'),
+			'date' => __("Date", 'fitet-monitor'),
+			'partner' => __("Doubles Partner", 'fitet-monitor'),
+			'competition' => __("Competition", 'fitet-monitor'),
+			'round' => __("Round", 'fitet-monitor')
 		];
 	}
 

@@ -24,7 +24,7 @@ class Fitet_Monitor_Player_Season_Component extends Fitet_Monitor_Component {
 		];
 
 		return [
-			'seasonLabel' => __('Season'),
+			'seasonLabel' => __('Season', 'fitet-monitor'),
 			'table' => $this->components['table']->render($table),
 
 		];
@@ -32,10 +32,10 @@ class Fitet_Monitor_Player_Season_Component extends Fitet_Monitor_Component {
 
 	public function columns() {
 		return [
-			'date' => __("Date"),
-			'opponent' => __("Opponent"),
-			'points' => __("Points"),
-			'match' => __("Match"),
+			'date' => __("Date", 'fitet-monitor'),
+			'opponent' => __("Opponent", 'fitet-monitor'),
+			'points' => __("Points", 'fitet-monitor'),
+			'match' => __("Match", 'fitet-monitor'),
 		];
 	}
 

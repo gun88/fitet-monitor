@@ -56,10 +56,10 @@ class Fitet_Monitor_Player_Detail_Component extends Fitet_Monitor_Component {
 	private function menu($has_rankings, $has_season, $has_championships, $has_tournaments): string {
 		$menu_entries = [];
 
-		if ($has_rankings) $menu_entries[] = '<a href="#ranking"><img alt="ranking" src="' . FITET_MONITOR_ICON_CHART . '"/>' . __('Ranking') . '</a>';
-		if ($has_season) $menu_entries[] = '<a href="#season"><img alt="season" src="' . FITET_MONITOR_ICON_LIST . '"/>' . __('Season') . '</a>';
-		if ($has_championships) $menu_entries[] = '<a href="#championships"><img alt="championships" src="' . FITET_MONITOR_ICON_CALENDAR . '"/>' . __('Championships') . '</a>';
-		if ($has_tournaments) $menu_entries[] = '<a href="#tournaments"><img alt="tournaments" src="' . FITET_MONITOR_ICON_TROPHY . '"/>' . __('Tournaments') . '</a>';
+		if ($has_rankings) $menu_entries[] = '<a href="#ranking"><img alt="ranking" src="' . FITET_MONITOR_ICON_CHART . '"/>' . __('Ranking', 'fitet-monitor') . '</a>';
+		if ($has_season) $menu_entries[] = '<a href="#season"><img alt="season" src="' . FITET_MONITOR_ICON_LIST . '"/>' . __('Season', 'fitet-monitor') . '</a>';
+		if ($has_championships) $menu_entries[] = '<a href="#championships"><img alt="championships" src="' . FITET_MONITOR_ICON_CALENDAR . '"/>' . __('Championships', 'fitet-monitor') . '</a>';
+		if ($has_tournaments) $menu_entries[] = '<a href="#tournaments"><img alt="tournaments" src="' . FITET_MONITOR_ICON_TROPHY . '"/>' . __('Tournaments', 'fitet-monitor') . '</a>';
 
 		return implode('|', $menu_entries);
 	}

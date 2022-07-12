@@ -21,7 +21,7 @@ class Fitet_Monitor_Teams_List_Component extends Fitet_Monitor_Component {
 
 	private function main_content($data) {
 		if (empty($data)) {
-			return "<p style='text-align: center'>" . __('No Results') . "</p>";
+			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
 		$data = array_map(function ($player) {
 			return $this->components['teamCard']->render($player);
@@ -30,7 +30,7 @@ class Fitet_Monitor_Teams_List_Component extends Fitet_Monitor_Component {
 	}
 
 	private function filter($seasons, $season_id) {
-		$filters = '<div><img alt="filter" src="' . FITET_MONITOR_ICON_FILTER . '"/><span>' . __('Season') . '</span>';
+		$filters = '<div><img alt="filter" src="' . FITET_MONITOR_ICON_FILTER . '"/><span>' . __('Season', 'fitet-monitor') . '</span>';
 		$filters .= "<select id='fm-team-list-season-filter'>";
 		foreach ($seasons as $season) {
 			$filters .= "<option value='" . $season['seasonId'] . "' " . ($season_id == $season['seasonId'] ? 'selected' : '') . ">" . $season['seasonName'] . "</option>";

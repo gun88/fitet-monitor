@@ -24,14 +24,14 @@ class Fitet_Monitor_Player_Championships_Component extends Fitet_Monitor_Compone
 		];
 
 		return [
-			'championshipsLabel' => __('Championships'),
+			'championshipsLabel' => __('Championships', 'fitet-monitor'),
 			'table' => $this->components['table']->render($table),
 		];
 	}
 
 	private function type($type): string {
-		if ($type == 'naz') $type = __('National');
-		if ($type == 'reg') $type = __('Regional');
+		if ($type == 'naz') $type = __('National', 'fitet-monitor');
+		if ($type == 'reg') $type = __('Regional', 'fitet-monitor');
 		return $type;
 	}
 
@@ -61,13 +61,13 @@ class Fitet_Monitor_Player_Championships_Component extends Fitet_Monitor_Compone
 
 	private function columns() {
 		return [
-			'season' => __("Season"),
-			'championship' => __("Championship"),
-			'team' => __("Team"),
-			'matchCount' => __('Match'),
-			'matchWin' => __('Won'),
-			'matchLost' => __('Lost'),
-			'matchPercentage' => __('Percentage'),
+			'season' => __("Season", 'fitet-monitor'),
+			'championship' => __("Championship", 'fitet-monitor'),
+			'team' => __("Team", 'fitet-monitor'),
+			'matchCount' => __('Match', 'fitet-monitor'),
+			'matchWin' => __('Won', 'fitet-monitor'),
+			'matchLost' => __('Lost', 'fitet-monitor'),
+			'matchPercentage' => __('Percentage', 'fitet-monitor'),
 		];
 	}
 

@@ -28,13 +28,13 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 	public function prepare_messages() {
 		$messagePool = '';
 		if (isset($_GET['message']) && 'deleted' === $_GET['message']) {
-			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Delete operation completed') . '</p></div>';
+			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Delete operation completed', 'fitet-monitor') . '</p></div>';
 		}
 		if (isset($_GET['message']) && 'added' === $_GET['message']) {
-			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Club added successfully') . '</p></div>';
+			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Club added successfully', 'fitet-monitor') . '</p></div>';
 		}
 		if (isset($_GET['message']) && 'edited' === $_GET['message']) {
-			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Club edited successfully') . '</p></div>';
+			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Club edited successfully', 'fitet-monitor') . '</p></div>';
 		}
 		return $messagePool;
 	}

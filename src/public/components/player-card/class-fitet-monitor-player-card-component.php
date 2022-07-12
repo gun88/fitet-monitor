@@ -69,16 +69,16 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 		$content = "<div>" . $this->name($data) . "</div>";
 		if ($data['multiClub'])
 			$content .= $data['showClub'] ? $this->club($data) : '';
-		$content .= $data['showPoints'] ? $this->row(__('Points'), $data['points']) : '';
-		$content .= $data['showRank'] ? $this->row(__('Rank'), $this->rank($data['rank'], $data['type'])) : '';
-		$content .= $data['showBest'] ? $this->row(__('Best'), $data['best']) : '';
-		$content .= $data['showCategory'] ? $this->row(__('Category'), $data['category']) : '';
-		$content .= $data['showDiff'] ? $this->row(__('Difference'), $data['diff']) : '';
-		$content .= $data['showSector'] ? $this->row(__('Sector'), $data['sector']) : '';
-		$content .= $data['showPlayerCode'] ? $this->row(__('Player Code'), $data['playerCode']) : '';
-		$content .= $data['showRegion'] ? $this->row(__('Region'), $data['region']) : '';
-		$content .= $data['showSex'] ? $this->row(__('Sex'), $data['sex']) : '';
-		$content .= $data['showBirthDate'] ? $this->row(__('Birth Date'), $data['birthDate']) : '';
+		$content .= $data['showPoints'] ? $this->row(__('Points', 'fitet-monitor'), $data['points']) : '';
+		$content .= $data['showRank'] ? $this->row(__('Rank', 'fitet-monitor'), $this->rank($data['rank'], $data['type'])) : '';
+		$content .= $data['showBest'] ? $this->row(__('Best', 'fitet-monitor'), $data['best']) : '';
+		$content .= $data['showCategory'] ? $this->row(__('Category', 'fitet-monitor'), $data['category']) : '';
+		$content .= $data['showDiff'] ? $this->row(__('Difference', 'fitet-monitor'), $data['diff']) : '';
+		$content .= $data['showSector'] ? $this->row(__('Sector', 'fitet-monitor'), $data['sector']) : '';
+		$content .= $data['showPlayerCode'] ? $this->row(__('Player Code', 'fitet-monitor'), $data['playerCode']) : '';
+		$content .= $data['showRegion'] ? $this->row(__('Region', 'fitet-monitor'), $data['region']) : '';
+		$content .= $data['showSex'] ? $this->row(__('Sex', 'fitet-monitor'), $data['sex']) : '';
+		$content .= $data['showBirthDate'] ? $this->row(__('Birth Date', 'fitet-monitor'), $data['birthDate']) : '';
 		return $content;
 	}
 
@@ -95,9 +95,9 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 	private function club($data) {
 		$club_name = $data['clubName'];
 		if ($data['showClubCode']) {
-			$club_name .= '<span> - ' . __('Code') . ': ' . $data['clubCode'] . '</span>';
+			$club_name .= '<span> - ' . __('Code', 'fitet-monitor') . ': ' . $data['clubCode'] . '</span>';
 		}
-		return $this->row(__('Club'), $club_name);
+		return $this->row(__('Club', 'fitet-monitor'), $club_name);
 
 	}
 

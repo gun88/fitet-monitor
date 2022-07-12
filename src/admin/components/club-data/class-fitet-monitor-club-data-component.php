@@ -18,14 +18,14 @@ class Fitet_Monitor_Club_Data_Component extends Fitet_Monitor_Component {
 
 
 		$_data = [];
-		$_data['clubCodeLabel'] = __('Club code');
-		$_data['clubNameLabel'] = __('Club name');
-		$_data['clubProvinceLabel'] = __('Club Province');
-		$_data['clubLogoLabel'] = __('Club Logo');
-		$_data['clubCronLabel'] = __('Auto Update');
-		$_data['clubHistorySizeLabel'] = __('History Size');
-		$_data['clubInfoLabel'] = __('Club information');
-		$_data['placeholder'] = __('Search for a Club...');
+		$_data['clubCodeLabel'] = __('Club code', 'fitet-monitor');
+		$_data['clubNameLabel'] = __('Club name', 'fitet-monitor');
+		$_data['clubProvinceLabel'] = __('Club Province', 'fitet-monitor');
+		$_data['clubLogoLabel'] = __('Club Logo', 'fitet-monitor');
+		$_data['clubCronLabel'] = __('Auto Update', 'fitet-monitor');
+		$_data['clubHistorySizeLabel'] = __('History Size', 'fitet-monitor');
+		$_data['clubInfoLabel'] = __('Club information', 'fitet-monitor');
+		$_data['placeholder'] = __('Search for a Club...', 'fitet-monitor');
 		$_data['clubCode'] = $data && isset($data['clubCode']) ? $data['clubCode'] : '';
 		$_data['clubName'] = $data && isset($data['clubName']) ? $data['clubName'] : '';
 		$_data['clubProvince'] = $data && isset($data['clubProvince']) ? $data['clubProvince'] : '';
@@ -36,8 +36,8 @@ class Fitet_Monitor_Club_Data_Component extends Fitet_Monitor_Component {
 		$_data['readonly'] = empty($_data['clubCode']) ? '' : 'readonly';
 		$_data['action'] = $data && isset($data['clubCode']) ? 'edit' : 'add';
 
-		$_data['manualConfigLabel'] = __('Manual Configuration');
-		$_data['autoConfigLabel'] = __('Auto Configuration');
+		$_data['manualConfigLabel'] = __('Manual Configuration', 'fitet-monitor');
+		$_data['autoConfigLabel'] = __('Auto Configuration', 'fitet-monitor');
 		$_data['submitButton'] = get_submit_button(__('Save', 'fitet-monitor'), 'primary large', 'submit', true, !($data && isset($data['clubCode'])) ? 'disabled' : '');
 
 

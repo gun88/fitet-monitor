@@ -376,7 +376,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 	private function add_player_best($players) {
 		return array_map(function ($player) {
 			if (!empty($player['best'])) {
-				$player['best'] = $player['best']['position'] . " " . __('on') . " " . $player['best']['date'];
+				$player['best'] = $player['best']['position'] . " " . __('on', 'fitet-monitor') . " " . $player['best']['date'];
 			}
 			return $player;
 		}, $players);

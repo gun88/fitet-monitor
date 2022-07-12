@@ -26,7 +26,7 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 
 	private function main_content($players, $multi_club) {
 		if (empty($players)) {
-			return "<p style='text-align: center'>" . __('No Results') . "</p>";
+			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
 
 		return $this->components['table']->render([
@@ -39,9 +39,9 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 
 	private function menu($list_url, $caps_url) {
 		$menu_entries = [];
-		$menu_entries[] = '<a href="' . $list_url . '"><img alt="list" src="' . FITET_MONITOR_ICON_LIST . '"/><span>' . __('List') . '</span></a>';
-		$menu_entries[] = '<span><img alt="table" src="' . FITET_MONITOR_ICON_TABLE . '"/>' . __('Table') . '</span>';
-		$menu_entries[] = '<a href="' . $caps_url . '"><img alt="caps" src="' . FITET_MONITOR_ICON_HASHTAG . '"/><span>' . __('Caps') . '</span></a>';
+		$menu_entries[] = '<a href="' . $list_url . '"><img alt="list" src="' . FITET_MONITOR_ICON_LIST . '"/><span>' . __('List', 'fitet-monitor') . '</span></a>';
+		$menu_entries[] = '<span><img alt="table" src="' . FITET_MONITOR_ICON_TABLE . '"/>' . __('Table', 'fitet-monitor') . '</span>';
+		$menu_entries[] = '<a href="' . $caps_url . '"><img alt="caps" src="' . FITET_MONITOR_ICON_HASHTAG . '"/><span>' . __('Caps', 'fitet-monitor') . '</span></a>';
 
 		return implode('|', $menu_entries);
 	}
@@ -49,15 +49,15 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 
 	private function columns($multi_club) {
 		$columns = [
-			'playerName' => __('Name'),
-			'points' => __('Points'),
-			'rank' => __('Rank'),
-			'diff' => __('Diff.'),
-			'category' => __('Category'),
-			'sector' => __('Sector'),
+			'playerName' => __('Name', 'fitet-monitor'),
+			'points' => __('Points', 'fitet-monitor'),
+			'rank' => __('Rank', 'fitet-monitor'),
+			'diff' => __('Diff.', 'fitet-monitor'),
+			'category' => __('Category', 'fitet-monitor'),
+			'sector' => __('Sector', 'fitet-monitor'),
 		];
 		if ($multi_club)
-			$columns['club'] = __('Club');
+			$columns['club'] = __('Club', 'fitet-monitor');
 		return $columns;
 	}
 
@@ -94,9 +94,9 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 
 	private function sector($sector, $sex) {
 		if ($sex == 'M')
-			return $sector . ' - ' . __('Men');
+			return $sector . ' - ' . __('Men', 'fitet-monitor');
 		if ($sex == 'F')
-			return $sector . ' - ' . __('Women');
+			return $sector . ' - ' . __('Women', 'fitet-monitor');
 		return $sector;
 	}
 

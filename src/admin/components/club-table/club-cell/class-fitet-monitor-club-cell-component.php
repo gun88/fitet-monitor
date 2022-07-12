@@ -24,13 +24,13 @@ class Fitet_Monitor_Club_Cell_Component extends Fitet_Monitor_Component {
 		$club_url = add_query_arg(['clubCode' => $club_code, 'mode' => 'club',], esc_url(menu_page_url($this->plugin_name, false)));
 		$club_detail_url = add_query_arg(['clubCode' => $club_code, 'mode' => 'detail',], esc_url(menu_page_url($this->plugin_name, false)));
 
-		$label_view = __('View');
-		$label_edit = __('Edit');
-		$label_update = __('Update');
-		$label_delete = __('Delete');
-		$label_delete_permanently = __('Delete Permanently');
-		$label_cancel = __('Cancel');
-		$label_retry = __('Retry');
+		$label_view = __('View', 'fitet-monitor');
+		$label_edit = __('Edit', 'fitet-monitor');
+		$label_update = __('Update', 'fitet-monitor');
+		$label_delete = __('Delete', 'fitet-monitor');
+		$label_delete_permanently = __('Delete Permanently', 'fitet-monitor');
+		$label_cancel = __('Cancel', 'fitet-monitor');
+		$label_retry = __('Retry', 'fitet-monitor');
 
 
 		$_data = [];
