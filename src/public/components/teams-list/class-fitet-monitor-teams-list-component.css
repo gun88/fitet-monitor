@@ -1,0 +1,19 @@
+.fm-team-list-filter {
+	margin-bottom: 1rem;
+	display: flex;
+}
+
+.fm-team-list-filter > div {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+	margin-left: auto;
+}
+
+.fm-team-list-filter > div img {
+	height: 1rem;
+}
+
+.fm-team-list-filter > div select {
+	width: auto;
+}
