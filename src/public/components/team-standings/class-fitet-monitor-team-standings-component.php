@@ -13,11 +13,9 @@ class Fitet_Monitor_Team_Standings_Component extends Fitet_Monitor_Component {
 
 
 	protected function process_data($data) {
-		$json_encode = json_encode($data, 128);
 		return [
 			'teamStandingsLabel' => __("Standings"),
 			'table' => $this->table($data),
-			'json' => "<code>$json_encode</code>",
 		];
 	}
 
