@@ -55,6 +55,10 @@ define('FITET_MONITOR_VERSION', '0.0.0-DEV');
  */
 define('FITET_MONITOR_NAME', 'fitet-monitor');
 
+if (!defined('FITET_MONITOR_IS_DEV')) {
+	define('FITET_MONITOR_IS_DEV', false);
+}
+
 // todo - capire dove metterli
 define('FITET_MONITOR_CLUB_NO_LOGO', plugin_dir_url(FITET_MONITOR_DIR . 'public/assets/fitet-monitor-no-club-image.svg') . 'fitet-monitor-no-club-image.svg');
 define('FITET_MONITOR_PLAYER_NO_IMAGE', plugin_dir_url(FITET_MONITOR_DIR . 'public/assets/fitet-monitor-no-player-image.svg') . 'fitet-monitor-no-player-image.svg');
@@ -92,6 +96,17 @@ function run_fitet_monitor() {
 }
 
 run_fitet_monitor();
+
+
+add_action('wp', function () {
+
+	global $post;
+	if ($post!= null && strpos($post->post_content, '[fitet-monitor-'))
+		add_action('wp_head', function () {
+			// echo '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
+			echo '<meta name="viewport" content="width=device-width, initial-scale=.5">';
+		}, '1');
+});
 
 
 // todo !!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -149,18 +164,12 @@ function bl_cron_exec() {
 
 }*/
 
-// todo piazzalo bene
-add_action('wp_head', 'add_viewport_meta_tag', '1');
-
-function add_viewport_meta_tag() {
-	// echo '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
-	echo '<meta name="viewport" content="width=device-width, initial-scale=.5">';
-}
-
 
 $x = 0;
 
 function memory_dump() {
+	if (!FITET_MONITOR_IS_DEV)
+		return;
 	global $x;
 	$x++;
 	error_log("[$x]" . ' memory usage: ' . round(memory_get_usage() / (1024 * 1024)) .

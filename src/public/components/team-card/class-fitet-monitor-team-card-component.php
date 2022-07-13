@@ -20,6 +20,8 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 
 	private $default_config = [
 		'addAnchor' => false,
+		'showLink' => false,
+
 	];
 	private $config = [];
 
@@ -71,7 +73,7 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 		$content .= $this->row(__('Season', 'fitet-monitor'), $team['seasonName']);
 		$content .= $this->ranking($team);
 
-		if (isset($team['teamPageUrl'])) {
+		if (isset($team['teamPageUrl']) && $team['showLink']) {
 			$content .= "<div><a class='fm-team-card-details-link' href='" . $team['teamPageUrl'] . "'>" . __('Open Team Details', 'fitet-monitor') . "</a></div>";
 		}
 

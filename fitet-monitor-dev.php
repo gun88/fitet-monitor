@@ -15,6 +15,7 @@
 // overriding definitions for development environment
 define('FITET_MONITOR_ROOT_FILE', __FILE__);
 define('FITET_MONITOR_DIR', trailingslashit(plugin_dir_path(__FILE__)) . 'src/');
+define('FITET_MONITOR_IS_DEV', true);
 
 require_once FITET_MONITOR_DIR . 'fitet-monitor.php';
 

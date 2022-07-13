@@ -6,7 +6,7 @@ require_once FITET_MONITOR_DIR . 'public/components/team-card/class-fitet-monito
 class Fitet_Monitor_Teams_List_Component extends Fitet_Monitor_Component {
 	protected function components() {
 		return [
-			'teamCard' => new Fitet_Monitor_Team_Card_Component($this->plugin_name, $this->version, []),
+			'teamCard' => new Fitet_Monitor_Team_Card_Component($this->plugin_name, $this->version, ['showLink' => true]),
 		];
 	}
 
