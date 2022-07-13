@@ -84,6 +84,7 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 				$row['club'] = $this->components['clubCell']->render([
 					'clubCode' => $player['clubCode'],
 					'clubName' => $player['clubName'],
+					'clubLogo' => $player['clubLogo'],
 					'clubPageUrl' => $player['clubPageUrl']
 				]);
 			}

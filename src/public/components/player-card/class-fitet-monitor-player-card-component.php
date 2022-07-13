@@ -64,14 +64,13 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 		]);
 	}
 
-
 	private function player_content($data) {
 		$content = "<div>" . $this->name($data) . "</div>";
 		if ($data['multiClub'])
 			$content .= $data['showClub'] ? $this->club($data) : '';
 		$content .= $data['showPoints'] ? $this->row(__('Points', 'fitet-monitor'), $data['points']) : '';
 		$content .= $data['showRank'] ? $this->row(__('Rank', 'fitet-monitor'), $this->rank($data['rank'], $data['type'])) : '';
-		$content .= $data['showBest'] ? $this->row(__('Best', 'fitet-monitor'), $data['best']) : '';
+		$content .= $data['showBest'] ? $this->row(__('Best', 'fitet-monitor'), $this->best($data['best'])) : '';
 		$content .= $data['showCategory'] ? $this->row(__('Category', 'fitet-monitor'), $data['category']) : '';
 		$content .= $data['showDiff'] ? $this->row(__('Difference', 'fitet-monitor'), $data['diff']) : '';
 		$content .= $data['showSector'] ? $this->row(__('Sector', 'fitet-monitor'), $data['sector']) : '';
@@ -82,6 +81,7 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 		return $content;
 	}
 
+
 	public function name($data) {
 		$player_page_url = ($data['playerUrl']);
 		if ($player_page_url != null) {
@@ -90,7 +90,6 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 			return "<span><b>" . $data['playerName'] . "</b></span>";
 		}
 	}
-
 
 	private function club($data) {
 		$club_name = $data['clubName'];
@@ -101,13 +100,18 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 
 	}
 
+
 	private function row($label, $value) {
 		return "<div><b>$label</b>: <span>$value</span></div>";
 	}
 
-
 	private function rank($rank, $type): string {
 		return $type == 'Italiani' ? $rank : $type;
+	}
+
+
+	private function best($best) {
+		return empty($best) ? 'N/A' : '';
 	}
 
 }

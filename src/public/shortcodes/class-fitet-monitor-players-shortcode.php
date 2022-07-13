@@ -102,7 +102,8 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 				$club_code = Fitet_Monitor_Utils::club_code_by_team_id($championship_id, $season_id, $team_id);
 				$championship['clubCode'] = $club_code;
 				$championship['clubLogo'] = Fitet_Monitor_Utils::club_logo_by_code($club_code);
-				$championship['teamPageUrl'] = "index.php?page_id=$team_page_id&season=$season_id&championship=$championship_id&team=$team_id";
+				if (Fitet_Monitor_Utils::team_loaded($championship_id, $season_id, $team_id))
+					$championship['teamPageUrl'] = "index.php?page_id=$team_page_id&season=$season_id&championship=$championship_id&team=$team_id";
 			}
 
 		}
@@ -151,10 +152,11 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 		return $players;
 	}
 
-	private function add_club_url($players) {
+	private function add_club_data($players) {
 		// todo implement!
 		foreach ($players as &$player) {
 			$player['clubPageUrl'] = '';
+			$player['clubLogo'] = Fitet_Monitor_Utils::club_logo_by_code($player['clubCode']);
 		}
 		return $players;
 	}
@@ -302,7 +304,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 		$list_url = "index.php?page_id=$post->ID";
 
 		$resources = $this->add_player_url($resources);
-		$resources = $this->add_club_url($resources);
+		$resources = $this->add_club_data($resources);
 
 		usort($resources, function ($p1, $p2) {
 			return $p2['points'] - $p1['points'];
@@ -338,6 +340,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 		}));
 
 		$resources = $this->extract_players($resources);
+		$resources = $this->add_club_data($resources);
 
 		$resources = array_map(function ($player) {
 			return [
@@ -357,7 +360,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 		$list_url = "index.php?page_id=$post->ID";
 
 		$resources = $this->add_player_url($resources);
-		$resources = $this->add_club_url($resources);
+		$resources = $this->add_club_data($resources);
 
 		return [
 			'multiClub' => $multi_club,
