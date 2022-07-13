@@ -90,7 +90,7 @@ class Fitet_Monitor_Public {
 			add_shortcode($shortcode->tag, [$shortcode, 'render_shortcode']);
 		}
 
-		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
+	//	require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}
 
 	public function load_assets() {

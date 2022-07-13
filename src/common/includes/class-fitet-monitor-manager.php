@@ -36,7 +36,7 @@ class Fitet_Monitor_Manager {
 	}
 
 	public function edit_club($club_update) {
-		$club = get_option($this->plugin_name . $club_update['clubCode']);
+		$club = get_option($this->plugin_name . $club_update['clubCode'],[]);
 		$club['clubName'] = $club_update['clubName'];
 		$club['clubProvince'] = $club_update['clubProvince'];
 		$club['clubLogo'] = $club_update['clubLogo'];
@@ -64,7 +64,7 @@ class Fitet_Monitor_Manager {
 		if (!is_array($club_codes))
 			$club_codes = [$club_codes];
 
-		$all = get_option($this->plugin_name . 'clubs');
+		$all = get_option($this->plugin_name . 'clubs',[]);
 		$toRemove = $club_codes;
 		$result = array_diff($all, $toRemove);
 
@@ -75,7 +75,7 @@ class Fitet_Monitor_Manager {
 	}
 
 	public function get_club($club_code, $template = null) {
-		return Fitet_Monitor_Utils::intersect_template(get_option($this->plugin_name . $club_code), $template);
+		return Fitet_Monitor_Utils::intersect_template(get_option($this->plugin_name . $club_code,[]), $template);
 	}
 
 	public function club_exist($club_code) {
@@ -84,7 +84,7 @@ class Fitet_Monitor_Manager {
 	}
 
 	public function get_clubs($template = null) {
-		$club_codes = array_values(get_option($this->plugin_name . 'clubs'));
+		$club_codes = array_values(get_option($this->plugin_name . 'clubs',[]));
 		if (!$club_codes) {
 			return [];
 		}
@@ -111,7 +111,7 @@ class Fitet_Monitor_Manager {
 				$this->logger->reset_status($club_code);
 
 				if ($mode == 'full-history') {
-					$club = $this->full_championships_history($club_code, $mode);
+					$club = $this->full_championships_history($club_code);
 
 				} else {
 					$club = $this->retrieve_club_data($club_code, $mode);

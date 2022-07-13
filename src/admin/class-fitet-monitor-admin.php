@@ -77,7 +77,7 @@ class Fitet_Monitor_Admin {
 	public function start() {
 		add_action('load-toplevel_page_' . $this->plugin_name, [$this->router, 'on_load']);
 		add_action('admin_menu', [$this->menu, 'initialize']);
-		require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
+		//require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}
 
 

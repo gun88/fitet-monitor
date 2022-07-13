@@ -45,10 +45,12 @@ jQuery(function ($) {
 				// Modify Results Item Style
 				item.style = "display: flex; justify-content: space-between;";
 				// Modify Results Item Content
+
+				// todo localization for src
 				item.innerHTML = `
 <div class="fm-autocomplete-result"">
 	<img class="fm-autocomplete-club-logo" src="${data.value['clubLogo']}"  alt="${data.value['clubName']}"
-		onError="this.onerror=null;this.src='/wp-content/plugins/fitet-monitor/src/public/assets/fitet-monitor-no-club-image.svg';">
+		onError="this.onerror=null;this.src='/wp-content/plugins/fitet-monitor/public/assets/fitet-monitor-no-club-image.svg';">
 	<div class="fm-autocomplete-club-name">${data.match}</div>
 	<div class="fm-autocomplete-club-province">${data.value['clubProvince']}</div>
 </div>

@@ -417,7 +417,7 @@ msgstr "Turno"
 
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-tournaments-component.php:28
 msgid "National Tournaments"
-msgstr "Tornei /nazionali"
+msgstr "Tornei Nazionali"
 
 #: src/public/components/player-tournaments/class-fitet-monitor-player-regional-tournaments-component.php:28
 msgid "Regional Tournaments"
@@ -540,7 +540,6 @@ msgstr "Promossa"
 
 #: src/public/components/team-detail/class-fitet-monitor-team-detail-component.php:33
 #: src/public/components/team-statistics/class-fitet-monitor-team-statistics-component.php:18
-#, fuzzy
 msgid "Statistics"
 msgstr "Statistiche"
 
