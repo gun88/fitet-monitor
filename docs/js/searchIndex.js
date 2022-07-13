@@ -3136,45 +3136,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_player_image_url"
         },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aclub_name_by_code\u0028\u0029",
-            "name": "club_name_by_code",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_club_name_by_code"
-        },                {
             "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aclub_logo_by_code\u0028\u0029",
             "name": "club_logo_by_code",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_club_logo_by_code"
         },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aplayer_cell_by_name_and_club\u0028\u0029",
-            "name": "player_cell_by_name_and_club",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_player_cell_by_name_and_club"
-        },                {
             "fqsen": "\\Fitet_Monitor_Utils\u003A\u003A\u0024clubs",
             "name": "clubs",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#property_clubs"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aplayer_image\u0028\u0029",
-            "name": "player_image",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_player_image"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aclub_image_url\u0028\u0029",
-            "name": "club_image_url",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_club_image_url"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Ateam_image_url\u0028\u0029",
-            "name": "team_image_url",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_team_image_url"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aplayer_by_code\u0028\u0029",
-            "name": "player_by_code",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_player_by_code"
         },                {
             "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aplayer_by_id\u0028\u0029",
             "name": "player_by_id",
@@ -3190,16 +3160,6 @@ Search.appendIndex(
             "name": "player_page_url",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_player_page_url"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Ateam_page_url\u0028\u0029",
-            "name": "team_page_url",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_team_page_url"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aplayer_cell\u0028\u0029",
-            "name": "player_cell",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_player_cell"
         },                {
             "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aclub_code_by_team_id\u0028\u0029",
             "name": "club_code_by_team_id",
@@ -3221,16 +3181,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_is_associative_array"
         },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Afilter_loaded_clubs\u0028\u0029",
-            "name": "filter_loaded_clubs",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_filter_loaded_clubs"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aintersect_template_for_all\u0028\u0029",
-            "name": "intersect_template_for_all",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_intersect_template_for_all"
-        },                {
             "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Ateam_loaded\u0028\u0029",
             "name": "team_loaded",
             "summary": "",
@@ -3240,11 +3190,6 @@ Search.appendIndex(
             "name": "team_status_to_int",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_team_status_to_int"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aclub\u0028\u0029",
-            "name": "club",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_club"
         },                {
             "fqsen": "\\",
             "name": "\\",

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-07-13 08:29:35+00:00\n"
+"POT-Creation-Date: 2022-07-13 08:58:34+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,12 +108,12 @@ msgid "WARNING: This operation may take a while"
 msgstr "ATTENZIONE: Questa operazione potrebbe richiedere del tempo"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:58
-#: src/public/components/titles/class-fitet-monitor-titles-component.php:26
+#: src/public/components/titles/class-fitet-monitor-titles-component.php:34
 msgid "National Titles"
 msgstr "Titoli Nazionali"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:59
-#: src/public/components/titles/class-fitet-monitor-titles-component.php:32
+#: src/public/components/titles/class-fitet-monitor-titles-component.php:40
 msgid "Regional Titles"
 msgstr "Titoli Regionali"
 
@@ -196,7 +196,7 @@ msgstr ""
 #: src/public/components/player-tournaments/class-fitet-monitor-player-regional-tournaments-component.php:35
 #: src/public/components/team-card/class-fitet-monitor-team-card-component.php:73
 #: src/public/components/teams-list/class-fitet-monitor-teams-list-component.php:33
-#: src/public/components/titles/class-fitet-monitor-titles-component.php:57
+#: src/public/components/titles/class-fitet-monitor-titles-component.php:65
 msgid "Season"
 msgstr "Stagione"
 
@@ -206,7 +206,7 @@ msgstr "Nomi"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:116
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:127
-#: src/public/components/titles/class-fitet-monitor-titles-component.php:58
+#: src/public/components/titles/class-fitet-monitor-titles-component.php:67
 msgid "Tournament"
 msgstr "Torneo"
 
@@ -215,13 +215,13 @@ msgstr "Torneo"
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-doubles-tournaments-component.php:36
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-tournaments-component.php:37
 #: src/public/components/player-tournaments/class-fitet-monitor-player-regional-tournaments-component.php:37
-#: src/public/components/titles/class-fitet-monitor-titles-component.php:59
+#: src/public/components/titles/class-fitet-monitor-titles-component.php:68
 msgid "Competition"
 msgstr "Gara"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:118
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:129
-#: src/public/components/titles/class-fitet-monitor-titles-component.php:60
+#: src/public/components/titles/class-fitet-monitor-titles-component.php:66
 msgid "Player"
 msgstr "Giocatore"
 
@@ -245,7 +245,7 @@ msgstr "Pronto"
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:99
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:70
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:60
-#: src/public/components/titles/class-fitet-monitor-titles-component.php:62
+#: src/public/components/titles/class-fitet-monitor-titles-component.php:70
 msgid "Club"
 msgstr "Società"
 
@@ -590,7 +590,7 @@ msgstr ""
 msgid "PE"
 msgstr ""
 
-#: src/public/components/titles/class-fitet-monitor-titles-component.php:38
+#: src/public/components/titles/class-fitet-monitor-titles-component.php:46
 msgid "No results found"
 msgstr "Nessun risultato"
 
