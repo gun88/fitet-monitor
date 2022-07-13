@@ -2121,6 +2121,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_full_championships_history"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Afixed_44_36\u0028\u0029",
+            "name": "fixed_44_36",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_fixed_44_36"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "",
@@ -2766,16 +2771,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Team-Detail-Component.html#method_main_content"
         },                {
-            "fqsen": "\\Fitet_Monitor_Team_Detail_Component\u003A\u003Acalendar\u0028\u0029",
-            "name": "calendar",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Team-Detail-Component.html#method_calendar"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Team_Detail_Component\u003A\u003Astandings\u0028\u0029",
-            "name": "standings",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Team-Detail-Component.html#method_standings"
-        },                {
             "fqsen": "\\Fitet_Monitor_Team_Standings_Component",
             "name": "Fitet_Monitor_Team_Standings_Component",
             "summary": "",
@@ -3116,11 +3111,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html"
         },                {
-            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aplayer_url\u0028\u0029",
-            "name": "player_url",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Utils.html#method_player_url"
-        },                {
             "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aplayer_code_by_id\u0028\u0029",
             "name": "player_code_by_id",
             "summary": "",
@@ -3190,6 +3180,41 @@ Search.appendIndex(
             "name": "team_status_to_int",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_team_status_to_int"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Team_Statistics_Component",
+            "name": "Fitet_Monitor_Team_Statistics_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Team-Statistics-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Team_Statistics_Component\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Team-Statistics-Component.html#method_components"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Team_Statistics_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Team-Statistics-Component.html#method_process_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Team_Statistics_Component\u003A\u003Atable\u0028\u0029",
+            "name": "table",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Team-Statistics-Component.html#method_table"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Team_Statistics_Component\u003A\u003Acolumns\u0028\u0029",
+            "name": "columns",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Team-Statistics-Component.html#method_columns"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Team_Statistics_Component\u003A\u003Asort\u0028\u0029",
+            "name": "sort",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Team-Statistics-Component.html#method_sort"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Team_Statistics_Component\u003A\u003Arows\u0028\u0029",
+            "name": "rows",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Team-Statistics-Component.html#method_rows"
         },                {
             "fqsen": "\\",
             "name": "\\",
