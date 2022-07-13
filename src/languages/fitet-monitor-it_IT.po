@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-07-12 18:09:22+00:00\n"
+"POT-Creation-Date: 2022-07-13 06:51:42+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "Informazioni Società"
 
 #: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:28
 msgid "Search for a Club..."
-msgstr "Cerca Società"
+msgstr "Cerca Società..."
 
 #: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:39
 msgid "Manual Configuration"
@@ -355,9 +355,8 @@ msgid "Team"
 msgstr "Squadra"
 
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:67
-#: src/public/components/player-season/class-fitet-monitor-player-season-component.php:38
-msgid "Match"
-msgstr "Incontro"
+msgid "Matches"
+msgstr "Inconti"
 
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:68
 msgid "Won"
@@ -389,13 +388,17 @@ msgstr "Storico Classifica"
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-doubles-tournaments-component.php:34
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-tournaments-component.php:36
 #: src/public/components/player-tournaments/class-fitet-monitor-player-regional-tournaments-component.php:36
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:43
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:46
 msgid "Date"
 msgstr "Data"
 
 #: src/public/components/player-season/class-fitet-monitor-player-season-component.php:36
 msgid "Opponent"
 msgstr "Avversario"
+
+#: src/public/components/player-season/class-fitet-monitor-player-season-component.php:38
+msgid "Match"
+msgstr "Incontro"
 
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-doubles-tournaments-component.php:26
 msgid "National Double Tournaments"
@@ -485,32 +488,32 @@ msgstr "Uomini"
 msgid "Women"
 msgstr "Donne"
 
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:23
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:26
 msgid "Day"
 msgstr "Giornata"
 
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:23
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:26
 msgid "First Leg"
 msgstr "Andata"
 
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:23
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:26
 msgid "Return Match"
 msgstr "Ritorno"
 
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:30
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:33
 #: src/public/components/team-detail/class-fitet-monitor-team-detail-component.php:32
 msgid "Calendar"
 msgstr "Calendario"
 
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:42
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:45
 msgid "Home"
 msgstr "Casa"
 
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:44
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:47
 msgid "Time"
 msgstr "Ora"
 
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:45
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:48
 msgid "Result"
 msgstr "Risultato"
 
