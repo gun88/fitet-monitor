@@ -50,14 +50,6 @@ class Fitet_Monitor_Utils {
 		return "http://portale.fitet.org/images/atleti/$player_id.jpg";
 	}
 
-	public static function club_name_by_code($club_code) {
-		foreach (self::clubs() as $club) {
-			if ($club['clubCode'] == $club_code && isset($club['clubName']))
-				return $club['clubName'];
-		}
-		return null;
-	}
-
 
 	public static function club_logo_by_code($club_code) {
 		foreach (self::clubs() as $club) {
@@ -66,16 +58,6 @@ class Fitet_Monitor_Utils {
 		}
 		return '';
 	}
-
-
-	public static function player_cell_by_name_and_club($player_name, $club_code, $player_base_urlase_url = null) {
-
-		return "__implement__";
-		$player = self::player_id_by_name($player_name);
-		$player_url = self::player_page_url($player_base_urlase_url, $player['playerCode'], $player['playerName'],);
-		return self::player_cell($player['playerId'], $player_url, $player_name);
-	}
-
 
 	public static function clubs() {
 		// todo deve diventare private
@@ -113,37 +95,6 @@ class Fitet_Monitor_Utils {
 		return self::$clubs;
 	}
 
-
-	public static function player_image($player_id, $player_url = null, $player_name = 'N/A') {
-		$player_image_url = self::player_image_url($player_id);
-		$image = "<img src='$player_image_url' alt='$player_name'  onError='this.onerror=null;this.src=\"" . FITET_MONITOR_PLAYER_NO_IMAGE . "\";'>";
-		if ($player_url != null) {
-			$image = "<a class='fm-player-image' href='$player_url'>$image</a>";
-		} else {
-			$image = "<span class='fm-player-image'>$image</span>";
-		}
-		return $image;
-	}
-
-
-	public static function club_image_url($club_code) {
-		return "http://portale.fitet.org/images/societa/$club_code.jpg";
-	}
-
-	public static function team_image_url($team) {
-		return self::club_image_url($team);
-	}
-
-	public static function player_by_code($player_code) {
-		foreach (self::clubs() as $club) {
-			foreach ($club['players'] as $player) {
-				if ($player['code'] == $player_code) {
-					return $player;
-				}
-			}
-		}
-		return null;
-	}
 
 	public static function player_by_id($player_id) {
 		foreach (self::clubs() as $club) {
@@ -184,25 +135,6 @@ class Fitet_Monitor_Utils {
 		$slug = "$player_code-$slug";
 		return "$player_base_url&player=$slug";
 
-	}
-
-	public static function team_page_url($season_id, $championship_id, $team_id, $team_base_url) {
-		return "$team_base_url&season=$season_id&championship=$championship_id&team=$team_id";
-
-	}
-
-
-	public static function player_cell($player_id, $player_url = null, $player_name = 'N/A') {
-
-		$image = self::player_image($player_id, $player_url, $player_name);
-
-		if ($player_url != null) {
-			$text = "<a class='fm-player-name' href='$player_url'>$player_name</a>";
-		} else {
-			$text = "<span class='fm-player-name'>$player_name</span>";
-		}
-
-		return "<div class='fm-player-cell'>$image$text</div>";
 	}
 
 
@@ -282,18 +214,6 @@ class Fitet_Monitor_Utils {
 		return array_keys($arr) !== range(0, count($arr) - 1);
 	}
 
-	public static function filter_loaded_clubs($clubs) {
-		return array_values(array_filter($clubs, function ($club) {
-			return isset($club['lastUpdate']);
-		}));
-	}
-
-	public static function intersect_template_for_all(array $arrays, $template) {
-		return array_map(function ($array) use ($template) {
-			return self::intersect_template($array, $template);
-		}, $arrays);
-	}
-
 
 	// PRIVATE!!!!!!!!
 	public static function team_loaded($championship_id, $season_id, $team_id) {
@@ -328,18 +248,6 @@ class Fitet_Monitor_Utils {
 			case 'relegation':
 				return 1;
 		}
-	}
-
-
-	private
-	static function club($club_code) {
-
-		foreach (self::clubs() as $club) {
-			if ($club['clubCode'] == $club_code) {
-				return $club;
-			}
-		}
-		return null;
 	}
 
 }

@@ -186,6 +186,11 @@ Search.appendIndex(
             "summary": "Currently\u0020plugin\u0020name.",
             "url": "namespaces/default.html#constant_FITET_MONITOR_NAME"
         },                {
+            "fqsen": "\\FITET_MONITOR_IS_DEV",
+            "name": "FITET_MONITOR_IS_DEV",
+            "summary": "",
+            "url": "namespaces/default.html#constant_FITET_MONITOR_IS_DEV"
+        },                {
             "fqsen": "\\FITET_MONITOR_CLUB_NO_LOGO",
             "name": "FITET_MONITOR_CLUB_NO_LOGO",
             "summary": "",
@@ -255,11 +260,6 @@ Search.appendIndex(
             "name": "example_add_cron_interval",
             "summary": "",
             "url": "namespaces/default.html#function_example_add_cron_interval"
-        },                {
-            "fqsen": "\\add_viewport_meta_tag\u0028\u0029",
-            "name": "add_viewport_meta_tag",
-            "summary": "",
-            "url": "namespaces/default.html#function_add_viewport_meta_tag"
         },                {
             "fqsen": "\\memory_dump\u0028\u0029",
             "name": "memory_dump",
@@ -2251,6 +2251,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Player-Card-Component.html#method_rank"
         },                {
+            "fqsen": "\\Fitet_Monitor_Player_Card_Component\u003A\u003Abest\u0028\u0029",
+            "name": "best",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Player-Card-Component.html#method_best"
+        },                {
             "fqsen": "\\Fitet_Monitor_Player_Card_Component\u003A\u003A\u0024deault_confing",
             "name": "deault_confing",
             "summary": "",
@@ -2926,10 +2931,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Players-Shortcode.html#method_add_tournament_data"
         },                {
-            "fqsen": "\\Fitet_Monitor_Players_Shortcode\u003A\u003Aadd_club_url\u0028\u0029",
-            "name": "add_club_url",
+            "fqsen": "\\Fitet_Monitor_Players_Shortcode\u003A\u003Aadd_club_data\u0028\u0029",
+            "name": "add_club_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Players-Shortcode.html#method_add_club_url"
+            "url": "classes/Fitet-Monitor-Players-Shortcode.html#method_add_club_data"
         },                {
             "fqsen": "\\Fitet_Monitor_Players_Shortcode\u003A\u003Asingle\u0028\u0029",
             "name": "single",

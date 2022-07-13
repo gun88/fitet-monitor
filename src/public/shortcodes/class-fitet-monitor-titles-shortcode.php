@@ -17,7 +17,7 @@ class Fitet_Monitor_Titles_Shortcode extends Fitet_Monitor_Shortcode {
 	}
 
 	public function attributes(): array {
-		return ['club',];
+		return ['club', 'players-page-id'];
 	}
 
 	protected function process_attributes($attributes) {
@@ -30,8 +30,10 @@ class Fitet_Monitor_Titles_Shortcode extends Fitet_Monitor_Shortcode {
 			$clubs = [$this->manager->get_club($configuration['club'])];
 		}
 
-
 		$titles = $this->extract_titles($clubs);
+
+
+		$titles['playerPageUrl'] = 'index.php?page_id=' . $attributes['players-page-id'];
 
 		if (count($clubs) > 1) {
 			return ['mode' => 'multiClub', 'data' => $titles];
