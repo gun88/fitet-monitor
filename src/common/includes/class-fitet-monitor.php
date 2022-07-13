@@ -130,7 +130,10 @@ class Fitet_Monitor {
 	}
 
 	public function load_text_domain() {
-		load_plugin_textdomain($this->plugin_name, false, FITET_MONITOR_DIR . 'languages/');
+		$str = FITET_MONITOR_DIR . 'languages/';
+		$str = FITET_MONITOR_PLUGIN_DIR_REL_PATH . 'languages';
+		$r = load_plugin_textdomain($this->plugin_name, false, $str);
+		error_log("loading from $str - result: " . json_encode($r));
 	}
 
 	/**

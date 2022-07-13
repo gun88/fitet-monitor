@@ -41,7 +41,7 @@ if (!defined('FITET_MONITOR_DIR')) {
 }
 // Main file relative path to WP_PLUGIN_DIR
 if (!defined('FITET_MONITOR_PLUGIN_DIR_REL_PATH')) {
-	define('FITET_MONITOR_PLUGIN_DIR_REL_PATH', trailingslashit(plugin_dir_path(__FILE__)));
+	define('FITET_MONITOR_PLUGIN_DIR_REL_PATH', str_replace(trailingslashit(WP_PLUGIN_DIR), '', plugin_dir_path(__FILE__)));
 }
 
 /**

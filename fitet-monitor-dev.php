@@ -6,7 +6,7 @@
  * Author:          tpomante
  * Author URI:      https://github.com/gun88
  * Text Domain:     fitet-monitor
- * Domain Path:     /languages
+ * Domain Path:     /src/languages
  * Version:         0.0.0
  *
  * @package         Fitet_Monitor
