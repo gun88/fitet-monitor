@@ -111,7 +111,7 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 
 
 	private function best($best) {
-		return empty($best) ? 'N/A' : '';
+		return empty($best) ? 'N/A' : $best;
 	}
 
 }
