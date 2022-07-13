@@ -87,7 +87,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 	private function add_player_url($players) {
 		global $post;
 		foreach ($players as &$player) {
-			$player['playerUrl'] = Fitet_Monitor_Utils::player_url($post->ID, $player['playerCode'], $player['playerName']);
+			$player['playerUrl'] = Fitet_Monitor_Utils::player_page_url("index.php?page_id=$post->ID", $player['playerCode'], $player['playerName']);
 		}
 		return $players;
 	}
@@ -123,8 +123,9 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 					} else {
 						$opponent_player_code = Fitet_Monitor_Utils::player_code_by_id($season['opponentPlayerId'], $player['clubCode']);
 					}
-					if (!empty($opponent_player_code))
-						$season['opponentPlayerPageUrl'] = Fitet_Monitor_Utils::player_url($player_page_id, $opponent_player_code, $season['opponentPlayerName']);
+					if (!empty($opponent_player_code)) {
+						$season['opponentPlayerPageUrl'] = Fitet_Monitor_Utils::player_page_url("index.php?page_id=$player_page_id", $opponent_player_code, $season['opponentPlayerName']);
+					}
 				}
 			}
 		}
@@ -144,8 +145,9 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 					} else {
 						$partner_player_code = Fitet_Monitor_Utils::player_code_by_id($tournament['partnerPlayerId'], $player['clubCode']);
 					}
-					if (!empty($partner_player_code))
-						$tournament['partnerPlayerPageUrl'] = Fitet_Monitor_Utils::player_url($player_page_id, $partner_player_code, $tournament['partnerPlayerName']);
+					if (!empty($partner_player_code)) {
+						$tournament['partnerPlayerPageUrl'] = Fitet_Monitor_Utils::player_page_url("index.php?page_id=$player_page_id", $partner_player_code, $tournament['partnerPlayerName']);
+					}
 				}
 			}
 		}
@@ -195,7 +197,8 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 		$resources = $this->add_team_data($resources, $attributes['teams-page-id']);
 
 		// todo remove after dev
-		$resources = $this->devSeasonFix($resources);
+		if (FITET_MONITOR_IS_DEV)
+			$resources = $this->devSeasonFix($resources);
 		// fine remove
 
 		$resources = $this->add_season_data($resources, $post->ID, $multi_club);

@@ -1,0 +1,15 @@
+.fm-team-statistics .dynatable-footer {
+	display: none;
+}
+
+#fm-team-statistics th {
+	text-align: center !important;
+}
+
+#fm-team-statistics td {
+	text-align: right !important
+}
+
+#fm-team-statistics .fm-table-column-playerName {
+	text-align: left !important;
+}

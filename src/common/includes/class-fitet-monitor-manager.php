@@ -236,7 +236,12 @@ class Fitet_Monitor_Manager {
 				}, $team_names);
 			}
 			$this->logger->add_status($club_code, "Getting calendar (" . ($i + 1) . "/$count): $season_name - $championship_name", 8 / $count);
-			$standings = $this->portal->get_championship_calendar($championship_id, $season_id, $team_names);
+
+			if ($championship_id == 44 && $season_id == 36) {
+				$standings = $this->fixed_44_36();
+			} else {
+				$standings = $this->portal->get_championship_calendar($championship_id, $season_id, $team_names);
+			}
 			$club['championships'][$i]['calendar'] = $standings;
 		}
 
@@ -512,6 +517,10 @@ class Fitet_Monitor_Manager {
 		$club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
 
 		return $club;
+	}
+
+	private function fixed_44_36() {
+		return json_decode(file_get_contents(__DIR__ . '/44-36.json'));
 	}
 
 

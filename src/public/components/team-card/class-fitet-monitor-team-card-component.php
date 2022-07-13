@@ -19,8 +19,8 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 	];
 
 	private $default_config = [
-		'addAnchor' => false,
 		'showLink' => false,
+		'showStatistics' => false,
 
 	];
 	private $config = [];
@@ -63,8 +63,7 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 
 		$players = array_values($players);
 
-		$anchor = $team['addAnchor'] ? "<a id='players'></a>" : "";
-		return $anchor . "<h3>" . __("Players", 'fitet-monitor') . "</h3>" .
+		return "<h3>" . __("Players", 'fitet-monitor') . "</h3>" .
 			"<div class='fm-team-card-players-content'>" . implode('', $players) . "</div>";
 	}
 

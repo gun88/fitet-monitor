@@ -9,11 +9,6 @@ class Fitet_Monitor_Utils {
 
 	// ok
 
-	public static function player_url($player_page_id, $player_code, $player_name) {
-		$player_slug = $player_code . '-' . urlencode(str_replace(" ", "-", $player_name));
-		return "index.php?page_id=$player_page_id&player=$player_slug";
-	}
-
 	public static function player_code_by_id($player_id, $club_code = '') {
 		foreach (self::clubs() as $club) {
 			foreach ($club['players'] as $player) {

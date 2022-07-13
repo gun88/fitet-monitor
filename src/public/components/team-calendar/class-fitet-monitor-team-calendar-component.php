@@ -19,7 +19,7 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 		$tables = "";
 		foreach ([true, false] as $first_leg) {
 			foreach ($data['calendar'] as $day) {
-				$championshipDay = $day[0]['championshipDay'];
+				$championshipDay = isset($day[0]) ? $day[0]['championshipDay'] : '';
 				if (empty($championshipDay)) {
 					continue;
 				}
@@ -45,7 +45,7 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 				'match' => __('Home', 'fitet-monitor'),
 				'date' => __('Date', 'fitet-monitor'),
 				'time' => __('Time', 'fitet-monitor'),
-				'result' => __('Result', 'fitet-monitor'),
+				//	'result' => __('Result', 'fitet-monitor'),
 			],
 			'rows' => array_map(function ($match) use ($first_leg, $standings, $main_team_name) {
 				return [
@@ -61,10 +61,20 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 
 
 	private function match($first_leg, $match, $standings) {
-		$home_team = $first_leg ? $match['away'] : $match['home'];
-		$away_team = $first_leg ? $match['home'] : $match['away'];
-		$str = $this->teams($home_team, $standings) . $this->teams($away_team, $standings);
-		return "<div class='fm-team-calendar-match'>$str</div>";
+		$home_team = $first_leg ? $match['home'] : $match['away'];
+		$away_team = $first_leg ? $match['away'] : $match['home'];
+		$home_cell = $this->teams($home_team, $standings);
+		$away_cell = $this->teams($away_team, $standings);
+		$result = $first_leg ? $match['firstLeg']['result'] : $match['returnMatch']['result'];
+		$result_split = explode('-', $result);
+		$home_result = isset($result_split[$first_leg ? 0 : 1]) ? trim($result_split[$first_leg ? 0 : 1]) : '';
+		$away_result = isset($result_split[$first_leg ? 1 : 0]) ? trim($result_split[$first_leg ? 1 : 0]) : '';
+
+		$home_result = empty($home_result) && $home_result !== '0' ? '-' : $home_result;
+		$away_result = empty($away_result) && $away_result !== '0' ? '-' : $away_result;
+		return "<div class='fm-team-calendar-match'>" .
+			"<div>$home_cell<span>$home_result</span></div>" .
+			"<div>$away_cell<span>$away_result</span></div></div>";
 	}
 
 	private function teams($team_name, $standings) {

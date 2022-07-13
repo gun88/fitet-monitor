@@ -12,6 +12,17 @@
 	gap: .5rem;
 }
 
+.fm-team-calendar-match > div {
+	display: flex;
+	gap: 2rem;
+}
+
+.fm-team-calendar-match > div > span {
+	margin-left: auto;
+	min-width: 2rem;
+	text-align: right;
+}
+
 .fm-team-calendar .fm-table-column-time,
 .fm-team-calendar .fm-table-column-date,
 .fm-team-calendar .fm-table-column-result {

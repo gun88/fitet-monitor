@@ -206,6 +206,7 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 		$resources = $this->extract_championships($resources);
 
 		$resources = $this->filter_championships($resources, $attributes['season'], $attributes['championship']);
+		file_put_contents("/var/www/html/wp-content/plugins/fitet-monitor/src/public/shortcodes/tmp.json", json_encode($resources, 128));
 		$resources = $this->fill_team_rankings($resources);
 		$resources = $this->flat_to_teams($resources, $club_code, $attributes['team'], true, true);
 
