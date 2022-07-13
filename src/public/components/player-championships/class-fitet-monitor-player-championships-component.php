@@ -64,7 +64,7 @@ class Fitet_Monitor_Player_Championships_Component extends Fitet_Monitor_Compone
 			'season' => __("Season", 'fitet-monitor'),
 			'championship' => __("Championship", 'fitet-monitor'),
 			'team' => __("Team", 'fitet-monitor'),
-			'matchCount' => __('Match', 'fitet-monitor'),
+			'matchCount' => __('Matches', 'fitet-monitor'),
 			'matchWin' => __('Won', 'fitet-monitor'),
 			'matchLost' => __('Lost', 'fitet-monitor'),
 			'matchPercentage' => __('Percentage', 'fitet-monitor'),

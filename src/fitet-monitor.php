@@ -59,15 +59,15 @@ define('FITET_MONITOR_NAME', 'fitet-monitor');
 define('FITET_MONITOR_CLUB_NO_LOGO', plugin_dir_url(FITET_MONITOR_DIR . 'public/assets/fitet-monitor-no-club-image.svg') . 'fitet-monitor-no-club-image.svg');
 define('FITET_MONITOR_PLAYER_NO_IMAGE', plugin_dir_url(FITET_MONITOR_DIR . 'public/assets/fitet-monitor-no-player-image.svg') . 'fitet-monitor-no-player-image.svg');
 
-define('FITET_MONITOR_ICON_CALENDAR', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/calendar-regular.svg") . "calendar-regular.svg");
-define('FITET_MONITOR_ICON_CHART', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/chart-line-solid.svg") . "chart-line-solid.svg");
-define('FITET_MONITOR_ICON_PLAYER', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/player-solid.svg") . "player-solid.svg");
-define('FITET_MONITOR_ICON_FILTER', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/filter-solid.svg") . "filter-solid.svg");
-define('FITET_MONITOR_ICON_HASHTAG', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/hashtag-solid.svg") . "hashtag-solid.svg");
-define('FITET_MONITOR_ICON_LIST', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/list-solid.svg") . "list-solid.svg");
-define('FITET_MONITOR_ICON_TABLE', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/table-solid.svg") . "table-solid.svg");
-define('FITET_MONITOR_ICON_TABLE_TENNIS', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/table-tennis-paddle-ball-solid.svg") . "table-tennis-paddle-ball-solid.svg");
-define('FITET_MONITOR_ICON_TROPHY', plugin_dir_url(FITET_MONITOR_DIR .  "public/assets/icons/trophy-solid.svg") . "trophy-solid.svg");
+define('FITET_MONITOR_ICON_CALENDAR', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/calendar-regular.svg") . "calendar-regular.svg");
+define('FITET_MONITOR_ICON_CHART', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/chart-line-solid.svg") . "chart-line-solid.svg");
+define('FITET_MONITOR_ICON_PLAYER', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/player-solid.svg") . "player-solid.svg");
+define('FITET_MONITOR_ICON_FILTER', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/filter-solid.svg") . "filter-solid.svg");
+define('FITET_MONITOR_ICON_HASHTAG', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/hashtag-solid.svg") . "hashtag-solid.svg");
+define('FITET_MONITOR_ICON_LIST', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/list-solid.svg") . "list-solid.svg");
+define('FITET_MONITOR_ICON_TABLE', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/table-solid.svg") . "table-solid.svg");
+define('FITET_MONITOR_ICON_TABLE_TENNIS', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/table-tennis-paddle-ball-solid.svg") . "table-tennis-paddle-ball-solid.svg");
+define('FITET_MONITOR_ICON_TROPHY', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/trophy-solid.svg") . "trophy-solid.svg");
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -158,13 +158,13 @@ function add_viewport_meta_tag() {
 }
 
 
-
 $x = 0;
 
-function memory_dump(){
+function memory_dump() {
 	global $x;
 	$x++;
-	error_log("[$x]".' memory usage: ' . round(memory_get_usage() / (1024 * 1024)) .
+	error_log("[$x]" . ' memory usage: ' . round(memory_get_usage() / (1024 * 1024)) .
 		'M. Peak: ' . round(memory_get_peak_usage(false) / (1024 * 1024)) .
 		' - ' . round(memory_get_peak_usage(true) / (1024 * 1024)));
 }
+

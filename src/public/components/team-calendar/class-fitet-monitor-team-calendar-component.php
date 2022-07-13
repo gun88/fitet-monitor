@@ -20,6 +20,9 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 		foreach ([true, false] as $first_leg) {
 			foreach ($data['calendar'] as $day) {
 				$championshipDay = $day[0]['championshipDay'];
+				if (empty($championshipDay)) {
+					continue;
+				}
 				$tables .= "<h4>" . __('Day', 'fitet-monitor') . ' ' . $championshipDay . ' - ' . ($first_leg ? __('First Leg', 'fitet-monitor') : __('Return Match', 'fitet-monitor')) . "</h4>";
 				$tables .= $this->components['table']->render($this->table($day, $first_leg, $data['teamId'], $data['teamName'], $data['standings']));
 
@@ -27,8 +30,8 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 		}
 
 		return [
-			'teamCalendarLabel' => "<h3>" . __('Calendar', 'fitet-monitor') . "</h3>",
-			'table' => $tables,
+			'teamCalendarLabel' => __('Calendar', 'fitet-monitor'),
+			'mainContent' => $tables,
 		];
 	}
 
