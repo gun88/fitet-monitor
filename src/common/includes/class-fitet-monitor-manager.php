@@ -534,7 +534,15 @@ class Fitet_Monitor_Manager {
 				}, $team_names);
 			}
 			$this->logger->add_status($club_code, "Getting calendar (" . ($i + 1) . "/$count): $season_name - $championship_name", 15 / $count);
-			$standings = $this->portal->get_championship_calendar($championship_id, $season_id, $team_names);
+
+
+			if ($championship_id == 85 && $season_id == 31) {
+				$standings = $this->fixed_85_31();
+			} else if ($championship_id == 44 && $season_id == 36) {
+				$standings = $this->fixed_44_36();
+			} else {
+				$standings = $this->portal->get_championship_calendar($championship_id, $season_id, $team_names);
+			}
 			$championships[$i]['calendar'] = $standings;
 		}
 
@@ -549,11 +557,11 @@ class Fitet_Monitor_Manager {
 	}
 
 	private function fixed_44_36() {
-		return json_decode(file_get_contents(__DIR__ . '/85-31.json'));
+		return json_decode(file_get_contents(__DIR__ . '/44-36.json'));
 	}
 
 	private function fixed_85_31() {
-		return json_decode(file_get_contents(__DIR__ . '/44-36.json'));
+		return json_decode(file_get_contents(__DIR__ . '/85-31.json'));
 	}
 
 
