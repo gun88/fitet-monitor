@@ -81,7 +81,7 @@ class Fitet_Monitor_Titles_Component extends Fitet_Monitor_Component {
 			$player_id = Fitet_Monitor_Utils::player_id_by_name($player_name);
 			$player_image_url = Fitet_Monitor_Utils::player_image_url($player_id);
 			$player_code = Fitet_Monitor_Utils::player_code_by_id($player_id);
-			if (!empty($player_page_url) && !empty($player_code)) {
+			if (!empty($player_page_url) && !empty($player_code) && !Fitet_Monitor_Utils::is_hidden($player_code)) {
 				$player_url = Fitet_Monitor_Utils::player_page_url($player_page_url, $player_code, $player_name);
 			} else {
 				$player_url = '';

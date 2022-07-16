@@ -33,13 +33,11 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		$championships_table = $this->championships_table();
 		$national_titles_table = $this->national_titles_table();
 		$regional_titles_table = $this->regional_titles_table();
-		$attendances_table = $this->attendances_table();
 
 		$players = $data['status'] == 'ready' ? $this->process_players($data['players']) : [];
 		$championships = $data['status'] == 'ready' ? $data['championships'] : [];
 		$nationalTitles = $data['status'] == 'ready' ? $data['nationalTitles'] : [];
 		$regionalTitles = $data['status'] == 'ready' ? $data['regionalTitles'] : [];
-		$attendances = $data['status'] == 'ready' ? $data['attendances'] : [];
 		$displayUpdatingDisclaimer = $data['status'] == 'updating';
 
 
@@ -57,7 +55,6 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 			'downloadFullHistoryDisclaimer' => __('WARNING: This operation may take a while', 'fitet-monitor'),
 			'nationalTitlesLabel' => __('National Titles', 'fitet-monitor'),
 			'regionalTitlesLabel' => __('Regional Titles', 'fitet-monitor'),
-			'attendancesLabel' => __('Attendances', 'fitet-monitor'),
 			'updatingDisclaimer' => __('INFO: Data not available while updating', 'fitet-monitor'),
 			'resetStatusLabel' => __('Reset Status', 'fitet-monitor'),
 
@@ -71,14 +68,12 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 			'championships' => $championships_table->render($championships),
 			'nationalTitles' => $national_titles_table->render($nationalTitles),
 			'regionalTitles' => $regional_titles_table->render($regionalTitles),
-			'attendances' => $attendances_table->render($attendances),
 
 			'displayUpdatingDisclaimer' => $displayUpdatingDisclaimer ? 'block' : 'none',
 			'displayPlayers' => !empty($players) ? 'block' : 'none',
 			'displayChampionships' => !empty($championships) ? 'block' : 'none',
 			'displayNationalTitles' => !empty($nationalTitles) ? 'block' : 'none',
 			'displayRegionalTitles' => !empty($regionalTitles) ? 'block' : 'none',
-			'displayAttendances' => !empty($attendances) ? 'block' : 'none',
 		];
 
 	}
@@ -127,16 +122,6 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		$columns['tournament'] = __('Tournament', 'fitet-monitor');
 		$columns['competition'] = __('Competition', 'fitet-monitor');
 		$columns['player'] = __('Player', 'fitet-monitor');
-		return new Fitet_Monitor_Bootstrap_Table([
-			'columns' => $columns
-		]);
-	}
-
-	public function attendances_table() {
-		$columns = [];
-		$columns['playerName'] = __('Name', 'fitet-monitor');
-		$columns['playerCode'] = __('Code', 'fitet-monitor');
-		$columns['count'] = __('Attendences', 'fitet-monitor');
 		return new Fitet_Monitor_Bootstrap_Table([
 			'columns' => $columns
 		]);

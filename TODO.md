@@ -1,0 +1,12 @@
+ - script localization src
+ - manage hidden players
+ - auto update cronjob
+ - remove bootstrap table
+ - custom page type?
+ - fitet-monitor-block
+ - download players table
+ - calcola presenza di tutti i giocatori
+ - dettaglio partita on demand?
+ - vedi se dalla formula partita riesci a risalire ai doppi
+ - capire i campionati con sola andata
+ - campionati readonly

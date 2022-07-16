@@ -61,7 +61,7 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 			return $this->components['playerCard']->render($player);
 		}, $players);
 
-		$players = array_values($players);
+		$players = array_values($players); // todo remove this line
 
 		return "<h3>" . __("Players", 'fitet-monitor') . "</h3>" .
 			"<div class='fm-team-card-players-content'>" . implode('', $players) . "</div>";

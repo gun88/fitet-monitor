@@ -36,7 +36,7 @@ class Fitet_Monitor_Manager {
 	}
 
 	public function edit_club($club_update) {
-		$club = get_option($this->plugin_name . $club_update['clubCode'],[]);
+		$club = get_option($this->plugin_name . $club_update['clubCode'], []);
 		$club['clubName'] = $club_update['clubName'];
 		$club['clubProvince'] = $club_update['clubProvince'];
 		$club['clubLogo'] = $club_update['clubLogo'];
@@ -64,7 +64,7 @@ class Fitet_Monitor_Manager {
 		if (!is_array($club_codes))
 			$club_codes = [$club_codes];
 
-		$all = get_option($this->plugin_name . 'clubs',[]);
+		$all = get_option($this->plugin_name . 'clubs', []);
 		$toRemove = $club_codes;
 		$result = array_diff($all, $toRemove);
 
@@ -75,7 +75,7 @@ class Fitet_Monitor_Manager {
 	}
 
 	public function get_club($club_code, $template = null) {
-		return Fitet_Monitor_Utils::intersect_template(get_option($this->plugin_name . $club_code,[]), $template);
+		return Fitet_Monitor_Utils::intersect_template(get_option($this->plugin_name . $club_code, []), $template);
 	}
 
 	public function club_exist($club_code) {
@@ -84,7 +84,7 @@ class Fitet_Monitor_Manager {
 	}
 
 	public function get_clubs($template = null) {
-		$club_codes = array_values(get_option($this->plugin_name . 'clubs',[]));
+		$club_codes = array_values(get_option($this->plugin_name . 'clubs', []));
 		if (!$club_codes) {
 			return [];
 		}
@@ -237,7 +237,9 @@ class Fitet_Monitor_Manager {
 			}
 			$this->logger->add_status($club_code, "Getting calendar (" . ($i + 1) . "/$count): $season_name - $championship_name", 8 / $count);
 
-			if ($championship_id == 44 && $season_id == 36) {
+			if ($championship_id == 85 && $season_id == 31) {
+				$standings = $this->fixed_85_31();
+			} else if ($championship_id == 44 && $season_id == 36) {
 				$standings = $this->fixed_44_36();
 			} else {
 				$standings = $this->portal->get_championship_calendar($championship_id, $season_id, $team_names);
@@ -337,9 +339,7 @@ class Fitet_Monitor_Manager {
 			} else {
 				$player['caps']['tournaments'] = 0;
 			}
-			$player['caps']['championships'] = array_sum(array_map(function ($championship) {
-				return $championship['matchCount'];
-			}, $player['history']['championships']));
+			$player['caps']['championships'] =  0;//$this->calculate_championship_caps($club['championships'],$club_code,$player['playerId']);
 		}
 
 		unset($club['attendances']);
@@ -356,6 +356,35 @@ class Fitet_Monitor_Manager {
 
 	}
 
+
+	private static function calculate_championship_caps($resources, $club_code, $player_id) {
+		$resources = array_map(function ($championship) {
+			return $championship['standings'];
+		}, $resources);
+
+		$resources = array_merge(...$resources);
+
+		$resources = array_values(array_filter($resources, function ($standing) use ($club_code) {
+			return $standing['clubCode'] == $club_code;
+		}));
+
+
+		$resources = array_map(function ($standing) {
+			return $standing['players'];
+		}, $resources);
+
+		$resources = array_merge(...$resources);
+
+		$resources = array_values(array_filter($resources, function ($player) use ($player_id) {
+			return $player['playerId'] == $player_id;
+		}));
+
+		$resources = array_map(function ($player) {
+			return $player['pd'];
+		}, $resources);
+
+		return array_sum($resources);
+	}
 
 	private static function calculate_best_ranking($rankings) {
 		if (empty($rankings)) {
@@ -520,6 +549,10 @@ class Fitet_Monitor_Manager {
 	}
 
 	private function fixed_44_36() {
+		return json_decode(file_get_contents(__DIR__ . '/85-31.json'));
+	}
+
+	private function fixed_85_31() {
 		return json_decode(file_get_contents(__DIR__ . '/44-36.json'));
 	}
 

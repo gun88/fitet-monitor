@@ -602,6 +602,7 @@ class Fitet_Portal_Rest {
 		// fix not closed tr
 		$html_string = preg_replace('/<\/td>\s*?<tr>/i', '</td></tr><tr>', $html_string);
 		$html_string = preg_replace('/[[:^print:]]/', '', $html_string);
+		$html_string = str_replace("<a href='Giornata.asp?INCONTRO=</a>", '', $html_string);
 
 		$html = str_get_html($html_string);
 

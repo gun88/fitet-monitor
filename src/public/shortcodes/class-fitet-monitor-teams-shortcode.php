@@ -164,11 +164,14 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 			foreach ($team['players'] as &$player) {
 				$player['multiClub'] = $multi_club;
 				$player['playerImageUrl'] = Fitet_Monitor_Utils::player_image_url($player['playerId']);
+				$player['playerUrl'] = '';
 				$p = Fitet_Monitor_Utils::player_by_id($player['playerId']);
 				if ($p == null)
 					continue;
 				$player = array_merge($player, $p);
-				$player['playerUrl'] = Fitet_Monitor_Utils::player_page_url($player_base_url, $player['playerCode'], $player['playerName']);
+				if (!Fitet_Monitor_Utils::is_hidden($player['playerCode'])) {
+					$player['playerUrl'] = Fitet_Monitor_Utils::player_page_url($player_base_url, $player['playerCode'], $player['playerName']);
+				}
 			}
 		}
 		return $teams;

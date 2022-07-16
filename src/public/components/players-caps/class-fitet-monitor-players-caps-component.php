@@ -18,18 +18,18 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 	protected function process_data($data) {
 		$data = array_merge(['players' => [], 'listUrl' => '#', 'tableUrl' => '#', 'multiClub' => true], $data);
 
-		$show_tournaments = array_sum(array_map(function ($player) {
+		$show_championships = false;/* || array_sum(array_map(function ($player) {
 				return $player['tournaments'];
-			}, $data['players'])) > 0;
+			}, $data['players'])) > 0;*/
 
 		return [
 			'pageMenu' => $this->menu($data['listUrl'], $data['tableUrl']),
-			'mainContent' => $this->main_content($data['players'], $data['multiClub'], $show_tournaments),
+			'mainContent' => $this->main_content($data['players'], $data['multiClub'], $show_championships),
 		];
 
 	}
 
-	private function main_content($players, $multi_club, $show_tournaments) {
+	private function main_content($players, $multi_club, $show_championships) {
 		if (empty($players)) {
 			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
@@ -40,7 +40,7 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 		});
 		return $this->components['table']->render([
 			'name' => 'fm-players-caps',
-			'columns' => $this->columns($multi_club, $show_tournaments),
+			'columns' => $this->columns($multi_club, $show_championships),
 			'sort' => $this->sort(),
 			'rows' => $players,
 		]);
@@ -55,10 +55,10 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 		return implode('|', $menu_entries);
 	}
 
-	private function columns($multi_club, $show_tournaments) {
+	private function columns($multi_club, $show_championships) {
 		$columns = [];
 		$columns  ['playerName'] = __('Name', 'fitet-monitor');
-		if ($show_tournaments) { // todo terminare quando non ci saranno problemi di connessione sul sito fitet
+		if ($show_championships) { // todo terminare quando non ci saranno problemi di connessione sul sito fitet
 			$columns  ['tournaments'] = __('Tournaments', 'fitet-monitor');
 			$columns  ['championships'] = __('Championships', 'fitet-monitor');
 			$columns  ['total'] = __('Total', 'fitet-monitor');

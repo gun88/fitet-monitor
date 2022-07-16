@@ -245,4 +245,8 @@ class Fitet_Monitor_Utils {
 		}
 	}
 
+	public static function is_hidden($player_code): bool {
+		return in_array($player_code, [515982]);
+	}
+
 }

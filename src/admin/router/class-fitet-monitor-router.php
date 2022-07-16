@@ -106,6 +106,8 @@ class Fitet_Monitor_Router {
 				if ($club_code) {
 					$club = $this->manager->get_club($club_code);
 					$club['status'] = $this->manager->get_status($club_code)['status'];
+				} else {
+					$club = null;
 				}
 				require_once FITET_MONITOR_DIR . 'admin/pages/detail/class-fitet-monitor-detail-page.php';
 				$this->page = new Fitet_Monitor_Detail_Page($this->version, $this->plugin_name, $club);

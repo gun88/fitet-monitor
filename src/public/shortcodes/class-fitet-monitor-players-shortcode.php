@@ -23,6 +23,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 		return ['player', 'mode', 'club', 'filter', 'teams-page-id'];
 	}
 
+
 	/**
 	 * @param array $resources
 	 * @return array
@@ -80,7 +81,11 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 		$players = array_map(function ($club) {
 			return $club['players'];
 		}, $clubs);
-		return array_merge(...$players);
+		$players = array_merge(...$players);
+		$players = array_values(array_filter($players, function ($player) {
+			return !Fitet_Monitor_Utils::is_hidden($player['playerCode']);
+		}));
+		return $players;
 
 	}
 
@@ -188,9 +193,6 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 		}
 
 		global $post;
-		$caps_url = "index.php?page_id=$post->ID&mode=caps";
-		$table_url = "index.php?page_id=$post->ID&mode=table";
-
 
 		$resources = $this->add_player_best($resources);
 		$resources = $this->add_player_url($resources);
