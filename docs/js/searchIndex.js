@@ -941,11 +941,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_regional_titles_table"
         },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Aattendances_table\u0028\u0029",
-            "name": "attendances_table",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_attendances_table"
-        },                {
             "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Astatus\u0028\u0029",
             "name": "status",
             "summary": "",
@@ -2096,6 +2091,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_retrieve_club_data"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Acalculate_championship_caps\u0028\u0029",
+            "name": "calculate_championship_caps",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_calculate_championship_caps"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Acalculate_best_ranking\u0028\u0029",
             "name": "calculate_best_ranking",
             "summary": "",
@@ -2125,6 +2125,11 @@ Search.appendIndex(
             "name": "fixed_44_36",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_fixed_44_36"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Afixed_85_31\u0028\u0029",
+            "name": "fixed_85_31",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_fixed_85_31"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
@@ -3180,6 +3185,11 @@ Search.appendIndex(
             "name": "team_status_to_int",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_team_status_to_int"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Ais_hidden\u0028\u0029",
+            "name": "is_hidden",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_is_hidden"
         },                {
             "fqsen": "\\Fitet_Monitor_Team_Statistics_Component",
             "name": "Fitet_Monitor_Team_Statistics_Component",

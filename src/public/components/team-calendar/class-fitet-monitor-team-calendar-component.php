@@ -38,7 +38,7 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 	private function table($day, $first_leg, $main_team_id, $main_team_name, $standings) {
 
 		return [
-			'name' => 'fm-team-calendar-' . ($first_leg ? 'firt-leg' : '-return-match') . $main_team_id,
+			'name' => 'fm-team-calendar-' . ($first_leg ? 'first-leg' : 'return-match') . $main_team_id,
 			'paginate' => false,
 			'search' => false,
 			'columns' => [
@@ -51,9 +51,9 @@ class Fitet_Monitor_Team_Calendar_Component extends Fitet_Monitor_Component {
 				return [
 					'_rowClass' => $this->is_main_team($main_team_name, $match['home'], $match['away'],) ? 'fm-team-calendar-main-team' : '',
 					'match' => $this->match($first_leg, $match, $standings),
-					'date' => $match['returnMatch']['date'],
-					'time' => $match['returnMatch']['time'],
-					'result' => $match['returnMatch']['result'],
+					'date' => $match[$first_leg ? 'firstLeg' : 'returnMatch']['date'],
+					'time' => $match[$first_leg ? 'firstLeg' : 'returnMatch']['time'],
+					'result' => $match[$first_leg ? 'firstLeg' : 'returnMatch']['result'],
 				];
 			}, $day),
 		];
