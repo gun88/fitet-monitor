@@ -7,6 +7,7 @@ class Fitet_Portal_Rest_Http_Service {
 
 	private $retry = 12; // max retry
 	private $sleep = 5; /// retry after x sec.
+	private $wp_remote_params = ['timeout' => 10];
 
 	public function get($url) {
 		if (FITET_MONITOR_WP_CALLS_AVAILABLE)
@@ -59,7 +60,7 @@ class Fitet_Portal_Rest_Http_Service {
 	public function wp_get(string $url) {
 		$response = null;
 		for ($i = 0; $i < $this->retry; $i++) {
-			$response = wp_remote_get($url);
+			$response = wp_remote_get($url, $this->wp_remote_params);
 			if (is_wp_error($response)) {
 				sleep($this->sleep);
 				error_log("wp error - waiting $this->sleep sec timeout");
@@ -74,10 +75,10 @@ class Fitet_Portal_Rest_Http_Service {
 		$response = null;
 		for ($i = 0; $i < $this->retry; $i++) {
 			$response = wp_remote_post(
-				$url, array(
+				$url, array_merge($this->wp_remote_params, [
 				'method' => 'POST',
 				'body' => $body
-			));
+			]));
 			if (is_wp_error($response)) {
 				sleep($this->sleep);
 				error_log("wp error - waiting $this->sleep sec timeout");

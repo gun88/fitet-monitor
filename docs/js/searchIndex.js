@@ -1111,6 +1111,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Portal-Rest-Http-Service.html#property_sleep"
         },                {
+            "fqsen": "\\Fitet_Portal_Rest_Http_Service\u003A\u003A\u0024wp_remote_params",
+            "name": "wp_remote_params",
+            "summary": "",
+            "url": "classes/Fitet-Portal-Rest-Http-Service.html#property_wp_remote_params"
+        },                {
             "fqsen": "\\Fitet_Portal_Rest",
             "name": "Fitet_Portal_Rest",
             "summary": "",
@@ -2080,6 +2085,11 @@ Search.appendIndex(
             "name": "get_status",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_get_status"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003AresetStatus\u0028\u0029",
+            "name": "resetStatus",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_resetStatus"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
@@ -3225,6 +3235,26 @@ Search.appendIndex(
             "name": "rows",
             "summary": "",
             "url": "classes/Fitet-Monitor-Team-Statistics-Component.html#method_rows"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Server_Status",
+            "name": "Fitet_Monitor_Server_Status",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Server-Status.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Server_Status\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Server-Status.html#method___construct"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Server_Status\u003A\u003Ainitialize_data\u0028\u0029",
+            "name": "initialize_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Server-Status.html#method_initialize_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Server_Status\u003A\u003Aserver_status\u0028\u0029",
+            "name": "server_status",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Server-Status.html#method_server_status"
         },                {
             "fqsen": "\\",
             "name": "\\",

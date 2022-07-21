@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-07-16 08:30:21+00:00\n"
+"POT-Creation-Date: 2022-07-17 07:14:12+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,19 +124,19 @@ msgstr "INFO: Dati non disponibili durante l'aggiornamento"
 msgid "Reset Status"
 msgstr "Reset Stato"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:83
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:84
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:60
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:52
 msgid "Name"
 msgstr "Nome"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:84
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:85
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:72
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:54
 msgid "Rank"
 msgstr "Classifica"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:85
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:86
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:71
 #: src/public/components/player-season/class-fitet-monitor-player-season-component.php:37
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:53
@@ -144,43 +144,43 @@ msgstr "Classifica"
 msgid "Points"
 msgstr "Punti"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:86
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:87
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:74
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:56
 msgid "Category"
 msgstr "Categoria"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:87
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:88
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:76
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:57
 msgid "Sector"
 msgstr "Settore"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:88
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:89
 msgid "Diff"
 msgstr "Diff"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:89
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:90
 msgid "BirthDate"
 msgstr "Data di Nascita"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:90
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:91
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:79
 msgid "Sex"
 msgstr "Sesso"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:91
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:92
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:97
 msgid "Code"
 msgstr "Codice"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:92
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:93
 msgid "Id"
 msgstr ""
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:101
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:110
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:121
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:102
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:111
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:122
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:64
 #: src/public/components/player-detail/class-fitet-monitor-player-detail-component.php:60
 #: src/public/components/player-season/class-fitet-monitor-player-season-component.php:27
@@ -193,18 +193,18 @@ msgstr ""
 msgid "Season"
 msgstr "Stagione"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:102
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:103
 msgid "Names"
 msgstr "Nomi"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:111
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:122
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:112
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:123
 #: src/public/components/titles/class-fitet-monitor-titles-component.php:67
 msgid "Tournament"
 msgstr "Torneo"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:112
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:123
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:113
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:124
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-doubles-tournaments-component.php:36
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-tournaments-component.php:37
 #: src/public/components/player-tournaments/class-fitet-monitor-player-regional-tournaments-component.php:37
@@ -212,22 +212,22 @@ msgstr "Torneo"
 msgid "Competition"
 msgstr "Gara"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:113
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:124
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:114
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:125
 #: src/public/components/team-statistics/class-fitet-monitor-team-statistics-component.php:40
 #: src/public/components/titles/class-fitet-monitor-titles-component.php:66
 msgid "Player"
 msgstr "Giocatore"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:133
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:134
 msgid "Updating"
 msgstr "Aggiornamento in corso"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:135
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:136
 msgid "New"
 msgstr "Nuovo"
 
-#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:138
+#: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:139
 msgid "Ready"
 msgstr "Pronto"
 

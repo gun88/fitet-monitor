@@ -1,6 +1,6 @@
 jQuery(function ($) {
 
-	$(".fm-data-config").on('keyup', 'input', function (e) {
+	$(".fm-data-config").on('keyup', 'input', function () {
 
 		let clubCode = $("input[name*='clubCode']").val().trim();
 		let clubName = $("input[name*='clubName']").val().trim();
@@ -9,7 +9,7 @@ jQuery(function ($) {
 		let clubCron = $("input[name*='clubCron']").val().trim();
 		let clubHistorySize = $("input[name*='clubHistorySize']").val().trim();
 
-		let mandatoryFieldsEvaluated = !!clubCode && !!clubName && !!clubProvince && !!clubLogo && !!clubCron && !! clubHistorySize;
+		let mandatoryFieldsEvaluated = !!clubCode && !!clubName && !!clubProvince && !!clubLogo && !!clubCron && !!clubHistorySize;
 		$('#fm-club-page #submit').prop('disabled', !mandatoryFieldsEvaluated);
 
 	}).on('click', '.fm-show-manual-config', function (e) {
@@ -46,11 +46,10 @@ jQuery(function ($) {
 				item.style = "display: flex; justify-content: space-between;";
 				// Modify Results Item Content
 
-				// todo localization for src
 				item.innerHTML = `
-<div class="fm-autocomplete-result"">
+<div class="fm-autocomplete-result">
 	<img class="fm-autocomplete-club-logo" src="${data.value['clubLogo']}"  alt="${data.value['clubName']}"
-		onError="this.onerror=null;this.src='/wp-content/plugins/fitet-monitor/public/assets/fitet-monitor-no-club-image.svg';">
+		onError="this.onerror=null;this.src='${FITET_MONITOR_CLUB_NO_LOGO}';">
 	<div class="fm-autocomplete-club-name">${data.match}</div>
 	<div class="fm-autocomplete-club-province">${data.value['clubProvince']}</div>
 </div>
@@ -88,8 +87,7 @@ jQuery(function ($) {
 					const name = event.detail.selection.value['clubName'];
 					const province = event.detail.selection.value['clubProvince'];
 					const clubLogo = 'http://portale.fitet.org/images/societa/' + code + '.jpg';
-					// todo script localization
-					const clubNoLogo = "/wp-content/plugins/fitet-monitor/src/public/assets/fitet-monitor-no-club-image.svg";
+					const clubNoLogo = FITET_MONITOR_CLUB_NO_LOGO;
 
 					$('#clubCodeSpan').text(code);
 					$('#clubNameSpan').text(name);

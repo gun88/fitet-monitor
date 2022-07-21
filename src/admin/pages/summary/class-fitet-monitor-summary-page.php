@@ -19,7 +19,7 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 	public function initialize_data() {
 
 		return [
-			'pageTitle' => __(get_admin_page_title(), 'fitet-monitor'),
+			'pageTitle' => get_admin_page_title(),
 			'addButton' => __('Add Club', 'fitet-monitor'),
 			'messagePool' => $this->prepare_messages(),
 			'table' => $this->components['table']->render($this->clubs)];

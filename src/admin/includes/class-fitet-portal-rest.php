@@ -153,7 +153,9 @@ class Fitet_Portal_Rest {
 
 		// manage special characters
 		$_name = array_reduce(preg_split("/[^a-zA-Z\d\s.\-]/", $name), function ($a, $b) {
-			return (strlen($a) > 5 || strlen($a) > strlen($b)) ? $a : $b;
+			$strlen_a = $a == null ? 0 : strlen($a);
+			$strlen_b = $b == null ? 0 : strlen($b);
+			return ($strlen_a > 5 || $strlen_a > $strlen_b) ? $a : $b;
 		});
 
 		$body = "group1=one&nome=$_name";

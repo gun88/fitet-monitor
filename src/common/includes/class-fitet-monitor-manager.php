@@ -101,8 +101,21 @@ class Fitet_Monitor_Manager {
 		return $this->logger->get_status($club_code);
 	}
 
+
+	public function resetStatus($clubCode) {
+		$this->logger->reset_status($clubCode);
+	}
+
 	public function update($club_code, $mode = '') {
 		set_time_limit(300);
+		ini_set('max_execution_time', 300);
+
+		register_shutdown_function(function () use ($club_code) {
+			$status = $this->logger->get_status($club_code);
+			if ($status['status'] == 'updating')
+				$this->logger->add_status($club_code, 'Fail: ' . "Timeout", 0, 'fail');
+		});
+
 		$status_log = $this->logger->get_status($club_code);
 
 		if ($status_log['status'] != 'updating') {
@@ -339,7 +352,7 @@ class Fitet_Monitor_Manager {
 			} else {
 				$player['caps']['tournaments'] = 0;
 			}
-			$player['caps']['championships'] =  0;//$this->calculate_championship_caps($club['championships'],$club_code,$player['playerId']);
+			$player['caps']['championships'] = 0;//$this->calculate_championship_caps($club['championships'],$club_code,$player['playerId']);
 		}
 
 		unset($club['attendances']);

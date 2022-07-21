@@ -17,7 +17,7 @@ jQuery(function ($) {
 		progressBar.width("0%");
 		progressBar.text('');
 		logLine.text('...');
-		let intervalStep = 1000;
+		let intervalStep = 5000;
 		let lastIndex = 0;
 		const id = setInterval(frame, intervalStep);
 

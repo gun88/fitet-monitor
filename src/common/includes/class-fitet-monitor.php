@@ -79,7 +79,7 @@ class Fitet_Monitor {
 		error_log("################");
 		error_log("#   ACTIVATE   #");
 		error_log("################");
-		update_option('fitet-monitor-club-code', 'my default value');
+		update_option('fitet-monitor-club-code', 'my default value'); // todo remove
 	}
 
 	/**
@@ -94,7 +94,7 @@ class Fitet_Monitor {
 		error_log("################");
 		error_log("#  DEACTIVATE  #");
 		error_log("################");
-		delete_option('fitet-monitor-demo');
+		delete_option('fitet-monitor-demo'); // todo remove
 	}
 
 	/**

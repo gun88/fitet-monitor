@@ -78,11 +78,21 @@ class Fitet_Monitor_Router {
 			exit();
 		}
 
+		if ($action == 'resetStatus') {
+			$this->manager->resetStatus($_REQUEST['clubCode']);
+			wp_safe_redirect(add_query_arg(['message' => 'reset'], menu_page_url('fitet-monitor', false)));
+			exit();
+		}
+
 
 		$mode = isset($_GET['mode']) ? $_GET['mode'] : null;
 		$club_code = isset($_GET['clubCode']) ? $_GET['clubCode'] : null;
 
 		switch ($mode) {
+			case 'server':
+				require_once FITET_MONITOR_DIR . 'admin/pages/server/class-fitet-monitor-server-status-page.php';
+				$this->page = new Fitet_Monitor_Server_Status($this->plugin_name, $this->version);
+				break;
 			case 'club':
 				if ($club_code) {
 					$template = [

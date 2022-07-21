@@ -10,3 +10,5 @@
  - vedi se dalla formula partita riesci a risalire ai doppi
  - capire i campionati con sola andata
  - campionati readonly
+ - fix download full history progress bar
+ - automatic update

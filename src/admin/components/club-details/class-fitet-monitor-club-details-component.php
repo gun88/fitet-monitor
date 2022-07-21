@@ -68,6 +68,7 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 			'championships' => $championships_table->render($championships),
 			'nationalTitles' => $national_titles_table->render($nationalTitles),
 			'regionalTitles' => $regional_titles_table->render($regionalTitles),
+			'resetStatusUrl' => add_query_arg(['action' => 'resetStatus', 'clubCode' => $data['clubCode']], menu_page_url('fitet-monitor', false)),
 
 			'displayUpdatingDisclaimer' => $displayUpdatingDisclaimer ? 'block' : 'none',
 			'displayPlayers' => !empty($players) ? 'block' : 'none',

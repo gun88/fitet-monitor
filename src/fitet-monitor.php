@@ -101,7 +101,7 @@ run_fitet_monitor();
 add_action('wp', function () {
 
 	global $post;
-	if ($post!= null && strpos($post->post_content, '[fitet-monitor-'))
+	if ($post != null && strpos($post->post_content, '[fitet-monitor-'))
 		add_action('wp_head', function () {
 			// echo '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
 			echo '<meta name="viewport" content="width=device-width, initial-scale=.5">';
@@ -168,8 +168,8 @@ function bl_cron_exec() {
 $x = 0;
 
 function memory_dump() {
-	if (!FITET_MONITOR_IS_DEV)
-		return;
+	/*if (!FITET_MONITOR_IS_DEV) todo restore
+		return;*/
 	global $x;
 	$x++;
 	error_log("[$x]" . ' memory usage: ' . round(memory_get_usage() / (1024 * 1024)) .

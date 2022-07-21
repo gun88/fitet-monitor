@@ -12,6 +12,7 @@ class Fitet_Monitor_Club_Data_Component extends Fitet_Monitor_Component {
 		$file = (new ReflectionClass($this))->getFileName();
 		$file = plugin_dir_path($file) . basename($file, '.php') . '.js';
 		Fitet_Monitor_Helper::enqueue_script(get_class($this), $file, ['autoComplete.min.js', 'jquery', 'wp-api'], $this->version, false);
+		wp_localize_script(get_class($this), 'FITET_MONITOR_CLUB_NO_LOGO', FITET_MONITOR_CLUB_NO_LOGO);
 	}
 
 	public function process_data($data) {
