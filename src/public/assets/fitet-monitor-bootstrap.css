@@ -53,7 +53,7 @@
 	--fmbs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	--fmbs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 	--fmbs-body-font-family: var(--fmbs-font-sans-serif);
-	--fmbs-body-font-size: 1rem;
+	--fmbs-body-font-size: 1em;
 	--fmbs-body-font-weight: 400;
 	--fmbs-body-line-height: 1.5;
 	--fmbs-body-color: #212529;
@@ -63,12 +63,12 @@
 	--fmbs-border-style: solid;
 	--fmbs-border-color: #dee2e6;
 	--fmbs-border-color-translucent: rgba(0, 0, 0, 0.175);
-	--fmbs-border-radius: 0.375rem;
-	--fmbs-border-radius-sm: 0.25rem;
-	--fmbs-border-radius-lg: 0.5rem;
-	--fmbs-border-radius-xl: 1rem;
-	--fmbs-border-radius-2xl: 2rem;
-	--fmbs-border-radius-pill: 50rem;
+	--fmbs-border-radius: 0.375em;
+	--fmbs-border-radius-sm: 0.25em;
+	--fmbs-border-radius-lg: 0.5em;
+	--fmbs-border-radius-xl: 1em;
+	--fmbs-border-radius-2xl: 2em;
+	--fmbs-border-radius-pill: 50em;
 	--fmbs-heading-color: unset;
 	--fmbs-link-color: #0d6efd;
 	--fmbs-link-hover-color: #0a58ca;
@@ -114,8 +114,8 @@
       "replace" : "next"
     } ]
   } */
-	/* rtl:begin:remove */
-	/* rtl:end:remove */
+	/* rtl:begin:emove */
+	/* rtl:end:emove */
 }
 
 
@@ -145,7 +145,7 @@
 }
 
 .fm-bootstrap hr {
-	margin: 1rem 0;
+	margin: 1em 0;
 	color: inherit;
 	border: 0;
 	border-top: 1px solid;
@@ -154,63 +154,63 @@
 
 .fm-bootstrap h1, .fm-bootstrap .h1, .fm-bootstrap h2, .fm-bootstrap .h2, .fm-bootstrap h3, .fm-bootstrap .h3, .fm-bootstrap h4, .fm-bootstrap .h4, .fm-bootstrap h5, .fm-bootstrap .h5, .fm-bootstrap h6, .fm-bootstrap .h6 {
 	margin-top: 0;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.5em;
 	font-weight: 500;
 	line-height: 1.2;
 	color: var(--fmbs-heading-color);
 }
 
 .fm-bootstrap h1, .fm-bootstrap .h1 {
-	font-size: calc(1.375rem + 1.5vw);
+	font-size: calc(1.375em + 1.5vw);
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap h1, .fm-bootstrap .h1 {
-		font-size: 2.5rem;
+		font-size: 2.5em;
 	}
 }
 
 .fm-bootstrap h2, .fm-bootstrap .h2 {
-	font-size: calc(1.325rem + 0.9vw);
+	font-size: calc(1.325em + 0.9vw);
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap h2, .fm-bootstrap .h2 {
-		font-size: 2rem;
+		font-size: 2em;
 	}
 }
 
 .fm-bootstrap h3, .fm-bootstrap .h3 {
-	font-size: calc(1.3rem + 0.6vw);
+	font-size: calc(1.3em + 0.6vw);
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap h3, .fm-bootstrap .h3 {
-		font-size: 1.75rem;
+		font-size: 1.75em;
 	}
 }
 
 .fm-bootstrap h4, .fm-bootstrap .h4 {
-	font-size: calc(1.275rem + 0.3vw);
+	font-size: calc(1.275em + 0.3vw);
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap h4, .fm-bootstrap .h4 {
-		font-size: 1.5rem;
+		font-size: 1.5em;
 	}
 }
 
 .fm-bootstrap h5, .fm-bootstrap .h5 {
-	font-size: 1.25rem;
+	font-size: 1.25em;
 }
 
 .fm-bootstrap h6, .fm-bootstrap .h6 {
-	font-size: 1rem;
+	font-size: 1em;
 }
 
 .fm-bootstrap p {
 	margin-top: 0;
-	margin-bottom: 1rem;
+	margin-bottom: 1em;
 }
 
 .fm-bootstrap abbr[title] {
@@ -220,21 +220,21 @@
 }
 
 .fm-bootstrap address {
-	margin-bottom: 1rem;
+	margin-bottom: 1em;
 	font-style: normal;
 	line-height: inherit;
 }
 
 .fm-bootstrap ol,
 .fm-bootstrap ul {
-	padding-left: 2rem;
+	padding-left: 2em;
 }
 
 .fm-bootstrap ol,
 .fm-bootstrap ul,
 .fm-bootstrap dl {
 	margin-top: 0;
-	margin-bottom: 1rem;
+	margin-bottom: 1em;
 }
 
 .fm-bootstrap ol ol,
@@ -249,12 +249,12 @@
 }
 
 .fm-bootstrap dd {
-	margin-bottom: .5rem;
+	margin-bottom: .5em;
 	margin-left: 0;
 }
 
 .fm-bootstrap blockquote {
-	margin: 0 0 1rem;
+	margin: 0 0 1em;
 }
 
 .fm-bootstrap b,
@@ -312,7 +312,7 @@
 .fm-bootstrap pre {
 	display: block;
 	margin-top: 0;
-	margin-bottom: 1rem;
+	margin-bottom: 1em;
 	overflow: auto;
 	font-size: 0.875em;
 }
@@ -334,11 +334,11 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap kbd {
-	padding: 0.1875rem 0.375rem;
+	padding: 0.1875em 0.375em;
 	font-size: 0.875em;
 	color: var(--fmbs-body-bg);
 	background-color: var(--fmbs-body-color);
-	border-radius: 0.25rem;
+	border-radius: 0.25em;
 }
 
 .fm-bootstrap kbd kbd {
@@ -347,7 +347,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap figure {
-	margin: 0 0 1rem;
+	margin: 0 0 1em;
 }
 
 .fm-bootstrap img,
@@ -362,8 +362,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap caption {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 	color: rgba(var(--fmbs-body-color-rgb), 0.75);
 	text-align: left;
 }
@@ -462,14 +462,14 @@ a > .fm-bootstrap code {
 	float: left;
 	width: 100%;
 	padding: 0;
-	margin-bottom: 0.5rem;
-	font-size: calc(1.275rem + 0.3vw);
+	margin-bottom: 0.5em;
+	font-size: calc(1.275em + 0.3vw);
 	line-height: inherit;
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap legend {
-		font-size: 1.5rem;
+		font-size: 1.5em;
 	}
 }
 
@@ -531,79 +531,79 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .lead {
-	font-size: 1.25rem;
+	font-size: 1.25em;
 	font-weight: 300;
 }
 
 .fm-bootstrap .display-1 {
-	font-size: calc(1.625rem + 4.5vw);
+	font-size: calc(1.625em + 4.5vw);
 	font-weight: 300;
 	line-height: 1.2;
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap .display-1 {
-		font-size: 5rem;
+		font-size: 5em;
 	}
 }
 
 .fm-bootstrap .display-2 {
-	font-size: calc(1.575rem + 3.9vw);
+	font-size: calc(1.575em + 3.9vw);
 	font-weight: 300;
 	line-height: 1.2;
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap .display-2 {
-		font-size: 4.5rem;
+		font-size: 4.5em;
 	}
 }
 
 .fm-bootstrap .display-3 {
-	font-size: calc(1.525rem + 3.3vw);
+	font-size: calc(1.525em + 3.3vw);
 	font-weight: 300;
 	line-height: 1.2;
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap .display-3 {
-		font-size: 4rem;
+		font-size: 4em;
 	}
 }
 
 .fm-bootstrap .display-4 {
-	font-size: calc(1.475rem + 2.7vw);
+	font-size: calc(1.475em + 2.7vw);
 	font-weight: 300;
 	line-height: 1.2;
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap .display-4 {
-		font-size: 3.5rem;
+		font-size: 3.5em;
 	}
 }
 
 .fm-bootstrap .display-5 {
-	font-size: calc(1.425rem + 2.1vw);
+	font-size: calc(1.425em + 2.1vw);
 	font-weight: 300;
 	line-height: 1.2;
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap .display-5 {
-		font-size: 3rem;
+		font-size: 3em;
 	}
 }
 
 .fm-bootstrap .display-6 {
-	font-size: calc(1.375rem + 1.5vw);
+	font-size: calc(1.375em + 1.5vw);
 	font-weight: 300;
 	line-height: 1.2;
 }
 
 @media (min-width: 1200px) {
 	.fm-bootstrap .display-6 {
-		font-size: 2.5rem;
+		font-size: 2.5em;
 	}
 }
 
@@ -622,7 +622,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .list-inline-item:not(:last-child) {
-	margin-right: 0.5rem;
+	margin-right: 0.5em;
 }
 
 .fm-bootstrap .initialism {
@@ -631,8 +631,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .blockquote {
-	margin-bottom: 1rem;
-	font-size: 1.25rem;
+	margin-bottom: 1em;
+	font-size: 1.25em;
 }
 
 .fm-bootstrap .blockquote > :last-child {
@@ -640,8 +640,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .blockquote-footer {
-	margin-top: -1rem;
-	margin-bottom: 1rem;
+	margin-top: -1em;
+	margin-bottom: 1em;
 	font-size: 0.875em;
 	color: #6c757d;
 }
@@ -656,10 +656,10 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .img-thumbnail {
-	padding: 0.25rem;
+	padding: 0.25em;
 	background-color: #fff;
 	border: 1px solid var(--fmbs-border-color);
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 	max-width: 100%;
 	height: auto;
 }
@@ -669,7 +669,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .figure-img {
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.5em;
 	line-height: 1;
 }
 
@@ -685,7 +685,7 @@ a > .fm-bootstrap code {
 .fm-bootstrap .container-lg,
 .fm-bootstrap .container-xl,
 .fm-bootstrap .container-xxl {
-	--fmbs-gutter-x: 1.5rem;
+	--fmbs-gutter-x: 1.5em;
 	--fmbs-gutter-y: 0;
 	width: 100%;
 	padding-right: calc(var(--fmbs-gutter-x) * .5);
@@ -725,7 +725,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .row {
-	--fmbs-gutter-x: 1.5rem;
+	--fmbs-gutter-x: 1.5em;
 	--fmbs-gutter-y: 0;
 	display: flex;
 	flex-wrap: wrap;
@@ -903,52 +903,52 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .g-1,
 .fm-bootstrap .gx-1 {
-	--fmbs-gutter-x: 0.25rem;
+	--fmbs-gutter-x: 0.25em;
 }
 
 .fm-bootstrap .g-1,
 .fm-bootstrap .gy-1 {
-	--fmbs-gutter-y: 0.25rem;
+	--fmbs-gutter-y: 0.25em;
 }
 
 .fm-bootstrap .g-2,
 .fm-bootstrap .gx-2 {
-	--fmbs-gutter-x: 0.5rem;
+	--fmbs-gutter-x: 0.5em;
 }
 
 .fm-bootstrap .g-2,
 .fm-bootstrap .gy-2 {
-	--fmbs-gutter-y: 0.5rem;
+	--fmbs-gutter-y: 0.5em;
 }
 
 .fm-bootstrap .g-3,
 .fm-bootstrap .gx-3 {
-	--fmbs-gutter-x: 1rem;
+	--fmbs-gutter-x: 1em;
 }
 
 .fm-bootstrap .g-3,
 .fm-bootstrap .gy-3 {
-	--fmbs-gutter-y: 1rem;
+	--fmbs-gutter-y: 1em;
 }
 
 .fm-bootstrap .g-4,
 .fm-bootstrap .gx-4 {
-	--fmbs-gutter-x: 1.5rem;
+	--fmbs-gutter-x: 1.5em;
 }
 
 .fm-bootstrap .g-4,
 .fm-bootstrap .gy-4 {
-	--fmbs-gutter-y: 1.5rem;
+	--fmbs-gutter-y: 1.5em;
 }
 
 .fm-bootstrap .g-5,
 .fm-bootstrap .gx-5 {
-	--fmbs-gutter-x: 3rem;
+	--fmbs-gutter-x: 3em;
 }
 
 .fm-bootstrap .g-5,
 .fm-bootstrap .gy-5 {
-	--fmbs-gutter-y: 3rem;
+	--fmbs-gutter-y: 3em;
 }
 
 @media (min-width: 576px) {
@@ -1116,52 +1116,52 @@ a > .fm-bootstrap code {
 
 	.fm-bootstrap .g-sm-1,
 	.fm-bootstrap .gx-sm-1 {
-		--fmbs-gutter-x: 0.25rem;
+		--fmbs-gutter-x: 0.25em;
 	}
 
 	.fm-bootstrap .g-sm-1,
 	.fm-bootstrap .gy-sm-1 {
-		--fmbs-gutter-y: 0.25rem;
+		--fmbs-gutter-y: 0.25em;
 	}
 
 	.fm-bootstrap .g-sm-2,
 	.fm-bootstrap .gx-sm-2 {
-		--fmbs-gutter-x: 0.5rem;
+		--fmbs-gutter-x: 0.5em;
 	}
 
 	.fm-bootstrap .g-sm-2,
 	.fm-bootstrap .gy-sm-2 {
-		--fmbs-gutter-y: 0.5rem;
+		--fmbs-gutter-y: 0.5em;
 	}
 
 	.fm-bootstrap .g-sm-3,
 	.fm-bootstrap .gx-sm-3 {
-		--fmbs-gutter-x: 1rem;
+		--fmbs-gutter-x: 1em;
 	}
 
 	.fm-bootstrap .g-sm-3,
 	.fm-bootstrap .gy-sm-3 {
-		--fmbs-gutter-y: 1rem;
+		--fmbs-gutter-y: 1em;
 	}
 
 	.fm-bootstrap .g-sm-4,
 	.fm-bootstrap .gx-sm-4 {
-		--fmbs-gutter-x: 1.5rem;
+		--fmbs-gutter-x: 1.5em;
 	}
 
 	.fm-bootstrap .g-sm-4,
 	.fm-bootstrap .gy-sm-4 {
-		--fmbs-gutter-y: 1.5rem;
+		--fmbs-gutter-y: 1.5em;
 	}
 
 	.fm-bootstrap .g-sm-5,
 	.fm-bootstrap .gx-sm-5 {
-		--fmbs-gutter-x: 3rem;
+		--fmbs-gutter-x: 3em;
 	}
 
 	.fm-bootstrap .g-sm-5,
 	.fm-bootstrap .gy-sm-5 {
-		--fmbs-gutter-y: 3rem;
+		--fmbs-gutter-y: 3em;
 	}
 }
 
@@ -1330,52 +1330,52 @@ a > .fm-bootstrap code {
 
 	.fm-bootstrap .g-md-1,
 	.fm-bootstrap .gx-md-1 {
-		--fmbs-gutter-x: 0.25rem;
+		--fmbs-gutter-x: 0.25em;
 	}
 
 	.fm-bootstrap .g-md-1,
 	.fm-bootstrap .gy-md-1 {
-		--fmbs-gutter-y: 0.25rem;
+		--fmbs-gutter-y: 0.25em;
 	}
 
 	.fm-bootstrap .g-md-2,
 	.fm-bootstrap .gx-md-2 {
-		--fmbs-gutter-x: 0.5rem;
+		--fmbs-gutter-x: 0.5em;
 	}
 
 	.fm-bootstrap .g-md-2,
 	.fm-bootstrap .gy-md-2 {
-		--fmbs-gutter-y: 0.5rem;
+		--fmbs-gutter-y: 0.5em;
 	}
 
 	.fm-bootstrap .g-md-3,
 	.fm-bootstrap .gx-md-3 {
-		--fmbs-gutter-x: 1rem;
+		--fmbs-gutter-x: 1em;
 	}
 
 	.fm-bootstrap .g-md-3,
 	.fm-bootstrap .gy-md-3 {
-		--fmbs-gutter-y: 1rem;
+		--fmbs-gutter-y: 1em;
 	}
 
 	.fm-bootstrap .g-md-4,
 	.fm-bootstrap .gx-md-4 {
-		--fmbs-gutter-x: 1.5rem;
+		--fmbs-gutter-x: 1.5em;
 	}
 
 	.fm-bootstrap .g-md-4,
 	.fm-bootstrap .gy-md-4 {
-		--fmbs-gutter-y: 1.5rem;
+		--fmbs-gutter-y: 1.5em;
 	}
 
 	.fm-bootstrap .g-md-5,
 	.fm-bootstrap .gx-md-5 {
-		--fmbs-gutter-x: 3rem;
+		--fmbs-gutter-x: 3em;
 	}
 
 	.fm-bootstrap .g-md-5,
 	.fm-bootstrap .gy-md-5 {
-		--fmbs-gutter-y: 3rem;
+		--fmbs-gutter-y: 3em;
 	}
 }
 
@@ -1544,52 +1544,52 @@ a > .fm-bootstrap code {
 
 	.fm-bootstrap .g-lg-1,
 	.fm-bootstrap .gx-lg-1 {
-		--fmbs-gutter-x: 0.25rem;
+		--fmbs-gutter-x: 0.25em;
 	}
 
 	.fm-bootstrap .g-lg-1,
 	.fm-bootstrap .gy-lg-1 {
-		--fmbs-gutter-y: 0.25rem;
+		--fmbs-gutter-y: 0.25em;
 	}
 
 	.fm-bootstrap .g-lg-2,
 	.fm-bootstrap .gx-lg-2 {
-		--fmbs-gutter-x: 0.5rem;
+		--fmbs-gutter-x: 0.5em;
 	}
 
 	.fm-bootstrap .g-lg-2,
 	.fm-bootstrap .gy-lg-2 {
-		--fmbs-gutter-y: 0.5rem;
+		--fmbs-gutter-y: 0.5em;
 	}
 
 	.fm-bootstrap .g-lg-3,
 	.fm-bootstrap .gx-lg-3 {
-		--fmbs-gutter-x: 1rem;
+		--fmbs-gutter-x: 1em;
 	}
 
 	.fm-bootstrap .g-lg-3,
 	.fm-bootstrap .gy-lg-3 {
-		--fmbs-gutter-y: 1rem;
+		--fmbs-gutter-y: 1em;
 	}
 
 	.fm-bootstrap .g-lg-4,
 	.fm-bootstrap .gx-lg-4 {
-		--fmbs-gutter-x: 1.5rem;
+		--fmbs-gutter-x: 1.5em;
 	}
 
 	.fm-bootstrap .g-lg-4,
 	.fm-bootstrap .gy-lg-4 {
-		--fmbs-gutter-y: 1.5rem;
+		--fmbs-gutter-y: 1.5em;
 	}
 
 	.fm-bootstrap .g-lg-5,
 	.fm-bootstrap .gx-lg-5 {
-		--fmbs-gutter-x: 3rem;
+		--fmbs-gutter-x: 3em;
 	}
 
 	.fm-bootstrap .g-lg-5,
 	.fm-bootstrap .gy-lg-5 {
-		--fmbs-gutter-y: 3rem;
+		--fmbs-gutter-y: 3em;
 	}
 }
 
@@ -1758,52 +1758,52 @@ a > .fm-bootstrap code {
 
 	.fm-bootstrap .g-xl-1,
 	.fm-bootstrap .gx-xl-1 {
-		--fmbs-gutter-x: 0.25rem;
+		--fmbs-gutter-x: 0.25em;
 	}
 
 	.fm-bootstrap .g-xl-1,
 	.fm-bootstrap .gy-xl-1 {
-		--fmbs-gutter-y: 0.25rem;
+		--fmbs-gutter-y: 0.25em;
 	}
 
 	.fm-bootstrap .g-xl-2,
 	.fm-bootstrap .gx-xl-2 {
-		--fmbs-gutter-x: 0.5rem;
+		--fmbs-gutter-x: 0.5em;
 	}
 
 	.fm-bootstrap .g-xl-2,
 	.fm-bootstrap .gy-xl-2 {
-		--fmbs-gutter-y: 0.5rem;
+		--fmbs-gutter-y: 0.5em;
 	}
 
 	.fm-bootstrap .g-xl-3,
 	.fm-bootstrap .gx-xl-3 {
-		--fmbs-gutter-x: 1rem;
+		--fmbs-gutter-x: 1em;
 	}
 
 	.fm-bootstrap .g-xl-3,
 	.fm-bootstrap .gy-xl-3 {
-		--fmbs-gutter-y: 1rem;
+		--fmbs-gutter-y: 1em;
 	}
 
 	.fm-bootstrap .g-xl-4,
 	.fm-bootstrap .gx-xl-4 {
-		--fmbs-gutter-x: 1.5rem;
+		--fmbs-gutter-x: 1.5em;
 	}
 
 	.fm-bootstrap .g-xl-4,
 	.fm-bootstrap .gy-xl-4 {
-		--fmbs-gutter-y: 1.5rem;
+		--fmbs-gutter-y: 1.5em;
 	}
 
 	.fm-bootstrap .g-xl-5,
 	.fm-bootstrap .gx-xl-5 {
-		--fmbs-gutter-x: 3rem;
+		--fmbs-gutter-x: 3em;
 	}
 
 	.fm-bootstrap .g-xl-5,
 	.fm-bootstrap .gy-xl-5 {
-		--fmbs-gutter-y: 3rem;
+		--fmbs-gutter-y: 3em;
 	}
 }
 
@@ -1972,52 +1972,52 @@ a > .fm-bootstrap code {
 
 	.fm-bootstrap .g-xxl-1,
 	.fm-bootstrap .gx-xxl-1 {
-		--fmbs-gutter-x: 0.25rem;
+		--fmbs-gutter-x: 0.25em;
 	}
 
 	.fm-bootstrap .g-xxl-1,
 	.fm-bootstrap .gy-xxl-1 {
-		--fmbs-gutter-y: 0.25rem;
+		--fmbs-gutter-y: 0.25em;
 	}
 
 	.fm-bootstrap .g-xxl-2,
 	.fm-bootstrap .gx-xxl-2 {
-		--fmbs-gutter-x: 0.5rem;
+		--fmbs-gutter-x: 0.5em;
 	}
 
 	.fm-bootstrap .g-xxl-2,
 	.fm-bootstrap .gy-xxl-2 {
-		--fmbs-gutter-y: 0.5rem;
+		--fmbs-gutter-y: 0.5em;
 	}
 
 	.fm-bootstrap .g-xxl-3,
 	.fm-bootstrap .gx-xxl-3 {
-		--fmbs-gutter-x: 1rem;
+		--fmbs-gutter-x: 1em;
 	}
 
 	.fm-bootstrap .g-xxl-3,
 	.fm-bootstrap .gy-xxl-3 {
-		--fmbs-gutter-y: 1rem;
+		--fmbs-gutter-y: 1em;
 	}
 
 	.fm-bootstrap .g-xxl-4,
 	.fm-bootstrap .gx-xxl-4 {
-		--fmbs-gutter-x: 1.5rem;
+		--fmbs-gutter-x: 1.5em;
 	}
 
 	.fm-bootstrap .g-xxl-4,
 	.fm-bootstrap .gy-xxl-4 {
-		--fmbs-gutter-y: 1.5rem;
+		--fmbs-gutter-y: 1.5em;
 	}
 
 	.fm-bootstrap .g-xxl-5,
 	.fm-bootstrap .gx-xxl-5 {
-		--fmbs-gutter-x: 3rem;
+		--fmbs-gutter-x: 3em;
 	}
 
 	.fm-bootstrap .g-xxl-5,
 	.fm-bootstrap .gy-xxl-5 {
-		--fmbs-gutter-y: 3rem;
+		--fmbs-gutter-y: 3em;
 	}
 }
 
@@ -2033,14 +2033,14 @@ a > .fm-bootstrap code {
 	--fmbs-table-hover-color: var(--fmbs-body-color);
 	--fmbs-table-hover-bg: rgba(0, 0, 0, 0.075);
 	width: 100%;
-	margin-bottom: 1rem;
+	margin-bottom: 1em;
 	color: var(--fmbs-table-color);
 	vertical-align: top;
 	border-color: var(--fmbs-table-border-color);
 }
 
 .fm-bootstrap .table > :not(caption) > * > * {
-	padding: 0.5rem 0.5rem;
+	padding: 0.5em 0.5em;
 	background-color: var(--fmbs-table-bg);
 	border-bottom-width: 1px;
 	box-shadow: inset 0 0 0 9999px var(--fmbs-table-accent-bg);
@@ -2063,7 +2063,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .table-sm > :not(caption) > * > * {
-	padding: 0.25rem 0.25rem;
+	padding: 0.25em 0.25em;
 }
 
 .fm-bootstrap .table-bordered > :not(caption) > * {
@@ -2255,31 +2255,31 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .form-label {
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.5em;
 }
 
 .fm-bootstrap .col-form-label {
-	padding-top: calc(0.375rem + 1px);
-	padding-bottom: calc(0.375rem + 1px);
+	padding-top: calc(0.375em + 1px);
+	padding-bottom: calc(0.375em + 1px);
 	margin-bottom: 0;
 	font-size: inherit;
 	line-height: 1.5;
 }
 
 .fm-bootstrap .col-form-label-lg {
-	padding-top: calc(0.5rem + 1px);
-	padding-bottom: calc(0.5rem + 1px);
-	font-size: 1.25rem;
+	padding-top: calc(0.5em + 1px);
+	padding-bottom: calc(0.5em + 1px);
+	font-size: 1.25em;
 }
 
 .fm-bootstrap .col-form-label-sm {
-	padding-top: calc(0.25rem + 1px);
-	padding-bottom: calc(0.25rem + 1px);
-	font-size: 0.875rem;
+	padding-top: calc(0.25em + 1px);
+	padding-bottom: calc(0.25em + 1px);
+	font-size: 0.875em;
 }
 
 .fm-bootstrap .form-text {
-	margin-top: 0.25rem;
+	margin-top: 0.25em;
 	font-size: 0.875em;
 	color: rgba(var(--fmbs-body-color-rgb), 0.75);
 }
@@ -2287,8 +2287,8 @@ a > .fm-bootstrap code {
 .fm-bootstrap .form-control {
 	display: block;
 	width: 100%;
-	padding: 0.375rem 0.75rem;
-	font-size: 1rem;
+	padding: 0.375em 0.75em;
+	font-size: 1em;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #212529;
@@ -2296,7 +2296,7 @@ a > .fm-bootstrap code {
 	background-clip: padding-box;
 	border: 1px solid #ced4da;
 	appearance: none;
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -2319,7 +2319,7 @@ a > .fm-bootstrap code {
 	background-color: #fff;
 	border-color: #86b7fe;
 	outline: 0;
-	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(13, 110, 253, 0.25);
 }
 
 .fm-bootstrap .form-control::-webkit-date-and-time-value {
@@ -2337,9 +2337,9 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .form-control::file-selector-button {
-	padding: 0.375rem 0.75rem;
-	margin: -0.375rem -0.75rem;
-	margin-inline-end: 0.75rem;
+	padding: 0.375em 0.75em;
+	margin: -0.375em -0.75em;
+	margin-inline-end: 0.75em;
 	color: #212529;
 	background-color: #e9ecef;
 	pointer-events: none;
@@ -2364,7 +2364,7 @@ a > .fm-bootstrap code {
 .fm-bootstrap .form-control-plaintext {
 	display: block;
 	width: 100%;
-	padding: 0.375rem 0;
+	padding: 0.375em 0;
 	margin-bottom: 0;
 	line-height: 1.5;
 	color: #212529;
@@ -2383,47 +2383,47 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .form-control-sm {
-	min-height: calc(1.5em + 0.5rem + 2px);
-	padding: 0.25rem 0.5rem;
-	font-size: 0.875rem;
-	border-radius: 0.25rem;
+	min-height: calc(1.5em + 0.5em + 2px);
+	padding: 0.25em 0.5em;
+	font-size: 0.875em;
+	border-radius: 0.25em;
 }
 
 .fm-bootstrap .form-control-sm::file-selector-button {
-	padding: 0.25rem 0.5rem;
-	margin: -0.25rem -0.5rem;
-	margin-inline-end: 0.5rem;
+	padding: 0.25em 0.5em;
+	margin: -0.25em -0.5em;
+	margin-inline-end: 0.5em;
 }
 
 .fm-bootstrap .form-control-lg {
-	min-height: calc(1.5em + 1rem + 2px);
-	padding: 0.5rem 1rem;
-	font-size: 1.25rem;
-	border-radius: 0.5rem;
+	min-height: calc(1.5em + 1em + 2px);
+	padding: 0.5em 1em;
+	font-size: 1.25em;
+	border-radius: 0.5em;
 }
 
 .fm-bootstrap .form-control-lg::file-selector-button {
-	padding: 0.5rem 1rem;
-	margin: -0.5rem -1rem;
-	margin-inline-end: 1rem;
+	padding: 0.5em 1em;
+	margin: -0.5em -1em;
+	margin-inline-end: 1em;
 }
 
 .fm-bootstrap textarea.form-control {
-	min-height: calc(1.5em + 0.75rem + 2px);
+	min-height: calc(1.5em + 0.75em + 2px);
 }
 
 .fm-bootstrap textarea.form-control-sm {
-	min-height: calc(1.5em + 0.5rem + 2px);
+	min-height: calc(1.5em + 0.5em + 2px);
 }
 
 .fm-bootstrap textarea.form-control-lg {
-	min-height: calc(1.5em + 1rem + 2px);
+	min-height: calc(1.5em + 1em + 2px);
 }
 
 .fm-bootstrap .form-control-color {
-	width: 3rem;
-	height: calc(1.5em + 0.75rem + 2px);
-	padding: 0.375rem;
+	width: 3em;
+	height: calc(1.5em + 0.75em + 2px);
+	padding: 0.375em;
 }
 
 .fm-bootstrap .form-control-color:not(:disabled):not([readonly]) {
@@ -2432,37 +2432,37 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .form-control-color::-moz-color-swatch {
 	border: 0 !important;
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 }
 
 .fm-bootstrap .form-control-color::-webkit-color-swatch {
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 }
 
 .fm-bootstrap .form-control-color.form-control-sm {
-	height: calc(1.5em + 0.5rem + 2px);
+	height: calc(1.5em + 0.5em + 2px);
 }
 
 .fm-bootstrap .form-control-color.form-control-lg {
-	height: calc(1.5em + 1rem + 2px);
+	height: calc(1.5em + 1em + 2px);
 }
 
 .fm-bootstrap .form-select {
 	display: block;
 	width: 100%;
-	padding: 0.375rem 2.25rem 0.375rem 0.75rem;
-	-moz-padding-start: calc(0.75rem - 3px);
-	font-size: 1rem;
+	padding: 0.375em 2.25em 0.375em 0.75em;
+	-moz-padding-start: calc(0.75em - 3px);
+	font-size: 1em;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #212529;
 	background-color: #fff;
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
-	background-position: right 0.75rem center;
+	background-position: right 0.75em center;
 	background-size: 16px 12px;
 	border: 1px solid #ced4da;
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 	appearance: none;
 }
@@ -2476,11 +2476,11 @@ a > .fm-bootstrap code {
 .fm-bootstrap .form-select:focus {
 	border-color: #86b7fe;
 	outline: 0;
-	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(13, 110, 253, 0.25);
 }
 
 .fm-bootstrap .form-select[multiple], .fm-bootstrap .form-select[size]:not([size="1"]) {
-	padding-right: 0.75rem;
+	padding-right: 0.75em;
 	background-image: none;
 }
 
@@ -2494,26 +2494,26 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .form-select-sm {
-	padding-top: 0.25rem;
-	padding-bottom: 0.25rem;
-	padding-left: 0.5rem;
-	font-size: 0.875rem;
-	border-radius: 0.25rem;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	padding-left: 0.5em;
+	font-size: 0.875em;
+	border-radius: 0.25em;
 }
 
 .fm-bootstrap .form-select-lg {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-left: 1rem;
-	font-size: 1.25rem;
-	border-radius: 0.5rem;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 1em;
+	font-size: 1.25em;
+	border-radius: 0.5em;
 }
 
 .fm-bootstrap .form-check {
 	display: block;
-	min-height: 1.5rem;
+	min-height: 1.5em;
 	padding-left: 1.5em;
-	margin-bottom: 0.125rem;
+	margin-bottom: 0.125em;
 }
 
 .fm-bootstrap .form-check .form-check-input {
@@ -2562,7 +2562,7 @@ a > .fm-bootstrap code {
 .fm-bootstrap .form-check-input:focus {
 	border-color: #86b7fe;
 	outline: 0;
-	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(13, 110, 253, 0.25);
 }
 
 .fm-bootstrap .form-check-input:checked {
@@ -2635,7 +2635,7 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .form-check-inline {
 	display: inline-block;
-	margin-right: 1rem;
+	margin-right: 1em;
 }
 
 .fm-bootstrap .btn-check {
@@ -2652,7 +2652,7 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .form-range {
 	width: 100%;
-	height: 1.5rem;
+	height: 1.5em;
 	padding: 0;
 	background-color: transparent;
 	appearance: none;
@@ -2663,11 +2663,11 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .form-range:focus::-webkit-slider-thumb {
-	box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+	box-shadow: 0 0 0 1px #fff, 0 0 0 0.25em rgba(13, 110, 253, 0.25);
 }
 
 .fm-bootstrap .form-range:focus::-moz-range-thumb {
-	box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+	box-shadow: 0 0 0 1px #fff, 0 0 0 0.25em rgba(13, 110, 253, 0.25);
 }
 
 .fm-bootstrap .form-range::-moz-focus-outer {
@@ -2675,12 +2675,12 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .form-range::-webkit-slider-thumb {
-	width: 1rem;
-	height: 1rem;
-	margin-top: -0.25rem;
+	width: 1em;
+	height: 1em;
+	margin-top: -0.25em;
 	background-color: #0d6efd;
 	border: 0;
-	border-radius: 1rem;
+	border-radius: 1em;
 	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 	appearance: none;
 }
@@ -2697,20 +2697,20 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .form-range::-webkit-slider-runnable-track {
 	width: 100%;
-	height: 0.5rem;
+	height: 0.5em;
 	color: transparent;
 	cursor: pointer;
 	background-color: #dee2e6;
 	border-color: transparent;
-	border-radius: 1rem;
+	border-radius: 1em;
 }
 
 .fm-bootstrap .form-range::-moz-range-thumb {
-	width: 1rem;
-	height: 1rem;
+	width: 1em;
+	height: 1em;
 	background-color: #0d6efd;
 	border: 0;
-	border-radius: 1rem;
+	border-radius: 1em;
 	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 	appearance: none;
 }
@@ -2727,12 +2727,12 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .form-range::-moz-range-track {
 	width: 100%;
-	height: 0.5rem;
+	height: 0.5em;
 	color: transparent;
 	cursor: pointer;
 	background-color: #dee2e6;
 	border-color: transparent;
-	border-radius: 1rem;
+	border-radius: 1em;
 }
 
 .fm-bootstrap .form-range:disabled {
@@ -2754,7 +2754,7 @@ a > .fm-bootstrap code {
 .fm-bootstrap .form-floating > .form-control,
 .fm-bootstrap .form-floating > .form-control-plaintext,
 .fm-bootstrap .form-floating > .form-select {
-	height: calc(3.5rem + 2px);
+	height: calc(3.5em + 2px);
 	line-height: 1.25;
 }
 
@@ -2764,7 +2764,7 @@ a > .fm-bootstrap code {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	padding: 1rem 0.75rem;
+	padding: 1em 0.75em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -2782,7 +2782,7 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .form-floating > .form-control,
 .fm-bootstrap .form-floating > .form-control-plaintext {
-	padding: 1rem 0.75rem;
+	padding: 1em 0.75em;
 }
 
 .fm-bootstrap .form-floating > .form-control::placeholder,
@@ -2793,19 +2793,19 @@ a > .fm-bootstrap code {
 .fm-bootstrap .form-floating > .form-control:focus, .fm-bootstrap .form-floating > .form-control:not(:placeholder-shown),
 .fm-bootstrap .form-floating > .form-control-plaintext:focus,
 .fm-bootstrap .form-floating > .form-control-plaintext:not(:placeholder-shown) {
-	padding-top: 1.625rem;
-	padding-bottom: 0.625rem;
+	padding-top: 1.625em;
+	padding-bottom: 0.625em;
 }
 
 .fm-bootstrap .form-floating > .form-control:-webkit-autofill,
 .fm-bootstrap .form-floating > .form-control-plaintext:-webkit-autofill {
-	padding-top: 1.625rem;
-	padding-bottom: 0.625rem;
+	padding-top: 1.625em;
+	padding-bottom: 0.625em;
 }
 
 .fm-bootstrap .form-floating > .form-select {
-	padding-top: 1.625rem;
-	padding-bottom: 0.625rem;
+	padding-top: 1.625em;
+	padding-bottom: 0.625em;
 }
 
 .fm-bootstrap .form-floating > .form-control:focus ~ label,
@@ -2813,12 +2813,12 @@ a > .fm-bootstrap code {
 .fm-bootstrap .form-floating > .form-control-plaintext ~ label,
 .fm-bootstrap .form-floating > .form-select ~ label {
 	opacity: 0.65;
-	transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+	transform: scale(0.85) translateY(-0.5em) translateX(0.15em);
 }
 
 .fm-bootstrap .form-floating > .form-control:-webkit-autofill ~ label {
 	opacity: 0.65;
-	transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+	transform: scale(0.85) translateY(-0.5em) translateX(0.15em);
 }
 
 .fm-bootstrap .form-floating > .form-control-plaintext ~ label {
@@ -2858,8 +2858,8 @@ a > .fm-bootstrap code {
 .fm-bootstrap .input-group-text {
 	display: flex;
 	align-items: center;
-	padding: 0.375rem 0.75rem;
-	font-size: 1rem;
+	padding: 0.375em 0.75em;
+	font-size: 1em;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #212529;
@@ -2867,30 +2867,30 @@ a > .fm-bootstrap code {
 	white-space: nowrap;
 	background-color: #e9ecef;
 	border: 1px solid #ced4da;
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 }
 
 .fm-bootstrap .input-group-lg > .form-control,
 .fm-bootstrap .input-group-lg > .form-select,
 .fm-bootstrap .input-group-lg > .input-group-text,
 .fm-bootstrap .input-group-lg > .btn {
-	padding: 0.5rem 1rem;
-	font-size: 1.25rem;
-	border-radius: 0.5rem;
+	padding: 0.5em 1em;
+	font-size: 1.25em;
+	border-radius: 0.5em;
 }
 
 .fm-bootstrap .input-group-sm > .form-control,
 .fm-bootstrap .input-group-sm > .form-select,
 .fm-bootstrap .input-group-sm > .input-group-text,
 .fm-bootstrap .input-group-sm > .btn {
-	padding: 0.25rem 0.5rem;
-	font-size: 0.875rem;
-	border-radius: 0.25rem;
+	padding: 0.25em 0.5em;
+	font-size: 0.875em;
+	border-radius: 0.25em;
 }
 
 .fm-bootstrap .input-group-lg > .form-select,
 .fm-bootstrap .input-group-sm > .form-select {
-	padding-right: 3rem;
+	padding-right: 3em;
 }
 
 .fm-bootstrap .input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
@@ -2914,7 +2914,7 @@ a > .fm-bootstrap code {
 .fm-bootstrap .valid-feedback {
 	display: none;
 	width: 100%;
-	margin-top: 0.25rem;
+	margin-top: 0.25em;
 	font-size: 0.875em;
 	color: #198754;
 }
@@ -2925,12 +2925,12 @@ a > .fm-bootstrap code {
 	z-index: 5;
 	display: none;
 	max-width: 100%;
-	padding: 0.25rem 0.5rem;
-	margin-top: .1rem;
-	font-size: 0.875rem;
+	padding: 0.25em 0.5em;
+	margin-top: .1em;
+	font-size: 0.875em;
 	color: #fff;
 	background-color: rgba(25, 135, 84, 0.9);
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 }
 
 .was-validated .fm-bootstrap:valid ~ .valid-feedback,
@@ -2941,21 +2941,21 @@ a > .fm-bootstrap code {
 
 .was-validated .fm-bootstrap .form-control:valid, .fm-bootstrap .form-control.is-valid {
 	border-color: #198754;
-	padding-right: calc(1.5em + 0.75rem);
+	padding-right: calc(1.5em + 0.75em);
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
-	background-position: right calc(0.375em + 0.1875rem) center;
-	background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+	background-position: right calc(0.375em + 0.1875em) center;
+	background-size: calc(0.75em + 0.375em) calc(0.75em + 0.375em);
 }
 
 .was-validated .fm-bootstrap .form-control:valid:focus, .fm-bootstrap .form-control.is-valid:focus {
 	border-color: #198754;
-	box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(25, 135, 84, 0.25);
 }
 
 .was-validated .fm-bootstrap textarea.form-control:valid, .fm-bootstrap textarea.form-control.is-valid {
-	padding-right: calc(1.5em + 0.75rem);
-	background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
+	padding-right: calc(1.5em + 0.75em);
+	background-position: top calc(0.375em + 0.1875em) right calc(0.375em + 0.1875em);
 }
 
 .was-validated .fm-bootstrap .form-select:valid, .fm-bootstrap .form-select.is-valid {
@@ -2963,19 +2963,19 @@ a > .fm-bootstrap code {
 }
 
 .was-validated .fm-bootstrap .form-select:valid:not([multiple]):not([size]), .was-validated .fm-bootstrap .form-select:valid:not([multiple])[size="1"], .fm-bootstrap .form-select.is-valid:not([multiple]):not([size]), .fm-bootstrap .form-select.is-valid:not([multiple])[size="1"] {
-	padding-right: 4.125rem;
+	padding-right: 4.125em;
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
-	background-position: right 0.75rem center, center right 2.25rem;
-	background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+	background-position: right 0.75em center, center right 2.25em;
+	background-size: 16px 12px, calc(0.75em + 0.375em) calc(0.75em + 0.375em);
 }
 
 .was-validated .fm-bootstrap .form-select:valid:focus, .fm-bootstrap .form-select.is-valid:focus {
 	border-color: #198754;
-	box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(25, 135, 84, 0.25);
 }
 
 .was-validated .fm-bootstrap .form-control-color:valid, .fm-bootstrap .form-control-color.is-valid {
-	width: calc(3rem + calc(1.5em + 0.75rem));
+	width: calc(3em + calc(1.5em + 0.75em));
 }
 
 .was-validated .fm-bootstrap .form-check-input:valid, .fm-bootstrap .form-check-input.is-valid {
@@ -2987,7 +2987,7 @@ a > .fm-bootstrap code {
 }
 
 .was-validated .fm-bootstrap .form-check-input:valid:focus, .fm-bootstrap .form-check-input.is-valid:focus {
-	box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(25, 135, 84, 0.25);
 }
 
 .was-validated .fm-bootstrap .form-check-input:valid ~ .form-check-label, .fm-bootstrap .form-check-input.is-valid ~ .form-check-label {
@@ -3013,7 +3013,7 @@ a > .fm-bootstrap code {
 .fm-bootstrap .invalid-feedback {
 	display: none;
 	width: 100%;
-	margin-top: 0.25rem;
+	margin-top: 0.25em;
 	font-size: 0.875em;
 	color: #dc3545;
 }
@@ -3024,12 +3024,12 @@ a > .fm-bootstrap code {
 	z-index: 5;
 	display: none;
 	max-width: 100%;
-	padding: 0.25rem 0.5rem;
-	margin-top: .1rem;
-	font-size: 0.875rem;
+	padding: 0.25em 0.5em;
+	margin-top: .1em;
+	font-size: 0.875em;
 	color: #fff;
 	background-color: rgba(220, 53, 69, 0.9);
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 }
 
 .was-validated .fm-bootstrap:invalid ~ .invalid-feedback,
@@ -3040,21 +3040,21 @@ a > .fm-bootstrap code {
 
 .was-validated .fm-bootstrap .form-control:invalid, .fm-bootstrap .form-control.is-invalid {
 	border-color: #dc3545;
-	padding-right: calc(1.5em + 0.75rem);
+	padding-right: calc(1.5em + 0.75em);
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
-	background-position: right calc(0.375em + 0.1875rem) center;
-	background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+	background-position: right calc(0.375em + 0.1875em) center;
+	background-size: calc(0.75em + 0.375em) calc(0.75em + 0.375em);
 }
 
 .was-validated .fm-bootstrap .form-control:invalid:focus, .fm-bootstrap .form-control.is-invalid:focus {
 	border-color: #dc3545;
-	box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(220, 53, 69, 0.25);
 }
 
 .was-validated .fm-bootstrap textarea.form-control:invalid, .fm-bootstrap textarea.form-control.is-invalid {
-	padding-right: calc(1.5em + 0.75rem);
-	background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
+	padding-right: calc(1.5em + 0.75em);
+	background-position: top calc(0.375em + 0.1875em) right calc(0.375em + 0.1875em);
 }
 
 .was-validated .fm-bootstrap .form-select:invalid, .fm-bootstrap .form-select.is-invalid {
@@ -3062,19 +3062,19 @@ a > .fm-bootstrap code {
 }
 
 .was-validated .fm-bootstrap .form-select:invalid:not([multiple]):not([size]), .was-validated .fm-bootstrap .form-select:invalid:not([multiple])[size="1"], .fm-bootstrap .form-select.is-invalid:not([multiple]):not([size]), .fm-bootstrap .form-select.is-invalid:not([multiple])[size="1"] {
-	padding-right: 4.125rem;
+	padding-right: 4.125em;
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
-	background-position: right 0.75rem center, center right 2.25rem;
-	background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+	background-position: right 0.75em center, center right 2.25em;
+	background-size: 16px 12px, calc(0.75em + 0.375em) calc(0.75em + 0.375em);
 }
 
 .was-validated .fm-bootstrap .form-select:invalid:focus, .fm-bootstrap .form-select.is-invalid:focus {
 	border-color: #dc3545;
-	box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(220, 53, 69, 0.25);
 }
 
 .was-validated .fm-bootstrap .form-control-color:invalid, .fm-bootstrap .form-control-color.is-invalid {
-	width: calc(3rem + calc(1.5em + 0.75rem));
+	width: calc(3em + calc(1.5em + 0.75em));
 }
 
 .was-validated .fm-bootstrap .form-check-input:invalid, .fm-bootstrap .form-check-input.is-invalid {
@@ -3086,7 +3086,7 @@ a > .fm-bootstrap code {
 }
 
 .was-validated .fm-bootstrap .form-check-input:invalid:focus, .fm-bootstrap .form-check-input.is-invalid:focus {
-	box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(220, 53, 69, 0.25);
 }
 
 .was-validated .fm-bootstrap .form-check-input:invalid ~ .form-check-label, .fm-bootstrap .form-check-input.is-invalid ~ .form-check-label {
@@ -3110,20 +3110,20 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .btn {
-	--fmbs-btn-padding-x: 0.75rem;
-	--fmbs-btn-padding-y: 0.375rem;
+	--fmbs-btn-padding-x: 0.75em;
+	--fmbs-btn-padding-y: 0.375em;
 	--fmbs-btn-font-family: unset;
-	--fmbs-btn-font-size: 1rem;
+	--fmbs-btn-font-size: 1em;
 	--fmbs-btn-font-weight: 400;
 	--fmbs-btn-line-height: 1.5;
 	--fmbs-btn-color: #212529;
 	--fmbs-btn-bg: transparent;
 	--fmbs-btn-border-width: 1px;
 	--fmbs-btn-border-color: transparent;
-	--fmbs-btn-border-radius: 0.375rem;
+	--fmbs-btn-border-radius: 0.375em;
 	--fmbs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
 	--fmbs-btn-disabled-opacity: 0.65;
-	--fmbs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--fmbs-btn-focus-shadow-rgb), .5);
+	--fmbs-btn-focus-box-shadow: 0 0 0 0.25em rgba(var(--fmbs-btn-focus-shadow-rgb), .5);
 	display: inline-block;
 	padding: var(--fmbs-btn-padding-y) var(--fmbs-btn-padding-x);
 	font-family: var(--fmbs-btn-font-family);
@@ -3460,17 +3460,17 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .btn-lg, .fm-bootstrap .btn-group-lg > .btn {
-	--fmbs-btn-padding-y: 0.5rem;
-	--fmbs-btn-padding-x: 1rem;
-	--fmbs-btn-font-size: 1.25rem;
-	--fmbs-btn-border-radius: 0.5rem;
+	--fmbs-btn-padding-y: 0.5em;
+	--fmbs-btn-padding-x: 1em;
+	--fmbs-btn-font-size: 1.25em;
+	--fmbs-btn-border-radius: 0.5em;
 }
 
 .fm-bootstrap .btn-sm, .fm-bootstrap .btn-group-sm > .btn {
-	--fmbs-btn-padding-y: 0.25rem;
-	--fmbs-btn-padding-x: 0.5rem;
-	--fmbs-btn-font-size: 0.875rem;
-	--fmbs-btn-border-radius: 0.25rem;
+	--fmbs-btn-padding-y: 0.25em;
+	--fmbs-btn-padding-x: 0.5em;
+	--fmbs-btn-font-size: 0.875em;
+	--fmbs-btn-border-radius: 0.25em;
 }
 
 .fm-bootstrap .fade {
@@ -3544,31 +3544,31 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .dropdown-menu {
-	--fmbs-dropdown-min-width: 10rem;
+	--fmbs-dropdown-min-width: 10em;
 	--fmbs-dropdown-padding-x: 0;
-	--fmbs-dropdown-padding-y: 0.5rem;
-	--fmbs-dropdown-spacer: 0.125rem;
-	--fmbs-dropdown-font-size: 1rem;
+	--fmbs-dropdown-padding-y: 0.5em;
+	--fmbs-dropdown-spacer: 0.125em;
+	--fmbs-dropdown-font-size: 1em;
 	--fmbs-dropdown-color: #212529;
 	--fmbs-dropdown-bg: #fff;
 	--fmbs-dropdown-border-color: var(--fmbs-border-color-translucent);
-	--fmbs-dropdown-border-radius: 0.375rem;
+	--fmbs-dropdown-border-radius: 0.375em;
 	--fmbs-dropdown-border-width: 1px;
-	--fmbs-dropdown-inner-border-radius: calc(0.375rem - 1px);
+	--fmbs-dropdown-inner-border-radius: calc(0.375em - 1px);
 	--fmbs-dropdown-divider-bg: var(--fmbs-border-color-translucent);
-	--fmbs-dropdown-divider-margin-y: 0.5rem;
-	--fmbs-dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	--fmbs-dropdown-divider-margin-y: 0.5em;
+	--fmbs-dropdown-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
 	--fmbs-dropdown-link-color: #212529;
 	--fmbs-dropdown-link-hover-color: #1e2125;
 	--fmbs-dropdown-link-hover-bg: #e9ecef;
 	--fmbs-dropdown-link-active-color: #fff;
 	--fmbs-dropdown-link-active-bg: #0d6efd;
 	--fmbs-dropdown-link-disabled-color: #adb5bd;
-	--fmbs-dropdown-item-padding-x: 1rem;
-	--fmbs-dropdown-item-padding-y: 0.25rem;
+	--fmbs-dropdown-item-padding-x: 1em;
+	--fmbs-dropdown-item-padding-y: 0.25em;
 	--fmbs-dropdown-header-color: #6c757d;
-	--fmbs-dropdown-header-padding-x: 1rem;
-	--fmbs-dropdown-header-padding-y: 0.5rem;
+	--fmbs-dropdown-header-padding-x: 1em;
+	--fmbs-dropdown-header-padding-y: 0.5em;
 	position: absolute;
 	z-index: 1000;
 	display: none;
@@ -3842,7 +3842,7 @@ a > .fm-bootstrap code {
 	display: block;
 	padding: var(--fmbs-dropdown-header-padding-y) var(--fmbs-dropdown-header-padding-x);
 	margin-bottom: 0;
-	font-size: 0.875rem;
+	font-size: 0.875em;
 	color: var(--fmbs-dropdown-header-color);
 	white-space: nowrap;
 }
@@ -3906,7 +3906,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .btn-group {
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 }
 
 .fm-bootstrap .btn-group > .btn:not(:first-child),
@@ -3929,8 +3929,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .dropdown-toggle-split {
-	padding-right: 0.5625rem;
-	padding-left: 0.5625rem;
+	padding-right: 0.5625em;
+	padding-left: 0.5625em;
 }
 
 .fm-bootstrap .dropdown-toggle-split::after, .dropup .fm-bootstrap .dropdown-toggle-split::after, .dropend .fm-bootstrap .dropdown-toggle-split::after {
@@ -3942,13 +3942,13 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .btn-sm + .dropdown-toggle-split, .fm-bootstrap .btn-group-sm > .btn + .dropdown-toggle-split {
-	padding-right: 0.375rem;
-	padding-left: 0.375rem;
+	padding-right: 0.375em;
+	padding-left: 0.375em;
 }
 
 .fm-bootstrap .btn-lg + .dropdown-toggle-split, .fm-bootstrap .btn-group-lg > .btn + .dropdown-toggle-split {
-	padding-right: 0.75rem;
-	padding-left: 0.75rem;
+	padding-right: 0.75em;
+	padding-left: 0.75em;
 }
 
 .fm-bootstrap .btn-group-vertical {
@@ -3980,8 +3980,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .nav {
-	--fmbs-nav-link-padding-x: 1rem;
-	--fmbs-nav-link-padding-y: 0.5rem;
+	--fmbs-nav-link-padding-x: 1em;
+	--fmbs-nav-link-padding-y: 0.5em;
 	--fmbs-nav-link-color: var(--fmbs-link-color);
 	--fmbs-nav-link-hover-color: var(--fmbs-link-hover-color);
 	--fmbs-nav-link-disabled-color: #6c757d;
@@ -4019,7 +4019,7 @@ a > .fm-bootstrap code {
 .fm-bootstrap .nav-tabs {
 	--fmbs-nav-tabs-border-width: 1px;
 	--fmbs-nav-tabs-border-color: #dee2e6;
-	--fmbs-nav-tabs-border-radius: 0.375rem;
+	--fmbs-nav-tabs-border-radius: 0.375em;
 	--fmbs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
 	--fmbs-nav-tabs-link-active-color: #495057;
 	--fmbs-nav-tabs-link-active-bg: #fff;
@@ -4060,7 +4060,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .nav-pills {
-	--fmbs-nav-pills-border-radius: 0.375rem;
+	--fmbs-nav-pills-border-radius: 0.375em;
 	--fmbs-nav-pills-link-active-color: #fff;
 	--fmbs-nav-pills-link-active-bg: #0d6efd;
 }
@@ -4111,24 +4111,24 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .navbar {
 	--fmbs-navbar-padding-x: 0;
-	--fmbs-navbar-padding-y: 0.5rem;
+	--fmbs-navbar-padding-y: 0.5em;
 	--fmbs-navbar-color: rgba(0, 0, 0, 0.55);
 	--fmbs-navbar-hover-color: rgba(0, 0, 0, 0.7);
 	--fmbs-navbar-disabled-color: rgba(0, 0, 0, 0.3);
 	--fmbs-navbar-active-color: rgba(0, 0, 0, 0.9);
-	--fmbs-navbar-brand-padding-y: 0.3125rem;
-	--fmbs-navbar-brand-margin-end: 1rem;
-	--fmbs-navbar-brand-font-size: 1.25rem;
+	--fmbs-navbar-brand-padding-y: 0.3125em;
+	--fmbs-navbar-brand-margin-end: 1em;
+	--fmbs-navbar-brand-font-size: 1.25em;
 	--fmbs-navbar-brand-color: rgba(0, 0, 0, 0.9);
 	--fmbs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
-	--fmbs-navbar-nav-link-padding-x: 0.5rem;
-	--fmbs-navbar-toggler-padding-y: 0.25rem;
-	--fmbs-navbar-toggler-padding-x: 0.75rem;
-	--fmbs-navbar-toggler-font-size: 1.25rem;
+	--fmbs-navbar-nav-link-padding-x: 0.5em;
+	--fmbs-navbar-toggler-padding-y: 0.25em;
+	--fmbs-navbar-toggler-padding-x: 0.75em;
+	--fmbs-navbar-toggler-font-size: 1.25em;
 	--fmbs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 	--fmbs-navbar-toggler-border-color: rgba(0, 0, 0, 0.1);
-	--fmbs-navbar-toggler-border-radius: 0.375rem;
-	--fmbs-navbar-toggler-focus-width: 0.25rem;
+	--fmbs-navbar-toggler-border-radius: 0.375em;
+	--fmbs-navbar-toggler-focus-width: 0.25em;
 	--fmbs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
 	position: relative;
 	display: flex;
@@ -4167,7 +4167,7 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .navbar-nav {
 	--fmbs-nav-link-padding-x: 0;
-	--fmbs-nav-link-padding-y: 0.5rem;
+	--fmbs-nav-link-padding-y: 0.5em;
 	--fmbs-nav-link-color: var(--fmbs-navbar-color);
 	--fmbs-nav-link-hover-color: var(--fmbs-navbar-hover-color);
 	--fmbs-nav-link-disabled-color: var(--fmbs-navbar-disabled-color);
@@ -4188,8 +4188,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .navbar-text {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 	color: var(--fmbs-navbar-color);
 }
 
@@ -4599,19 +4599,19 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .card {
-	--fmbs-card-spacer-y: 1rem;
-	--fmbs-card-spacer-x: 1rem;
-	--fmbs-card-title-spacer-y: 0.5rem;
+	--fmbs-card-spacer-y: 1em;
+	--fmbs-card-spacer-x: 1em;
+	--fmbs-card-title-spacer-y: 0.5em;
 	--fmbs-card-border-width: 1px;
 	--fmbs-card-border-color: var(--fmbs-border-color-translucent);
-	--fmbs-card-border-radius: 0.375rem;
-	--fmbs-card-inner-border-radius: calc(0.375rem - 1px);
-	--fmbs-card-cap-padding-y: 0.5rem;
-	--fmbs-card-cap-padding-x: 1rem;
+	--fmbs-card-border-radius: 0.375em;
+	--fmbs-card-inner-border-radius: calc(0.375em - 1px);
+	--fmbs-card-cap-padding-y: 0.5em;
+	--fmbs-card-cap-padding-x: 1em;
 	--fmbs-card-cap-bg: rgba(0, 0, 0, 0.03);
 	--fmbs-card-bg: #fff;
-	--fmbs-card-img-overlay-padding: 1rem;
-	--fmbs-card-group-margin: 0.75rem;
+	--fmbs-card-img-overlay-padding: 1em;
+	--fmbs-card-group-margin: 0.75em;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -4795,21 +4795,21 @@ a > .fm-bootstrap code {
 	--fmbs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
 	--fmbs-accordion-border-color: var(--fmbs-border-color);
 	--fmbs-accordion-border-width: 1px;
-	--fmbs-accordion-border-radius: 0.375rem;
-	--fmbs-accordion-inner-border-radius: calc(0.375rem - 1px);
-	--fmbs-accordion-btn-padding-x: 1.25rem;
-	--fmbs-accordion-btn-padding-y: 1rem;
+	--fmbs-accordion-border-radius: 0.375em;
+	--fmbs-accordion-inner-border-radius: calc(0.375em - 1px);
+	--fmbs-accordion-btn-padding-x: 1.25em;
+	--fmbs-accordion-btn-padding-y: 1em;
 	--fmbs-accordion-btn-color: var(--fmbs-body-color);
 	--fmbs-accordion-btn-bg: var(--fmbs-accordion-bg);
 	--fmbs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var%28--fmbs-body-color%29'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-	--fmbs-accordion-btn-icon-width: 1.25rem;
+	--fmbs-accordion-btn-icon-width: 1.25em;
 	--fmbs-accordion-btn-icon-transform: rotate(-180deg);
 	--fmbs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
 	--fmbs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 	--fmbs-accordion-btn-focus-border-color: #86b7fe;
-	--fmbs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-	--fmbs-accordion-body-padding-x: 1.25rem;
-	--fmbs-accordion-body-padding-y: 1rem;
+	--fmbs-accordion-btn-focus-box-shadow: 0 0 0 0.25em rgba(13, 110, 253, 0.25);
+	--fmbs-accordion-body-padding-x: 1.25em;
+	--fmbs-accordion-body-padding-y: 1em;
 	--fmbs-accordion-active-color: #0c63e4;
 	--fmbs-accordion-active-bg: #e7f1ff;
 }
@@ -4820,7 +4820,7 @@ a > .fm-bootstrap code {
 	align-items: center;
 	width: 100%;
 	padding: var(--fmbs-accordion-btn-padding-y) var(--fmbs-accordion-btn-padding-x);
-	font-size: 1rem;
+	font-size: 1em;
 	color: var(--fmbs-accordion-btn-color);
 	text-align: left;
 	background-color: var(--fmbs-accordion-btn-bg);
@@ -4944,9 +4944,9 @@ a > .fm-bootstrap code {
 .fm-bootstrap .breadcrumb {
 	--fmbs-breadcrumb-padding-x: 0;
 	--fmbs-breadcrumb-padding-y: 0;
-	--fmbs-breadcrumb-margin-bottom: 1rem;
+	--fmbs-breadcrumb-margin-bottom: 1em;
 	--fmbs-breadcrumb-divider-color: #6c757d;
-	--fmbs-breadcrumb-item-padding-x: 0.5rem;
+	--fmbs-breadcrumb-item-padding-x: 0.5em;
 	--fmbs-breadcrumb-item-active-color: #6c757d;
 	display: flex;
 	flex-wrap: wrap;
@@ -4970,20 +4970,20 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .pagination {
-	--fmbs-pagination-padding-x: 0.75rem;
-	--fmbs-pagination-padding-y: 0.375rem;
-	--fmbs-pagination-font-size: 1rem;
+	--fmbs-pagination-padding-x: 0.75em;
+	--fmbs-pagination-padding-y: 0.375em;
+	--fmbs-pagination-font-size: 1em;
 	--fmbs-pagination-color: var(--fmbs-link-color);
 	--fmbs-pagination-bg: #fff;
 	--fmbs-pagination-border-width: 1px;
 	--fmbs-pagination-border-color: #dee2e6;
-	--fmbs-pagination-border-radius: 0.375rem;
+	--fmbs-pagination-border-radius: 0.375em;
 	--fmbs-pagination-hover-color: var(--fmbs-link-hover-color);
 	--fmbs-pagination-hover-bg: #e9ecef;
 	--fmbs-pagination-hover-border-color: #dee2e6;
 	--fmbs-pagination-focus-color: var(--fmbs-link-hover-color);
 	--fmbs-pagination-focus-bg: #e9ecef;
-	--fmbs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+	--fmbs-pagination-focus-box-shadow: 0 0 0 0.25em rgba(13, 110, 253, 0.25);
 	--fmbs-pagination-active-color: #fff;
 	--fmbs-pagination-active-bg: #0d6efd;
 	--fmbs-pagination-active-border-color: #0d6efd;
@@ -5059,17 +5059,17 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .pagination-lg {
-	--fmbs-pagination-padding-x: 1.5rem;
-	--fmbs-pagination-padding-y: 0.75rem;
-	--fmbs-pagination-font-size: 1.25rem;
-	--fmbs-pagination-border-radius: 0.5rem;
+	--fmbs-pagination-padding-x: 1.5em;
+	--fmbs-pagination-padding-y: 0.75em;
+	--fmbs-pagination-font-size: 1.25em;
+	--fmbs-pagination-border-radius: 0.5em;
 }
 
 .fm-bootstrap .pagination-sm {
-	--fmbs-pagination-padding-x: 0.5rem;
-	--fmbs-pagination-padding-y: 0.25rem;
-	--fmbs-pagination-font-size: 0.875rem;
-	--fmbs-pagination-border-radius: 0.25rem;
+	--fmbs-pagination-padding-x: 0.5em;
+	--fmbs-pagination-padding-y: 0.25em;
+	--fmbs-pagination-font-size: 0.875em;
+	--fmbs-pagination-border-radius: 0.25em;
 }
 
 .fm-bootstrap .badge {
@@ -5078,7 +5078,7 @@ a > .fm-bootstrap code {
 	--fmbs-badge-font-size: 0.75em;
 	--fmbs-badge-font-weight: 700;
 	--fmbs-badge-color: #fff;
-	--fmbs-badge-border-radius: 0.375rem;
+	--fmbs-badge-border-radius: 0.375em;
 	display: inline-block;
 	padding: var(--fmbs-badge-padding-y) var(--fmbs-badge-padding-x);
 	font-size: var(--fmbs-badge-font-size);
@@ -5102,13 +5102,13 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .alert {
 	--fmbs-alert-bg: transparent;
-	--fmbs-alert-padding-x: 1rem;
-	--fmbs-alert-padding-y: 1rem;
-	--fmbs-alert-margin-bottom: 1rem;
+	--fmbs-alert-padding-x: 1em;
+	--fmbs-alert-padding-y: 1em;
+	--fmbs-alert-margin-bottom: 1em;
 	--fmbs-alert-color: inherit;
 	--fmbs-alert-border-color: transparent;
 	--fmbs-alert-border: 1px solid var(--fmbs-alert-border-color);
-	--fmbs-alert-border-radius: 0.375rem;
+	--fmbs-alert-border-radius: 0.375em;
 	position: relative;
 	padding: var(--fmbs-alert-padding-y) var(--fmbs-alert-padding-x);
 	margin-bottom: var(--fmbs-alert-margin-bottom);
@@ -5127,7 +5127,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .alert-dismissible {
-	padding-right: 3rem;
+	padding-right: 3em;
 }
 
 .fm-bootstrap .alert-dismissible .btn-close {
@@ -5135,7 +5135,7 @@ a > .fm-bootstrap code {
 	top: 0;
 	right: 0;
 	z-index: 2;
-	padding: 1.25rem 1rem;
+	padding: 1.25em 1em;
 }
 
 .fm-bootstrap .alert-primary {
@@ -5220,15 +5220,15 @@ a > .fm-bootstrap code {
 
 @keyframes progress-bar-stripes {
 	0% {
-		background-position-x: 1rem;
+		background-position-x: 1em;
 	}
 }
 
 .fm-bootstrap .progress {
-	--fmbs-progress-height: 1rem;
-	--fmbs-progress-font-size: 0.75rem;
+	--fmbs-progress-height: 1em;
+	--fmbs-progress-font-size: 0.75em;
 	--fmbs-progress-bg: #e9ecef;
-	--fmbs-progress-border-radius: 0.375rem;
+	--fmbs-progress-border-radius: 0.375em;
 	--fmbs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
 	--fmbs-progress-bar-color: #fff;
 	--fmbs-progress-bar-bg: #0d6efd;
@@ -5279,9 +5279,9 @@ a > .fm-bootstrap code {
 	--fmbs-list-group-bg: #fff;
 	--fmbs-list-group-border-color: rgba(0, 0, 0, 0.125);
 	--fmbs-list-group-border-width: 1px;
-	--fmbs-list-group-border-radius: 0.375rem;
-	--fmbs-list-group-item-padding-x: 1rem;
-	--fmbs-list-group-item-padding-y: 0.5rem;
+	--fmbs-list-group-border-radius: 0.375em;
+	--fmbs-list-group-item-padding-x: 1em;
+	--fmbs-list-group-item-padding-y: 0.5em;
 	--fmbs-list-group-action-color: #495057;
 	--fmbs-list-group-action-hover-color: #495057;
 	--fmbs-list-group-action-hover-bg: #f8f9fa;
@@ -5306,7 +5306,7 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .list-group-numbered > .list-group-item::before {
 	content: counters(section, ".") ". ";
-	counter-increment: section;
+	counter-incement: section;
 }
 
 .fm-bootstrap .list-group-item-action {
@@ -5695,7 +5695,7 @@ a > .fm-bootstrap code {
 	color: #000;
 	background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
 	border: 0;
-	border-radius: 0.375rem;
+	border-radius: 0.375em;
 	opacity: 0.5;
 }
 
@@ -5707,7 +5707,7 @@ a > .fm-bootstrap code {
 
 .fm-bootstrap .btn-close:focus {
 	outline: 0;
-	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+	box-shadow: 0 0 0 0.25em rgba(13, 110, 253, 0.25);
 	opacity: 1;
 }
 
@@ -5722,16 +5722,16 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .toast {
-	--fmbs-toast-padding-x: 0.75rem;
-	--fmbs-toast-padding-y: 0.5rem;
-	--fmbs-toast-spacing: 1.5rem;
+	--fmbs-toast-padding-x: 0.75em;
+	--fmbs-toast-padding-y: 0.5em;
+	--fmbs-toast-spacing: 1.5em;
 	--fmbs-toast-max-width: 350px;
-	--fmbs-toast-font-size: 0.875rem;
+	--fmbs-toast-font-size: 0.875em;
 	--fmbs-toast-bg: rgba(255, 255, 255, 0.85);
 	--fmbs-toast-border-width: 1px;
 	--fmbs-toast-border-color: var(--fmbs-border-color-translucent);
-	--fmbs-toast-border-radius: 0.375rem;
-	--fmbs-toast-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	--fmbs-toast-border-radius: 0.375em;
+	--fmbs-toast-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
 	--fmbs-toast-header-color: #6c757d;
 	--fmbs-toast-header-bg: rgba(255, 255, 255, 0.85);
 	--fmbs-toast-header-border-color: rgba(0, 0, 0, 0.05);
@@ -5791,22 +5791,22 @@ a > .fm-bootstrap code {
 .fm-bootstrap .modal {
 	--fmbs-modal-zindex: 1055;
 	--fmbs-modal-width: 500px;
-	--fmbs-modal-padding: 1rem;
-	--fmbs-modal-margin: 0.5rem;
+	--fmbs-modal-padding: 1em;
+	--fmbs-modal-margin: 0.5em;
 	--fmbs-modal-color: unset;
 	--fmbs-modal-bg: #fff;
 	--fmbs-modal-border-color: var(--fmbs-border-color-translucent);
 	--fmbs-modal-border-width: 1px;
-	--fmbs-modal-border-radius: 0.5rem;
-	--fmbs-modal-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-	--fmbs-modal-inner-border-radius: calc(0.5rem - 1px);
-	--fmbs-modal-header-padding-x: 1rem;
-	--fmbs-modal-header-padding-y: 1rem;
-	--fmbs-modal-header-padding: 1rem 1rem;
+	--fmbs-modal-border-radius: 0.5em;
+	--fmbs-modal-box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.075);
+	--fmbs-modal-inner-border-radius: calc(0.5em - 1px);
+	--fmbs-modal-header-padding-x: 1em;
+	--fmbs-modal-header-padding-y: 1em;
+	--fmbs-modal-header-padding: 1em 1em;
 	--fmbs-modal-header-border-color: var(--fmbs-border-color);
 	--fmbs-modal-header-border-width: 1px;
 	--fmbs-modal-title-line-height: 1.5;
-	--fmbs-modal-footer-gap: 0.5rem;
+	--fmbs-modal-footer-gap: 0.5em;
 	--fmbs-modal-footer-border-color: var(--fmbs-border-color);
 	--fmbs-modal-footer-border-width: 1px;
 	position: fixed;
@@ -5946,8 +5946,8 @@ a > .fm-bootstrap code {
 
 @media (min-width: 576px) {
 	.fm-bootstrap .modal {
-		--fmbs-modal-margin: 1.75rem;
-		--fmbs-modal-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+		--fmbs-modal-margin: 1.75em;
+		--fmbs-modal-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
 	}
 
 	.fm-bootstrap .modal-dialog {
@@ -6119,15 +6119,15 @@ a > .fm-bootstrap code {
 .fm-bootstrap .tooltip {
 	--fmbs-tooltip-zindex: 1080;
 	--fmbs-tooltip-max-width: 200px;
-	--fmbs-tooltip-padding-x: 0.5rem;
-	--fmbs-tooltip-padding-y: 0.25rem;
-	--fmbs-tooltip-font-size: 0.875rem;
+	--fmbs-tooltip-padding-x: 0.5em;
+	--fmbs-tooltip-padding-y: 0.25em;
+	--fmbs-tooltip-font-size: 0.875em;
 	--fmbs-tooltip-color: #fff;
 	--fmbs-tooltip-bg: #000;
-	--fmbs-tooltip-border-radius: 0.375rem;
+	--fmbs-tooltip-border-radius: 0.375em;
 	--fmbs-tooltip-opacity: 0.9;
-	--fmbs-tooltip-arrow-width: 0.8rem;
-	--fmbs-tooltip-arrow-height: 0.4rem;
+	--fmbs-tooltip-arrow-width: 0.8em;
+	--fmbs-tooltip-arrow-height: 0.4em;
 	z-index: var(--fmbs-tooltip-zindex);
 	display: block;
 	padding: var(--fmbs-tooltip-arrow-height);
@@ -6222,23 +6222,23 @@ a > .fm-bootstrap code {
 .fm-bootstrap .popover {
 	--fmbs-popover-zindex: 1070;
 	--fmbs-popover-max-width: 276px;
-	--fmbs-popover-font-size: 0.875rem;
+	--fmbs-popover-font-size: 0.875em;
 	--fmbs-popover-bg: #fff;
 	--fmbs-popover-border-width: 1px;
 	--fmbs-popover-border-color: var(--fmbs-border-color-translucent);
-	--fmbs-popover-border-radius: 0.5rem;
-	--fmbs-popover-inner-border-radius: calc(0.5rem - 1px);
-	--fmbs-popover-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-	--fmbs-popover-header-padding-x: 1rem;
-	--fmbs-popover-header-padding-y: 0.5rem;
-	--fmbs-popover-header-font-size: 1rem;
+	--fmbs-popover-border-radius: 0.5em;
+	--fmbs-popover-inner-border-radius: calc(0.5em - 1px);
+	--fmbs-popover-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
+	--fmbs-popover-header-padding-x: 1em;
+	--fmbs-popover-header-padding-y: 0.5em;
+	--fmbs-popover-header-font-size: 1em;
 	--fmbs-popover-header-color: var(--fmbs-heading-color);
 	--fmbs-popover-header-bg: #f0f0f0;
-	--fmbs-popover-body-padding-x: 1rem;
-	--fmbs-popover-body-padding-y: 1rem;
+	--fmbs-popover-body-padding-x: 1em;
+	--fmbs-popover-body-padding-y: 1em;
 	--fmbs-popover-body-color: #212529;
-	--fmbs-popover-arrow-width: 1rem;
-	--fmbs-popover-arrow-height: 0.5rem;
+	--fmbs-popover-arrow-width: 1em;
+	--fmbs-popover-arrow-height: 0.5em;
 	--fmbs-popover-arrow-border: var(--fmbs-popover-border-color);
 	z-index: var(--fmbs-popover-zindex);
 	display: block;
@@ -6512,8 +6512,8 @@ a > .fm-bootstrap code {
 .fm-bootstrap .carousel-control-prev-icon,
 .fm-bootstrap .carousel-control-next-icon {
 	display: inline-block;
-	width: 2rem;
-	height: 2rem;
+	width: 2em;
+	height: 2em;
 	background-repeat: no-repeat;
 	background-position: 50%;
 	background-size: 100% 100%;
@@ -6537,7 +6537,7 @@ a > .fm-bootstrap code {
 	justify-content: center;
 	padding: 0;
 	margin-right: 15%;
-	margin-bottom: 1rem;
+	margin-bottom: 1em;
 	margin-left: 15%;
 	list-style: none;
 }
@@ -6574,10 +6574,10 @@ a > .fm-bootstrap code {
 .fm-bootstrap .carousel-caption {
 	position: absolute;
 	right: 15%;
-	bottom: 1.25rem;
+	bottom: 1.25em;
 	left: 15%;
-	padding-top: 1.25rem;
-	padding-bottom: 1.25rem;
+	padding-top: 1.25em;
+	padding-bottom: 1.25em;
 	color: #fff;
 	text-align: center;
 }
@@ -6612,8 +6612,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .spinner-border {
-	--fmbs-spinner-width: 2rem;
-	--fmbs-spinner-height: 2rem;
+	--fmbs-spinner-width: 2em;
+	--fmbs-spinner-height: 2em;
 	--fmbs-spinner-vertical-align: -0.125em;
 	--fmbs-spinner-border-width: 0.25em;
 	--fmbs-spinner-animation-speed: 0.75s;
@@ -6623,8 +6623,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .spinner-border-sm {
-	--fmbs-spinner-width: 1rem;
-	--fmbs-spinner-height: 1rem;
+	--fmbs-spinner-width: 1em;
+	--fmbs-spinner-height: 1em;
 	--fmbs-spinner-border-width: 0.2em;
 }
 
@@ -6639,8 +6639,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .spinner-grow {
-	--fmbs-spinner-width: 2rem;
-	--fmbs-spinner-height: 2rem;
+	--fmbs-spinner-width: 2em;
+	--fmbs-spinner-height: 2em;
 	--fmbs-spinner-vertical-align: -0.125em;
 	--fmbs-spinner-animation-speed: 0.75s;
 	--fmbs-spinner-animation-name: spinner-grow;
@@ -6649,8 +6649,8 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .spinner-grow-sm {
-	--fmbs-spinner-width: 1rem;
-	--fmbs-spinner-height: 1rem;
+	--fmbs-spinner-width: 1em;
+	--fmbs-spinner-height: 1em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6663,12 +6663,12 @@ a > .fm-bootstrap code {
 .fm-bootstrap .offcanvas-sm, .fm-bootstrap .offcanvas-md, .fm-bootstrap .offcanvas-lg, .fm-bootstrap .offcanvas-xl, .fm-bootstrap .offcanvas-xxl, .fm-bootstrap .offcanvas {
 	--fmbs-offcanvas-width: 400px;
 	--fmbs-offcanvas-height: 30vh;
-	--fmbs-offcanvas-padding-x: 1rem;
-	--fmbs-offcanvas-padding-y: 1rem;
+	--fmbs-offcanvas-padding-x: 1em;
+	--fmbs-offcanvas-padding-y: 1em;
 	--fmbs-offcanvas-bg: #fff;
 	--fmbs-offcanvas-border-width: 1px;
 	--fmbs-offcanvas-border-color: var(--fmbs-border-color-translucent);
-	--fmbs-offcanvas-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	--fmbs-offcanvas-box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.075);
 }
 
 @media (max-width: 575.98px) {
@@ -7668,15 +7668,15 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .shadow {
-	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+	box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15) !important;
 }
 
 .fm-bootstrap .shadow-sm {
-	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+	box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.075) !important;
 }
 
 .fm-bootstrap .shadow-lg {
-	box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+	box-shadow: 0 1em 3em rgba(0, 0, 0, 0.175) !important;
 }
 
 .fm-bootstrap .shadow-none {
@@ -8129,23 +8129,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .m-1 {
-	margin: 0.25rem !important;
+	margin: 0.25em !important;
 }
 
 .fm-bootstrap .m-2 {
-	margin: 0.5rem !important;
+	margin: 0.5em !important;
 }
 
 .fm-bootstrap .m-3 {
-	margin: 1rem !important;
+	margin: 1em !important;
 }
 
 .fm-bootstrap .m-4 {
-	margin: 1.5rem !important;
+	margin: 1.5em !important;
 }
 
 .fm-bootstrap .m-5 {
-	margin: 3rem !important;
+	margin: 3em !important;
 }
 
 .fm-bootstrap .m-auto {
@@ -8158,28 +8158,28 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .mx-1 {
-	margin-right: 0.25rem !important;
-	margin-left: 0.25rem !important;
+	margin-right: 0.25em !important;
+	margin-left: 0.25em !important;
 }
 
 .fm-bootstrap .mx-2 {
-	margin-right: 0.5rem !important;
-	margin-left: 0.5rem !important;
+	margin-right: 0.5em !important;
+	margin-left: 0.5em !important;
 }
 
 .fm-bootstrap .mx-3 {
-	margin-right: 1rem !important;
-	margin-left: 1rem !important;
+	margin-right: 1em !important;
+	margin-left: 1em !important;
 }
 
 .fm-bootstrap .mx-4 {
-	margin-right: 1.5rem !important;
-	margin-left: 1.5rem !important;
+	margin-right: 1.5em !important;
+	margin-left: 1.5em !important;
 }
 
 .fm-bootstrap .mx-5 {
-	margin-right: 3rem !important;
-	margin-left: 3rem !important;
+	margin-right: 3em !important;
+	margin-left: 3em !important;
 }
 
 .fm-bootstrap .mx-auto {
@@ -8193,28 +8193,28 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .my-1 {
-	margin-top: 0.25rem !important;
-	margin-bottom: 0.25rem !important;
+	margin-top: 0.25em !important;
+	margin-bottom: 0.25em !important;
 }
 
 .fm-bootstrap .my-2 {
-	margin-top: 0.5rem !important;
-	margin-bottom: 0.5rem !important;
+	margin-top: 0.5em !important;
+	margin-bottom: 0.5em !important;
 }
 
 .fm-bootstrap .my-3 {
-	margin-top: 1rem !important;
-	margin-bottom: 1rem !important;
+	margin-top: 1em !important;
+	margin-bottom: 1em !important;
 }
 
 .fm-bootstrap .my-4 {
-	margin-top: 1.5rem !important;
-	margin-bottom: 1.5rem !important;
+	margin-top: 1.5em !important;
+	margin-bottom: 1.5em !important;
 }
 
 .fm-bootstrap .my-5 {
-	margin-top: 3rem !important;
-	margin-bottom: 3rem !important;
+	margin-top: 3em !important;
+	margin-bottom: 3em !important;
 }
 
 .fm-bootstrap .my-auto {
@@ -8227,23 +8227,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .mt-1 {
-	margin-top: 0.25rem !important;
+	margin-top: 0.25em !important;
 }
 
 .fm-bootstrap .mt-2 {
-	margin-top: 0.5rem !important;
+	margin-top: 0.5em !important;
 }
 
 .fm-bootstrap .mt-3 {
-	margin-top: 1rem !important;
+	margin-top: 1em !important;
 }
 
 .fm-bootstrap .mt-4 {
-	margin-top: 1.5rem !important;
+	margin-top: 1.5em !important;
 }
 
 .fm-bootstrap .mt-5 {
-	margin-top: 3rem !important;
+	margin-top: 3em !important;
 }
 
 .fm-bootstrap .mt-auto {
@@ -8255,23 +8255,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .me-1 {
-	margin-right: 0.25rem !important;
+	margin-right: 0.25em !important;
 }
 
 .fm-bootstrap .me-2 {
-	margin-right: 0.5rem !important;
+	margin-right: 0.5em !important;
 }
 
 .fm-bootstrap .me-3 {
-	margin-right: 1rem !important;
+	margin-right: 1em !important;
 }
 
 .fm-bootstrap .me-4 {
-	margin-right: 1.5rem !important;
+	margin-right: 1.5em !important;
 }
 
 .fm-bootstrap .me-5 {
-	margin-right: 3rem !important;
+	margin-right: 3em !important;
 }
 
 .fm-bootstrap .me-auto {
@@ -8283,23 +8283,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .mb-1 {
-	margin-bottom: 0.25rem !important;
+	margin-bottom: 0.25em !important;
 }
 
 .fm-bootstrap .mb-2 {
-	margin-bottom: 0.5rem !important;
+	margin-bottom: 0.5em !important;
 }
 
 .fm-bootstrap .mb-3 {
-	margin-bottom: 1rem !important;
+	margin-bottom: 1em !important;
 }
 
 .fm-bootstrap .mb-4 {
-	margin-bottom: 1.5rem !important;
+	margin-bottom: 1.5em !important;
 }
 
 .fm-bootstrap .mb-5 {
-	margin-bottom: 3rem !important;
+	margin-bottom: 3em !important;
 }
 
 .fm-bootstrap .mb-auto {
@@ -8311,23 +8311,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .ms-1 {
-	margin-left: 0.25rem !important;
+	margin-left: 0.25em !important;
 }
 
 .fm-bootstrap .ms-2 {
-	margin-left: 0.5rem !important;
+	margin-left: 0.5em !important;
 }
 
 .fm-bootstrap .ms-3 {
-	margin-left: 1rem !important;
+	margin-left: 1em !important;
 }
 
 .fm-bootstrap .ms-4 {
-	margin-left: 1.5rem !important;
+	margin-left: 1.5em !important;
 }
 
 .fm-bootstrap .ms-5 {
-	margin-left: 3rem !important;
+	margin-left: 3em !important;
 }
 
 .fm-bootstrap .ms-auto {
@@ -8339,23 +8339,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .p-1 {
-	padding: 0.25rem !important;
+	padding: 0.25em !important;
 }
 
 .fm-bootstrap .p-2 {
-	padding: 0.5rem !important;
+	padding: 0.5em !important;
 }
 
 .fm-bootstrap .p-3 {
-	padding: 1rem !important;
+	padding: 1em !important;
 }
 
 .fm-bootstrap .p-4 {
-	padding: 1.5rem !important;
+	padding: 1.5em !important;
 }
 
 .fm-bootstrap .p-5 {
-	padding: 3rem !important;
+	padding: 3em !important;
 }
 
 .fm-bootstrap .px-0 {
@@ -8364,28 +8364,28 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .px-1 {
-	padding-right: 0.25rem !important;
-	padding-left: 0.25rem !important;
+	padding-right: 0.25em !important;
+	padding-left: 0.25em !important;
 }
 
 .fm-bootstrap .px-2 {
-	padding-right: 0.5rem !important;
-	padding-left: 0.5rem !important;
+	padding-right: 0.5em !important;
+	padding-left: 0.5em !important;
 }
 
 .fm-bootstrap .px-3 {
-	padding-right: 1rem !important;
-	padding-left: 1rem !important;
+	padding-right: 1em !important;
+	padding-left: 1em !important;
 }
 
 .fm-bootstrap .px-4 {
-	padding-right: 1.5rem !important;
-	padding-left: 1.5rem !important;
+	padding-right: 1.5em !important;
+	padding-left: 1.5em !important;
 }
 
 .fm-bootstrap .px-5 {
-	padding-right: 3rem !important;
-	padding-left: 3rem !important;
+	padding-right: 3em !important;
+	padding-left: 3em !important;
 }
 
 .fm-bootstrap .py-0 {
@@ -8394,28 +8394,28 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .py-1 {
-	padding-top: 0.25rem !important;
-	padding-bottom: 0.25rem !important;
+	padding-top: 0.25em !important;
+	padding-bottom: 0.25em !important;
 }
 
 .fm-bootstrap .py-2 {
-	padding-top: 0.5rem !important;
-	padding-bottom: 0.5rem !important;
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;
 }
 
 .fm-bootstrap .py-3 {
-	padding-top: 1rem !important;
-	padding-bottom: 1rem !important;
+	padding-top: 1em !important;
+	padding-bottom: 1em !important;
 }
 
 .fm-bootstrap .py-4 {
-	padding-top: 1.5rem !important;
-	padding-bottom: 1.5rem !important;
+	padding-top: 1.5em !important;
+	padding-bottom: 1.5em !important;
 }
 
 .fm-bootstrap .py-5 {
-	padding-top: 3rem !important;
-	padding-bottom: 3rem !important;
+	padding-top: 3em !important;
+	padding-bottom: 3em !important;
 }
 
 .fm-bootstrap .pt-0 {
@@ -8423,23 +8423,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .pt-1 {
-	padding-top: 0.25rem !important;
+	padding-top: 0.25em !important;
 }
 
 .fm-bootstrap .pt-2 {
-	padding-top: 0.5rem !important;
+	padding-top: 0.5em !important;
 }
 
 .fm-bootstrap .pt-3 {
-	padding-top: 1rem !important;
+	padding-top: 1em !important;
 }
 
 .fm-bootstrap .pt-4 {
-	padding-top: 1.5rem !important;
+	padding-top: 1.5em !important;
 }
 
 .fm-bootstrap .pt-5 {
-	padding-top: 3rem !important;
+	padding-top: 3em !important;
 }
 
 .fm-bootstrap .pe-0 {
@@ -8447,23 +8447,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .pe-1 {
-	padding-right: 0.25rem !important;
+	padding-right: 0.25em !important;
 }
 
 .fm-bootstrap .pe-2 {
-	padding-right: 0.5rem !important;
+	padding-right: 0.5em !important;
 }
 
 .fm-bootstrap .pe-3 {
-	padding-right: 1rem !important;
+	padding-right: 1em !important;
 }
 
 .fm-bootstrap .pe-4 {
-	padding-right: 1.5rem !important;
+	padding-right: 1.5em !important;
 }
 
 .fm-bootstrap .pe-5 {
-	padding-right: 3rem !important;
+	padding-right: 3em !important;
 }
 
 .fm-bootstrap .pb-0 {
@@ -8471,23 +8471,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .pb-1 {
-	padding-bottom: 0.25rem !important;
+	padding-bottom: 0.25em !important;
 }
 
 .fm-bootstrap .pb-2 {
-	padding-bottom: 0.5rem !important;
+	padding-bottom: 0.5em !important;
 }
 
 .fm-bootstrap .pb-3 {
-	padding-bottom: 1rem !important;
+	padding-bottom: 1em !important;
 }
 
 .fm-bootstrap .pb-4 {
-	padding-bottom: 1.5rem !important;
+	padding-bottom: 1.5em !important;
 }
 
 .fm-bootstrap .pb-5 {
-	padding-bottom: 3rem !important;
+	padding-bottom: 3em !important;
 }
 
 .fm-bootstrap .ps-0 {
@@ -8495,23 +8495,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .ps-1 {
-	padding-left: 0.25rem !important;
+	padding-left: 0.25em !important;
 }
 
 .fm-bootstrap .ps-2 {
-	padding-left: 0.5rem !important;
+	padding-left: 0.5em !important;
 }
 
 .fm-bootstrap .ps-3 {
-	padding-left: 1rem !important;
+	padding-left: 1em !important;
 }
 
 .fm-bootstrap .ps-4 {
-	padding-left: 1.5rem !important;
+	padding-left: 1.5em !important;
 }
 
 .fm-bootstrap .ps-5 {
-	padding-left: 3rem !important;
+	padding-left: 3em !important;
 }
 
 .fm-bootstrap .gap-0 {
@@ -8519,23 +8519,23 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .gap-1 {
-	gap: 0.25rem !important;
+	gap: 0.25em !important;
 }
 
 .fm-bootstrap .gap-2 {
-	gap: 0.5rem !important;
+	gap: 0.5em !important;
 }
 
 .fm-bootstrap .gap-3 {
-	gap: 1rem !important;
+	gap: 1em !important;
 }
 
 .fm-bootstrap .gap-4 {
-	gap: 1.5rem !important;
+	gap: 1.5em !important;
 }
 
 .fm-bootstrap .gap-5 {
-	gap: 3rem !important;
+	gap: 3em !important;
 }
 
 .fm-bootstrap .font-monospace {
@@ -8543,27 +8543,27 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap .fs-1 {
-	font-size: calc(1.375rem + 1.5vw) !important;
+	font-size: calc(1.375em + 1.5vw) !important;
 }
 
 .fm-bootstrap .fs-2 {
-	font-size: calc(1.325rem + 0.9vw) !important;
+	font-size: calc(1.325em + 0.9vw) !important;
 }
 
 .fm-bootstrap .fs-3 {
-	font-size: calc(1.3rem + 0.6vw) !important;
+	font-size: calc(1.3em + 0.6vw) !important;
 }
 
 .fm-bootstrap .fs-4 {
-	font-size: calc(1.275rem + 0.3vw) !important;
+	font-size: calc(1.275em + 0.3vw) !important;
 }
 
 .fm-bootstrap .fs-5 {
-	font-size: 1.25rem !important;
+	font-size: 1.25em !important;
 }
 
 .fm-bootstrap .fs-6 {
-	font-size: 1rem !important;
+	font-size: 1em !important;
 }
 
 .fm-bootstrap .fst-italic {
@@ -9152,23 +9152,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .m-sm-1 {
-		margin: 0.25rem !important;
+		margin: 0.25em !important;
 	}
 
 	.fm-bootstrap .m-sm-2 {
-		margin: 0.5rem !important;
+		margin: 0.5em !important;
 	}
 
 	.fm-bootstrap .m-sm-3 {
-		margin: 1rem !important;
+		margin: 1em !important;
 	}
 
 	.fm-bootstrap .m-sm-4 {
-		margin: 1.5rem !important;
+		margin: 1.5em !important;
 	}
 
 	.fm-bootstrap .m-sm-5 {
-		margin: 3rem !important;
+		margin: 3em !important;
 	}
 
 	.fm-bootstrap .m-sm-auto {
@@ -9181,28 +9181,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mx-sm-1 {
-		margin-right: 0.25rem !important;
-		margin-left: 0.25rem !important;
+		margin-right: 0.25em !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .mx-sm-2 {
-		margin-right: 0.5rem !important;
-		margin-left: 0.5rem !important;
+		margin-right: 0.5em !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .mx-sm-3 {
-		margin-right: 1rem !important;
-		margin-left: 1rem !important;
+		margin-right: 1em !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .mx-sm-4 {
-		margin-right: 1.5rem !important;
-		margin-left: 1.5rem !important;
+		margin-right: 1.5em !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .mx-sm-5 {
-		margin-right: 3rem !important;
-		margin-left: 3rem !important;
+		margin-right: 3em !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .mx-sm-auto {
@@ -9216,28 +9216,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .my-sm-1 {
-		margin-top: 0.25rem !important;
-		margin-bottom: 0.25rem !important;
+		margin-top: 0.25em !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .my-sm-2 {
-		margin-top: 0.5rem !important;
-		margin-bottom: 0.5rem !important;
+		margin-top: 0.5em !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .my-sm-3 {
-		margin-top: 1rem !important;
-		margin-bottom: 1rem !important;
+		margin-top: 1em !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .my-sm-4 {
-		margin-top: 1.5rem !important;
-		margin-bottom: 1.5rem !important;
+		margin-top: 1.5em !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .my-sm-5 {
-		margin-top: 3rem !important;
-		margin-bottom: 3rem !important;
+		margin-top: 3em !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .my-sm-auto {
@@ -9250,23 +9250,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mt-sm-1 {
-		margin-top: 0.25rem !important;
+		margin-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .mt-sm-2 {
-		margin-top: 0.5rem !important;
+		margin-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .mt-sm-3 {
-		margin-top: 1rem !important;
+		margin-top: 1em !important;
 	}
 
 	.fm-bootstrap .mt-sm-4 {
-		margin-top: 1.5rem !important;
+		margin-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .mt-sm-5 {
-		margin-top: 3rem !important;
+		margin-top: 3em !important;
 	}
 
 	.fm-bootstrap .mt-sm-auto {
@@ -9278,23 +9278,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .me-sm-1 {
-		margin-right: 0.25rem !important;
+		margin-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .me-sm-2 {
-		margin-right: 0.5rem !important;
+		margin-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .me-sm-3 {
-		margin-right: 1rem !important;
+		margin-right: 1em !important;
 	}
 
 	.fm-bootstrap .me-sm-4 {
-		margin-right: 1.5rem !important;
+		margin-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .me-sm-5 {
-		margin-right: 3rem !important;
+		margin-right: 3em !important;
 	}
 
 	.fm-bootstrap .me-sm-auto {
@@ -9306,23 +9306,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mb-sm-1 {
-		margin-bottom: 0.25rem !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .mb-sm-2 {
-		margin-bottom: 0.5rem !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .mb-sm-3 {
-		margin-bottom: 1rem !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .mb-sm-4 {
-		margin-bottom: 1.5rem !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .mb-sm-5 {
-		margin-bottom: 3rem !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .mb-sm-auto {
@@ -9334,23 +9334,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ms-sm-1 {
-		margin-left: 0.25rem !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ms-sm-2 {
-		margin-left: 0.5rem !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ms-sm-3 {
-		margin-left: 1rem !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .ms-sm-4 {
-		margin-left: 1.5rem !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ms-sm-5 {
-		margin-left: 3rem !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .ms-sm-auto {
@@ -9362,23 +9362,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .p-sm-1 {
-		padding: 0.25rem !important;
+		padding: 0.25em !important;
 	}
 
 	.fm-bootstrap .p-sm-2 {
-		padding: 0.5rem !important;
+		padding: 0.5em !important;
 	}
 
 	.fm-bootstrap .p-sm-3 {
-		padding: 1rem !important;
+		padding: 1em !important;
 	}
 
 	.fm-bootstrap .p-sm-4 {
-		padding: 1.5rem !important;
+		padding: 1.5em !important;
 	}
 
 	.fm-bootstrap .p-sm-5 {
-		padding: 3rem !important;
+		padding: 3em !important;
 	}
 
 	.fm-bootstrap .px-sm-0 {
@@ -9387,28 +9387,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .px-sm-1 {
-		padding-right: 0.25rem !important;
-		padding-left: 0.25rem !important;
+		padding-right: 0.25em !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .px-sm-2 {
-		padding-right: 0.5rem !important;
-		padding-left: 0.5rem !important;
+		padding-right: 0.5em !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .px-sm-3 {
-		padding-right: 1rem !important;
-		padding-left: 1rem !important;
+		padding-right: 1em !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .px-sm-4 {
-		padding-right: 1.5rem !important;
-		padding-left: 1.5rem !important;
+		padding-right: 1.5em !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .px-sm-5 {
-		padding-right: 3rem !important;
-		padding-left: 3rem !important;
+		padding-right: 3em !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .py-sm-0 {
@@ -9417,28 +9417,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .py-sm-1 {
-		padding-top: 0.25rem !important;
-		padding-bottom: 0.25rem !important;
+		padding-top: 0.25em !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .py-sm-2 {
-		padding-top: 0.5rem !important;
-		padding-bottom: 0.5rem !important;
+		padding-top: 0.5em !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .py-sm-3 {
-		padding-top: 1rem !important;
-		padding-bottom: 1rem !important;
+		padding-top: 1em !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .py-sm-4 {
-		padding-top: 1.5rem !important;
-		padding-bottom: 1.5rem !important;
+		padding-top: 1.5em !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .py-sm-5 {
-		padding-top: 3rem !important;
-		padding-bottom: 3rem !important;
+		padding-top: 3em !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .pt-sm-0 {
@@ -9446,23 +9446,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pt-sm-1 {
-		padding-top: 0.25rem !important;
+		padding-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .pt-sm-2 {
-		padding-top: 0.5rem !important;
+		padding-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .pt-sm-3 {
-		padding-top: 1rem !important;
+		padding-top: 1em !important;
 	}
 
 	.fm-bootstrap .pt-sm-4 {
-		padding-top: 1.5rem !important;
+		padding-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .pt-sm-5 {
-		padding-top: 3rem !important;
+		padding-top: 3em !important;
 	}
 
 	.fm-bootstrap .pe-sm-0 {
@@ -9470,23 +9470,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pe-sm-1 {
-		padding-right: 0.25rem !important;
+		padding-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .pe-sm-2 {
-		padding-right: 0.5rem !important;
+		padding-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .pe-sm-3 {
-		padding-right: 1rem !important;
+		padding-right: 1em !important;
 	}
 
 	.fm-bootstrap .pe-sm-4 {
-		padding-right: 1.5rem !important;
+		padding-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .pe-sm-5 {
-		padding-right: 3rem !important;
+		padding-right: 3em !important;
 	}
 
 	.fm-bootstrap .pb-sm-0 {
@@ -9494,23 +9494,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pb-sm-1 {
-		padding-bottom: 0.25rem !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .pb-sm-2 {
-		padding-bottom: 0.5rem !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .pb-sm-3 {
-		padding-bottom: 1rem !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .pb-sm-4 {
-		padding-bottom: 1.5rem !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .pb-sm-5 {
-		padding-bottom: 3rem !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .ps-sm-0 {
@@ -9518,23 +9518,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ps-sm-1 {
-		padding-left: 0.25rem !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ps-sm-2 {
-		padding-left: 0.5rem !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ps-sm-3 {
-		padding-left: 1rem !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .ps-sm-4 {
-		padding-left: 1.5rem !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ps-sm-5 {
-		padding-left: 3rem !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .gap-sm-0 {
@@ -9542,23 +9542,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .gap-sm-1 {
-		gap: 0.25rem !important;
+		gap: 0.25em !important;
 	}
 
 	.fm-bootstrap .gap-sm-2 {
-		gap: 0.5rem !important;
+		gap: 0.5em !important;
 	}
 
 	.fm-bootstrap .gap-sm-3 {
-		gap: 1rem !important;
+		gap: 1em !important;
 	}
 
 	.fm-bootstrap .gap-sm-4 {
-		gap: 1.5rem !important;
+		gap: 1.5em !important;
 	}
 
 	.fm-bootstrap .gap-sm-5 {
-		gap: 3rem !important;
+		gap: 3em !important;
 	}
 
 	.fm-bootstrap .text-sm-start {
@@ -9804,23 +9804,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .m-md-1 {
-		margin: 0.25rem !important;
+		margin: 0.25em !important;
 	}
 
 	.fm-bootstrap .m-md-2 {
-		margin: 0.5rem !important;
+		margin: 0.5em !important;
 	}
 
 	.fm-bootstrap .m-md-3 {
-		margin: 1rem !important;
+		margin: 1em !important;
 	}
 
 	.fm-bootstrap .m-md-4 {
-		margin: 1.5rem !important;
+		margin: 1.5em !important;
 	}
 
 	.fm-bootstrap .m-md-5 {
-		margin: 3rem !important;
+		margin: 3em !important;
 	}
 
 	.fm-bootstrap .m-md-auto {
@@ -9833,28 +9833,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mx-md-1 {
-		margin-right: 0.25rem !important;
-		margin-left: 0.25rem !important;
+		margin-right: 0.25em !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .mx-md-2 {
-		margin-right: 0.5rem !important;
-		margin-left: 0.5rem !important;
+		margin-right: 0.5em !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .mx-md-3 {
-		margin-right: 1rem !important;
-		margin-left: 1rem !important;
+		margin-right: 1em !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .mx-md-4 {
-		margin-right: 1.5rem !important;
-		margin-left: 1.5rem !important;
+		margin-right: 1.5em !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .mx-md-5 {
-		margin-right: 3rem !important;
-		margin-left: 3rem !important;
+		margin-right: 3em !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .mx-md-auto {
@@ -9868,28 +9868,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .my-md-1 {
-		margin-top: 0.25rem !important;
-		margin-bottom: 0.25rem !important;
+		margin-top: 0.25em !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .my-md-2 {
-		margin-top: 0.5rem !important;
-		margin-bottom: 0.5rem !important;
+		margin-top: 0.5em !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .my-md-3 {
-		margin-top: 1rem !important;
-		margin-bottom: 1rem !important;
+		margin-top: 1em !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .my-md-4 {
-		margin-top: 1.5rem !important;
-		margin-bottom: 1.5rem !important;
+		margin-top: 1.5em !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .my-md-5 {
-		margin-top: 3rem !important;
-		margin-bottom: 3rem !important;
+		margin-top: 3em !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .my-md-auto {
@@ -9902,23 +9902,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mt-md-1 {
-		margin-top: 0.25rem !important;
+		margin-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .mt-md-2 {
-		margin-top: 0.5rem !important;
+		margin-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .mt-md-3 {
-		margin-top: 1rem !important;
+		margin-top: 1em !important;
 	}
 
 	.fm-bootstrap .mt-md-4 {
-		margin-top: 1.5rem !important;
+		margin-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .mt-md-5 {
-		margin-top: 3rem !important;
+		margin-top: 3em !important;
 	}
 
 	.fm-bootstrap .mt-md-auto {
@@ -9930,23 +9930,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .me-md-1 {
-		margin-right: 0.25rem !important;
+		margin-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .me-md-2 {
-		margin-right: 0.5rem !important;
+		margin-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .me-md-3 {
-		margin-right: 1rem !important;
+		margin-right: 1em !important;
 	}
 
 	.fm-bootstrap .me-md-4 {
-		margin-right: 1.5rem !important;
+		margin-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .me-md-5 {
-		margin-right: 3rem !important;
+		margin-right: 3em !important;
 	}
 
 	.fm-bootstrap .me-md-auto {
@@ -9958,23 +9958,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mb-md-1 {
-		margin-bottom: 0.25rem !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .mb-md-2 {
-		margin-bottom: 0.5rem !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .mb-md-3 {
-		margin-bottom: 1rem !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .mb-md-4 {
-		margin-bottom: 1.5rem !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .mb-md-5 {
-		margin-bottom: 3rem !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .mb-md-auto {
@@ -9986,23 +9986,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ms-md-1 {
-		margin-left: 0.25rem !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ms-md-2 {
-		margin-left: 0.5rem !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ms-md-3 {
-		margin-left: 1rem !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .ms-md-4 {
-		margin-left: 1.5rem !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ms-md-5 {
-		margin-left: 3rem !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .ms-md-auto {
@@ -10014,23 +10014,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .p-md-1 {
-		padding: 0.25rem !important;
+		padding: 0.25em !important;
 	}
 
 	.fm-bootstrap .p-md-2 {
-		padding: 0.5rem !important;
+		padding: 0.5em !important;
 	}
 
 	.fm-bootstrap .p-md-3 {
-		padding: 1rem !important;
+		padding: 1em !important;
 	}
 
 	.fm-bootstrap .p-md-4 {
-		padding: 1.5rem !important;
+		padding: 1.5em !important;
 	}
 
 	.fm-bootstrap .p-md-5 {
-		padding: 3rem !important;
+		padding: 3em !important;
 	}
 
 	.fm-bootstrap .px-md-0 {
@@ -10039,28 +10039,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .px-md-1 {
-		padding-right: 0.25rem !important;
-		padding-left: 0.25rem !important;
+		padding-right: 0.25em !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .px-md-2 {
-		padding-right: 0.5rem !important;
-		padding-left: 0.5rem !important;
+		padding-right: 0.5em !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .px-md-3 {
-		padding-right: 1rem !important;
-		padding-left: 1rem !important;
+		padding-right: 1em !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .px-md-4 {
-		padding-right: 1.5rem !important;
-		padding-left: 1.5rem !important;
+		padding-right: 1.5em !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .px-md-5 {
-		padding-right: 3rem !important;
-		padding-left: 3rem !important;
+		padding-right: 3em !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .py-md-0 {
@@ -10069,28 +10069,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .py-md-1 {
-		padding-top: 0.25rem !important;
-		padding-bottom: 0.25rem !important;
+		padding-top: 0.25em !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .py-md-2 {
-		padding-top: 0.5rem !important;
-		padding-bottom: 0.5rem !important;
+		padding-top: 0.5em !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .py-md-3 {
-		padding-top: 1rem !important;
-		padding-bottom: 1rem !important;
+		padding-top: 1em !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .py-md-4 {
-		padding-top: 1.5rem !important;
-		padding-bottom: 1.5rem !important;
+		padding-top: 1.5em !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .py-md-5 {
-		padding-top: 3rem !important;
-		padding-bottom: 3rem !important;
+		padding-top: 3em !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .pt-md-0 {
@@ -10098,23 +10098,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pt-md-1 {
-		padding-top: 0.25rem !important;
+		padding-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .pt-md-2 {
-		padding-top: 0.5rem !important;
+		padding-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .pt-md-3 {
-		padding-top: 1rem !important;
+		padding-top: 1em !important;
 	}
 
 	.fm-bootstrap .pt-md-4 {
-		padding-top: 1.5rem !important;
+		padding-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .pt-md-5 {
-		padding-top: 3rem !important;
+		padding-top: 3em !important;
 	}
 
 	.fm-bootstrap .pe-md-0 {
@@ -10122,23 +10122,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pe-md-1 {
-		padding-right: 0.25rem !important;
+		padding-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .pe-md-2 {
-		padding-right: 0.5rem !important;
+		padding-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .pe-md-3 {
-		padding-right: 1rem !important;
+		padding-right: 1em !important;
 	}
 
 	.fm-bootstrap .pe-md-4 {
-		padding-right: 1.5rem !important;
+		padding-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .pe-md-5 {
-		padding-right: 3rem !important;
+		padding-right: 3em !important;
 	}
 
 	.fm-bootstrap .pb-md-0 {
@@ -10146,23 +10146,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pb-md-1 {
-		padding-bottom: 0.25rem !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .pb-md-2 {
-		padding-bottom: 0.5rem !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .pb-md-3 {
-		padding-bottom: 1rem !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .pb-md-4 {
-		padding-bottom: 1.5rem !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .pb-md-5 {
-		padding-bottom: 3rem !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .ps-md-0 {
@@ -10170,23 +10170,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ps-md-1 {
-		padding-left: 0.25rem !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ps-md-2 {
-		padding-left: 0.5rem !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ps-md-3 {
-		padding-left: 1rem !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .ps-md-4 {
-		padding-left: 1.5rem !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ps-md-5 {
-		padding-left: 3rem !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .gap-md-0 {
@@ -10194,23 +10194,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .gap-md-1 {
-		gap: 0.25rem !important;
+		gap: 0.25em !important;
 	}
 
 	.fm-bootstrap .gap-md-2 {
-		gap: 0.5rem !important;
+		gap: 0.5em !important;
 	}
 
 	.fm-bootstrap .gap-md-3 {
-		gap: 1rem !important;
+		gap: 1em !important;
 	}
 
 	.fm-bootstrap .gap-md-4 {
-		gap: 1.5rem !important;
+		gap: 1.5em !important;
 	}
 
 	.fm-bootstrap .gap-md-5 {
-		gap: 3rem !important;
+		gap: 3em !important;
 	}
 
 	.fm-bootstrap .text-md-start {
@@ -10456,23 +10456,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .m-lg-1 {
-		margin: 0.25rem !important;
+		margin: 0.25em !important;
 	}
 
 	.fm-bootstrap .m-lg-2 {
-		margin: 0.5rem !important;
+		margin: 0.5em !important;
 	}
 
 	.fm-bootstrap .m-lg-3 {
-		margin: 1rem !important;
+		margin: 1em !important;
 	}
 
 	.fm-bootstrap .m-lg-4 {
-		margin: 1.5rem !important;
+		margin: 1.5em !important;
 	}
 
 	.fm-bootstrap .m-lg-5 {
-		margin: 3rem !important;
+		margin: 3em !important;
 	}
 
 	.fm-bootstrap .m-lg-auto {
@@ -10485,28 +10485,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mx-lg-1 {
-		margin-right: 0.25rem !important;
-		margin-left: 0.25rem !important;
+		margin-right: 0.25em !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .mx-lg-2 {
-		margin-right: 0.5rem !important;
-		margin-left: 0.5rem !important;
+		margin-right: 0.5em !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .mx-lg-3 {
-		margin-right: 1rem !important;
-		margin-left: 1rem !important;
+		margin-right: 1em !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .mx-lg-4 {
-		margin-right: 1.5rem !important;
-		margin-left: 1.5rem !important;
+		margin-right: 1.5em !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .mx-lg-5 {
-		margin-right: 3rem !important;
-		margin-left: 3rem !important;
+		margin-right: 3em !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .mx-lg-auto {
@@ -10520,28 +10520,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .my-lg-1 {
-		margin-top: 0.25rem !important;
-		margin-bottom: 0.25rem !important;
+		margin-top: 0.25em !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .my-lg-2 {
-		margin-top: 0.5rem !important;
-		margin-bottom: 0.5rem !important;
+		margin-top: 0.5em !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .my-lg-3 {
-		margin-top: 1rem !important;
-		margin-bottom: 1rem !important;
+		margin-top: 1em !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .my-lg-4 {
-		margin-top: 1.5rem !important;
-		margin-bottom: 1.5rem !important;
+		margin-top: 1.5em !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .my-lg-5 {
-		margin-top: 3rem !important;
-		margin-bottom: 3rem !important;
+		margin-top: 3em !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .my-lg-auto {
@@ -10554,23 +10554,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mt-lg-1 {
-		margin-top: 0.25rem !important;
+		margin-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .mt-lg-2 {
-		margin-top: 0.5rem !important;
+		margin-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .mt-lg-3 {
-		margin-top: 1rem !important;
+		margin-top: 1em !important;
 	}
 
 	.fm-bootstrap .mt-lg-4 {
-		margin-top: 1.5rem !important;
+		margin-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .mt-lg-5 {
-		margin-top: 3rem !important;
+		margin-top: 3em !important;
 	}
 
 	.fm-bootstrap .mt-lg-auto {
@@ -10582,23 +10582,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .me-lg-1 {
-		margin-right: 0.25rem !important;
+		margin-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .me-lg-2 {
-		margin-right: 0.5rem !important;
+		margin-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .me-lg-3 {
-		margin-right: 1rem !important;
+		margin-right: 1em !important;
 	}
 
 	.fm-bootstrap .me-lg-4 {
-		margin-right: 1.5rem !important;
+		margin-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .me-lg-5 {
-		margin-right: 3rem !important;
+		margin-right: 3em !important;
 	}
 
 	.fm-bootstrap .me-lg-auto {
@@ -10610,23 +10610,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mb-lg-1 {
-		margin-bottom: 0.25rem !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .mb-lg-2 {
-		margin-bottom: 0.5rem !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .mb-lg-3 {
-		margin-bottom: 1rem !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .mb-lg-4 {
-		margin-bottom: 1.5rem !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .mb-lg-5 {
-		margin-bottom: 3rem !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .mb-lg-auto {
@@ -10638,23 +10638,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ms-lg-1 {
-		margin-left: 0.25rem !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ms-lg-2 {
-		margin-left: 0.5rem !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ms-lg-3 {
-		margin-left: 1rem !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .ms-lg-4 {
-		margin-left: 1.5rem !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ms-lg-5 {
-		margin-left: 3rem !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .ms-lg-auto {
@@ -10666,23 +10666,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .p-lg-1 {
-		padding: 0.25rem !important;
+		padding: 0.25em !important;
 	}
 
 	.fm-bootstrap .p-lg-2 {
-		padding: 0.5rem !important;
+		padding: 0.5em !important;
 	}
 
 	.fm-bootstrap .p-lg-3 {
-		padding: 1rem !important;
+		padding: 1em !important;
 	}
 
 	.fm-bootstrap .p-lg-4 {
-		padding: 1.5rem !important;
+		padding: 1.5em !important;
 	}
 
 	.fm-bootstrap .p-lg-5 {
-		padding: 3rem !important;
+		padding: 3em !important;
 	}
 
 	.fm-bootstrap .px-lg-0 {
@@ -10691,28 +10691,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .px-lg-1 {
-		padding-right: 0.25rem !important;
-		padding-left: 0.25rem !important;
+		padding-right: 0.25em !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .px-lg-2 {
-		padding-right: 0.5rem !important;
-		padding-left: 0.5rem !important;
+		padding-right: 0.5em !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .px-lg-3 {
-		padding-right: 1rem !important;
-		padding-left: 1rem !important;
+		padding-right: 1em !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .px-lg-4 {
-		padding-right: 1.5rem !important;
-		padding-left: 1.5rem !important;
+		padding-right: 1.5em !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .px-lg-5 {
-		padding-right: 3rem !important;
-		padding-left: 3rem !important;
+		padding-right: 3em !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .py-lg-0 {
@@ -10721,28 +10721,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .py-lg-1 {
-		padding-top: 0.25rem !important;
-		padding-bottom: 0.25rem !important;
+		padding-top: 0.25em !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .py-lg-2 {
-		padding-top: 0.5rem !important;
-		padding-bottom: 0.5rem !important;
+		padding-top: 0.5em !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .py-lg-3 {
-		padding-top: 1rem !important;
-		padding-bottom: 1rem !important;
+		padding-top: 1em !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .py-lg-4 {
-		padding-top: 1.5rem !important;
-		padding-bottom: 1.5rem !important;
+		padding-top: 1.5em !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .py-lg-5 {
-		padding-top: 3rem !important;
-		padding-bottom: 3rem !important;
+		padding-top: 3em !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .pt-lg-0 {
@@ -10750,23 +10750,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pt-lg-1 {
-		padding-top: 0.25rem !important;
+		padding-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .pt-lg-2 {
-		padding-top: 0.5rem !important;
+		padding-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .pt-lg-3 {
-		padding-top: 1rem !important;
+		padding-top: 1em !important;
 	}
 
 	.fm-bootstrap .pt-lg-4 {
-		padding-top: 1.5rem !important;
+		padding-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .pt-lg-5 {
-		padding-top: 3rem !important;
+		padding-top: 3em !important;
 	}
 
 	.fm-bootstrap .pe-lg-0 {
@@ -10774,23 +10774,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pe-lg-1 {
-		padding-right: 0.25rem !important;
+		padding-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .pe-lg-2 {
-		padding-right: 0.5rem !important;
+		padding-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .pe-lg-3 {
-		padding-right: 1rem !important;
+		padding-right: 1em !important;
 	}
 
 	.fm-bootstrap .pe-lg-4 {
-		padding-right: 1.5rem !important;
+		padding-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .pe-lg-5 {
-		padding-right: 3rem !important;
+		padding-right: 3em !important;
 	}
 
 	.fm-bootstrap .pb-lg-0 {
@@ -10798,23 +10798,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pb-lg-1 {
-		padding-bottom: 0.25rem !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .pb-lg-2 {
-		padding-bottom: 0.5rem !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .pb-lg-3 {
-		padding-bottom: 1rem !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .pb-lg-4 {
-		padding-bottom: 1.5rem !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .pb-lg-5 {
-		padding-bottom: 3rem !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .ps-lg-0 {
@@ -10822,23 +10822,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ps-lg-1 {
-		padding-left: 0.25rem !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ps-lg-2 {
-		padding-left: 0.5rem !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ps-lg-3 {
-		padding-left: 1rem !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .ps-lg-4 {
-		padding-left: 1.5rem !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ps-lg-5 {
-		padding-left: 3rem !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .gap-lg-0 {
@@ -10846,23 +10846,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .gap-lg-1 {
-		gap: 0.25rem !important;
+		gap: 0.25em !important;
 	}
 
 	.fm-bootstrap .gap-lg-2 {
-		gap: 0.5rem !important;
+		gap: 0.5em !important;
 	}
 
 	.fm-bootstrap .gap-lg-3 {
-		gap: 1rem !important;
+		gap: 1em !important;
 	}
 
 	.fm-bootstrap .gap-lg-4 {
-		gap: 1.5rem !important;
+		gap: 1.5em !important;
 	}
 
 	.fm-bootstrap .gap-lg-5 {
-		gap: 3rem !important;
+		gap: 3em !important;
 	}
 
 	.fm-bootstrap .text-lg-start {
@@ -11108,23 +11108,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .m-xl-1 {
-		margin: 0.25rem !important;
+		margin: 0.25em !important;
 	}
 
 	.fm-bootstrap .m-xl-2 {
-		margin: 0.5rem !important;
+		margin: 0.5em !important;
 	}
 
 	.fm-bootstrap .m-xl-3 {
-		margin: 1rem !important;
+		margin: 1em !important;
 	}
 
 	.fm-bootstrap .m-xl-4 {
-		margin: 1.5rem !important;
+		margin: 1.5em !important;
 	}
 
 	.fm-bootstrap .m-xl-5 {
-		margin: 3rem !important;
+		margin: 3em !important;
 	}
 
 	.fm-bootstrap .m-xl-auto {
@@ -11137,28 +11137,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mx-xl-1 {
-		margin-right: 0.25rem !important;
-		margin-left: 0.25rem !important;
+		margin-right: 0.25em !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .mx-xl-2 {
-		margin-right: 0.5rem !important;
-		margin-left: 0.5rem !important;
+		margin-right: 0.5em !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .mx-xl-3 {
-		margin-right: 1rem !important;
-		margin-left: 1rem !important;
+		margin-right: 1em !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .mx-xl-4 {
-		margin-right: 1.5rem !important;
-		margin-left: 1.5rem !important;
+		margin-right: 1.5em !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .mx-xl-5 {
-		margin-right: 3rem !important;
-		margin-left: 3rem !important;
+		margin-right: 3em !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .mx-xl-auto {
@@ -11172,28 +11172,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .my-xl-1 {
-		margin-top: 0.25rem !important;
-		margin-bottom: 0.25rem !important;
+		margin-top: 0.25em !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .my-xl-2 {
-		margin-top: 0.5rem !important;
-		margin-bottom: 0.5rem !important;
+		margin-top: 0.5em !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .my-xl-3 {
-		margin-top: 1rem !important;
-		margin-bottom: 1rem !important;
+		margin-top: 1em !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .my-xl-4 {
-		margin-top: 1.5rem !important;
-		margin-bottom: 1.5rem !important;
+		margin-top: 1.5em !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .my-xl-5 {
-		margin-top: 3rem !important;
-		margin-bottom: 3rem !important;
+		margin-top: 3em !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .my-xl-auto {
@@ -11206,23 +11206,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mt-xl-1 {
-		margin-top: 0.25rem !important;
+		margin-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .mt-xl-2 {
-		margin-top: 0.5rem !important;
+		margin-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .mt-xl-3 {
-		margin-top: 1rem !important;
+		margin-top: 1em !important;
 	}
 
 	.fm-bootstrap .mt-xl-4 {
-		margin-top: 1.5rem !important;
+		margin-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .mt-xl-5 {
-		margin-top: 3rem !important;
+		margin-top: 3em !important;
 	}
 
 	.fm-bootstrap .mt-xl-auto {
@@ -11234,23 +11234,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .me-xl-1 {
-		margin-right: 0.25rem !important;
+		margin-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .me-xl-2 {
-		margin-right: 0.5rem !important;
+		margin-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .me-xl-3 {
-		margin-right: 1rem !important;
+		margin-right: 1em !important;
 	}
 
 	.fm-bootstrap .me-xl-4 {
-		margin-right: 1.5rem !important;
+		margin-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .me-xl-5 {
-		margin-right: 3rem !important;
+		margin-right: 3em !important;
 	}
 
 	.fm-bootstrap .me-xl-auto {
@@ -11262,23 +11262,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mb-xl-1 {
-		margin-bottom: 0.25rem !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .mb-xl-2 {
-		margin-bottom: 0.5rem !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .mb-xl-3 {
-		margin-bottom: 1rem !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .mb-xl-4 {
-		margin-bottom: 1.5rem !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .mb-xl-5 {
-		margin-bottom: 3rem !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .mb-xl-auto {
@@ -11290,23 +11290,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ms-xl-1 {
-		margin-left: 0.25rem !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ms-xl-2 {
-		margin-left: 0.5rem !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ms-xl-3 {
-		margin-left: 1rem !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .ms-xl-4 {
-		margin-left: 1.5rem !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ms-xl-5 {
-		margin-left: 3rem !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .ms-xl-auto {
@@ -11318,23 +11318,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .p-xl-1 {
-		padding: 0.25rem !important;
+		padding: 0.25em !important;
 	}
 
 	.fm-bootstrap .p-xl-2 {
-		padding: 0.5rem !important;
+		padding: 0.5em !important;
 	}
 
 	.fm-bootstrap .p-xl-3 {
-		padding: 1rem !important;
+		padding: 1em !important;
 	}
 
 	.fm-bootstrap .p-xl-4 {
-		padding: 1.5rem !important;
+		padding: 1.5em !important;
 	}
 
 	.fm-bootstrap .p-xl-5 {
-		padding: 3rem !important;
+		padding: 3em !important;
 	}
 
 	.fm-bootstrap .px-xl-0 {
@@ -11343,28 +11343,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .px-xl-1 {
-		padding-right: 0.25rem !important;
-		padding-left: 0.25rem !important;
+		padding-right: 0.25em !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .px-xl-2 {
-		padding-right: 0.5rem !important;
-		padding-left: 0.5rem !important;
+		padding-right: 0.5em !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .px-xl-3 {
-		padding-right: 1rem !important;
-		padding-left: 1rem !important;
+		padding-right: 1em !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .px-xl-4 {
-		padding-right: 1.5rem !important;
-		padding-left: 1.5rem !important;
+		padding-right: 1.5em !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .px-xl-5 {
-		padding-right: 3rem !important;
-		padding-left: 3rem !important;
+		padding-right: 3em !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .py-xl-0 {
@@ -11373,28 +11373,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .py-xl-1 {
-		padding-top: 0.25rem !important;
-		padding-bottom: 0.25rem !important;
+		padding-top: 0.25em !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .py-xl-2 {
-		padding-top: 0.5rem !important;
-		padding-bottom: 0.5rem !important;
+		padding-top: 0.5em !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .py-xl-3 {
-		padding-top: 1rem !important;
-		padding-bottom: 1rem !important;
+		padding-top: 1em !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .py-xl-4 {
-		padding-top: 1.5rem !important;
-		padding-bottom: 1.5rem !important;
+		padding-top: 1.5em !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .py-xl-5 {
-		padding-top: 3rem !important;
-		padding-bottom: 3rem !important;
+		padding-top: 3em !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .pt-xl-0 {
@@ -11402,23 +11402,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pt-xl-1 {
-		padding-top: 0.25rem !important;
+		padding-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .pt-xl-2 {
-		padding-top: 0.5rem !important;
+		padding-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .pt-xl-3 {
-		padding-top: 1rem !important;
+		padding-top: 1em !important;
 	}
 
 	.fm-bootstrap .pt-xl-4 {
-		padding-top: 1.5rem !important;
+		padding-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .pt-xl-5 {
-		padding-top: 3rem !important;
+		padding-top: 3em !important;
 	}
 
 	.fm-bootstrap .pe-xl-0 {
@@ -11426,23 +11426,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pe-xl-1 {
-		padding-right: 0.25rem !important;
+		padding-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .pe-xl-2 {
-		padding-right: 0.5rem !important;
+		padding-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .pe-xl-3 {
-		padding-right: 1rem !important;
+		padding-right: 1em !important;
 	}
 
 	.fm-bootstrap .pe-xl-4 {
-		padding-right: 1.5rem !important;
+		padding-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .pe-xl-5 {
-		padding-right: 3rem !important;
+		padding-right: 3em !important;
 	}
 
 	.fm-bootstrap .pb-xl-0 {
@@ -11450,23 +11450,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pb-xl-1 {
-		padding-bottom: 0.25rem !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .pb-xl-2 {
-		padding-bottom: 0.5rem !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .pb-xl-3 {
-		padding-bottom: 1rem !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .pb-xl-4 {
-		padding-bottom: 1.5rem !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .pb-xl-5 {
-		padding-bottom: 3rem !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .ps-xl-0 {
@@ -11474,23 +11474,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ps-xl-1 {
-		padding-left: 0.25rem !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ps-xl-2 {
-		padding-left: 0.5rem !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ps-xl-3 {
-		padding-left: 1rem !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .ps-xl-4 {
-		padding-left: 1.5rem !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ps-xl-5 {
-		padding-left: 3rem !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .gap-xl-0 {
@@ -11498,23 +11498,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .gap-xl-1 {
-		gap: 0.25rem !important;
+		gap: 0.25em !important;
 	}
 
 	.fm-bootstrap .gap-xl-2 {
-		gap: 0.5rem !important;
+		gap: 0.5em !important;
 	}
 
 	.fm-bootstrap .gap-xl-3 {
-		gap: 1rem !important;
+		gap: 1em !important;
 	}
 
 	.fm-bootstrap .gap-xl-4 {
-		gap: 1.5rem !important;
+		gap: 1.5em !important;
 	}
 
 	.fm-bootstrap .gap-xl-5 {
-		gap: 3rem !important;
+		gap: 3em !important;
 	}
 
 	.fm-bootstrap .text-xl-start {
@@ -11760,23 +11760,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .m-xxl-1 {
-		margin: 0.25rem !important;
+		margin: 0.25em !important;
 	}
 
 	.fm-bootstrap .m-xxl-2 {
-		margin: 0.5rem !important;
+		margin: 0.5em !important;
 	}
 
 	.fm-bootstrap .m-xxl-3 {
-		margin: 1rem !important;
+		margin: 1em !important;
 	}
 
 	.fm-bootstrap .m-xxl-4 {
-		margin: 1.5rem !important;
+		margin: 1.5em !important;
 	}
 
 	.fm-bootstrap .m-xxl-5 {
-		margin: 3rem !important;
+		margin: 3em !important;
 	}
 
 	.fm-bootstrap .m-xxl-auto {
@@ -11789,28 +11789,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mx-xxl-1 {
-		margin-right: 0.25rem !important;
-		margin-left: 0.25rem !important;
+		margin-right: 0.25em !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .mx-xxl-2 {
-		margin-right: 0.5rem !important;
-		margin-left: 0.5rem !important;
+		margin-right: 0.5em !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .mx-xxl-3 {
-		margin-right: 1rem !important;
-		margin-left: 1rem !important;
+		margin-right: 1em !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .mx-xxl-4 {
-		margin-right: 1.5rem !important;
-		margin-left: 1.5rem !important;
+		margin-right: 1.5em !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .mx-xxl-5 {
-		margin-right: 3rem !important;
-		margin-left: 3rem !important;
+		margin-right: 3em !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .mx-xxl-auto {
@@ -11824,28 +11824,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .my-xxl-1 {
-		margin-top: 0.25rem !important;
-		margin-bottom: 0.25rem !important;
+		margin-top: 0.25em !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .my-xxl-2 {
-		margin-top: 0.5rem !important;
-		margin-bottom: 0.5rem !important;
+		margin-top: 0.5em !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .my-xxl-3 {
-		margin-top: 1rem !important;
-		margin-bottom: 1rem !important;
+		margin-top: 1em !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .my-xxl-4 {
-		margin-top: 1.5rem !important;
-		margin-bottom: 1.5rem !important;
+		margin-top: 1.5em !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .my-xxl-5 {
-		margin-top: 3rem !important;
-		margin-bottom: 3rem !important;
+		margin-top: 3em !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .my-xxl-auto {
@@ -11858,23 +11858,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mt-xxl-1 {
-		margin-top: 0.25rem !important;
+		margin-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .mt-xxl-2 {
-		margin-top: 0.5rem !important;
+		margin-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .mt-xxl-3 {
-		margin-top: 1rem !important;
+		margin-top: 1em !important;
 	}
 
 	.fm-bootstrap .mt-xxl-4 {
-		margin-top: 1.5rem !important;
+		margin-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .mt-xxl-5 {
-		margin-top: 3rem !important;
+		margin-top: 3em !important;
 	}
 
 	.fm-bootstrap .mt-xxl-auto {
@@ -11886,23 +11886,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .me-xxl-1 {
-		margin-right: 0.25rem !important;
+		margin-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .me-xxl-2 {
-		margin-right: 0.5rem !important;
+		margin-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .me-xxl-3 {
-		margin-right: 1rem !important;
+		margin-right: 1em !important;
 	}
 
 	.fm-bootstrap .me-xxl-4 {
-		margin-right: 1.5rem !important;
+		margin-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .me-xxl-5 {
-		margin-right: 3rem !important;
+		margin-right: 3em !important;
 	}
 
 	.fm-bootstrap .me-xxl-auto {
@@ -11914,23 +11914,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .mb-xxl-1 {
-		margin-bottom: 0.25rem !important;
+		margin-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .mb-xxl-2 {
-		margin-bottom: 0.5rem !important;
+		margin-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .mb-xxl-3 {
-		margin-bottom: 1rem !important;
+		margin-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .mb-xxl-4 {
-		margin-bottom: 1.5rem !important;
+		margin-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .mb-xxl-5 {
-		margin-bottom: 3rem !important;
+		margin-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .mb-xxl-auto {
@@ -11942,23 +11942,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ms-xxl-1 {
-		margin-left: 0.25rem !important;
+		margin-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ms-xxl-2 {
-		margin-left: 0.5rem !important;
+		margin-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ms-xxl-3 {
-		margin-left: 1rem !important;
+		margin-left: 1em !important;
 	}
 
 	.fm-bootstrap .ms-xxl-4 {
-		margin-left: 1.5rem !important;
+		margin-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ms-xxl-5 {
-		margin-left: 3rem !important;
+		margin-left: 3em !important;
 	}
 
 	.fm-bootstrap .ms-xxl-auto {
@@ -11970,23 +11970,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .p-xxl-1 {
-		padding: 0.25rem !important;
+		padding: 0.25em !important;
 	}
 
 	.fm-bootstrap .p-xxl-2 {
-		padding: 0.5rem !important;
+		padding: 0.5em !important;
 	}
 
 	.fm-bootstrap .p-xxl-3 {
-		padding: 1rem !important;
+		padding: 1em !important;
 	}
 
 	.fm-bootstrap .p-xxl-4 {
-		padding: 1.5rem !important;
+		padding: 1.5em !important;
 	}
 
 	.fm-bootstrap .p-xxl-5 {
-		padding: 3rem !important;
+		padding: 3em !important;
 	}
 
 	.fm-bootstrap .px-xxl-0 {
@@ -11995,28 +11995,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .px-xxl-1 {
-		padding-right: 0.25rem !important;
-		padding-left: 0.25rem !important;
+		padding-right: 0.25em !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .px-xxl-2 {
-		padding-right: 0.5rem !important;
-		padding-left: 0.5rem !important;
+		padding-right: 0.5em !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .px-xxl-3 {
-		padding-right: 1rem !important;
-		padding-left: 1rem !important;
+		padding-right: 1em !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .px-xxl-4 {
-		padding-right: 1.5rem !important;
-		padding-left: 1.5rem !important;
+		padding-right: 1.5em !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .px-xxl-5 {
-		padding-right: 3rem !important;
-		padding-left: 3rem !important;
+		padding-right: 3em !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .py-xxl-0 {
@@ -12025,28 +12025,28 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .py-xxl-1 {
-		padding-top: 0.25rem !important;
-		padding-bottom: 0.25rem !important;
+		padding-top: 0.25em !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .py-xxl-2 {
-		padding-top: 0.5rem !important;
-		padding-bottom: 0.5rem !important;
+		padding-top: 0.5em !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .py-xxl-3 {
-		padding-top: 1rem !important;
-		padding-bottom: 1rem !important;
+		padding-top: 1em !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .py-xxl-4 {
-		padding-top: 1.5rem !important;
-		padding-bottom: 1.5rem !important;
+		padding-top: 1.5em !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .py-xxl-5 {
-		padding-top: 3rem !important;
-		padding-bottom: 3rem !important;
+		padding-top: 3em !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .pt-xxl-0 {
@@ -12054,23 +12054,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pt-xxl-1 {
-		padding-top: 0.25rem !important;
+		padding-top: 0.25em !important;
 	}
 
 	.fm-bootstrap .pt-xxl-2 {
-		padding-top: 0.5rem !important;
+		padding-top: 0.5em !important;
 	}
 
 	.fm-bootstrap .pt-xxl-3 {
-		padding-top: 1rem !important;
+		padding-top: 1em !important;
 	}
 
 	.fm-bootstrap .pt-xxl-4 {
-		padding-top: 1.5rem !important;
+		padding-top: 1.5em !important;
 	}
 
 	.fm-bootstrap .pt-xxl-5 {
-		padding-top: 3rem !important;
+		padding-top: 3em !important;
 	}
 
 	.fm-bootstrap .pe-xxl-0 {
@@ -12078,23 +12078,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pe-xxl-1 {
-		padding-right: 0.25rem !important;
+		padding-right: 0.25em !important;
 	}
 
 	.fm-bootstrap .pe-xxl-2 {
-		padding-right: 0.5rem !important;
+		padding-right: 0.5em !important;
 	}
 
 	.fm-bootstrap .pe-xxl-3 {
-		padding-right: 1rem !important;
+		padding-right: 1em !important;
 	}
 
 	.fm-bootstrap .pe-xxl-4 {
-		padding-right: 1.5rem !important;
+		padding-right: 1.5em !important;
 	}
 
 	.fm-bootstrap .pe-xxl-5 {
-		padding-right: 3rem !important;
+		padding-right: 3em !important;
 	}
 
 	.fm-bootstrap .pb-xxl-0 {
@@ -12102,23 +12102,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .pb-xxl-1 {
-		padding-bottom: 0.25rem !important;
+		padding-bottom: 0.25em !important;
 	}
 
 	.fm-bootstrap .pb-xxl-2 {
-		padding-bottom: 0.5rem !important;
+		padding-bottom: 0.5em !important;
 	}
 
 	.fm-bootstrap .pb-xxl-3 {
-		padding-bottom: 1rem !important;
+		padding-bottom: 1em !important;
 	}
 
 	.fm-bootstrap .pb-xxl-4 {
-		padding-bottom: 1.5rem !important;
+		padding-bottom: 1.5em !important;
 	}
 
 	.fm-bootstrap .pb-xxl-5 {
-		padding-bottom: 3rem !important;
+		padding-bottom: 3em !important;
 	}
 
 	.fm-bootstrap .ps-xxl-0 {
@@ -12126,23 +12126,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .ps-xxl-1 {
-		padding-left: 0.25rem !important;
+		padding-left: 0.25em !important;
 	}
 
 	.fm-bootstrap .ps-xxl-2 {
-		padding-left: 0.5rem !important;
+		padding-left: 0.5em !important;
 	}
 
 	.fm-bootstrap .ps-xxl-3 {
-		padding-left: 1rem !important;
+		padding-left: 1em !important;
 	}
 
 	.fm-bootstrap .ps-xxl-4 {
-		padding-left: 1.5rem !important;
+		padding-left: 1.5em !important;
 	}
 
 	.fm-bootstrap .ps-xxl-5 {
-		padding-left: 3rem !important;
+		padding-left: 3em !important;
 	}
 
 	.fm-bootstrap .gap-xxl-0 {
@@ -12150,23 +12150,23 @@ a > .fm-bootstrap code {
 	}
 
 	.fm-bootstrap .gap-xxl-1 {
-		gap: 0.25rem !important;
+		gap: 0.25em !important;
 	}
 
 	.fm-bootstrap .gap-xxl-2 {
-		gap: 0.5rem !important;
+		gap: 0.5em !important;
 	}
 
 	.fm-bootstrap .gap-xxl-3 {
-		gap: 1rem !important;
+		gap: 1em !important;
 	}
 
 	.fm-bootstrap .gap-xxl-4 {
-		gap: 1.5rem !important;
+		gap: 1.5em !important;
 	}
 
 	.fm-bootstrap .gap-xxl-5 {
-		gap: 3rem !important;
+		gap: 3em !important;
 	}
 
 	.fm-bootstrap .text-xxl-start {
@@ -12184,19 +12184,19 @@ a > .fm-bootstrap code {
 
 @media (min-width: 1200px) {
 	.fm-bootstrap .fs-1 {
-		font-size: 2.5rem !important;
+		font-size: 2.5em !important;
 	}
 
 	.fm-bootstrap .fs-2 {
-		font-size: 2rem !important;
+		font-size: 2em !important;
 	}
 
 	.fm-bootstrap .fs-3 {
-		font-size: 1.75rem !important;
+		font-size: 1.75em !important;
 	}
 
 	.fm-bootstrap .fs-4 {
-		font-size: 1.5rem !important;
+		font-size: 1.5em !important;
 	}
 }
 
@@ -12335,7 +12335,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap-table .fixed-table-container .table thead th .th-inner {
-	padding: 0.75rem;
+	padding: 0.75em;
 	vertical-align: bottom;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -12400,7 +12400,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap-table .fixed-table-container .table.table-sm .th-inner {
-	padding: 0.3rem;
+	padding: 0.3em;
 }
 
 .fm-bootstrap-table .fixed-table-container.fixed-height:not(.has-footer) {
@@ -12573,7 +12573,7 @@ a > .fm-bootstrap code {
 }
 
 .fm-bootstrap-table.bootstrap4 .pagination-lg .page-link, .fm-bootstrap-table.bootstrap5 .pagination-lg .page-link {
-	padding: .5rem 1rem;
+	padding: .5em 1em;
 }
 
 .fm-bootstrap-table.bootstrap5 .float-left {

@@ -1,14 +1,14 @@
 .fm-add-club-content-inner {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
-	margin-top: 1rem;
+	gap: 1em;
+	margin-top: 1em;
 	border: 1px solid gray;
 	border-radius: 6px;
-	padding: 1rem;
+	padding: 1em;
 	background: #e5e5e5;
 	max-width: 700px;
-	margin-bottom: 2rem;
+	margin-bottom: 2em;
 }
 
 .fm-add-club-content-inner label {
@@ -31,7 +31,7 @@
 	left: 0;
 	right: 0;
 	padding: 0;
-	margin: 0.5rem 0 0 0;
+	margin: 0.5em 0 0 0;
 	border-radius: 4px;
 	background-color: #fff;
 	border: 1px solid rgba(33, 33, 33, 0.1);
@@ -80,19 +80,19 @@
 }
 
 .autoComplete_wrapper > ul p {
-	margin: .75rem;
+	margin: .75em;
 	text-align: center;
 }
 
 .fm-autocomplete-result {
 	width: 100%;
 	display: flex;
-	gap: 1rem
+	gap: 1em
 }
 
 .fm-autocomplete-club-logo {
-	width: 1.5rem;
-	height: 1.5rem;
+	width: 1.5em;
+	height: 1.5em;
 }
 
 .fm-autocomplete-club-name {
@@ -112,6 +112,6 @@
 }
 
 .fm-add-club-content .fm-autocomplete-club-logo {
-	width: 4.5rem;
-	height: 4.5rem;
+	width: 4.5em;
+	height: 4.5em;
 }

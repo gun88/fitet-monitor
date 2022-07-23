@@ -36,39 +36,39 @@
 
 .fm-standing-legend {
 	display: flex;
-	gap: .5rem;
+	gap: .5em;
 }
 
 .fm-standing-legend > span {
 	display: flex;
 	align-items: baseline;
-	gap: .25rem;
+	gap: .25em;
 }
 
 .fm-standing-legend-promotion {
-	width: 1rem;
-	height: 1rem;
+	width: 1em;
+	height: 1em;
 	border: 1px #505050 solid;
 	background-color: #72b6ff;
 }
 
 .fm-standing-legend-playoff {
-	width: 1rem;
-	height: 1rem;
+	width: 1em;
+	height: 1em;
 	border: 1px #505050 solid;
 	background-color: #a2efa2;
 }
 
 .fm-standing-legend-playout {
-	width: 1rem;
-	height: 1rem;
+	width: 1em;
+	height: 1em;
 	border: 1px #505050 solid;
 	background-color: #fbe39f;
 }
 
 .fm-standing-legend-relegation {
-	width: 1rem;
-	height: 1rem;
+	width: 1em;
+	height: 1em;
 	border: 1px #505050 solid;
 	background-color: #df8484;
 }

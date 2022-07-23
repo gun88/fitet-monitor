@@ -2,13 +2,14 @@
 .fm-club-cell,
 .fm-player-cell {
 	display: flex;
-	gap: 1rem;
+	gap: 1em;
 }
 
 .fm-team-cell .fm-team-image,
 .fm-club-cell .fm-club-image,
 .fm-player-cell .fm-player-image {
 	height: auto;
-	width: 2rem;
-	min-width: 2rem;
+	width: 2em;
+	min-width: 2em;
 }
+

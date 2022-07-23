@@ -1,13 +1,13 @@
 .wp-list-table .column-lastUpdate,
 .wp-list-table .column-configuration {
-	max-width: 12rem;
+	max-width: 12em;
 	width: 20%;
 }
 
 
 .fm-club-cell {
 	display: flex;
-	gap: 1rem
+	gap: 1em
 }
 
 .fm-club-cell > div {
@@ -16,15 +16,15 @@
 
 .fm-club-logo {
 	border: 1px solid #c5c5c5;
-	width: 4.5rem;
-	height: 4.5rem;
+	width: 4.5em;
+	height: 4.5em;
 	border-radius: 3px;
 }
 
 @media screen and (max-width: 782px) {
 	.fm-club-logo {
-		width: 2rem;
-		height: 2rem;
+		width: 2em;
+		height: 2em;
 	}
 }
 

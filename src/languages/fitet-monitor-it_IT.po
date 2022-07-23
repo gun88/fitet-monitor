@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-07-17 07:14:12+00:00\n"
+"POT-Creation-Date: 2022-07-22 11:53:02+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,48 +24,48 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:21
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:22
 msgid "Club code"
 msgstr "Codice"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:22
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:23
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:47
 msgid "Club name"
 msgstr "Società"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:23
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:24
 msgid "Club Province"
 msgstr "Provincia"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:24
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:25
 msgid "Club Logo"
 msgstr "Logo Società"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:25
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:26
 msgid "Auto Update"
 msgstr ""
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:26
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:27
 msgid "History Size"
 msgstr "Taglia Cronologia"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:27
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:28
 msgid "Club information"
 msgstr "Informazioni Società"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:28
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:29
 msgid "Search for a Club..."
 msgstr "Cerca Società..."
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:39
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:40
 msgid "Manual Configuration"
 msgstr "Configurazione Manuale"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:40
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:41
 msgid "Auto Configuration"
 msgstr "Configurazione Automatica"
 
-#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:41
+#: src/admin/components/club-data/class-fitet-monitor-club-data-component.php:42
 msgid "Save"
 msgstr "Salva"
 

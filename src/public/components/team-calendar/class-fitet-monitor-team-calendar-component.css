@@ -9,17 +9,17 @@
 .fm-team-calendar-match {
 	display: flex;
 	flex-flow: column;
-	gap: .5rem;
+	gap: .5em;
 }
 
 .fm-team-calendar-match > div {
 	display: flex;
-	gap: 2rem;
+	gap: 2em;
 }
 
 .fm-team-calendar-match > div > span {
 	margin-left: auto;
-	min-width: 2rem;
+	min-width: 2em;
 	text-align: right;
 }
 
@@ -31,15 +31,15 @@
 }
 
 .fm-team-calendar .fm-table-column-date {
-	width: 10rem;
+	width: 10em;
 }
 
 .fm-team-calendar .fm-table-column-time {
-	width: 6rem;
+	width: 6em;
 }
 
 .fm-team-calendar .fm-table-column-result {
-	width: 6rem;
+	width: 6em;
 }
 
 

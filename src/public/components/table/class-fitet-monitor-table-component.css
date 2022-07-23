@@ -1,6 +1,6 @@
 .dynatable-wrapper {
 	overflow-x: auto;
-	margin-bottom: 1rem;
+	margin-bottom: 1em;
 }
 
 .dynatable-wrapper > table {
@@ -20,7 +20,7 @@
 .dynatable-pagination,
 .dynatable-records {
 	display: flex;
-	gap: 1rem;
+	gap: 1em;
 }
 
 .dynatable-per-page,
@@ -35,8 +35,8 @@
 
 .dynatable-search input[type="search"] {
 	width: auto;
-	line-height: 1rem;
-	padding: .5rem;
+	line-height: 1em;
+	padding: .5em;
 }
 
 .dynatable-record-count {
@@ -61,9 +61,9 @@
 .dynatable-pagination-links span,
 .dynatable-pagination-links li {
 	display: inline-block;
-	min-width: 2rem;
+	min-width: 2em;
 	text-align: center;
-	line-height: 1.3rem;
+	line-height: 1.3em;
 }
 
 .dynatable-page-link,
@@ -112,7 +112,7 @@
 
 	.dynatable-footer .dynatable-records {
 		display: flex;
-		gap: 1rem;
+		gap: 1em;
 	}
 
 	.dynatable-pagination {
