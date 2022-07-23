@@ -2,6 +2,8 @@
 
 class Fitet_Monitor_Helper {
 
+	// todo ...diventa utils????
+
 	public static function enqueue_style($handle, $src, $deps, $version, $media) {
 		$minified = plugin_dir_path($src) . basename($src, '.css') . '.min.css';
 		if (file_exists($minified)) {

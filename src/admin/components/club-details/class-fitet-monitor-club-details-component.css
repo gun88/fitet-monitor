@@ -3,3 +3,53 @@ a.fm-reset-status:hover,
 a.fm-reset-status:active {
 	color: darkred;
 }
+
+.fm-player-cell img {
+	width: 3em;
+	height: 3em;
+}
+
+.dynatable-wrapper table {
+	border: 1px solid #c3c4c7;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.dynatable-header {
+	margin-bottom: 1em;
+}
+
+.dynatable-pagination-links {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.dynatable-records {
+	align-items: baseline;
+}
+
+.dynatable-wrapper table,
+.dynatable-wrapper th,
+.dynatable-wrapper td {
+	border: 1px solid #cacaca;
+}
+
+.dynatable-wrapper thead {
+	background-color: white;
+}
+
+.dynatable-wrapper tbody tr:nth-child(even) {
+	background-color: white;
+}
+
+.dynatable-wrapper th,
+.dynatable-wrapper td {
+	padding: 1em;
+	text-align: left;
+}
+
+.fm-player-cell {
+	display: flex;
+	gap: 1em;
+	align-items: center;
+}

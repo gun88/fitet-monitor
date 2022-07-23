@@ -1,7 +1,5 @@
- - script localization src
  - manage hidden players
  - auto update cronjob
- - remove bootstrap table
  - custom page type?
  - fitet-monitor-block
  - download players table
