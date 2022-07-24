@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-07-23 23:15:24+00:00\n"
+"POT-Creation-Date: 2022-07-24 00:28:28+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -589,7 +589,7 @@ msgstr ""
 msgid "No results found"
 msgstr "Nessun risultato"
 
-#: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:387
+#: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:384
 msgid "on"
 msgstr "il"
 

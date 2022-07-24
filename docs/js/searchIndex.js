@@ -281,11 +281,6 @@ Search.appendIndex(
             "summary": "Initialize\u0020public\u0020components",
             "url": "classes/Fitet-Monitor-Public.html#method_start"
         },                {
-            "fqsen": "\\Fitet_Monitor_Public\u003A\u003Aload_assets\u0028\u0029",
-            "name": "load_assets",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Public.html#method_load_assets"
-        },                {
             "fqsen": "\\Fitet_Monitor_Public\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
@@ -901,20 +896,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html"
         },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Ascript_dependencies\u0028\u0029",
-            "name": "script_dependencies",
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Alabels\u0028\u0029",
+            "name": "labels",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_script_dependencies"
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_labels"
         },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Aenqueue_scripts\u0028\u0029",
-            "name": "enqueue_scripts",
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_enqueue_scripts"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Aenqueue_styles\u0028\u0029",
-            "name": "enqueue_styles",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_enqueue_styles"
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_components"
         },                {
             "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Aprocess_data\u0028\u0029",
             "name": "process_data",
@@ -926,35 +916,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_player_table"
         },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Achampionships_table\u0028\u0029",
-            "name": "championships_table",
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Atitles_table\u0028\u0029",
+            "name": "titles_table",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_championships_table"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Anational_titles_table\u0028\u0029",
-            "name": "national_titles_table",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_national_titles_table"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Aregional_titles_table\u0028\u0029",
-            "name": "regional_titles_table",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_regional_titles_table"
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_titles_table"
         },                {
             "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Astatus\u0028\u0029",
             "name": "status",
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_status"
         },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Aprocess_players\u0028\u0029",
-            "name": "process_players",
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Ateams_table\u0028\u0029",
+            "name": "teams_table",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_process_players"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Arework_championships\u0028\u0029",
-            "name": "rework_championships",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_rework_championships"
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_teams_table"
         },                {
             "fqsen": "\\Fitet_Monitor_Club_Table_Component",
             "name": "Fitet_Monitor_Club_Table_Component",
@@ -2000,26 +1975,6 @@ Search.appendIndex(
             "name": "manager",
             "summary": "",
             "url": "classes/Fitet-Monitor-Api.html#property_manager"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Bootstrap_Table",
-            "name": "Fitet_Monitor_Bootstrap_Table",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Bootstrap-Table.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Bootstrap_Table\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Bootstrap-Table.html#method___construct"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Bootstrap_Table\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Bootstrap-Table.html#method_render"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Bootstrap_Table\u003A\u003A\u0024config",
-            "name": "config",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Bootstrap-Table.html#property_config"
         },                {
             "fqsen": "\\FITET_MONITOR_MB_CONVERT_ENCODING_EXIST",
             "name": "FITET_MONITOR_MB_CONVERT_ENCODING_EXIST",

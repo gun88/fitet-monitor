@@ -24,10 +24,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 	}
 
 
-	/**
-	 * @param array $resources
-	 * @return array
-	 */
+
 	public function devSeasonFix($resources_) {
 
 		foreach ($resources_ as &$resources) {

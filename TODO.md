@@ -10,3 +10,4 @@
  - campionati readonly
  - fix download full history progress bar
  - automatic update
+ - fix nomi societa' caratteri speciali

@@ -72,9 +72,6 @@ class Fitet_Monitor_Public {
 	 */
 	public function start() {
 
-		// load global assets
-		add_action('wp_enqueue_scripts', [$this, 'load_assets']); /// todo rimuovi se non ci sono asset globali
-
 		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-teams-shortcode.php';
 		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-players-shortcode.php';
 		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-titles-shortcode.php';
@@ -90,12 +87,6 @@ class Fitet_Monitor_Public {
 			add_shortcode($shortcode->tag, [$shortcode, 'render_shortcode']);
 		}
 
-	//	require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
+		//	require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}
-
-	public function load_assets() {
-		Fitet_Monitor_Helper::enqueue_script($this->plugin_name, FITET_MONITOR_DIR . 'public/assets/fitet-monitor.js', ['jquery'], $this->version, false);
-		Fitet_Monitor_Helper::enqueue_style($this->plugin_name, FITET_MONITOR_DIR . 'public/assets/fitet-monitor.css', [], $this->version, 'all');
-	}
-
 }

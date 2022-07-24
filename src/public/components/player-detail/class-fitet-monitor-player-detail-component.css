@@ -20,3 +20,31 @@
 	display: none
 }
 
+.fm-team-cell,
+.fm-club-cell,
+.fm-player-cell {
+	display: flex;
+	gap: .5em;
+	align-items: center;
+}
+
+.fm-team-cell .fm-team-image img,
+.fm-club-cell .fm-club-image img,
+.fm-player-cell .fm-player-image img {
+	height: 2em;
+	width: 2em;
+	min-width: 2em;
+	min-height: 2em;
+}
+
+
+.fm-player-cell .fm-player-image img {
+	object-fit: cover;
+}
+
+.fm-team-cell .fm-team-image img,
+.fm-club-cell .fm-club-image img {
+	object-fit: contain;
+}
+
+
