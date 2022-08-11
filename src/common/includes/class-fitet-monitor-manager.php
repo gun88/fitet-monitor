@@ -107,8 +107,7 @@ class Fitet_Monitor_Manager {
 	}
 
 	public function update($club_code, $mode = '') {
-		set_time_limit(20);
-		ini_set('max_execution_time', 20);
+		set_time_limit(300);
 
 		register_shutdown_function(function () use ($club_code) {
 			$status = $this->logger->get_status($club_code);
