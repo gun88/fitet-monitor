@@ -246,6 +246,11 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_FITET_MONITOR_ICON_TROPHY"
         },                {
+            "fqsen": "\\FITET_MONITOR_ICON_CLOUD_ARROW",
+            "name": "FITET_MONITOR_ICON_CLOUD_ARROW",
+            "summary": "",
+            "url": "namespaces/default.html#constant_FITET_MONITOR_ICON_CLOUD_ARROW"
+        },                {
             "fqsen": "\\run_fitet_monitor\u0028\u0029",
             "name": "run_fitet_monitor",
             "summary": "Begins\u0020execution\u0020of\u0020the\u0020plugin.",
@@ -901,6 +906,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_labels"
         },                {
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Ascript_dependencies\u0028\u0029",
+            "name": "script_dependencies",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_script_dependencies"
+        },                {
             "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Acomponents\u0028\u0029",
             "name": "components",
             "summary": "",
@@ -926,10 +936,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_status"
         },                {
-            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Ateams_table\u0028\u0029",
-            "name": "teams_table",
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Achampionships_table\u0028\u0029",
+            "name": "championships_table",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_teams_table"
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_championships_table"
         },                {
             "fqsen": "\\Fitet_Monitor_Club_Table_Component",
             "name": "Fitet_Monitor_Club_Table_Component",
@@ -2055,6 +2065,21 @@ Search.appendIndex(
             "name": "retrieve_club_data",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_retrieve_club_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate_season_championships\u0028\u0029",
+            "name": "update_season_championships",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_update_season_championships"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate_players\u0028\u0029",
+            "name": "update_players",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_update_players"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate_club\u0028\u0029",
+            "name": "update_club",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_update_club"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Acalculate_championship_caps\u0028\u0029",
             "name": "calculate_championship_caps",
