@@ -17,7 +17,7 @@ jQuery(function ($) {
 		progressBar.width("0%");
 		progressBar.text('');
 		logLine.text('...');
-		let intervalStep = 5000;
+		let intervalStep = 1000;
 		let lastIndex = 0;
 		const id = setInterval(frame, intervalStep);
 
@@ -103,7 +103,7 @@ jQuery(function ($) {
 		const clubCode = find.val();
 
 		wp.apiRequest({
-			path: 'fitet-monitor/v1/update',//todo APEX.api.url,
+			path: 'fitet-monitor/v1/update',
 			type: 'POST',
 			data: {clubCode: clubCode}
 		});

@@ -11,3 +11,10 @@
  - fix download full history progress bar
  - automatic update
  - fix nomi societa' caratteri speciali
+
+
+aggiorna club
+aggiorna giocatori
+aggiorna squadre
+
+presenze...calcola ad ogni request se non fornite dal portale

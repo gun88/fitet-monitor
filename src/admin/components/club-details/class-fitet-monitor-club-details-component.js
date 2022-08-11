@@ -1,5 +1,3 @@
-// fm-download-full-history
-
 jQuery(function ($) {
 
 	$('.fm-download-full-history').click(function (e) {
@@ -7,7 +5,7 @@ jQuery(function ($) {
 		const clubCode = $(this).data('club-code');
 
 		wp.apiRequest({
-			path: 'fitet-monitor/v1/update',//todo APEX.api.url,
+			path: 'fitet-monitor/v1/update',
 			type: 'POST',
 			data: {clubCode: clubCode, mode: 'full-history'}
 		});
@@ -18,6 +16,12 @@ jQuery(function ($) {
 		window.location.href = url.href;
 
 
-	})
+	});
 
 });
+
+function fmToggle(event) {
+	let parentNode = event.target.parentNode;
+	parentNode.classList.toggle('fm-closed');
+	parentNode.nextElementSibling.classList.toggle('fm-closed');
+}

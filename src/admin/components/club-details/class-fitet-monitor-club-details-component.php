@@ -4,6 +4,7 @@
 require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
 require_once FITET_MONITOR_DIR . 'public/components/players-table/class-fitet-monitor-players-table-component.php';
 require_once FITET_MONITOR_DIR . 'public/components/cells/class-fitet-monitor-player-cell-component.php';
+require_once FITET_MONITOR_DIR . 'public/components/cells/class-fitet-monitor-team-cell-component.php';
 
 
 class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
@@ -30,6 +31,7 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		return [
 			'playersTable' => new Fitet_Monitor_Players_Table_Component($this->plugin_name, $this->version),
 			'playerCell' => new Fitet_Monitor_Player_Cell_Component($this->plugin_name, $this->version),
+			'teamCell' => new Fitet_Monitor_Team_Cell_Component($this->plugin_name, $this->version),
 			'table' => new Fitet_Monitor_Table_Component($this->plugin_name, $this->version),
 		];
 	}
@@ -50,7 +52,7 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 			'status' => $this->status($data['status']),
 			'lastUpdate' => $data['lastUpdate'],
 			'players' => $this->player_table($data['players']),
-			'championships' => $this->teams_table($data['championships']),
+			'championships' => $this->championships_table($data['championships']),
 			'nationalTitles' => $this->titles_table($data['nationalTitles'], 'national'),
 			'regionalTitles' => $this->titles_table($data['regionalTitles'], 'regional'),
 			'resetStatusUrl' => add_query_arg(['action' => 'resetStatus', 'clubCode' => $data['clubCode']], menu_page_url('fitet-monitor', false)),
@@ -140,16 +142,53 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		}
 	}
 
-	private function teams_table($championships) {
+	private function championships_table($championships) {
 		if (empty($championships)) {
 			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
+
+		$championships = array_map(function ($championship) {
+
+
+			$teams = array_values(array_filter($championship['standings'], function ($standing) {
+				return isset($standing['players']);
+			}));
+
+			$championship['teams'] = implode("", array_map(function ($team) {
+				return "<div class='fm-team-cell-wrapper fm-closed'>" .
+					$this->components['teamCell']->render($team) .
+					"<span class='fm-toggle fm-expand' onclick='fmToggle(event)'>&#9660;</span>" .
+					"<span class='fm-toggle fm-collapse' onclick='fmToggle(event)'>&#9650;</span>" .
+					"</div>" .
+					"<div class='fm-team-players-list fm-closed'>" .
+					implode("", array_map(function ($player) {
+						return $this->components['playerCell']->render($player);
+					}, $team['players'])) .
+					"</div>";
+			}, $teams));
+
+			$championship['standings'] = !empty($championship['standings'])? "Loaded standings" : "Not Loaded";
+			$championship['calendar'] = "Loaded calendar";
+			$championship['actions'] = "<div style='display: flex;justify-content: center;'>" .
+				"<a href='#' title='Aggiorna'><img style='width: 24px' alt='update-buttom' src='" . FITET_MONITOR_ICON_CLOUD_ARROW . "'/></a>" .
+				"</div>";
+
+			$championship['json'] = "<pre>" . json_encode($teams, 128) . "</pre>";
+			return $championship;
+		}, $championships);
 
 		return $this->components['table']->render([
 			'name' => "fm-championships-table",
 			'columns' => [
 				'seasonName' => __('Season', 'fitet-monitor'),
 				'championshipName' => __('Championship', 'fitet-monitor'),
+				'seasonId' => __('Season id', 'fitet-monitor'),
+				'championshipId' => __('Championship id', 'fitet-monitor'),
+				'teams' => __('Teams', 'fitet-monitor'),
+				'standings' => __('Standings', 'fitet-monitor'),
+				'calendar' => __('Calendar', 'fitet-monitor'),
+				'actions' => __('Actions', 'fitet-monitor'),
+				//'json' => __('json', 'fitet-monitor'),
 			],
 			'sort' => [
 				'seasonName' => 'number',

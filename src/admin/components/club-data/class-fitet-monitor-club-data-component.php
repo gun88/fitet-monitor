@@ -30,7 +30,7 @@ class Fitet_Monitor_Club_Data_Component extends Fitet_Monitor_Component {
 		$_data['clubCode'] = $data && isset($data['clubCode']) ? $data['clubCode'] : '';
 		$_data['clubName'] = $data && isset($data['clubName']) ? $data['clubName'] : '';
 		$_data['clubProvince'] = $data && isset($data['clubProvince']) ? $data['clubProvince'] : '';
-		$_data['clubHistorySize'] = $data && isset($data['clubHistorySize']) ? $data['clubHistorySize'] : '2';
+		$_data['clubHistorySize'] = $data && isset($data['clubHistorySize']) ? $data['clubHistorySize'] : '1';
 		$_data['clubCron'] = $data && isset($data['clubCron']) ? $data['clubCron'] : 'DEFAULT';
 		$_data['clubNoLogo'] = FITET_MONITOR_CLUB_NO_LOGO;
 		$_data['clubLogo'] = $data && isset($data['clubLogo']) ? $data['clubLogo'] : '';

@@ -48,8 +48,42 @@ a.fm-reset-status:active {
 	text-align: left;
 }
 
+.fm-team-cell,
 .fm-player-cell {
 	display: flex;
-	gap: 1em;
+	gap: .5em;
 	align-items: center;
+}
+
+.fm-team-cell-wrapper {
+	display: flex;
+	gap: .5rem;
+	align-items: center;
+}
+
+.fm-team-players-list {
+	margin-top: 1em;
+	margin-left: 2em;
+}
+
+.fm-team-players-list.fm-closed {
+	display: none;
+}
+
+.fm-team-cell-wrapper.fm-closed .fm-collapse {
+	display: none;
+}
+
+.fm-team-cell-wrapper:not(.fm-closed ) .fm-expand {
+	display: none;
+}
+
+.fm-team-cell-wrapper span.fm-toggle {
+	cursor: pointer;
+	margin-left: auto;
+}
+
+.fm-team-cell-wrapper span.fm-toggle {
+	cursor: pointer;
+	margin-left: auto;
 }

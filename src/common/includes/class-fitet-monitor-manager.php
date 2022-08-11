@@ -107,8 +107,8 @@ class Fitet_Monitor_Manager {
 	}
 
 	public function update($club_code, $mode = '') {
-		set_time_limit(300);
-		ini_set('max_execution_time', 300);
+		set_time_limit(20);
+		ini_set('max_execution_time', 20);
 
 		register_shutdown_function(function () use ($club_code) {
 			$status = $this->logger->get_status($club_code);
@@ -125,12 +125,20 @@ class Fitet_Monitor_Manager {
 
 				if ($mode == 'full-history') {
 					$club = $this->full_championships_history($club_code);
-
+					$this->logger->set_completed($club_code, 'Done');
+					$this->save_club($club);
 				} else {
-					$club = $this->retrieve_club_data($club_code, $mode);
+
+					//$club = $this->retrieve_club_data($club_code, $mode);
+					$club = $this->update_club($club_code);
+					$this->save_club($club);
+					$club = $this->update_players($club_code);
+					$this->save_club($club);
+					$club = $this->update_season_championships($club_code);
+					$this->save_club($club);
+					$this->logger->set_completed($club_code, 'Done');
 				}
-				$this->logger->set_completed($club_code, 'Done');
-				$this->save_club($club);
+
 
 			} catch (Exception $e) {
 				$this->logger->add_status($club_code, 'Fail: ' . $e->getMessage(), 0, 'fail');
@@ -358,6 +366,261 @@ class Fitet_Monitor_Manager {
 		unset($club['attendances']);
 
 		$club['players'] = $players;
+
+		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
+		$last_update->setTimestamp(time()); //adjust the object to correct timestamp
+		$club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
+
+		$club = $this->all_to_utf8($club);
+
+		return $club;
+
+	}
+
+
+	public function update_season_championships($club_code, $season_id = null) {
+		if ($club_code == null)
+			throw new Exception("Club code can not be null!");
+
+		$this->logger->add_status($club_code, 'Start updating');
+
+		$this->logger->add_status($club_code, "Getting info for club $club_code", 0);
+
+		$club = $this->get_club($club_code);
+
+		$this->logger->add_status($club_code, "Getting details for club " . $club['clubCode'] . " " . $club['clubName'], 5);
+		$club_details = $this->portal->get_club_details($club_code);
+
+		// if season_id is null, use last available season
+		if ($season_id == null) {
+			$season_id = $club_details['championships'][0]['seasonId'];
+		}
+
+		$championships = array_values(array_filter($club_details['championships'], function ($championship) use ($season_id) {
+			return $championship['seasonId'] == $season_id;
+		}));
+
+		// todo terminare!!!!
+
+		$old_championships = isset($club['championships']) ? $club['championships'] : [];
+		//$club['championships'] = $club_details['championships'];
+
+		for ($i = 0, $count = count($championships); $i < $count; $i++) {
+			$championship = $championships[$i];
+			$championship_id = $championship['championshipId'];
+			$championship_name = $championship['championshipName'];
+			$season_id = $championship['seasonId'];
+			$season_name = $championship['seasonName'];
+			$this->logger->add_status($club_code, "Getting standings (" . ($i + 1) . "/$count): $season_name - $championship_name", 8 / $count);
+			$standings = $this->portal->get_championship_standings($championship_id, $season_id);
+			$championships[$i]['standings'] = $standings;
+		}
+
+		$total_standings = array_sum(array_map(function ($c) {
+			return count($c['standings']);
+		}, $championships));
+		$standing_cursor = 0;
+		for ($i = 0, $count_i = count($championships); $i < $count_i; $i++) {
+			$championship = $championships[$i];
+			for ($j = 0, $count_j = count($championship['standings']); $j < $count_j; $j++) {
+				$championship_id = $championship['championshipId'];
+				$championship_name = $championship['championshipName'];
+				$season_id = $championship['seasonId'];
+				$season_name = $championship['seasonName'];
+
+				$team_id = $championship['standings'][$j]['teamId'];
+				$team_name = $championship['standings'][$j]['teamName'];
+				$this->logger->add_status($club_code, "Getting team info (" . ++$standing_cursor . "/$total_standings): $season_name - $championship_name - $team_name", 18 / $total_standings);
+				$team_info = $this->portal->get_team_info($team_id, $championship_id, $season_id);
+				$championships[$i]['standings'][$j] = array_merge($championship['standings'][$j], $team_info);
+			}
+		}
+
+		$standing_cursor = 0;
+		$total_standings = array_sum(array_map(function ($c) use ($club_code) {
+			return count(array_values(array_filter($c['standings'], function ($s) use ($club_code) {
+				return $club_code == $s['clubCode'];
+			})));
+		}, $championships));
+
+		for ($i = 0, $_count = count($championships); $i < $_count; $i++) {
+			$championship = $championships[$i];
+			for ($j = 0, $count = count($championship['standings']); $j < $count; $j++) {
+				$standing = $championship['standings'][$j];
+				if ($club_code != $standing['clubCode']) {
+					continue;
+				}
+				$championship_id = $championship['championshipId'];
+				$championship_name = $championship['championshipName'];
+				$season_id = $championship['seasonId'];
+				$season_name = $championship['seasonName'];
+
+				$team_id = $standing['teamId'];
+				$team_name = $standing['teamName'];
+				$this->logger->add_status($club_code, "Getting team details (" . ++$standing_cursor . "/$total_standings): $season_name - $championship_name - $team_name", 8 / $total_standings);
+				$team_details = $this->portal->get_team_details($team_id, $championship_id, $season_id);
+				$championships[$i]['standings'][$j] = array_merge($standing, $team_details);
+			}
+		}
+
+		for ($i = 0, $count = count($championships); $i < $count; $i++) {
+			$championship = $championships[$i];
+			$championship_id = $championship['championshipId'];
+			$championship_name = $championship['championshipName'];
+			$season_id = $championship['seasonId'];
+			$season_name = $championship['seasonName'];
+
+			$this->logger->add_status($club_code, "Getting calendar (" . ($i + 1) . "/$count): $season_name - $championship_name", 8 / $count);
+
+			if ($championship_id == 85 && $season_id == 31) {
+				$standings = $this->fixed_85_31();
+			} else if ($championship_id == 44 && $season_id == 36) {
+				$standings = $this->fixed_44_36();
+			} else {
+				$standings = $this->portal->get_championship_calendar($championship_id, $season_id);
+			}
+			$championships[$i]['calendar'] = $standings;
+		}
+
+		foreach ($old_championships as $old_championship) {
+			$season_id = $old_championship['seasonId'];
+			$championship_id = $old_championship['championshipId'];
+			$common = array_values(array_filter($club['championships'], function ($championship) use ($season_id, $championship_id) {
+				return $championship['seasonId'] == $season_id && $championship['championshipId'] == $championship_id;
+			}));
+			if (empty($common)) {
+				$championships[] = $old_championship;
+			}
+		}
+
+		usort($championships, function ($c1, $c2) {
+			if ($c2['seasonId'] == $c1['seasonId']) {
+				return $c2['championshipId'] - $c1['championshipId'];
+			}
+			return $c2['seasonId'] - $c1['seasonId'];
+		});
+
+		$club['championships'] = $championships;
+
+		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
+		$last_update->setTimestamp(time()); //adjust the object to correct timestamp
+		$club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
+
+		$club = $this->all_to_utf8($club);
+
+		return $club;
+
+	}
+
+
+	public function update_players($club_code) {
+		if ($club_code == null)
+			throw new Exception("Club code can not be null!");
+
+		$this->logger->add_status($club_code, 'Start updating');
+
+		$this->logger->add_status($club_code, "Getting info for club $club_code", 0);
+
+		$club = $this->get_club($club_code);
+
+		$this->logger->add_status($club_code, "Getting ranking list", 5);
+
+		$last_ranking = $this->portal->find_rankings()[0];
+
+		$total_rankings = count(Fitet_Portal_Rest::$ranking_types) * count(Fitet_Portal_Rest::$ranking_sex);
+		$standing_cursor = 0;
+		$players = [];
+		for ($i = 0, $count_i = count(Fitet_Portal_Rest::$ranking_types); $i < $count_i; $i++) {
+			$type = Fitet_Portal_Rest::$ranking_types[$i];
+			for ($j = 0, $count_j = count(Fitet_Portal_Rest::$ranking_sex); $j < $count_j; $j++) {
+				$sex = Fitet_Portal_Rest::$ranking_sex[$j];
+				$type_name = $type['name'];
+				$sex_name = $sex['name'];
+				$date = $last_ranking['date'];
+				$this->logger->add_status($club_code, "Getting ranking (" . ++$standing_cursor . "/$total_rankings): $date - $type_name - $sex_name", 8 / $total_rankings);
+				$players[] = $this->portal->get_ranking($last_ranking['rankingId'], $sex, $type, $club_code);
+			}
+		}
+		$players = array_merge(...$players);
+
+		usort($players, function ($a, $b) {
+			return $b['points'] - $a['points'];
+		});
+
+		for ($i = 0, $count = count($players); $i < $count; $i++) {
+			$player = $players[$i];
+			$player_name = $player['playerName'];
+			$this->logger->add_status($club_code, "Getting player info (" . ($i + 1) . "/$count): $player_name", 20 / $count);
+
+			$player_infos = $this->portal->find_players($player['playerName'], $player['birthDate']);
+			$player_info = $player_infos[0];
+			if (count($player_infos) > 1) {
+				foreach ($player_infos as $info) {
+					$ranking = $this->portal->get_player_history($info['playerId'])['ranking'];
+					if (empty($ranking)) {
+						continue;
+					}
+					if ($ranking[0]['position'] == $player['rank']) {
+						$player_info = $info;
+						break;
+					}
+				}
+			}
+			$players[$i] = array_merge($player, $player_info);
+		}
+
+		for ($i = 0, $count = count($players); $i < $count; $i++) {
+			$player = $players[$i];
+			$player_name = $player['playerName'];
+			$player_code = $player['playerCode'];
+			$this->logger->add_status($club_code, "Getting player season (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
+			$players[$i]['season'] = $this->portal->get_player_season($player['playerId'], $last_ranking['rankingId']);
+		}
+
+		for ($i = 0, $count = count($players); $i < $count; $i++) {
+			$player = $players[$i];
+			$player_name = $player['playerName'];
+			$player_code = $player['playerCode'];
+			$this->logger->add_status($club_code, "Getting player history (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
+			$players[$i]['history'] = $this->portal->get_player_history($player['playerId']);
+		}
+
+		foreach ($players as &$player) {
+			$player['best'] = self::calculate_best_ranking(isset($player['history']) ? $player['history']['ranking'] : []);
+		}
+
+		$club['players'] = $players;
+
+		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
+		$last_update->setTimestamp(time()); //adjust the object to correct timestamp
+		$club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
+
+		$club = $this->all_to_utf8($club);
+
+		return $club;
+
+	}
+
+
+	public function update_club($club_code) {
+		if ($club_code == null)
+			throw new Exception("Club code can not be null!");
+
+		$this->logger->add_status($club_code, 'Start updating');
+
+		$this->logger->add_status($club_code, "Getting info for club $club_code", 0);
+
+		$club = $this->get_club($club_code);
+
+		$this->logger->add_status($club_code, "Getting details for club " . $club['clubCode'] . " " . $club['clubName'], 5);
+		$club_details = $this->portal->get_club_details($club_code, 0);
+
+		usort($club_details['nationalTitles'], [$this, 'sort_titles']);
+		usort($club_details['regionalTitles'], [$this, 'sort_titles']);
+
+		$club['nationalTitles'] = $club_details['nationalTitles'];
+		$club['regionalTitles'] = $club_details['regionalTitles'];
+		$club['attendances'] = $club_details['attendances'];
 
 		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
 		$last_update->setTimestamp(time()); //adjust the object to correct timestamp

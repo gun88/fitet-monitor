@@ -72,6 +72,7 @@ define('FITET_MONITOR_ICON_LIST', plugin_dir_url(FITET_MONITOR_DIR . "public/ass
 define('FITET_MONITOR_ICON_TABLE', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/table-solid.svg") . "table-solid.svg");
 define('FITET_MONITOR_ICON_TABLE_TENNIS', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/table-tennis-paddle-ball-solid.svg") . "table-tennis-paddle-ball-solid.svg");
 define('FITET_MONITOR_ICON_TROPHY', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/trophy-solid.svg") . "trophy-solid.svg");
+define('FITET_MONITOR_ICON_CLOUD_ARROW', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/cloud-arrow-down-solid.svg") . "cloud-arrow-down-solid.svg");
 
 /**
  * The core plugin class that is used to define internationalization,
