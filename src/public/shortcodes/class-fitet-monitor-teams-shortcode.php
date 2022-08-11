@@ -215,7 +215,7 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 
 		$resources = $this->filter_teams($resources, $attributes['team']);
 		$resources = $this->sort_teams($resources);
-		$resources = $this->filter_empty_teams($resources);
+		//$resources = $this->filter_empty_teams($resources);
 		$resources = $this->fill_players_data($resources, "index.php?page_id=" . $attributes['players-page-id'], $multi_club);
 
 		$resources = $this->fill_teams_data($resources);
@@ -261,7 +261,7 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 		$resources = $this->fill_team_rankings($resources);
 		$resources = $this->flat_to_teams($resources);
 		$resources = $this->sort_teams($resources);
-		$resources = $this->filter_empty_teams($resources);
+		//$resources = $this->filter_empty_teams($resources);
 		$resources = $this->fill_players_data($resources, "index.php?page_id=" . $attributes['players-page-id'], $multi_club);
 
 		$resources = $this->fill_teams_data($resources);

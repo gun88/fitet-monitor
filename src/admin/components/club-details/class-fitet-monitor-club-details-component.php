@@ -27,6 +27,11 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		];
 	}
 
+	protected function script_dependencies(): array {
+		return ['jquery', 'wp-api'];
+	}
+
+
 	protected function components() {
 		return [
 			'playersTable' => new Fitet_Monitor_Players_Table_Component($this->plugin_name, $this->version),
@@ -167,7 +172,7 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 					"</div>";
 			}, $teams));
 
-			$championship['standings'] = !empty($championship['standings'])? "Loaded standings" : "Not Loaded";
+			$championship['standings'] = !empty($championship['standings']) ? "Loaded standings" : "Not Loaded";
 			$championship['calendar'] = "Loaded calendar";
 			$championship['actions'] = "<div style='display: flex;justify-content: center;'>" .
 				"<a href='#' title='Aggiorna'><img style='width: 24px' alt='update-buttom' src='" . FITET_MONITOR_ICON_CLOUD_ARROW . "'/></a>" .
