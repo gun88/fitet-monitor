@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-08-11 17:05:35+00:00\n"
+"POT-Creation-Date: 2022-08-12 09:55:14+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,6 @@ msgstr "Giocatori"
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:20
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:27
 #: src/public/components/player-detail/class-fitet-monitor-player-detail-component.php:61
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:63
 msgid "Championships"
 msgstr "Campionati"
 
@@ -127,7 +126,7 @@ msgstr "Reset Stato"
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:72
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:105
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:152
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:34
+#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:30
 #: src/public/components/players-list/class-fitet-monitor-players-list-component.php:32
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:29
 #: src/public/components/teams-list/class-fitet-monitor-teams-list-component.php:24
@@ -268,7 +267,7 @@ msgstr ""
 
 #: src/admin/components/club-table/class-fitet-monitor-club-table-component.php:23
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:99
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:70
+#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:56
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:60
 #: src/public/components/titles/class-fitet-monitor-titles-component.php:70
 msgid "Club"
@@ -372,7 +371,7 @@ msgstr "Squadra"
 
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:67
 msgid "Matches"
-msgstr "Inconti"
+msgstr "Incontri"
 
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:68
 msgid "Won"
@@ -393,7 +392,6 @@ msgid "Ranking"
 msgstr "Classifica"
 
 #: src/public/components/player-detail/class-fitet-monitor-player-detail-component.php:62
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:62
 msgid "Tournaments"
 msgstr "Tornei"
 
@@ -439,33 +437,29 @@ msgstr "Tornei Nazionali"
 msgid "Regional Tournaments"
 msgstr "Tornei Regionali"
 
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:51
+#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:44
 #: src/public/components/players-list/class-fitet-monitor-players-list-component.php:42
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:42
 msgid "List"
 msgstr "Lista"
 
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:52
+#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:45
 #: src/public/components/players-list/class-fitet-monitor-players-list-component.php:43
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:43
 msgid "Table"
 msgstr "Tabella"
 
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:53
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:66
+#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:46
+#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:54
 #: src/public/components/players-list/class-fitet-monitor-players-list-component.php:44
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:44
 msgid "Caps"
 msgstr "Presenze"
 
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:60
+#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:53
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:52
 msgid "Name"
 msgstr "Nome"
-
-#: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:64
-msgid "Total"
-msgstr "Totale"
 
 #: src/public/components/players-list/class-fitet-monitor-players-list-component.php:51
 msgid "Filter"
@@ -610,9 +604,12 @@ msgstr ""
 msgid "No results found"
 msgstr "Nessun risultato"
 
-#: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:384
+#: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:442
 msgid "on"
 msgstr "il"
+
+#~ msgid "Total"
+#~ msgstr "Totale"
 
 #~ msgid "BirthDate"
 #~ msgstr "Data di Nascita"

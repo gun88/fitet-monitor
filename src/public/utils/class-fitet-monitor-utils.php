@@ -20,6 +20,39 @@ class Fitet_Monitor_Utils {
 		return '';
 	}
 
+	public static function player_id_by_code($player_code, $club_code = '') {
+		foreach (self::clubs() as $club) {
+			foreach ($club['players'] as $player) {
+				if ($player['playerCode'] == $player_code && (empty($club_code) || $club_code == $player['clubCode'])) {
+					return $player['playerId'];
+				}
+			}
+		}
+		return '';
+	}
+
+	public static function player_id_by_name_in_standings($player_name, $club_code) {
+
+		foreach (self::clubs() as $club) {
+			if ($club['clubCode'] != $club_code) {
+				continue;
+			}
+			foreach ($club['championships'] as $championship) {
+				foreach ($championship['standings'] as $standing) {
+					if ($standing['clubCode'] != $club_code) {
+						continue;
+					}
+					foreach ($standing['players'] as $player) {
+						if ($player_name == $player['playerName'])
+							return $player['playerId'];
+					}
+
+				}
+			}
+		}
+		return '';
+	}
+
 	public static function team_id_by_name($championship_id, $season_id, $team_name) {
 		foreach (self::clubs() as $club) {
 			foreach ($club['championships'] as $championship) {
@@ -248,5 +281,19 @@ class Fitet_Monitor_Utils {
 	public static function is_hidden($player_code): bool {
 		return in_array($player_code, [515982]);
 	}
+
+	public static function belongs_to_club($player_code, $club_code) {
+		foreach (self::clubs() as $club) {
+			if (!empty($club_code) && $club['clubCode'] != $club_code) {
+				continue;
+			}
+			foreach ($club['players'] as $player) {
+				if ($player['playerCode'] == $player_code)
+					return true;
+			}
+		}
+		return false;
+	}
+
 
 }

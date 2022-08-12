@@ -178,7 +178,7 @@ class Fitet_Monitor_Manager {
 		$club['championships'] = $club_details['championships'];
 		$club['nationalTitles'] = $club_details['nationalTitles'];
 		$club['regionalTitles'] = $club_details['regionalTitles'];
-		$club['attendances'] = $club_details['attendances'];
+		$club['caps'] = $club_details['caps'];
 		$club = array_merge($club, $club_details);
 
 
@@ -348,25 +348,9 @@ class Fitet_Monitor_Manager {
 			$player['best'] = self::calculate_best_ranking(isset($player['history']) ? $player['history']['ranking'] : []);
 		}
 
-
-		foreach ($players as &$player) {
-			$player['caps'] = ['tournaments' => 0, 'championships' => 0];
-			$caps = array_values(array_filter($club['attendances'], function ($attendance) use ($player) {
-				return $attendance['playerCode'] == $player['playerCode'];
-			}));
-			if (!empty($caps)) {
-				$player['caps']['tournaments'] = $caps[0]['count'];
-			} else {
-				$player['caps']['tournaments'] = 0;
-			}
-			$player['caps']['championships'] = 0;//$this->calculate_championship_caps($club['championships'],$club_code,$player['playerId']);
-		}
-
-		unset($club['attendances']);
-
 		$club['players'] = $players;
 
-		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
+		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome'));
 		$last_update->setTimestamp(time()); //adjust the object to correct timestamp
 		$club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
 
@@ -619,7 +603,7 @@ class Fitet_Monitor_Manager {
 
 		$club['nationalTitles'] = $club_details['nationalTitles'];
 		$club['regionalTitles'] = $club_details['regionalTitles'];
-		$club['attendances'] = $club_details['attendances'];
+		$club['caps'] = $club_details['caps'];
 
 		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
 		$last_update->setTimestamp(time()); //adjust the object to correct timestamp

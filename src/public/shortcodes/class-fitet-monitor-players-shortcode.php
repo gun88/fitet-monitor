@@ -24,7 +24,6 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 	}
 
 
-
 	public function devSeasonFix($resources_) {
 
 		foreach ($resources_ as &$resources) {
@@ -83,7 +82,17 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 			return !Fitet_Monitor_Utils::is_hidden($player['playerCode']);
 		}));
 		return $players;
+	}
 
+	private function extract_caps($clubs) {
+		$caps = array_map(function ($club) {
+			return $club['caps']; // todo caps
+		}, $clubs);
+		$caps = array_merge(...$caps);
+		$caps = array_values(array_filter($caps, function ($cap) {
+			return !Fitet_Monitor_Utils::is_hidden($cap['playerCode']);
+		}));
+		return $caps;
 	}
 
 	private function add_player_url($players) {
@@ -321,48 +330,99 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 	}
 
 	private function caps($attributes) {
-		$template = ['players' => [
-			'playerId' => '',
-			'playerCode' => '',
-			'playerName' => '',
-			'caps' => '',
-			'clubName' => '',
-			'clubCode' => '',
-		]];
+		ini_set('memory_limit', '-1');
+
 		$multi_club = empty($attributes['club']);
 		if ($multi_club) {
 			// no club found - keeping all
-			$resources = $this->manager->get_clubs($template);
+			$resources = $this->manager->get_clubs();
 		} else {
-			$resources = [$this->manager->get_club($attributes['club'], $template)];
+			$resources = [$this->manager->get_club($attributes['club'])];
 		}
 
 		$resources = array_values(array_filter($resources, function ($club) {
 			return !empty($club);
 		}));
 
-		$resources = $this->extract_players($resources);
-		$resources = $this->add_club_data($resources);
+		global $post;
+		$post_id = $post->ID;
+		$table_url = "index.php?page_id=$post_id&mode=table";
+		$list_url = "index.php?page_id=$post_id";
 
-		$resources = array_map(function ($player) {
-			return [
-				'playerId' => $player['playerId'],
-				'playerCode' => $player['playerCode'],
-				'playerName' => $player['playerName'],
-				'tournaments' => !empty($player['caps']) ? $player['caps']['tournaments'] : '', // todo restore
-				'championships' => !empty($player['caps']) ? $player['caps']['championships'] : '', // todo restore
-				'clubCode' => $player['clubCode'],
-				'clubName' => $player['clubName'],
-			];
+
+		$resources = array_map(function ($club) use ($multi_club, $attributes, $post_id) {
+			// todo - temp remove
+			$club['caps'] = isset($club['caps']) ? $club['caps'] : [];
+
+			if (empty($club['caps'])) {
+
+				//$calculating_caps = [];
+				foreach ($club['championships'] as $championship) {
+					foreach ($championship['standings'] as $standing) {
+						if (empty($standing['players']))
+							continue;
+
+						foreach ($standing['players'] as $player) {
+							if (strpos($player['playerName'], "-")) {
+								continue;
+							}
+
+							if (!isset($club['caps'][$player['playerId']])) {
+								$club['caps'][$player['playerId']] = [
+									'playerId' => $player['playerId'],
+									'playerName' => $player['playerName'],
+									'playerCode' => Fitet_Monitor_Utils::player_code_by_id($player['playerId']),
+									'count' => 0,
+								];
+							}
+
+
+							$club['caps'][$player['playerId']]['count'] += $player['pd'];
+
+						}
+					}
+				}
+
+
+				$club['caps'] = array_values($club['caps']);
+
+			}
+
+			return array_map(function ($caps) use ($multi_club, $club, $attributes, $post_id) {
+				if (!empty($caps['playerId'])) {
+					$player_id = $caps['playerId'];
+				} else {
+					$player_id = Fitet_Monitor_Utils::player_id_by_code($caps['playerCode']);
+				}
+				if (empty($player_id)) {
+					$player_id = Fitet_Monitor_Utils::player_id_by_name_in_standings($caps['playerName'], $club['clubCode']);
+				}
+				if (Fitet_Monitor_Utils::is_hidden($caps['playerCode'])) {
+					$show_link = false;
+				} else {
+					$show_link = Fitet_Monitor_Utils::belongs_to_club($caps['playerCode'], $multi_club ? '' : $attributes['club']);
+				}
+
+				return [
+					'playerId' => $player_id,
+					'playerCode' => $caps['playerCode'],
+					'playerName' => $caps['playerName'],
+					'playerUrl' => $show_link ? Fitet_Monitor_Utils::player_page_url("index.php?page_id=$post_id", $caps['playerCode'], $caps['playerName']) : '',
+					'caps' => $caps['count'],
+					'clubCode' => $club['clubCode'],
+					'clubName' => $club['clubName'],
+					'clubLogo' => $club['clubLogo'],
+					'clubPageUrl' => '',
+				];
+			}, $club['caps']);
 		}, $resources);
 
+		$resources = array_merge(...$resources);
 
-		global $post;
-		$table_url = "index.php?page_id=$post->ID&mode=table";
-		$list_url = "index.php?page_id=$post->ID";
+		usort($resources, function ($r1, $r2) {
+			return $r2['caps'] - $r1['caps'];
+		});
 
-		$resources = $this->add_player_url($resources);
-		$resources = $this->add_club_data($resources);
 
 		return [
 			'multiClub' => $multi_club,
@@ -370,6 +430,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 			'listUrl' => $list_url,
 			'tableUrl' => $table_url
 		];
+
 	}
 
 	private function filterPlayers($players, $filter) {

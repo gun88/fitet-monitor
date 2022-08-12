@@ -18,29 +18,22 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 	protected function process_data($data) {
 		$data = array_merge(['players' => [], 'listUrl' => '#', 'tableUrl' => '#', 'multiClub' => true], $data);
 
-		$show_championships = false;/* || array_sum(array_map(function ($player) {
-				return $player['tournaments'];
-			}, $data['players'])) > 0;*/
-
 		return [
 			'pageMenu' => $this->menu($data['listUrl'], $data['tableUrl']),
-			'mainContent' => $this->main_content($data['players'], $data['multiClub'], $show_championships),
+			'mainContent' => $this->main_content($data['players'], $data['multiClub']),
 		];
 
 	}
 
-	private function main_content($players, $multi_club, $show_championships) {
+	private function main_content($players, $multi_club) {
 		if (empty($players)) {
 			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
 
 		$players = $this->rows($players, $multi_club);
-		usort($players, function ($r1, $r2) {
-			return $r2['total'] - $r1['total'];
-		});
 		return $this->components['table']->render([
 			'name' => 'fm-players-caps',
-			'columns' => $this->columns($multi_club, $show_championships),
+			'columns' => $this->columns($multi_club),
 			'sort' => $this->sort(),
 			'rows' => $players,
 		]);
@@ -55,17 +48,10 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 		return implode('|', $menu_entries);
 	}
 
-	private function columns($multi_club, $show_championships) {
+	private function columns($multi_club) {
 		$columns = [];
 		$columns  ['playerName'] = __('Name', 'fitet-monitor');
-		if ($show_championships) { // todo terminare quando non ci saranno problemi di connessione sul sito fitet
-			$columns  ['tournaments'] = __('Tournaments', 'fitet-monitor');
-			$columns  ['championships'] = __('Championships', 'fitet-monitor');
-			$columns  ['total'] = __('Total', 'fitet-monitor');
-		} else {
-			$columns  ['total'] = __('Caps', 'fitet-monitor');
-		}
-
+		$columns  ['caps'] = __('Caps', 'fitet-monitor');
 		if ($multi_club) {
 			$columns['club'] = __('Club', 'fitet-monitor');
 		}
@@ -75,19 +61,19 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 
 	private function sort() {
 		return [
-			'tournaments' => 'number',
-			'championships' => 'number',
-			'total' => 'number',
+			'caps' => 'number',
 		];
 	}
 
 	private function rows($players, $multi_club) {
 		return array_map(function ($player) use ($multi_club) {
 			$row = [
-				'playerName' => $this->components['playerCell']->render(['playerId' => $player['playerId'], 'playerName' => $player['playerName'], 'playerPageUrl' => $player['playerUrl']]),
-				'tournaments' => $player['tournaments'],
-				'championships' => $player['championships'],
-				'total' => $this->total($player['tournaments'], $player['championships']),
+				'playerName' => $this->components['playerCell']->render([
+					'playerId' => $player['playerId'],
+					'playerName' => $player['playerName'],
+					'playerPageUrl' => $player['playerUrl']
+				]),
+				'caps' => $player['caps'],
 				'clubName' => $player['clubName'],
 				'clubCode' => $player['clubCode'],
 				'playerUrl' => $player['playerUrl'],
@@ -104,11 +90,6 @@ class Fitet_Monitor_Players_Caps_Component extends Fitet_Monitor_Component {
 			return $row;
 		}, $players);
 
-	}
-
-
-	private function total($tournaments, $championships): int {
-		return intval($tournaments) + intval($championships);
 	}
 
 

@@ -519,29 +519,29 @@ class Fitet_Portal_Rest {
 			return array_combine(['season', 'tournament', 'competition', 'player'], $row);
 		}, $regional_titles);
 
-		// retrieving attendances data
-		$attendances = $html->find('#presenze tr');
+		// retrieving caps data
+		$caps = $html->find('#presenze tr');
 
 		// removing useless header rows
-		array_shift($attendances);
+		array_shift($caps);
 
 		// retrieving values
-		$attendances = array_map(function ($row) {
+		$caps = array_map(function ($row) {
 			return array_map(function ($r) {
 				return $r->plaintext;
 			}, $row->find('p'));
-		}, $attendances);
+		}, $caps);
 
 		// creating object
-		$attendances = array_map(function ($row) {
+		$caps = array_map(function ($row) {
 			return array_combine(['playerCode', 'playerName', 'count'], $row);
-		}, $attendances);
+		}, $caps);
 
 		return [
 			'championships' => $championships,
 			'nationalTitles' => $national_titles,
 			'regionalTitles' => $regional_titles,
-			'attendances' => $attendances,
+			'caps' => $caps,
 		];
 
 	}

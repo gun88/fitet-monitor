@@ -20,6 +20,7 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 
 	private $default_config = [
 		'showLink' => false,
+		'showDoubles' => false,
 		'showStatistics' => false,
 
 	];
@@ -57,11 +58,16 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 	private function players($team) {
 		$players = isset($team['players']) ? $team['players'] : [];
 
+		if (!$team['showDoubles']) {
+			$players = array_values(array_filter($players, function ($player) {
+				return !strpos($player['playerName'], '-');
+			}));
+		}
+
 		$players = array_map(function ($player) use ($team) {
 			return $this->components['playerCard']->render($player);
 		}, $players);
 
-		$players = array_values($players); // todo remove this line
 
 		if (empty($players))
 			return "";
