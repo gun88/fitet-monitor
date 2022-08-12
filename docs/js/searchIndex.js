@@ -261,11 +261,6 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#function_theme_custom_rewrites"
         },                {
-            "fqsen": "\\example_add_cron_interval\u0028\u0029",
-            "name": "example_add_cron_interval",
-            "summary": "",
-            "url": "namespaces/default.html#function_example_add_cron_interval"
-        },                {
             "fqsen": "\\memory_dump\u0028\u0029",
             "name": "memory_dump",
             "summary": "",
@@ -511,9 +506,24 @@ Search.appendIndex(
             "summary": "Plugin\u0020deactivation",
             "url": "classes/Fitet-Monitor.html#method_deactivate"
         },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aviewport_fix\u0028\u0029",
+            "name": "viewport_fix",
+            "summary": "Setting\u0020viewport\u0020initial\u002Dscale\u0020to\u00200.5\u0020for\u0020mobile\u0020optimization\u0020in\u0020Fitet\u0020Monitor\u0020pages.",
+            "url": "classes/Fitet-Monitor.html#method_viewport_fix"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aregister_query_vars\u0028\u0029",
+            "name": "register_query_vars",
+            "summary": "Registering\u0020Fitet\u0020Monitor\u0020custom\u0020query\u0020vars.",
+            "url": "classes/Fitet-Monitor.html#method_register_query_vars"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aregister_activation_hooks\u0028\u0029",
+            "name": "register_activation_hooks",
+            "summary": "Registering\u0020Fitet\u0020Monitor\u0020activation\u0020and\u0020deactivation\u0020hooks.",
+            "url": "classes/Fitet-Monitor.html#method_register_activation_hooks"
+        },                {
             "fqsen": "\\Fitet_Monitor\u003A\u003Abuild_manager\u0028\u0029",
             "name": "build_manager",
-            "summary": "",
+            "summary": "Building\u0020Fitet_Monitor_Manager\u0020and\u0020it\u0027s\u0020dependencies.",
             "url": "classes/Fitet-Monitor.html#method_build_manager"
         },                {
             "fqsen": "\\Fitet_Monitor\u003A\u003Aset_locale\u0028\u0029",
@@ -523,7 +533,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Fitet_Monitor\u003A\u003Aload_text_domain\u0028\u0029",
             "name": "load_text_domain",
-            "summary": "",
+            "summary": "Loading\u0020text_domain\u0020for\u0020i18n",
             "url": "classes/Fitet-Monitor.html#method_load_text_domain"
         },                {
             "fqsen": "\\Fitet_Monitor\u003A\u003Aload_admin\u0028\u0029",
@@ -545,6 +555,11 @@ Search.appendIndex(
             "name": "start",
             "summary": "Load\u0020the\u0020dependencies,\u0020define\u0020the\u0020locale,\u0020and\u0020set\u0020the\u0020hooks\u0020for\u0020the\u0020admin\u0020area\u0020and\nthe\u0020public\u002Dfacing\u0020side\u0020of\u0020the\u0020site.",
             "url": "classes/Fitet-Monitor.html#method_start"
+        },                {
+            "fqsen": "\\Fitet_Monitor\u003A\u003Aschedule_cronjob\u0028\u0029",
+            "name": "schedule_cronjob",
+            "summary": "",
+            "url": "classes/Fitet-Monitor.html#method_schedule_cronjob"
         },                {
             "fqsen": "\\Fitet_Monitor\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
@@ -2061,30 +2076,35 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_update"
         },                {
-            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aretrieve_club_data\u0028\u0029",
-            "name": "retrieve_club_data",
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A_update_season_championships\u0028\u0029",
+            "name": "_update_season_championships",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Manager.html#method_retrieve_club_data"
+            "url": "classes/Fitet-Monitor-Manager.html#method__update_season_championships"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate_season_championships\u0028\u0029",
             "name": "update_season_championships",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_update_season_championships"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A_update_players\u0028\u0029",
+            "name": "_update_players",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method__update_players"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate_players\u0028\u0029",
             "name": "update_players",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_update_players"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A_update_club\u0028\u0029",
+            "name": "_update_club",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method__update_club"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate_club\u0028\u0029",
             "name": "update_club",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_update_club"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Acalculate_championship_caps\u0028\u0029",
-            "name": "calculate_championship_caps",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Manager.html#method_calculate_championship_caps"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Acalculate_best_ranking\u0028\u0029",
             "name": "calculate_best_ranking",
@@ -2095,6 +2115,16 @@ Search.appendIndex(
             "name": "to_utf8",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_to_utf8"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aget_club_codes\u0028\u0029",
+            "name": "get_club_codes",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_get_club_codes"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aget_club_cron_jobs\u0028\u0029",
+            "name": "get_club_cron_jobs",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_get_club_cron_jobs"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Asort_titles\u0028\u0029",
             "name": "sort_titles",
@@ -2895,11 +2925,6 @@ Search.appendIndex(
             "name": "extract_players",
             "summary": "",
             "url": "classes/Fitet-Monitor-Players-Shortcode.html#method_extract_players"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Players_Shortcode\u003A\u003Aextract_caps\u0028\u0029",
-            "name": "extract_caps",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Players-Shortcode.html#method_extract_caps"
         },                {
             "fqsen": "\\Fitet_Monitor_Players_Shortcode\u003A\u003Aadd_player_url\u0028\u0029",
             "name": "add_player_url",

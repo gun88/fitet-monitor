@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-08-12 09:55:14+00:00\n"
+"POT-Creation-Date: 2022-08-12 18:21:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -87,7 +87,7 @@ msgid "Last Update"
 msgstr ""
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:19
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:68
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:74
 msgid "Players"
 msgstr ""
 
@@ -197,7 +197,7 @@ msgstr ""
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-doubles-tournaments-component.php:33
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-tournaments-component.php:35
 #: src/public/components/player-tournaments/class-fitet-monitor-player-regional-tournaments-component.php:35
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:74
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:80
 #: src/public/components/teams-list/class-fitet-monitor-teams-list-component.php:33
 #: src/public/components/titles/class-fitet-monitor-titles-component.php:65
 msgid "Season"
@@ -230,7 +230,7 @@ msgstr ""
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:189
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:65
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:73
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:79
 msgid "Championship"
 msgstr ""
 
@@ -333,8 +333,8 @@ msgstr ""
 msgid "Club edited successfully"
 msgstr ""
 
-#: src/fitet-monitor.php:143
-msgid "Every Five Seconds"
+#: src/common/includes/class-fitet-monitor.php:273
+msgid "Every Five Minutes"
 msgstr ""
 
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:73
@@ -384,7 +384,7 @@ msgid "Percentage"
 msgstr ""
 
 #: src/public/components/player-detail/class-fitet-monitor-player-detail-component.php:59
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:105
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:111
 msgid "Ranking"
 msgstr ""
 
@@ -514,26 +514,26 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:78
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:84
 msgid "Open Team Details"
 msgstr ""
 
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:89
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:95
 #: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:19
 msgid "Playoff"
 msgstr ""
 
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:92
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:98
 #: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:20
 msgid "Playout"
 msgstr ""
 
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:95
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:101
 #: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:21
 msgid "Relegation"
 msgstr ""
 
-#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:98
+#: src/public/components/team-card/class-fitet-monitor-team-card-component.php:104
 #: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:18
 msgid "Promotion"
 msgstr ""
@@ -601,6 +601,6 @@ msgstr ""
 msgid "No results found"
 msgstr ""
 
-#: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:442
+#: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:436
 msgid "on"
 msgstr ""
