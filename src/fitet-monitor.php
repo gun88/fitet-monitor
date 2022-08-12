@@ -91,23 +91,11 @@ require FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor.php';
  */
 function run_fitet_monitor() {
 	$fitet_monitor = new Fitet_Monitor(FITET_MONITOR_VERSION, FITET_MONITOR_NAME);
-	register_activation_hook(FITET_MONITOR_ROOT_FILE, [$fitet_monitor, 'activate']);
-	register_deactivation_hook(FITET_MONITOR_ROOT_FILE, [$fitet_monitor, 'deactivate']);
 	$fitet_monitor->start();
 }
 
+
 run_fitet_monitor();
-
-
-add_action('wp', function () {
-
-	global $post;
-	if ($post != null && strpos($post->post_content, '[fitet-monitor-'))
-		add_action('wp_head', function () {
-			// echo '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
-			echo '<meta name="viewport" content="width=device-width, initial-scale=.5">';
-		}, '1');
-});
 
 
 // todo !!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -124,53 +112,12 @@ function theme_custom_rewrites() {
 
 // add_action('init', 'theme_custom_rewrites');
 
-
-add_filter('query_vars', function ($vars) {
-	$vars[] = "team";
-	$vars[] = "season";
-	$vars[] = "championship";
-	$vars[] = "club";
-	$vars[] = "player";
-	$vars[] = "mode";
-	$vars[] = "filter";
-	return $vars;
-});
-
-add_filter('cron_schedules', 'example_add_cron_interval');
-function example_add_cron_interval($schedules) {
-	$schedules['five_seconds'] = array(
-		'interval' => 5,
-		'display' => esc_html__('Every Five Seconds', 'fitet-monitor'),);
-	return $schedules;
-}
-
-/*
-add_action('bl_cron_hook', 'bl_cron_exec');
-
-
-error_log("next " . wp_next_scheduled('bl_cron_hook') - time());
-
-if (!wp_next_scheduled('bl_cron_hook')) {
-	error_log("Scheduling");
-	wp_schedule_event(time(), 'five_seconds', 'bl_cron_hook');
-} else {
-	error_log("already scheduled");
-}
-
-function bl_cron_exec() {
-	error_log("running ");
-	//sleep(300);
-	error_log("next " . wp_next_scheduled('bl_cron_hook') - time());
-
-
-}*/
-
-
 $x = 0;
 
 function memory_dump() {
-	/*if (!FITET_MONITOR_IS_DEV) todo restore
-		return;*/
+	return;
+	if (!FITET_MONITOR_IS_DEV)
+		return;
 	global $x;
 	$x++;
 	error_log("[$x]" . ' memory usage: ' . round(memory_get_usage() / (1024 * 1024)) .
@@ -178,3 +125,34 @@ function memory_dump() {
 		' - ' . round(memory_get_peak_usage(true) / (1024 * 1024)));
 }
 
+
+/*
+// Add a new interval of a week
+// See http://codex.wordpress.org/Plugin_API/Filter_Reference/cron_schedules
+add_filter('cron_schedules', 'myprefix_add_my_interval_cron_schedule');
+function myprefix_add_my_interval_cron_schedule($schedules) {
+	error_log("adding cron_schedules");
+	$schedules['my_interval'] = array(
+		'interval' => 10, // 1 week in seconds
+		'display' => __('Once my_interval'),
+	);
+
+	return $schedules;
+}
+
+error_log("next " . wp_next_scheduled('myprefix_my_cron_action') - time());
+
+if (!wp_next_scheduled('myprefix_my_cron_action')) {
+	error_log("Scheduling");
+	wp_schedule_event(time(), 'my_interval', 'myprefix_my_cron_action');
+} else {
+	error_log("already scheduled");
+}
+
+
+// Hook into that action that'll fire my_interval
+add_action('myprefix_my_cron_action', 'myprefix_function_to_run');
+function myprefix_function_to_run() {
+	// Add some code here
+	error_log("CIAO");
+}*/

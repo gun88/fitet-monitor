@@ -59,13 +59,9 @@ class Fitet_Monitor {
 	 * @since    1.0.0
 	 */
 	public function __construct($version, $plugin_name) {
-
 		$this->version = $version;
 		$this->plugin_name = $plugin_name;
-
-
 	}
-
 
 	/**
 	 * Plugin activation
@@ -95,9 +91,67 @@ class Fitet_Monitor {
 		error_log("#  DEACTIVATE  #");
 		error_log("################");
 		delete_option('fitet-monitor-demo'); // todo remove
+
+		// todo sposta in manager
+		foreach (array_values(get_option($this->plugin_name . 'clubs', [])) as $club_code) {
+			wp_clear_scheduled_hook('fm_cron_update_club_hook', [$club_code]);
+			wp_clear_scheduled_hook('fm_cron_update_players_hook', [$club_code]);
+			wp_clear_scheduled_hook('fm_cron_update_championships_hook', [$club_code]);
+		}
+
+
 	}
 
 	/**
+	 * Setting viewport initial-scale to 0.5 for mobile optimization in Fitet Monitor pages.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function viewport_fix() {
+		add_action('wp', function () {
+			global $post;
+			if ($post != null && strpos($post->post_content, '[fitet-monitor-'))
+				add_action('wp_head', function () {
+					echo '<meta name="viewport" content="width=device-width, initial-scale=.5">';
+				}, '1');
+		});
+	}
+
+	/**
+	 * Registering Fitet Monitor custom query vars.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function register_query_vars() {
+		add_filter('query_vars', function ($vars) {
+			$vars[] = "team";
+			$vars[] = "season";
+			$vars[] = "championship";
+			$vars[] = "club";
+			$vars[] = "player";
+			$vars[] = "mode";
+			$vars[] = "filter";
+			return $vars;
+		});
+	}
+
+	/**
+	 * Registering Fitet Monitor activation and deactivation hooks.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function register_activation_hooks() {
+		register_activation_hook(FITET_MONITOR_ROOT_FILE, [$this, 'activate']);
+		register_deactivation_hook(FITET_MONITOR_ROOT_FILE, [$this, 'deactivate']);
+	}
+
+
+	/**
+	 * Building Fitet_Monitor_Manager and it's dependencies.
+	 *
 	 * @return Fitet_Monitor_Manager
 	 */
 	public function build_manager() {
@@ -111,9 +165,7 @@ class Fitet_Monitor {
 		$portal = new Fitet_Portal_Rest($http_service);
 
 		require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-manager.php';
-		$manager = new  Fitet_Monitor_Manager($this->plugin_name, $this->version, $logger, $portal);
-
-		return $manager;
+		return new  Fitet_Monitor_Manager($this->plugin_name, $this->version, $logger, $portal);
 	}
 
 	/**
@@ -129,6 +181,12 @@ class Fitet_Monitor {
 		add_action('plugins_loaded', [$this, 'load_text_domain']);
 	}
 
+	/**
+	 * Loading text_domain for i18n
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
 	public function load_text_domain() {
 		load_plugin_textdomain($this->plugin_name, false, FITET_MONITOR_PLUGIN_DIR_REL_PATH . 'languages');
 	}
@@ -190,11 +248,15 @@ class Fitet_Monitor {
 	 * @since    1.0.0
 	 */
 	public function start() {
-		$manager = $this->build_manager();
+		$this->register_activation_hooks();
+		$this->viewport_fix();
+		$this->register_query_vars();
 
+		$manager = $this->build_manager();
 
 		$this->set_locale();
 		$this->load_rest_api($manager);
+		$this->schedule_cronjob($manager);
 		if (is_admin()) {
 			$this->load_admin($manager);
 		} else {
@@ -202,5 +264,46 @@ class Fitet_Monitor {
 		}
 
 	}
+
+	private function schedule_cronjob(Fitet_Monitor_Manager $manager) {
+
+		add_filter('cron_schedules', function ($schedules) {
+			$schedules['fitet_monitor_dev_interval'] = [
+				'interval' => 300,
+				'display' => esc_html__('Every Five Minutes', 'fitet-monitor'),];
+			return $schedules;
+		});
+
+		$club_codes = $manager->get_club_codes();
+
+		foreach ($club_codes as $club_code) {
+			$cron_job = [];
+			if (!wp_next_scheduled('fm_cron_update_club_hook', [$club_code])) {
+				$cron_job = empty ($cron_job) ? $manager->get_club_cron_jobs($club_code) : $cron_job;
+				wp_schedule_event($cron_job['clubTime'], $cron_job['clubInterval'], 'fm_cron_update_club_hook', [$club_code]);
+			}
+
+			if (!wp_next_scheduled('fm_cron_update_players_hook', [$club_code])) {
+				$cron_job = empty ($cron_job) ? $manager->get_club_cron_jobs($club_code) : $cron_job;
+				wp_schedule_event($cron_job['playersTime'], $cron_job['playersInterval'], 'fm_cron_update_players_hook', [$club_code]);
+			}
+
+			if (!wp_next_scheduled('fm_cron_update_championships_hook', [$club_code])) {
+				$cron_job = empty ($cron_job) ? $manager->get_club_cron_jobs($club_code) : $cron_job;
+				wp_schedule_event($cron_job['championshipsTime'], $cron_job['championshipsInterval'], 'fm_cron_update_championships_hook', [$club_code]);
+			}
+
+			add_action('fm_cron_update_club_hook', [$manager, '_update_club']);
+			add_action('fm_cron_update_players_hook', [$manager, '_update_players']);
+			add_action('fm_cron_update_championships_hook', [$manager, '_update_season_championships']);
+
+
+		}
+
+
+		// todo Don’t forget to clean the scheduler on deactivation:
+
+	}
+
 
 }

@@ -78,21 +78,9 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 			return $club['players'];
 		}, $clubs);
 		$players = array_merge(...$players);
-		$players = array_values(array_filter($players, function ($player) {
+		return array_values(array_filter($players, function ($player) {
 			return !Fitet_Monitor_Utils::is_hidden($player['playerCode']);
 		}));
-		return $players;
-	}
-
-	private function extract_caps($clubs) {
-		$caps = array_map(function ($club) {
-			return $club['caps']; // todo caps
-		}, $clubs);
-		$caps = array_merge(...$caps);
-		$caps = array_values(array_filter($caps, function ($cap) {
-			return !Fitet_Monitor_Utils::is_hidden($cap['playerCode']);
-		}));
-		return $caps;
 	}
 
 	private function add_player_url($players) {
@@ -113,8 +101,11 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 				$club_code = Fitet_Monitor_Utils::club_code_by_team_id($championship_id, $season_id, $team_id);
 				$championship['clubCode'] = $club_code;
 				$championship['clubLogo'] = Fitet_Monitor_Utils::club_logo_by_code($club_code);
-				if (Fitet_Monitor_Utils::team_loaded($championship_id, $season_id, $team_id))
+				if (Fitet_Monitor_Utils::team_loaded($championship_id, $season_id, $team_id)) {
 					$championship['teamPageUrl'] = "index.php?page_id=$team_page_id&season=$season_id&championship=$championship_id&team=$team_id";
+				} else {
+					$championship['teamPageUrl'] = '';
+				}
 			}
 
 		}
@@ -166,9 +157,9 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 	}
 
 	private function add_club_data($players) {
-		// todo implement!
+
 		foreach ($players as &$player) {
-			$player['clubPageUrl'] = '';
+			$player['clubPageUrl'] = ''; // todo implement!
 			$player['clubLogo'] = Fitet_Monitor_Utils::club_logo_by_code($player['clubCode']);
 		}
 		return $players;
