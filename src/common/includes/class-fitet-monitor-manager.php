@@ -180,6 +180,7 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($club_code);
 		$this->update_season_championships($club_code, $season_id);
 		$this->logger->set_completed($club_code, 'Done');
+		error_log("_update_season_championships $club_code done");
 
 	}
 
@@ -304,6 +305,7 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($club_code);
 		$this->update_players($club_code);
 		$this->logger->set_completed($club_code, 'Done');
+		error_log("_update_players $club_code done");
 
 	}
 
@@ -403,6 +405,7 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($club_code);
 		$this->update_club($club_code);
 		$this->logger->set_completed($club_code, 'Done');
+		error_log("_update_club $club_code done");
 	}
 
 	public function update_club($club_code) {

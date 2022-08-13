@@ -115,7 +115,6 @@ function theme_custom_rewrites() {
 $x = 0;
 
 function memory_dump() {
-	return;
 	if (!FITET_MONITOR_IS_DEV)
 		return;
 	global $x;
