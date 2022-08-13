@@ -51,6 +51,31 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		return $acc;
 	}
 
+	/**
+	 * @param $championshipName
+	 * @param $standings
+	 * @return string
+	 */
+	function team_cell_part($championshipName, $standings): string {
+		return implode('', array_map(function ($standing) use ($championshipName) {
+			$standing['teamName'] = $championshipName . ' - ' . $standing['teamName'];
+			if (!empty($standing['players'])) {
+				$toggles = "<span class='fm-toggle fm-expand'>&#9660;</span>" .
+					"<span class='fm-toggle fm-collapse'>&#9650;</span>";
+				$players = "<div class='fm-team-players-list fm-closed'>" .
+					implode("", array_map(function ($player) {
+						return $this->components['playerCell']->render($player);
+					}, $standing['players'])) .
+					"</div>";
+			} else {
+				$toggles = '';
+				$players = '';
+			}
+
+			return "<div class='fm-team-cell-wrapper fm-closed'>" . $this->components['teamCell']->render($standing) . $toggles . "</div>" . $players;
+		}, $standings));
+	}
+
 	protected function script_dependencies(): array {
 		return ['jquery', 'wp-api'];
 	}
@@ -175,8 +200,8 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		}
 
 		foreach ($championships as &$championship) {
-			$championship['standings'] = array_values(array_filter($championship['standings'], function ($standings) {
-				return ($standings['clubCode']) == 718;
+			$championship['standings'] = array_values(array_filter($championship['standings'], function ($standings) use ($club_code) {
+				return ($standings['clubCode']) == $club_code;
 			}));
 		}
 
@@ -184,24 +209,8 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 
 
 		$championships = array_map(function ($championship) use ($club_code) {
-			$teams = implode('', array_map(function ($championship) {
-				return implode('', array_map(function ($standing) use ($championship) {
-					$standing['teamName'] = $championship['championshipName'] . ' - ' . $standing['teamName'];
-					if (!empty($standing['players'])) {
-						$toggles = "<span class='fm-toggle fm-expand'>&#9660;</span>" .
-							"<span class='fm-toggle fm-collapse'>&#9650;</span>";
-						$players = "<div class='fm-team-players-list fm-closed'>" .
-							implode("", array_map(function ($player) {
-								return $this->components['playerCell']->render($player);
-							}, $standing['players'])) .
-							"</div>";
-					} else {
-						$toggles = '';
-						$players = '';
-					}
-
-					return "<div class='fm-team-cell-wrapper fm-closed'>" . $this->components['teamCell']->render($standing) . $toggles . "</div>" . $players;
-				}, $championship['standings']));
+			$teams = implode('-', array_map(function ($championship) {
+				return $this->team_cell_part($championship['championshipName'], $championship['standings']);
 			}, $championship));
 
 			$season_id = $championship[0]['seasonId'];

@@ -509,9 +509,11 @@ class Fitet_Monitor_Manager {
 	 * @param $championships
 	 * @return array
 	 */
-	public function add_empty_standings($championships): array {
+	public function add_empty_standings($championships) {
 		return array_map(function ($championship) {
-			$championship['standings'] = [];
+			if (!isset($championship['standings'])) {
+				$championship['standings'] = [];
+			}
 			return $championship;
 		}, $championships);
 	}

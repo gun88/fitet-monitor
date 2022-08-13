@@ -931,6 +931,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_not_loaded_season_id_list"
         },                {
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Ateam_cell_part\u0028\u0029",
+            "name": "team_cell_part",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_team_cell_part"
+        },                {
             "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Ascript_dependencies\u0028\u0029",
             "name": "script_dependencies",
             "summary": "",
