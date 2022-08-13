@@ -1,7 +1,7 @@
 <?php
 
 require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.php';
-require_once FITET_MONITOR_DIR . 'admin/components/club-table/club-cell/class-fitet-monitor-club-cell-component.php';
+require_once FITET_MONITOR_DIR . 'admin/components/club-table/club-cell/class-fitet-monitor-club-wp-cell-component.php';
 require_once FITET_MONITOR_DIR . 'admin/includes/class-fitet-monitor-wp-table.php';
 
 class Fitet_Monitor_Club_Table_Component extends Fitet_Monitor_Component {
@@ -30,7 +30,7 @@ class Fitet_Monitor_Club_Table_Component extends Fitet_Monitor_Component {
 
 
 	public function components() {
-		return ['clubCell' => new Fitet_Monitor_Club_Cell_Component($this->plugin_name, $this->version)];
+		return ['clubCell' => new Fitet_Monitor_Club_Wp_Cell_Component($this->plugin_name, $this->version)];
 	}
 
 	public function process_data($data) {

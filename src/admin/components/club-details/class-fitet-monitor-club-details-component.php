@@ -27,6 +27,30 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		];
 	}
 
+	/**
+	 * @param $championships
+	 * @return array
+	 */
+	public function group_by_season_id($championships): array {
+		$result = [];
+		foreach ($championships as $championship) {
+			$result[$championship['seasonId']][] = $championship;
+		}
+		return $result;
+	}
+
+
+	public function not_loaded_season_id_list($championships) {
+		$acc = [];
+		foreach ($championships as $championship) {
+			if (empty($championship['standings']))
+				$acc [] = $championship['seasonId'];
+		}
+		$acc = array_unique($acc);
+		sort($acc);
+		return $acc;
+	}
+
 	protected function script_dependencies(): array {
 		return ['jquery', 'wp-api'];
 	}
@@ -48,16 +72,14 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 
 		$displayUpdatingDisclaimer = $data['status'] == 'updating';
 
-
 		return array_merge($this->labels(), [
 			'clubCode' => $data['clubCode'],
 			'clubName' => $data['clubName'],
-			'affiliationDate' => $data['affiliationDate'],
-			'email' => $data['email'],
 			'status' => $this->status($data['status']),
 			'lastUpdate' => $data['lastUpdate'],
 			'players' => $this->player_table($data['players']),
-			'championships' => $this->championships_table($data['championships']),
+			'championships' => $this->championships_table($data['championships'], $data['clubCode']),
+			'not_loaded_seasons' => json_encode($this->not_loaded_season_id_list($data['championships'])),
 			'nationalTitles' => $this->titles_table($data['nationalTitles'], 'national'),
 			'regionalTitles' => $this->titles_table($data['regionalTitles'], 'regional'),
 			'resetStatusUrl' => add_query_arg(['action' => 'resetStatus', 'clubCode' => $data['clubCode']], menu_page_url('fitet-monitor', false)),
@@ -147,59 +169,83 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		}
 	}
 
-	private function championships_table($championships) {
+	private function championships_table($championships, $club_code) {
 		if (empty($championships)) {
 			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
 
-		$championships = array_map(function ($championship) {
-
-
-			$teams = array_values(array_filter($championship['standings'], function ($standing) {
-				return isset($standing['players']);
+		foreach ($championships as &$championship) {
+			$championship['standings'] = array_values(array_filter($championship['standings'], function ($standings) {
+				return ($standings['clubCode']) == 718;
 			}));
+		}
 
-			$championship['teams'] = implode("", array_map(function ($team) {
-				return "<div class='fm-team-cell-wrapper fm-closed'>" .
-					$this->components['teamCell']->render($team) .
-					"<span class='fm-toggle fm-expand' onclick='fmToggle(event)'>&#9660;</span>" .
-					"<span class='fm-toggle fm-collapse' onclick='fmToggle(event)'>&#9650;</span>" .
-					"</div>" .
-					"<div class='fm-team-players-list fm-closed'>" .
-					implode("", array_map(function ($player) {
-						return $this->components['playerCell']->render($player);
-					}, $team['players'])) .
-					"</div>";
-			}, $teams));
+		$championships = $this->group_by_season_id($championships);
 
-			$championship['standings'] = !empty($championship['standings']) ? "Loaded standings" : "Not Loaded";
-			$championship['calendar'] = "Loaded calendar";
-			$championship['actions'] = "<div style='display: flex;justify-content: center;'>" .
-				"<a href='#' title='Aggiorna'><img style='width: 24px' alt='update-buttom' src='" . FITET_MONITOR_ICON_CLOUD_ARROW . "'/></a>" .
-				"</div>";
 
-			$championship['json'] = "<pre>" . json_encode($teams, 128) . "</pre>";
-			return $championship;
-		}, $championships);
+		$championships = array_map(function ($championship) use ($club_code) {
+			$teams = implode('', array_map(function ($championship) {
+				return implode('', array_map(function ($standing) use ($championship) {
+					$standing['teamName'] = $championship['championshipName'] . ' - ' . $standing['teamName'];
+					if (!empty($standing['players'])) {
+						$toggles = "<span class='fm-toggle fm-expand'>&#9660;</span>" .
+							"<span class='fm-toggle fm-collapse'>&#9650;</span>";
+						$players = "<div class='fm-team-players-list fm-closed'>" .
+							implode("", array_map(function ($player) {
+								return $this->components['playerCell']->render($player);
+							}, $standing['players'])) .
+							"</div>";
+					} else {
+						$toggles = '';
+						$players = '';
+					}
+
+					return "<div class='fm-team-cell-wrapper fm-closed'>" . $this->components['teamCell']->render($standing) . $toggles . "</div>" . $players;
+				}, $championship['standings']));
+			}, $championship));
+
+			$season_id = $championship[0]['seasonId'];
+			return [
+				'seasonId' => $season_id,
+				'seasonName' => $championship[0]['seasonName'],
+				'teams' => "<div>$teams</div>",
+				'standings' => $this->count__($championship, 'standings'),
+				'calendar' => $this->count__($championship, 'standings'),
+				'actions' => "<div style='display: flex;justify-content: center;'>" . "<button href='#' title='" . __('Update', 'fitet-monitor') . "' " .
+					"class='fm-update-single-championship' data-club-code='$club_code' data-season-id='$season_id'>" .
+					"<img style='width: 24px' alt='update-buttom' src='" . FITET_MONITOR_ICON_CLOUD_ARROW . "'/></button>" . "</div>",
+			];
+		}, array_values($championships));
 
 		return $this->components['table']->render([
 			'name' => "fm-championships-table",
 			'columns' => [
 				'seasonName' => __('Season', 'fitet-monitor'),
-				'championshipName' => __('Championship', 'fitet-monitor'),
 				'seasonId' => __('Season id', 'fitet-monitor'),
-				'championshipId' => __('Championship id', 'fitet-monitor'),
+				//'championshipId' => __('Championship id', 'fitet-monitor'),
 				'teams' => __('Teams', 'fitet-monitor'),
 				'standings' => __('Standings', 'fitet-monitor'),
 				'calendar' => __('Calendar', 'fitet-monitor'),
 				'actions' => __('Actions', 'fitet-monitor'),
 				//'json' => __('json', 'fitet-monitor'),
+				//'championshipName' => __('Championship', 'fitet-monitor'),
 			],
 			'sort' => [
 				'seasonName' => 'number',
 			],
 			'rows' => $championships,
 		]);
+	}
+
+	private function count__($championship, $field) {
+		$total = count($championship);
+
+		$loaded = count(array_values(array_filter($championship, function ($championship) use ($field) {
+			return !empty($championship[$field]);
+		})));
+
+		return "$loaded/$total";
+
 	}
 
 

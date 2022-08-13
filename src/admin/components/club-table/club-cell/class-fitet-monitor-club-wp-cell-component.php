@@ -2,7 +2,7 @@
 
 require_once FITET_MONITOR_DIR . 'admin/components/progress-bar/class-fitet-monitor-progress-bar-component.php';
 
-class Fitet_Monitor_Club_Cell_Component extends Fitet_Monitor_Component {
+class Fitet_Monitor_Club_Wp_Cell_Component extends Fitet_Monitor_Component {
 
 	public function script_dependencies(): array {
 		return ['jquery', 'wp-api'];
@@ -48,8 +48,11 @@ class Fitet_Monitor_Club_Cell_Component extends Fitet_Monitor_Component {
 		$_data['mainRowActions'] = $table->row_actions([
 			'view' => "<a href='$club_detail_url'>$label_view</a>",
 			'edit' => "<a href='$club_url'>$label_edit</a>",
-			'update' => "<button type='button' class='button-link fm-btn-update' data-club-code='$club_code' data-club-name='$club_name' data-club-logo='$club_logo'>$label_update</button>",
-			"delete" => "<button type='button' class='button-link fm-btn-delete' data-club-code='$club_code' data-club-name='$club_name' data-club-logo='$club_logo'>$label_delete</button>",
+			'updateAll' => "<button type='button' class='button-link fm-btn-update' data-mode='all'>$label_update All</button>",
+			'updateClub' => "<button type='button' class='button-link fm-btn-update' data-mode='club'>$label_update Club</button>",
+			'updatePlayers' => "<button type='button' class='button-link fm-btn-update' data-mode='players'>$label_update Players</button>",
+			'updateChampionships' => "<button type='button' class='button-link fm-btn-update' data-mode='championships'>$label_update Championships</button>",
+			"delete" => "<button type='button' class='button-link fm-btn-delete'>$label_delete</button>",
 		]);
 
 		$_data['deleteRowActions'] = $table->row_actions([
@@ -58,7 +61,7 @@ class Fitet_Monitor_Club_Cell_Component extends Fitet_Monitor_Component {
 		]);
 
 		$_data['updateRowActions'] = $table->row_actions([
-			'retry' => "<button type='button' class='button-link fm-btn-update' data-club-code='$club_code' data-club-name='$club_name' data-club-logo='$club_logo'>$label_retry</button>",
+			'retry' => "<button type='button' class='button-link fm-btn-update'>$label_retry</button>",
 			'restore' => "<button type='button' class='button-link fm-btn-cancel' data-value='restore'>$label_cancel</button>",
 		], true);
 

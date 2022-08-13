@@ -126,33 +126,3 @@ function memory_dump() {
 }
 
 
-/*
-// Add a new interval of a week
-// See http://codex.wordpress.org/Plugin_API/Filter_Reference/cron_schedules
-add_filter('cron_schedules', 'myprefix_add_my_interval_cron_schedule');
-function myprefix_add_my_interval_cron_schedule($schedules) {
-	error_log("adding cron_schedules");
-	$schedules['my_interval'] = array(
-		'interval' => 10, // 1 week in seconds
-		'display' => __('Once my_interval'),
-	);
-
-	return $schedules;
-}
-
-error_log("next " . wp_next_scheduled('myprefix_my_cron_action') - time());
-
-if (!wp_next_scheduled('myprefix_my_cron_action')) {
-	error_log("Scheduling");
-	wp_schedule_event(time(), 'my_interval', 'myprefix_my_cron_action');
-} else {
-	error_log("already scheduled");
-}
-
-
-// Hook into that action that'll fire my_interval
-add_action('myprefix_my_cron_action', 'myprefix_function_to_run');
-function myprefix_function_to_run() {
-	// Add some code here
-	error_log("CIAO");
-}*/

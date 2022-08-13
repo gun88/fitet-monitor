@@ -43,10 +43,10 @@
 	color: #b32d2e;
 }
 
-.fm-club-cell .row-actions .update button,
-.fm-club-cell .row-actions .update button:active,
-.fm-club-cell .row-actions .update button:focus,
-.fm-club-cell .row-actions .update button:hover {
+.fm-club-cell .row-actions .fm-btn-update,
+.fm-club-cell .row-actions .fm-btn-update:active,
+.fm-club-cell .row-actions .fm-btn-update:focus,
+.fm-club-cell .row-actions .fm-btn-update:hover {
 	color: #007017;
 }
 

@@ -16,6 +16,17 @@ class Fitet_Monitor_Manager {
 	 * @var Fitet_Portal_Rest
 	 */
 	protected $portal;
+	private $empty_club = [
+		'nationalTitles' => [],
+		'regionalTitles' => [],
+		'caps' => [],
+		'players' => [],
+		'championships' => [],
+		'lastUpdate' => '',
+		'lastClubUpdate' => '',
+		'lastPlayersUpdate' => '',
+		'lastChampionshipUpdate' => '',
+	];
 
 
 	/**
@@ -71,11 +82,15 @@ class Fitet_Monitor_Manager {
 		update_option($this->plugin_name . 'clubs', $result);
 		foreach ($toRemove as $club_code) {
 			delete_option($this->plugin_name . $club_code);
+			wp_clear_scheduled_hook('fm_cron_update_club_hook', [$club_code]);
+			wp_clear_scheduled_hook('fm_cron_update_players_hook', [$club_code]);
+			wp_clear_scheduled_hook('fm_cron_update_championships_hook', [$club_code]);
 		}
 	}
 
 	public function get_club($club_code, $template = null) {
-		return Fitet_Monitor_Utils::intersect_template(get_option($this->plugin_name . $club_code, []), $template);
+		$club = array_merge($this->empty_club, get_option($this->plugin_name . $club_code, []));
+		return Fitet_Monitor_Utils::intersect_template($club, $template);
 	}
 
 	public function club_exist($club_code) {
@@ -106,7 +121,7 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($clubCode);
 	}
 
-	public function update($club_code, $mode = '') {
+	public function update($club_code, $mode = '', $season_id = null) {
 		set_time_limit(300);
 
 		register_shutdown_function(function () use ($club_code) {
@@ -122,20 +137,30 @@ class Fitet_Monitor_Manager {
 			try {
 				$this->logger->reset_status($club_code);
 
-				if ($mode == 'full-history') {
-					$club = $this->full_championships_history($club_code);
-					$this->logger->set_completed($club_code, 'Done');
-					$this->save_club($club);
-				} else {
+				switch ($mode) {
+					case 'full-history':
+						$this->full_championships_history($club_code);
+						break;
 
-					$this->update_club($club_code);
+					case 'club':
+						$this->update_club($club_code);
+						break;
+					case 'players':
+						$this->update_players($club_code);
+						break;
+					case 'championships':
+						$this->update_season_championships($club_code, $season_id);
+						break;
+					default:
+					case 'all':
 
-					$this->update_players($club_code);
+						$this->update_club($club_code);
+						$this->update_players($club_code);
+						$this->update_season_championships($club_code);
 
-					$this->update_season_championships($club_code);
-
-					$this->logger->set_completed($club_code, 'Done');
+						break;
 				}
+				$this->logger->set_completed($club_code, 'Done');
 
 
 			} catch (Exception $e) {
@@ -152,10 +177,12 @@ class Fitet_Monitor_Manager {
 
 	public function _update_season_championships($club_code, $season_id = null) {
 		error_log("_update_season_championships $club_code");
+		$this->logger->reset_status($club_code);
 		$this->update_season_championships($club_code, $season_id);
 		$this->logger->set_completed($club_code, 'Done');
 
 	}
+
 	public function update_season_championships($club_code, $season_id = null) {
 		if ($club_code == null)
 			throw new Exception("Club code can not be null!");
@@ -255,27 +282,10 @@ class Fitet_Monitor_Manager {
 			$championships[$i]['calendar'] = $standings;
 		}
 
-		// todo terminare!!!!
-
 		$club['championships'] = isset($club['championships']) ? $club['championships'] : [];
-		//$club['championships'] = $club_details['championships'];
-
-		foreach ($championships as $championship) {
-			foreach ($club['championships'] as &$old_championship) {
-				if ($old_championship['seasonId'] == $championship['seasonId'] && $old_championship['championshipId'] == $championship['championshipId']) {
-					$old_championship = $championship;
-				} else {
-					$club['championships'][] = $championship;
-				}
-			}
-		}
-
-		usort($club['championships'], function ($c1, $c2) {
-			if ($c2['seasonId'] == $c1['seasonId']) {
-				return $c2['championshipId'] - $c1['championshipId'];
-			}
-			return $c2['seasonId'] - $c1['seasonId'];
-		});
+		$club_details['championships'] = $this->add_empty_standings($club_details['championships']);
+		$club['championships'] = Fitet_Monitor_Utils::merge_championships($club_details['championships'], $club['championships']);
+		$club['championships'] = Fitet_Monitor_Utils::merge_championships($club['championships'], $championships);
 
 		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
 		$last_update->setTimestamp(time()); //adjust the object to correct timestamp
@@ -291,10 +301,12 @@ class Fitet_Monitor_Manager {
 
 	public function _update_players($club_code) {
 		error_log("_update_players $club_code");
+		$this->logger->reset_status($club_code);
 		$this->update_players($club_code);
 		$this->logger->set_completed($club_code, 'Done');
 
 	}
+
 	public function update_players($club_code) {
 		if ($club_code == null)
 			throw new Exception("Club code can not be null!");
@@ -388,16 +400,16 @@ class Fitet_Monitor_Manager {
 
 	public function _update_club($club_code) {
 		error_log("_update_club $club_code");
+		$this->logger->reset_status($club_code);
 		$this->update_club($club_code);
 		$this->logger->set_completed($club_code, 'Done');
 	}
+
 	public function update_club($club_code) {
 		if ($club_code == null)
 			throw new Exception("Club code can not be null!");
 
-		$this->logger->add_status($club_code, 'Start updating');
-
-		$this->logger->add_status($club_code, "Getting info for club $club_code", 0);
+		$this->logger->add_status($club_code, "Start updating club $club_code");
 
 		$club = $this->get_club($club_code);
 
@@ -410,6 +422,9 @@ class Fitet_Monitor_Manager {
 		$club['nationalTitles'] = $club_details['nationalTitles'];
 		$club['regionalTitles'] = $club_details['regionalTitles'];
 		$club['caps'] = $club_details['caps'];
+		$club_details['championships'] = $this->add_empty_standings($club_details['championships']);
+
+		$club['championships'] = Fitet_Monitor_Utils::merge_championships($club_details['championships'], $club['championships']);
 
 		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
 		$last_update->setTimestamp(time()); //adjust the object to correct timestamp
@@ -455,9 +470,6 @@ class Fitet_Monitor_Manager {
 
 	}
 
-	/**
-	 * @return array
-	 */
 	public function get_club_codes() {
 		return array_values(get_option($this->plugin_name . 'clubs', []));
 	}
@@ -468,7 +480,7 @@ class Fitet_Monitor_Manager {
 
 		if (empty($cron)) {
 			$interval_label = 'daily';
-			$interval_label = 'fitet_monitor_dev_interval'; // todo remove
+			//$interval_label = 'fitet_monitor_dev_interval'; // todo remove
 			$interval = wp_get_schedules()[$interval_label]['interval'];
 			$time = time();
 			$time = $interval * (1 + floor($time / $interval));
@@ -480,13 +492,28 @@ class Fitet_Monitor_Manager {
 					'playersInterval' => $interval_label,
 					'championshipsInterval' => $interval_label,
 					'clubTime' => $time,
-					'playersTime' => $time + 120,// todo 60 * 30,
-					'championshipsTime' => $time + 240,// todo 60 * 60,
+					'playersTime' => $time + 60 * 30,
+					'championshipsTime' => $time + 60 * 60,
 				];
 		}
 
 		return $cron;
 
+	}
+
+	public function club_already_stored($club_code) {
+		return in_array($club_code, $this->get_club_codes());
+	}
+
+	/**
+	 * @param $championships
+	 * @return array
+	 */
+	public function add_empty_standings($championships): array {
+		return array_map(function ($championship) {
+			$championship['standings'] = [];
+			return $championship;
+		}, $championships);
 	}
 
 
@@ -623,7 +650,7 @@ class Fitet_Monitor_Manager {
 		$last_update->setTimestamp(time());
 		$club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
 
-		return $club;
+		$this->save_club($club);
 	}
 
 	private function fixed_44_36() {

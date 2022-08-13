@@ -62,7 +62,8 @@ class Fitet_Monitor_Api {
 	}
 
 	public function update(WP_REST_Request $request) {
-		$this->manager->update($request->get_param('clubCode'), $request->get_param('mode'));
+		$this->manager->update($request->get_param('clubCode'), $request->get_param('mode'), $request->get_param('seasonId'));
+		return rest_ensure_response('done');
 	}
 
 	public function get_club(WP_REST_Request $request) {

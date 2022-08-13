@@ -96,7 +96,7 @@ jQuery(function ($) {
 		}
 	}
 
-	function update($clubRow) {
+	function update($clubRow, mode = null, seasonId= null) {
 
 		let find = $clubRow.find('.fm-club-code-input');
 		$clubRow.find('.fm-update-actions-container').hide();
@@ -105,7 +105,7 @@ jQuery(function ($) {
 		wp.apiRequest({
 			path: 'fitet-monitor/v1/update',
 			type: 'POST',
-			data: {clubCode: clubCode}
+			data: {clubCode, mode, seasonId}
 		});
 		$clubRow.removeClass('fm-ready')
 		$clubRow.removeClass('fm-new')
@@ -138,7 +138,7 @@ jQuery(function ($) {
 	}).on('click', '.fm-btn-update', function () {
 		const $this = $(this);
 		const $clubRow = $this.closest('tr');
-		update($clubRow);
+		update($clubRow, $this.data('mode'));
 	});
 
 	$('.fm-club-cell .fm-delete-content').on('click', '.button-link', function () {

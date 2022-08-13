@@ -1,7 +1,5 @@
 <table class="form-table" role="presentation">
 	<tbody>
-	<tr><th scope="row">{{affiliationDateLabel}}</th><td>{{affiliationDate}}</td></tr>
-	<tr><th scope="row">{{emailLabel}}</th><td>{{email}}</td></tr>
 	<tr><th scope="row">{{statusLabel}}</th><td>{{status}}</td></tr>
 	<tr><th scope="row">{{lastUpdateLabel}}</th><td>{{lastUpdate}}</td></tr>
 	</tbody>
@@ -16,7 +14,11 @@
 <div>
 	<h1>{{championshipsLabel}}</h1>
 	{{championships}}
-	<p><a href="#" data-club-code="{{clubCode}}" class="fm-download-full-history">{{downloadFullHistoryLabel}}</a><br>
+	<p><a href="#"
+		  data-club-code="{{clubCode}}"
+		  data-season-id-list="{{not_loaded_seasons}}"
+
+		  class="fm-download-full-history">{{downloadFullHistoryLabel}}</a><br>
 		{{downloadFullHistoryDisclaimer}}</p>
 </div>
 <div>

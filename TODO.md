@@ -17,6 +17,8 @@
  - includi nei risultati ricerca wordpress
  - refactoring delle define FITET_MONITOR_ICON_...
  - rimuovi tabella wordpress... usa dynatable in admin menu
+ - spostare statusLabel e lastUpdateLabel
+ - navigazione next/prev per team seasons
 
 aggiornamento singola stagione per tt morelli
 

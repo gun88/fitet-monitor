@@ -40,7 +40,7 @@ class Fitet_Monitor_Router {
 				exit();
 			}
 
-			if ($this->manager->get_club($_POST['clubCode'])) {
+			if ($this->manager->club_already_stored($_POST['clubCode'])) {
 				wp_safe_redirect(add_query_arg(['mode' => 'club', 'message' => 'already_exist'], menu_page_url('fitet-monitor', false)));
 				exit();
 			}

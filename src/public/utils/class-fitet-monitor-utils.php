@@ -295,5 +295,39 @@ class Fitet_Monitor_Utils {
 		return false;
 	}
 
+	/**
+	 * @param array $old_championships
+	 * @param array $championships
+	 * @return mixed
+	 */
+	public static function merge_championships($old_championships, $championships) {
+
+		foreach ($championships as $championship) {
+			$index = self::index_of_championship($old_championships, $championship['seasonId'], $championship['championshipId']);
+			if ($index == -1) {
+				$old_championships[] = $championship;
+			} else {
+				$old_championships[$index] = $championship;
+			}
+		}
+		usort($old_championships, function ($c1, $c2) {
+			if ($c2['seasonId'] == $c1['seasonId']) {
+				return $c2['championshipId'] - $c1['championshipId'];
+			}
+			return $c2['seasonId'] - $c1['seasonId'];
+		});
+
+		return $old_championships;
+	}
+
+	private static function index_of_championship($championships, $season_id, $championship_id) {
+		for ($i = 0; $i < count($championships); $i++) {
+			if ($championships[$i]['seasonId'] == $season_id && $championships[$i]['championshipId'] == $championship_id) {
+				return $i;
+			}
+		}
+		return -1;
+	}
+
 
 }

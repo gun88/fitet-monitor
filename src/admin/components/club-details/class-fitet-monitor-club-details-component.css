@@ -87,3 +87,8 @@ a.fm-reset-status:active {
 	cursor: pointer;
 	margin-left: auto;
 }
+
+td.fm-table-column-teams>div {
+	max-height: 5em !important;
+	overflow-y: auto;
+}

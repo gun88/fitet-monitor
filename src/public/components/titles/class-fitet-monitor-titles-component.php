@@ -76,7 +76,7 @@ class Fitet_Monitor_Titles_Component extends Fitet_Monitor_Component {
 
 	private function rows($titles, $player_page_url) {
 		return array_map(function ($title) use ($player_page_url) {
-			// error_log(json_encode($title));
+
 			$player_name = $title['player'];
 			$player_id = Fitet_Monitor_Utils::player_id_by_name($player_name);
 			$player_image_url = Fitet_Monitor_Utils::player_image_url($player_id);

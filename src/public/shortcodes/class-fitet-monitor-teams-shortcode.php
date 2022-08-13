@@ -275,6 +275,9 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 	}
 
 	private function extract_seasons($resources) {
+		$resources = array_values(array_filter($resources, function ($championship){
+			return !empty($championship['standings']);
+		}));
 		$resources = array_unique(array_map(function ($championship) {
 			return ['seasonId' => $championship['seasonId'], 'seasonName' => $championship['seasonName']];
 		}, $resources), SORT_REGULAR);

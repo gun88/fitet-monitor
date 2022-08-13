@@ -921,6 +921,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_labels"
         },                {
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Agroup_by_season_id\u0028\u0029",
+            "name": "group_by_season_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_group_by_season_id"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Anot_loaded_season_id_list\u0028\u0029",
+            "name": "not_loaded_season_id_list",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_not_loaded_season_id_list"
+        },                {
             "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Ascript_dependencies\u0028\u0029",
             "name": "script_dependencies",
             "summary": "",
@@ -956,6 +966,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_championships_table"
         },                {
+            "fqsen": "\\Fitet_Monitor_Club_Details_Component\u003A\u003Acount__\u0028\u0029",
+            "name": "count__",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Details-Component.html#method_count__"
+        },                {
             "fqsen": "\\Fitet_Monitor_Club_Table_Component",
             "name": "Fitet_Monitor_Club_Table_Component",
             "summary": "",
@@ -985,26 +1000,6 @@ Search.appendIndex(
             "name": "bulk_actions",
             "summary": "",
             "url": "classes/Fitet-Monitor-Club-Table-Component.html#property_bulk_actions"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Cell_Component",
-            "name": "Fitet_Monitor_Club_Cell_Component",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Cell-Component.html"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Cell_Component\u003A\u003Ascript_dependencies\u0028\u0029",
-            "name": "script_dependencies",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Cell-Component.html#method_script_dependencies"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Cell_Component\u003A\u003Acomponents\u0028\u0029",
-            "name": "components",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Cell-Component.html#method_components"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Club_Cell_Component\u003A\u003Aprocess_data\u0028\u0029",
-            "name": "process_data",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Club-Cell-Component.html#method_process_data"
         },                {
             "fqsen": "\\Fitet_Monitor_Progress_Bar_Component",
             "name": "Fitet_Monitor_Progress_Bar_Component",
@@ -2126,6 +2121,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_get_club_cron_jobs"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aclub_already_stored\u0028\u0029",
+            "name": "club_already_stored",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_club_already_stored"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aadd_empty_standings\u0028\u0029",
+            "name": "add_empty_standings",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_add_empty_standings"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Asort_titles\u0028\u0029",
             "name": "sort_titles",
             "summary": "",
@@ -2170,6 +2175,26 @@ Search.appendIndex(
             "name": "portal",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#property_portal"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A\u0024empty_club",
+            "name": "empty_club",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#property_empty_club"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Club_Cell_Component",
+            "name": "Fitet_Monitor_Club_Cell_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Cell-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Club_Cell_Component\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Cell-Component.html#method_components"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Club_Cell_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Club-Cell-Component.html#method_process_data"
         },                {
             "fqsen": "\\Fitet_Monitor_Player_Cell_Component",
             "name": "Fitet_Monitor_Player_Cell_Component",
@@ -3221,6 +3246,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_belongs_to_club"
         },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Amerge_championships\u0028\u0029",
+            "name": "merge_championships",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_merge_championships"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aindex_of_championship\u0028\u0029",
+            "name": "index_of_championship",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_index_of_championship"
+        },                {
             "fqsen": "\\Fitet_Monitor_Team_Statistics_Component",
             "name": "Fitet_Monitor_Team_Statistics_Component",
             "summary": "",
@@ -3256,25 +3291,25 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Team-Statistics-Component.html#method_rows"
         },                {
-            "fqsen": "\\Fitet_Monitor_Server_Status",
-            "name": "Fitet_Monitor_Server_Status",
+            "fqsen": "\\Fitet_Monitor_Club_Wp_Cell_Component",
+            "name": "Fitet_Monitor_Club_Wp_Cell_Component",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Server-Status.html"
+            "url": "classes/Fitet-Monitor-Club-Wp-Cell-Component.html"
         },                {
-            "fqsen": "\\Fitet_Monitor_Server_Status\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
+            "fqsen": "\\Fitet_Monitor_Club_Wp_Cell_Component\u003A\u003Ascript_dependencies\u0028\u0029",
+            "name": "script_dependencies",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Server-Status.html#method___construct"
+            "url": "classes/Fitet-Monitor-Club-Wp-Cell-Component.html#method_script_dependencies"
         },                {
-            "fqsen": "\\Fitet_Monitor_Server_Status\u003A\u003Ainitialize_data\u0028\u0029",
-            "name": "initialize_data",
+            "fqsen": "\\Fitet_Monitor_Club_Wp_Cell_Component\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Server-Status.html#method_initialize_data"
+            "url": "classes/Fitet-Monitor-Club-Wp-Cell-Component.html#method_components"
         },                {
-            "fqsen": "\\Fitet_Monitor_Server_Status\u003A\u003Aserver_status\u0028\u0029",
-            "name": "server_status",
+            "fqsen": "\\Fitet_Monitor_Club_Wp_Cell_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Server-Status.html#method_server_status"
+            "url": "classes/Fitet-Monitor-Club-Wp-Cell-Component.html#method_process_data"
         },                {
             "fqsen": "\\",
             "name": "\\",
