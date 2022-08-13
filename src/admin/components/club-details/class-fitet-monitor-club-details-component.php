@@ -209,7 +209,7 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 
 
 		$championships = array_map(function ($championship) use ($club_code) {
-			$teams = implode('-', array_map(function ($championship) {
+			$teams = implode('', array_map(function ($championship) {
 				return $this->team_cell_part($championship['championshipName'], $championship['standings']);
 			}, $championship));
 
