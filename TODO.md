@@ -23,5 +23,3 @@
 aggiornamento singola stagione per tt morelli
 
 
-cronjob sovrascrive vecchi campionati...capire perche'
-src/common/includes/class-fitet-monitor-manager.php:182
