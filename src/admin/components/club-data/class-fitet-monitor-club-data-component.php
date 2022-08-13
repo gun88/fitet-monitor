@@ -24,13 +24,11 @@ class Fitet_Monitor_Club_Data_Component extends Fitet_Monitor_Component {
 		$_data['clubProvinceLabel'] = __('Club Province', 'fitet-monitor');
 		$_data['clubLogoLabel'] = __('Club Logo', 'fitet-monitor');
 		$_data['clubCronLabel'] = __('Auto Update', 'fitet-monitor');
-		$_data['clubHistorySizeLabel'] = __('History Size', 'fitet-monitor');
 		$_data['clubInfoLabel'] = __('Club information', 'fitet-monitor');
 		$_data['placeholder'] = __('Search for a Club...', 'fitet-monitor');
 		$_data['clubCode'] = $data && isset($data['clubCode']) ? $data['clubCode'] : '';
 		$_data['clubName'] = $data && isset($data['clubName']) ? $data['clubName'] : '';
 		$_data['clubProvince'] = $data && isset($data['clubProvince']) ? $data['clubProvince'] : '';
-		$_data['clubHistorySize'] = $data && isset($data['clubHistorySize']) ? $data['clubHistorySize'] : '1';
 		$_data['clubCron'] = $data && isset($data['clubCron']) ? $data['clubCron'] : 'DEFAULT';
 		$_data['clubNoLogo'] = FITET_MONITOR_CLUB_NO_LOGO;
 		$_data['clubLogo'] = $data && isset($data['clubLogo']) ? $data['clubLogo'] : '';

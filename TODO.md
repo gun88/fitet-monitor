@@ -17,3 +17,9 @@
  - includi nei risultati ricerca wordpress
  - refactoring delle define FITET_MONITOR_ICON_...
  - rimuovi tabella wordpress... usa dynatable in admin menu
+
+aggiornamento singola stagione per tt morelli
+
+
+cronjob sovrascrive vecchi campionati...capire perche'
+src/common/includes/class-fitet-monitor-manager.php:182

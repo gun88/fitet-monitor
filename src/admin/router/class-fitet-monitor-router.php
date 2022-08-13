@@ -50,7 +50,6 @@ class Fitet_Monitor_Router {
 				'clubName' => $_POST['clubName'],
 				'clubProvince' => $_POST['clubProvince'],
 				'clubLogo' => $_POST['clubLogo'],
-				'clubHistorySize' => $_POST['clubHistorySize'],
 				'clubCron' => $_POST['clubCron']
 			]);
 
@@ -65,7 +64,6 @@ class Fitet_Monitor_Router {
 				'clubName' => $_POST['clubName'],
 				'clubProvince' => $_POST['clubProvince'],
 				'clubLogo' => $_POST['clubLogo'],
-				'clubHistorySize' => $_POST['clubHistorySize'],
 				'clubCron' => $_POST['clubCron']
 			]);
 			wp_safe_redirect(add_query_arg(['message' => 'edited'], menu_page_url('fitet-monitor', false)));
@@ -89,10 +87,6 @@ class Fitet_Monitor_Router {
 		$club_code = isset($_GET['clubCode']) ? $_GET['clubCode'] : null;
 
 		switch ($mode) {
-			case 'server':
-				require_once FITET_MONITOR_DIR . 'admin/pages/server/class-fitet-monitor-server-status-page.php';
-				$this->page = new Fitet_Monitor_Server_Status($this->plugin_name, $this->version);
-				break;
 			case 'club':
 				if ($club_code) {
 					$template = [
@@ -101,7 +95,6 @@ class Fitet_Monitor_Router {
 						'clubName' => '',
 						'clubLogo' => '',
 						'lastUpdate' => '',
-						'clubHistorySize' => '',
 						'clubCron' => '',
 					];
 					$club = $this->manager->get_club($club_code, $template);

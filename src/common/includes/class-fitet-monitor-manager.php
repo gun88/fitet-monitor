@@ -42,7 +42,6 @@ class Fitet_Monitor_Manager {
 		$club['clubProvince'] = $club_update['clubProvince'];
 		$club['clubLogo'] = $club_update['clubLogo'];
 		$club['clubCron'] = $club_update['clubCron'];
-		$club['clubHistorySize'] = $club_update['clubHistorySize'];
 		$this->save_club($club);
 	}
 
@@ -179,11 +178,6 @@ class Fitet_Monitor_Manager {
 			return $championship['seasonId'] == $season_id;
 		}));
 
-		// todo terminare!!!!
-
-		$old_championships = isset($club['championships']) ? $club['championships'] : [];
-		//$club['championships'] = $club_details['championships'];
-
 		for ($i = 0, $count = count($championships); $i < $count; $i++) {
 			$championship = $championships[$i];
 			$championship_id = $championship['championshipId'];
@@ -261,25 +255,27 @@ class Fitet_Monitor_Manager {
 			$championships[$i]['calendar'] = $standings;
 		}
 
-		foreach ($old_championships as $old_championship) {
-			$season_id = $old_championship['seasonId'];
-			$championship_id = $old_championship['championshipId'];
-			$common = array_values(array_filter($club['championships'], function ($championship) use ($season_id, $championship_id) {
-				return $championship['seasonId'] == $season_id && $championship['championshipId'] == $championship_id;
-			}));
-			if (empty($common)) {
-				$championships[] = $old_championship;
+		// todo terminare!!!!
+
+		$club['championships'] = isset($club['championships']) ? $club['championships'] : [];
+		//$club['championships'] = $club_details['championships'];
+
+		foreach ($championships as $championship) {
+			foreach ($club['championships'] as &$old_championship) {
+				if ($old_championship['seasonId'] == $championship['seasonId'] && $old_championship['championshipId'] == $championship['championshipId']) {
+					$old_championship = $championship;
+				} else {
+					$club['championships'][] = $championship;
+				}
 			}
 		}
 
-		usort($championships, function ($c1, $c2) {
+		usort($club['championships'], function ($c1, $c2) {
 			if ($c2['seasonId'] == $c1['seasonId']) {
 				return $c2['championshipId'] - $c1['championshipId'];
 			}
 			return $c2['seasonId'] - $c1['seasonId'];
 		});
-
-		$club['championships'] = $championships;
 
 		$last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
 		$last_update->setTimestamp(time()); //adjust the object to correct timestamp
@@ -472,6 +468,7 @@ class Fitet_Monitor_Manager {
 
 		if (empty($cron)) {
 			$interval_label = 'daily';
+			$interval_label = 'fitet_monitor_dev_interval'; // todo remove
 			$interval = wp_get_schedules()[$interval_label]['interval'];
 			$time = time();
 			$time = $interval * (1 + floor($time / $interval));
@@ -483,8 +480,8 @@ class Fitet_Monitor_Manager {
 					'playersInterval' => $interval_label,
 					'championshipsInterval' => $interval_label,
 					'clubTime' => $time,
-					'playersTime' => $time + 60 * 30,
-					'championshipsTime' => $time + 60 * 60,
+					'playersTime' => $time + 120,// todo 60 * 30,
+					'championshipsTime' => $time + 240,// todo 60 * 60,
 				];
 		}
 

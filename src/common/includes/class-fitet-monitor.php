@@ -269,7 +269,7 @@ class Fitet_Monitor {
 
 		add_filter('cron_schedules', function ($schedules) {
 			$schedules['fitet_monitor_dev_interval'] = [
-				'interval' => 300,
+				'interval' => 600,
 				'display' => esc_html__('Every Five Minutes', 'fitet-monitor'),];
 			return $schedules;
 		});
