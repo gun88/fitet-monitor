@@ -19,6 +19,7 @@
  - rimuovi tabella wordpress... usa dynatable in admin menu
  - spostare statusLabel e lastUpdateLabel
  - navigazione next/prev per team seasons
+ - testare e aggiungere: versione php richiesta e versione wordpress richiesta
 
 aggiornamento singola stagione per tt morelli
 
