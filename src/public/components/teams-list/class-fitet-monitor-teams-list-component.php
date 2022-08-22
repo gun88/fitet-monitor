@@ -12,7 +12,6 @@ class Fitet_Monitor_Teams_List_Component extends Fitet_Monitor_Component {
 
 	protected function process_data($data) {
 		return [
-			'lastUpdate' => $data['lastUpdate'],
 			'filter' => $this->filter($data['seasons'], $data['seasonId']),
 			'mainContent' => $this->main_content($data['teams'])
 		];

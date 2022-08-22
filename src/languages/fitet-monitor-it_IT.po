@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-08-22 13:29:00+00:00\n"
+"POT-Creation-Date: 2022-08-22 13:39:27+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,7 +125,7 @@ msgstr "Reset Stato"
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:30
 #: src/public/components/players-list/class-fitet-monitor-players-list-component.php:32
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:29
-#: src/public/components/teams-list/class-fitet-monitor-teams-list-component.php:25
+#: src/public/components/teams-list/class-fitet-monitor-teams-list-component.php:24
 msgid "No Results"
 msgstr "Nessun risultato"
 
@@ -194,7 +194,7 @@ msgstr ""
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-tournaments-component.php:35
 #: src/public/components/player-tournaments/class-fitet-monitor-player-regional-tournaments-component.php:35
 #: src/public/components/team-card/class-fitet-monitor-team-card-component.php:80
-#: src/public/components/teams-list/class-fitet-monitor-teams-list-component.php:34
+#: src/public/components/teams-list/class-fitet-monitor-teams-list-component.php:33
 #: src/public/components/titles/class-fitet-monitor-titles-component.php:65
 msgid "Season"
 msgstr "Stagione"

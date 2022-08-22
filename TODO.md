@@ -1,5 +1,5 @@
  - manage hidden players
- - auto update cronjob
+ - auto update cronjob - chiama da esterno
  - custom page type?
  - fitet-monitor-block
  - download players table
@@ -22,4 +22,5 @@
 
 aggiornamento singola stagione per tt morelli
 
-
+versiona temi silvi e cernusco
+cambia colore tema silvi paginazione

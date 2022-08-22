@@ -238,7 +238,7 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 	}
 
 	private function list($attributes) {
-		$template = ['championships' => '', 'lastUpdate' => ''];
+		$template = ['championships' => ''];
 		$multi_club = empty($attributes['club']);
 		if ($multi_club) {
 			// no club found - keeping all
@@ -246,7 +246,6 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 		} else {
 			$resources = [$this->manager->get_club($attributes['club'], $template)];
 		}
-		$lastUpdate = $resources[0]['lastUpdate'];
 
 		if (empty($attributes['season'])) {
 			$attributes['season'] = $this->last_season_id($resources);
@@ -268,7 +267,6 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 		$resources = $this->fill_teams_data($resources);
 
 		return [
-			'lastUpdate' => $lastUpdate,
 			'teams' => $resources,
 			'seasons' => $seasons,
 			'multiClub' => $multi_club,
