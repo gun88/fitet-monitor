@@ -86,6 +86,7 @@ class Fitet_Monitor_Manager {
 			wp_clear_scheduled_hook('fm_cron_update_players_hook', [$club_code]);
 			wp_clear_scheduled_hook('fm_cron_update_championships_hook', [$club_code]);
 		}
+		do_action('fm_after_change');
 	}
 
 	public function get_club($club_code, $template = null) {
@@ -161,6 +162,7 @@ class Fitet_Monitor_Manager {
 						break;
 				}
 				$this->logger->set_completed($club_code, 'Done');
+				do_action('fm_after_change');
 
 
 			} catch (Exception $e) {
@@ -180,6 +182,7 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($club_code);
 		$this->update_season_championships($club_code, $season_id);
 		$this->logger->set_completed($club_code, 'Done');
+		do_action('fm_after_change');
 		error_log("_update_season_championships $club_code done");
 
 	}
@@ -305,6 +308,7 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($club_code);
 		$this->update_players($club_code);
 		$this->logger->set_completed($club_code, 'Done');
+		do_action('fm_after_change');
 		error_log("_update_players $club_code done");
 
 	}
@@ -405,6 +409,7 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($club_code);
 		$this->update_club($club_code);
 		$this->logger->set_completed($club_code, 'Done');
+		do_action('fm_after_change');
 		error_log("_update_club $club_code done");
 	}
 
