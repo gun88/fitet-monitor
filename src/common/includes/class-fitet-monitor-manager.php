@@ -487,21 +487,21 @@ class Fitet_Monitor_Manager {
 		$cron = $this->get_club($club_code, ['cron' => '']);
 
 		if (empty($cron)) {
+			$hour = 60 * 60;
 			$interval_label = 'daily';
 			//$interval_label = 'fitet_monitor_dev_interval'; // todo remove
 			$interval = wp_get_schedules()[$interval_label]['interval'];
 			$time = time();
 			$time = $interval * (1 + floor($time / $interval));
-			$time += 3 * 60 * 60;
 
 			return
 				[
 					'clubInterval' => $interval_label,
 					'playersInterval' => $interval_label,
 					'championshipsInterval' => $interval_label,
-					'clubTime' => $time,
-					'playersTime' => $time + 60 * 30,
-					'championshipsTime' => $time + 60 * 60,
+					'clubTime' => $time + $hour * 1,
+					'playersTime' => $time + $hour * 2,
+					'championshipsTime' => $time + $hour * 3,
 				];
 		}
 
