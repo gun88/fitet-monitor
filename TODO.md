@@ -1,5 +1,4 @@
  - manage hidden players
- - auto update cronjob - chiama da esterno
  - custom page type?
  - fitet-monitor-block
  - download players table
@@ -20,8 +19,7 @@
  - spostare statusLabel e lastUpdateLabel
  - navigazione next/prev per team seasons
  - testare e aggiungere: versione php richiesta e versione wordpress richiesta
+ - traduzione italiano temi tt silvi e tt morelli
+ - fix tema tt silvi, caricato 2 volte
 
-aggiornamento singola stagione per tt morelli
-
-versiona temi silvi e cernusco
-cambia colore tema silvi paginazione
+versiona temi silvi (e mergia il tema con newsup) e cernusco
