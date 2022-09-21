@@ -251,6 +251,16 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_FITET_MONITOR_ICON_CLOUD_ARROW"
         },                {
+            "fqsen": "\\FITET_MONITOR_UPLOAD_DIR",
+            "name": "FITET_MONITOR_UPLOAD_DIR",
+            "summary": "",
+            "url": "namespaces/default.html#constant_FITET_MONITOR_UPLOAD_DIR"
+        },                {
+            "fqsen": "\\FITET_MONITOR_UPLOAD_URL",
+            "name": "FITET_MONITOR_UPLOAD_URL",
+            "summary": "",
+            "url": "namespaces/default.html#constant_FITET_MONITOR_UPLOAD_URL"
+        },                {
             "fqsen": "\\run_fitet_monitor\u0028\u0029",
             "name": "run_fitet_monitor",
             "summary": "Begins\u0020execution\u0020of\u0020the\u0020plugin.",
