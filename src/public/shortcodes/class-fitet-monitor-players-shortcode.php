@@ -32,7 +32,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
 			for ($i = 0; $i < 20; $i++) {
 				$doubleval = doubleval(rand(-220, 220) . '.' . rand(0, 2000));
 				$resources['season'][] = [
-					'opponent' => ['MASSARELLI MAURIZIO', 'ZAPPACOSTA GIANCARLO', 'PIPPO BAUDO'][rand(0, 2)],
+					'opponent' => ['MASSARELLI MAURIZIO', 'LUPO ROBERTO', 'PIPPO BAUDO'][rand(0, 2)],
 					'date' => ['01-02-2021', '05-12-2021', '29-04-2022'][rand(0, 2)],
 					'match' => ['C2', 'TN Lungo TN Lungo TN Lungo TN Lungo TN Lungo', 'Torneo 1'][rand(0, 2)],
 					'win' => $doubleval > 0,

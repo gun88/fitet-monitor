@@ -75,11 +75,19 @@ class Fitet_Monitor_Utils {
 		if (empty($player_id)) {
 			return FITET_MONITOR_PLAYER_NO_IMAGE;
 		}
+		foreach (['svg', 'SVG', 'png', 'PNG', 'jpg', 'JPG', 'jpeg', 'JPEG'] as $extension) {
+			if (file_exists(FITET_MONITOR_UPLOAD_DIR . "/fitet-monitor/players/$player_id.$extension"))
+				return FITET_MONITOR_UPLOAD_URL . "/fitet-monitor/players/$player_id.$extension";
+		}
 		return "http://portale.fitet.org/images/atleti/$player_id.jpg";
 	}
 
 
 	public static function club_logo_by_code($club_code) {
+		foreach (['svg', 'SVG', 'png', 'PNG', 'jpg', 'JPG', 'jpeg', 'JPEG'] as $extension) {
+			if (file_exists(FITET_MONITOR_UPLOAD_DIR . "/fitet-monitor/clubs/$club_code.$extension"))
+				return FITET_MONITOR_UPLOAD_URL . "/fitet-monitor/clubs/$club_code.$extension";
+		}
 		foreach (self::clubs() as $club) {
 			if ($club['clubCode'] == $club_code && isset($club['clubLogo']))
 				return $club['clubLogo'];

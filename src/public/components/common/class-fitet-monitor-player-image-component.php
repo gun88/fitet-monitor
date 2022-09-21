@@ -11,6 +11,10 @@ class Fitet_Monitor_Player_Image_Component extends Fitet_Monitor_Component {
 		$player_image_url = $data['playerImage'];
 
 		if (empty($player_image_url)) {
+			$player_image_url = Fitet_Monitor_Utils::player_image_url($player_id);
+		}
+
+		if (empty($player_image_url)) {
 			if (empty($player_id)) {
 				$player_image_url = FITET_MONITOR_PLAYER_NO_IMAGE;
 			} else {
