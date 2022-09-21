@@ -8,4 +8,7 @@ if (!defined('FITET_MONITOR_PLAYER_NO_IMAGE'))
 	define('FITET_MONITOR_PLAYER_NO_IMAGE',  '/fitet-monitor-no-player-image.svg');
 define('TEST_DIR', dirname(dirname(dirname(__DIR__))) . '/tests/');
 
+define('FITET_MONITOR_UPLOAD_DIR', 'upload/fitet-monitor/');
+define('FITET_MONITOR_UPLOAD_URL', 'upload/fitet-monitor/');
+
 require_once dirname(dirname(__FILE__)) . '/Fitet_Monitor_Test_Case.php';
