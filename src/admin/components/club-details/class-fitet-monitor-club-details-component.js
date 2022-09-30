@@ -4,11 +4,13 @@ jQuery(function ($) {
 		console.log('beforeUpdate');
 		$('.fm-toggle').unbind();
 		$('.fm-update-single-championship').unbind('click')
+		$('.fm-reset-single-championship').unbind('click')
 
 	}).on('dynatable:afterUpdate', function () {
 		console.log('afterUpdate');
 		$('.fm-toggle').bind('click', fmToggle)
 		$('.fm-update-single-championship').bind('click', updateSingleChampionship)
+		$('.fm-reset-single-championship').bind('click', resetSingleChampionship)
 
 	})
 
@@ -78,6 +80,30 @@ jQuery(function ($) {
 			.fail((e, f) => console.log(f, e))
 			.always(y => {
 				$('#fm-championships-table .fm-update-single-championship').prop("disabled", false);
+				console.log('Finish.', y);
+			});
+	}
+
+	function resetSingleChampionship(event) {
+		event.preventDefault();
+		$('#fm-championships-table .fm-reset-single-championship').prop("disabled", true);
+		const clubCode = $(this).data('club-code');
+		const seasonId = $(this).data('season-id');
+		const mode = 'championships'
+		console.log('resetting ', {clubCode, mode, seasonId})
+
+		wp.apiRequest({
+			path: 'fitet-monitor/v1/reset',
+			type: 'POST',
+			data: {clubCode, mode, seasonId}
+		})
+			.done(x => {
+				$(event.currentTarget).replaceWith("ok");
+				console.log('done', x);
+			})
+			.fail((e, f) => console.log(f, e))
+			.always(y => {
+				$('#fm-championships-table .fm-reset-single-championship').prop("disabled", false);
 				console.log('Finish.', y);
 			});
 	}

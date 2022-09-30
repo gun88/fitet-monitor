@@ -122,6 +122,31 @@ class Fitet_Monitor_Manager {
 		$this->logger->reset_status($clubCode);
 	}
 
+	public function reset_season($club_code, $season_id) {
+
+		// todo deve diventare reset championship con seasonId e championshipId
+
+		if ($club_code == null)
+			throw new Exception("Club code can not be null!");
+		if ($season_id == null)
+			throw new Exception("Season id can not be null!");
+
+		$club = $this->get_club($club_code);
+
+		if (!isset($club['championships']))
+			return;
+
+
+		for ($i = 0; $i < count($club['championships']); $i++) {
+			if ($club['championships'][$i]['seasonId'] == $season_id) {
+				unset($club['championships'][$i]);
+			}
+		}
+
+		$this->save_club($club);
+
+	}
+
 	public function update($club_code, $mode = '', $season_id = null) {
 		set_time_limit(300);
 
@@ -285,6 +310,13 @@ class Fitet_Monitor_Manager {
 			}
 			$championships[$i]['calendar'] = $standings;
 		}
+
+		for ($i = 0; $i < count($championships); $i++) {
+			if (!isset($championship['seasonId'])) {
+				unset($championships[$i]);
+			}
+		}
+
 
 		$club['championships'] = isset($club['championships']) ? $club['championships'] : [];
 		$club_details['championships'] = $this->add_empty_standings($club_details['championships']);

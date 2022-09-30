@@ -56,7 +56,10 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 	 * @param $standings
 	 * @return string
 	 */
-	function team_cell_part($championshipName, $standings): string {
+	function team_cell_part($club_code, $championship): string {
+
+		$championshipName = $championship['championshipName'];
+		$standings = $championship['standings'];
 		return implode('', array_map(function ($standing) use ($championshipName) {
 			$standing['teamName'] = $championshipName . ' - ' . $standing['teamName'];
 			if (!empty($standing['players'])) {
@@ -72,7 +75,10 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 				$players = '';
 			}
 
-			return "<div class='fm-team-cell-wrapper fm-closed'>" . $this->components['teamCell']->render($standing) . $toggles . "</div>" . $players;
+			return "<div class='fm-team-cell-wrapper fm-closed'>" . $this->components['teamCell']->render($standing) .
+				"<button>Export</button>" .
+				"<button>Import</button>" .
+				$toggles . "</div>" . $players;
 		}, $standings));
 	}
 
@@ -209,8 +215,8 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 
 
 		$championships = array_map(function ($championship) use ($club_code) {
-			$teams = implode('', array_map(function ($championship) {
-				return $this->team_cell_part($championship['championshipName'], $championship['standings']);
+			$teams = implode('', array_map(function ($championship) use ($club_code) {
+				return $this->team_cell_part($club_code, $championship);
 			}, $championship));
 
 			$season_id = $championship[0]['seasonId'];
@@ -220,9 +226,14 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 				'teams' => "<div>$teams</div>",
 				'standings' => $this->count__($championship, 'standings'),
 				'calendar' => $this->count__($championship, 'standings'),
-				'actions' => "<div style='display: flex;justify-content: center;'>" . "<button href='#' title='" . __('Update', 'fitet-monitor') . "' " .
+				'actions' => "<div style='display: flex;justify-content: center;'>" .
+					"<button href='#' title='" . __('Update', 'fitet-monitor') . "' " .
 					"class='fm-update-single-championship' data-club-code='$club_code' data-season-id='$season_id'>" .
-					"<img style='width: 24px' alt='update-buttom' src='" . FITET_MONITOR_ICON_CLOUD_ARROW . "'/></button>" . "</div>",
+					"<img style='width: 24px' alt='update-button' src='" . FITET_MONITOR_ICON_CLOUD_ARROW . "'/></button>" .
+					"<button href='#' title='" . __('Reset', 'fitet-monitor') . "' " .
+					"class='fm-reset-single-championship' data-club-code='$club_code' data-season-id='$season_id'>" .
+					"<img style='width: 24px' alt='reset-button' src='" . FITET_MONITOR_ICON_ERASER . "'/></button>" .
+					"</div>",
 			];
 		}, array_values($championships));
 
@@ -256,6 +267,5 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 		return "$loaded/$total";
 
 	}
-
 
 }

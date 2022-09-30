@@ -35,6 +35,16 @@ class Fitet_Monitor_Api {
 				}
 			]
 		);
+
+		register_rest_route($this->plugin_name . '/v1', '/reset',
+			[
+				'methods' => 'POST',
+				'callback' => [$this, 'reset'],
+				'permission_callback' => function () {
+					return current_user_can('edit_pages');
+				}
+			]
+		);
 		register_rest_route($this->plugin_name . '/v1', '/status',
 			[
 				'methods' => 'GET',
@@ -63,6 +73,11 @@ class Fitet_Monitor_Api {
 
 	public function update(WP_REST_Request $request) {
 		$this->manager->update($request->get_param('clubCode'), $request->get_param('mode'), $request->get_param('seasonId'));
+		return rest_ensure_response('done');
+	}
+
+	public function reset(WP_REST_Request $request) {
+		$this->manager->reset_season($request->get_param('clubCode'), $request->get_param('seasonId'));
 		return rest_ensure_response('done');
 	}
 

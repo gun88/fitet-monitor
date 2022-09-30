@@ -10,7 +10,6 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
 		return [
 			'playerCard' => new Fitet_Monitor_Player_Card_Component($this->plugin_name, $this->version, [
 				'showDiff' => false,
-				'showPlayerCode' => false,
 				'showRegion' => false,
 				'showSex' => false,
 				'showBirthDate' => false,

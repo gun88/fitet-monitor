@@ -73,6 +73,7 @@ define('FITET_MONITOR_ICON_TABLE', plugin_dir_url(FITET_MONITOR_DIR . "public/as
 define('FITET_MONITOR_ICON_TABLE_TENNIS', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/table-tennis-paddle-ball-solid.svg") . "table-tennis-paddle-ball-solid.svg");
 define('FITET_MONITOR_ICON_TROPHY', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/trophy-solid.svg") . "trophy-solid.svg");
 define('FITET_MONITOR_ICON_CLOUD_ARROW', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/cloud-arrow-down-solid.svg") . "cloud-arrow-down-solid.svg");
+define('FITET_MONITOR_ICON_ERASER', plugin_dir_url(FITET_MONITOR_DIR . "public/assets/icons/eraser-solid.svg") . "eraser-solid.svg");
 
 
 define('FITET_MONITOR_UPLOAD_DIR', wp_upload_dir()['basedir']);

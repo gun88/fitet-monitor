@@ -50,6 +50,7 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 	private function columns($multi_club) {
 		$columns = [
 			'playerName' => __('Name', 'fitet-monitor'),
+			'playerCode' => __('Player Code', 'fitet-monitor'),
 			'points' => __('Points', 'fitet-monitor'),
 			'rank' => __('Rank', 'fitet-monitor'),
 			'diff' => __('Diff.', 'fitet-monitor'),
@@ -64,6 +65,7 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 	private function sort() {
 		return [
 			'points' => 'number',
+			'playerCode' => 'number',
 			'rank' => 'number',
 			'diff' => 'number',
 			'category' => 'number',
@@ -75,6 +77,7 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 			$row = [
 				'playerName' => $this->components['playerCell']->render(['playerId' => $player['playerId'], 'playerName' => $player['playerName'], 'playerPageUrl' => $player['playerUrl']]),
 				'points' => $player['points'],
+				'playerCode' => $player['playerCode'],
 				'rank' => $this->rank($player['rank'], $player['type']),
 				'diff' => $player['diff'],
 				'category' => $player['category'],

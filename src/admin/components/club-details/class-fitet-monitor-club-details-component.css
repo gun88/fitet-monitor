@@ -89,6 +89,6 @@ a.fm-reset-status:active {
 }
 
 td.fm-table-column-teams>div {
-	max-height: 5em !important;
+	max-height: 10em !important;
 	overflow-y: auto;
 }

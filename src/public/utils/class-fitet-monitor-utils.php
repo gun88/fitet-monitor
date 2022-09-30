@@ -315,6 +315,7 @@ class Fitet_Monitor_Utils {
 			if ($index == -1) {
 				$old_championships[] = $championship;
 			} else {
+				//$championship['standings'] = Fitet_Monitor_Utils::merge_standings($old_championships[$index]['standings'], $championship['standings']);
 				$old_championships[$index] = $championship;
 			}
 		}
@@ -336,6 +337,41 @@ class Fitet_Monitor_Utils {
 		}
 		return -1;
 	}
+	private static function index_of_player($players, $player_id) {
+		for ($i = 0; $i < count($players); $i++) {
+			if ($players[$i]['playerId'] == $player_id) {
+				return $i;
+			}
+		}
+		return -1;
+	}
+
+	private static function merge_standings($old_standings, $standings) {
+
+		return $standings;
+
+		// todo terminare
+		if (!isset($old_championship['players'])) {
+			$old_championship['players'] = [];
+		}
+
+			foreach ($championship['players'] as $player) {
+				$index = self::index_of_player($old_championship, $player['playerId']);
+				if ($index == -1) {
+					$old_championship['players'][] = $player;
+				} else {
+					$old_championship['players'][$index] = $player;
+					// $old_championships[$index] = $championship;
+				}
+			}
+			usort($old_championship['players'], function ($c1, $c2) {
+				return strcmp($c1,$c2);
+			});
+
+			return $old_championship;
+
+	}
+
 
 
 }
