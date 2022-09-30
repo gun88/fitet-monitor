@@ -251,6 +251,11 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_FITET_MONITOR_ICON_CLOUD_ARROW"
         },                {
+            "fqsen": "\\FITET_MONITOR_ICON_ERASER",
+            "name": "FITET_MONITOR_ICON_ERASER",
+            "summary": "",
+            "url": "namespaces/default.html#constant_FITET_MONITOR_ICON_ERASER"
+        },                {
             "fqsen": "\\FITET_MONITOR_UPLOAD_DIR",
             "name": "FITET_MONITOR_UPLOAD_DIR",
             "summary": "",
@@ -1986,6 +1991,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Api.html#method_update"
         },                {
+            "fqsen": "\\Fitet_Monitor_Api\u003A\u003Areset\u0028\u0029",
+            "name": "reset",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Api.html#method_reset"
+        },                {
             "fqsen": "\\Fitet_Monitor_Api\u003A\u003Aget_club\u0028\u0029",
             "name": "get_club",
             "summary": "",
@@ -2080,6 +2090,11 @@ Search.appendIndex(
             "name": "resetStatus",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_resetStatus"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Areset_season\u0028\u0029",
+            "name": "reset_season",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_reset_season"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
@@ -3270,6 +3285,16 @@ Search.appendIndex(
             "name": "index_of_championship",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_index_of_championship"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aindex_of_player\u0028\u0029",
+            "name": "index_of_player",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_index_of_player"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Amerge_standings\u0028\u0029",
+            "name": "merge_standings",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_merge_standings"
         },                {
             "fqsen": "\\Fitet_Monitor_Team_Statistics_Component",
             "name": "Fitet_Monitor_Team_Statistics_Component",
