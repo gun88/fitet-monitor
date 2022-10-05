@@ -9,10 +9,10 @@ class Fitet_Portal_Rest_Http_Service {
 	private $sleep = 5; /// retry after x sec.
 	private $wp_remote_params = ['timeout' => 10];
 
-	public function get($url) {
+	public function get($url, $headers = []) {
 		if (FITET_MONITOR_WP_CALLS_AVAILABLE)
-			return $this->wp_get($url);
-		return $this->native_get($url);
+			return $this->wp_get($url, $headers);
+		return $this->native_get($url, $headers);
 	}
 
 	public function post($url, $body) {
@@ -21,9 +21,14 @@ class Fitet_Portal_Rest_Http_Service {
 		return $this->native_post($url, $body);
 	}
 
-	public function native_get($url) {
+	public function native_get($url, $headers) {
+		// to native headers
+		$headers = array_map(function ($key, $value) {
+			return "$key: $value";
+		}, array_keys($headers), array_values($headers));
+
 		for ($i = 0; $i < $this->retry; $i++) {
-			$response = file_get_contents($url);
+			$response = empty($headers) ? file_get_contents($url) : file_get_contents($url, true, stream_context_create(["http" => ["header" => $headers]]));
 			if (!$response) {
 				sleep($this->sleep);
 				error_log("wp error - waiting $this->sleep sec timeout");
@@ -57,10 +62,11 @@ class Fitet_Portal_Rest_Http_Service {
 	}
 
 
-	public function wp_get(string $url) {
+	public function wp_get($url, $headers) {
 		$response = null;
 		for ($i = 0; $i < $this->retry; $i++) {
-			$response = wp_remote_get($url, $this->wp_remote_params);
+			$parameters = array_merge($this->wp_remote_params, ['headers' => $headers]);
+			$response = wp_remote_get($url, $parameters);
 			if (is_wp_error($response)) {
 				sleep($this->sleep);
 				error_log("wp error - waiting $this->sleep sec timeout");

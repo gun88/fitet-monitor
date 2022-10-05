@@ -206,8 +206,8 @@ class Fitet_Portal_Rest {
 
 
 	public function get_player_season($player_id, $ranking_id) {
-		$url = "http://portale.fitet.org/risultati/new_rank/dettaglioatleta.php?ATLETA=$player_id&ID_CLASS=$ranking_id";
-		$html_string = $this->http_service->get($url);
+		$url = "http://portale.fitet.org/risultati/new_rank/dettaglioatleta_unica.php?ATLETA=$player_id&ID_CLASS=$ranking_id";
+		$html_string = $this->http_service->get($url, ['X-Requested-With' => 'XMLHttpRequest']);
 		$html = str_get_html($html_string);
 
 		$season = $html->find('#fragment-2 tr');
