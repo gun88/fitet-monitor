@@ -1,0 +1,94 @@
+Classifica;DataClassifica;Nome_atleta;data_nascita;settore;Punti;Diff;Regione_comitato;Categoria;id_societa;nome_societa
+;2022-10-02;SZOCS BERNADETTE CYNTHIA;05/03/1995;Seniores;15793;;Lombardia;1;413;A.S.Dilettantistica Tennistavolo Castel Goffredo
+;2022-10-02;YANG XIAOXIN;08/01/1988;Seniores;15391;;Lombardia;1;413;A.S.Dilettantistica Tennistavolo Castel Goffredo
+;2022-10-02;XIAO MARIA;19/05/1994;Seniores;15057;;Lombardia;1;413;A.S.Dilettantistica Tennistavolo Castel Goffredo
+;2022-10-02;DRAGOMAN ANDREEA;18/08/2000;Seniores;15053;;Sardegna;1;63;A.S. Dilettantistica QUATTRO MORI
+;2022-10-02;ZHANG MO;17/01/1989;Seniores;15000;;Lombardia;1;2922;Polisportiva Bagnolese Associazione Sportiva Dilettantistica
+;2022-10-02;VOROBEVA OLGA;12/10/1990;Seniores;14995;;Lombardia;1;2922;Polisportiva Bagnolese Associazione Sportiva Dilettantistica
+;2022-10-02;PERGEL SZANDRA;24/12/1988;Seniores;14952;;Alto-Adige;1;631;ASV TT SUDTIROL
+;2022-10-02;PLAIAN TANIA MARIA;16/03/2001;Seniores;14910;;Sardegna;1;63;A.S. Dilettantistica QUATTRO MORI
+;2022-10-02;MEN SHUOHAN;28/02/2000;Seniores;14500;;Sardegna;1;54;A. Dilettantistica Muravera Tennistavolo
+;2022-10-02;SIKORSKA MAGDALENA SYLWIA;31/05/1986;Seniores;14452;;Sardegna;1;2455;Associazione Sportiva Dilettantistica Tennistavolo Norbello
+;2022-10-02;KUKULKOVA TATIANA;18/07/2000;Seniores;14313;;Sardegna;1;2455;Associazione Sportiva Dilettantistica Tennistavolo Norbello
+;2022-10-02;SABITOVA VALENTINA;11/04/1990;Seniores;14242;;Emilia-Romagna;1;1467;S.S.Dilettantistica A R.L. TENNISTAVOLO CORTEMAGGIORE
+;2022-10-02;EDEM OFFIONG;31/12/1986;Seniores;14230;;Sardegna;1;63;A.S. Dilettantistica QUATTRO MORI
+;2022-10-02;ZAHARIA ALINA-GEORGIANA;12/04/1997;Seniores;14113;;Sardegna;2;2455;Associazione Sportiva Dilettantistica Tennistavolo Norbello
+;2022-10-02;ISTRATE ROXANA-ANA-MARIA;23/01/1994;Seniores;14000;;Lombardia;1;2922;Polisportiva Bagnolese Associazione Sportiva Dilettantistica
+;2022-10-02;PARIDI KONSTANTINA;31/05/1996;Seniores;14000;;Toscana;1;3055;A.S. Dilettantistica C.I.A.T.T. Prato
+;2022-10-02;DOLGIKH MARIIA;24/07/1987;Seniores;14000;;Lombardia;1;413;A.S.Dilettantistica Tennistavolo Castel Goffredo
+;2022-10-02;LUNG LISA;29/06/1999;Seniores;14000;;Sardegna;1;54;A. Dilettantistica Muravera Tennistavolo
+;2022-10-02;YOVKOVA MARIA;04/06/1999;Seniores;13984;;Puglia;2;2906;A.S. Dilettantistica TT Ennio Cristofaro
+;2022-10-02;STYHAR DIANA;30/05/1994;Seniores;13794;;Alto-Adige;2;631;ASV TT SUDTIROL
+;2022-10-02;MALININA NATALIA;27/02/2002;Giovanile Under 21;13768;;Emilia-Romagna;2;1467;S.S.Dilettantistica A R.L. TENNISTAVOLO CORTEMAGGIORE
+;2022-10-02;DEGRAEF MARGO STEFAN;15/08/1998;Seniores;13718;;Lombardia;2;2922;Polisportiva Bagnolese Associazione Sportiva Dilettantistica
+;2022-10-02;JOKIC TIJANA;28/05/2000;Seniores;13702;;Sardegna;2;63;A.S. Dilettantistica QUATTRO MORI
+;2022-10-02;LOVET VALDES IDALYS;30/10/1997;Seniores;13590;;Sardegna;2;54;A. Dilettantistica Muravera Tennistavolo
+;2022-10-02;KULIKOVA OLGA;14/06/1993;Seniores;13505;;Emilia-Romagna;2;1467;S.S.Dilettantistica A R.L. TENNISTAVOLO CORTEMAGGIORE
+;2022-10-02;ENCEA MIHAELA-SUZANA;16/11/1978;Veterani 40-50;13484;;Sardegna;2;54;A. Dilettantistica Muravera Tennistavolo
+;2022-10-02;DE HOOP SJANIE SANNE;18/03/1996;Seniores;13318;;Sardegna;2;63;A.S. Dilettantistica QUATTRO MORI
+;2022-10-02;TRUKSOVA LUCIA;22/08/1995;Seniores;13310;;Toscana;2;153;U.S. Dilettantistica  Apuania Carrara Tennistavolo
+;2022-10-02;AKPAN CECILIA OTU IME;13/06/1986;Seniores;13273;;Puglia;2;2906;A.S. Dilettantistica TT Ennio Cristofaro
+;2022-10-02;WANG YAJING;23/09/1983;Seniores;13079;;Toscana;2;153;U.S. Dilettantistica  Apuania Carrara Tennistavolo
+;2022-10-02;CLAPA ANDREEA TEODORA;19/09/1998;Seniores;13023;;Sardegna;2;63;A.S. Dilettantistica QUATTRO MORI
+;2022-10-02;AJALA FUNMILOLA ALAYINKA;18/10/1994;Seniores;12982;;Campania;2;2926;A.S. Dilettantistica Polisportiva P.G. Frassati
+;2022-10-02;TOFANT ANA;12/03/1999;Seniores;12965;;Emilia-Romagna;2;1467;S.S.Dilettantistica A R.L. TENNISTAVOLO CORTEMAGGIORE
+;2022-10-02;ANANEVA VIKTORIIA;30/07/2002;Giovanile Under 21;12772;;Piemonte;2;101;A.S.Dilettantistica G.S.G. Regaldi
+;2022-10-02;VRIESEKOOP HUBERTA PETRONELLA MARIA;13/08/1961;Veterani 60-65;12717;;Sardegna;2;54;A. Dilettantistica Muravera Tennistavolo
+;2022-10-02;MARKOVIC SNEZANA;26/06/2000;Seniores;12708;;Sardegna;2;54;A. Dilettantistica Muravera Tennistavolo
+;2022-10-02;AJAYI BUKOLA OLUWATOBI;15/07/2000;Seniores;12344;;Emilia-Romagna;2;511;Alfieri Di Romagna TT Edera A.S. Dilettantistica
+;2022-10-02;OVELAR JARA LUCERO ARAMI;31/07/1992;Seniores;12337;;Sardegna;2;2455;Associazione Sportiva Dilettantistica Tennistavolo Norbello
+;2022-10-02;IVANOVA SOFIA;21/03/2001;Seniores;12228;;Abruzzo;2;3255;A.S. Dilettantistica Tennistavolo Vasto
+;2022-10-02;CORBUREAN IOANA CRISTINA;02/08/1994;Seniores;12082;;Toscana;2;3055;A.S. Dilettantistica C.I.A.T.T. Prato
+;2022-10-02;RATIC ANDELIJA;22/08/1995;Seniores;12016;;Puglia;2;2902;A.S.D. TENNISTAVOLO CASAMASSIMA 2020
+;2022-10-02;RIABCHENKO NATALIA;17/10/1987;Seniores;11787;;Sicilia;2;1889;A.S. Dilettantistica Tennistavolo AUSONIA ENNA
+;2022-10-02;ROTAR ADELA GIANINA;31/03/1989;Seniores;11571;;Veneto;2;2963;A.S. Dilettantistica Pol. Colognola Ai Colli
+;2022-10-02;LI HAOYAN;19/01/2006;Giovanile Under 17;11190;;Umbria;2;867;A.S. Dilettantistica  T.T. Campomaggiore Terni
+;2022-10-02;PAULIUC MADALINA;13/10/1982;Veterani 40-50;11130;;Sardegna;3;63;A.S. Dilettantistica QUATTRO MORI
+;2022-10-02;O'RAHILLY EGAN MIA;10/12/2002;Giovanile Under 21;10665;;Marche;3;3323;POL. CLEMENTINA A.S. DILETTANTISTICA
+;2022-10-02;NIKOLIC MARINA;04/04/1991;Seniores;10588;;Veneto;3;2963;A.S. Dilettantistica Pol. Colognola Ai Colli
+;2022-10-02;MAVRI GAJA;29/10/1999;Seniores;10382;;Puglia;3;127;A.S. Dilettantistica Circolo Tennistavolo Molfetta
+;2022-10-02;MOLDOVAN DORA;01/08/2007;Giovanile Under 17;10024;;Lombardia;3;1438;A.S.Dilettantistica Tennistavolo Vallecamonica
+;2022-10-02;CARAGEA CLAUDIA STEFANIA;02/11/2003;Giovanile Under 21;10000;;Sardegna;3;115;A.S.Dilettantistica Tennistavolo Sassari
+;2022-10-02;LADUSE LINDA;03/11/2005;Giovanile Under 19;10000;;Marche;3;3323;POL. CLEMENTINA A.S. DILETTANTISTICA
+;2022-10-02;NIGUEZ GARCIA MARINA;10/05/1999;Seniores;10000;;Liguria;3;3077;T.T. Don Bosco Varazze Associazione Sportiva Dilettantistica
+;2022-10-02;DUBOIS MELINA AMANDINE;12/10/2001;Seniores;9809;;Lazio;3;2460;A.S.Tennis Tavolo Eureka Associazione Dilettantistica
+;2022-10-02;KOSTOVA NEVENA;24/03/1986;Seniores;9540;;Lombardia;3;413;A.S.Dilettantistica Tennistavolo Castel Goffredo
+;2022-10-02;VERGARA DIAZ SHERLY MARIA CRISTINA;01/12/1989;Seniores;9422;;Lombardia;3;3286;TT Silver Lining Associazione Sportiva Dilettantistica
+;2022-10-02;SHMIGELSKAYA ANNA;03/04/1969;Veterani 50-60;9231;;Campania;3;3207;A.S.Dilettantistica T.T. Aldo Pappalardo
+;2022-10-02;CUTAJAR ANTHEA;06/01/2005;Giovanile Under 19;9228;;Friuli-Venezia-Giulia;3;42;C.S. Dilettantistica Sportni Krozek Kras
+;2022-10-02;LAGO MORALES TATIANA;15/02/1986;Seniores;8617;;Toscana;3;3055;A.S. Dilettantistica C.I.A.T.T. Prato
+;2022-10-02;LAPINA VARVARA;30/08/1967;Veterani 50-60;8429;;Veneto;3;3194;I Leoni di San Marco C.S.T.T. Mestre A.S.D.
+;2022-10-02;MARTIROSYAN ANAHIT;19/01/1970;Veterani 50-60;8307;;Sicilia;3;1644;ASSOCIAZIONE SPORTIVA DILETTANTISTICA  POLISPORTIVA. AZZURRA T.T.
+;2022-10-02;MATACHE AGAFIA;06/03/1983;Seniores;8000;;Emilia-Romagna;3;2886;A.S. Dilettantistica Maior Tennistavolo
+;2022-10-02;KOSMIDER DIANA RENATA;16/02/1962;Veterani 60-65;7890;;Sicilia;3;2937;T.T. Top Spin Messina A.S. Dilettantistica
+;2022-10-02;BORKOWSKA SYLWIA;04/11/1994;Seniores;7786;;Veneto;3;2178;UNIONE SPORTIVA SARMEOLA A.S.Dilettantistica
+;2022-10-02;KANDRACOVA LUCIA;14/05/1978;Veterani 40-50;7255;;Lombardia;4;3175;S.S. Dilettantistica T.T. Bonacossa Milano S.R.L.
+;2022-10-02;GURITA ALIONA;04/11/1983;Seniores;7137;;Veneto;4;3229;Fondazione Bentegodi Tennistavolo Pol. Dilettantistica
+;2022-10-02;BALBAY IREM;01/02/2003;Giovanile Under 21;6916;;Emilia-Romagna;4;2886;A.S. Dilettantistica Maior Tennistavolo
+;2022-10-02;FREUDL ELKE;04/05/1956;Veterani 65-70;6898;;Toscana;4;2390;Polisportiva Dilettantistica Pulcini Cascina T.T.
+;2022-10-02;WONG GARCIA MICHELLE STEFANIE;26/01/1992;Seniores;6468;;Emilia-Romagna;4;3139;Canottieri Vittorino da Feltre A.S. Dilettantistica
+;2022-10-02;JURKECHOVA SLAVOMIRA;22/11/1984;Seniores;5423;;Umbria;4;2262;T.T. Club Edera Amicis A.S. Dilettantistica
+;2022-10-02;MEIJERINK LINDA PATRICIA;10/03/1970;Veterani 50-60;5313;;Marche;4;3313;Tennis Tavolo Fortunae A.S. Dilettantistica
+;2022-10-02;BENDRA MARIJA;29/09/1972;Veterani 50-60;4629;;Veneto;4;2824;A.S. Dilettantistica Pol. Mortise Duemila
+;2022-10-02;HOUIDA ALIYA;01/10/2010;Giovanile Under 13;4309;;Veneto;5;2178;UNIONE SPORTIVA SARMEOLA A.S.Dilettantistica
+;2022-10-02;TORONILA GEORGIANA FLORENTINA;08/04/1998;Seniores;3636;;Toscana;5;3055;A.S. Dilettantistica C.I.A.T.T. Prato
+;2022-10-02;PLUSTEA IOANA NATALIA;16/06/1977;Veterani 40-50;3624;;Lazio;5;913;A.S. Dilettantistica G.S. CRAL Dipendenti Comune Roma
+;2022-10-02;LINCEVICA AGNES;30/04/1993;Seniores;3598;;Liguria;5;3079;T.T. Athletic Club Associazione Dilettantistica
+;2022-10-02;DELA CRUZ JELEENE;17/12/1982;Veterani 40-50;3530;;Lombardia;5;81;A.S. DILETTANTISTICA TENNIS TAVOLO VARESE
+;2022-10-02;LANDA RAISHEL;25/04/2001;Seniores;2968;;Veneto;5;3194;I Leoni di San Marco C.S.T.T. Mestre A.S.D.
+;2022-10-02;SEPULVEDA VIDELA ARGELIA MARIORI;11/11/1974;Veterani 40-50;2667;;Toscana;5;2390;Polisportiva Dilettantistica Pulcini Cascina T.T.
+;2022-10-02;BELCIUG LOREDANA;09/01/1984;Seniores;2577;;Veneto;5;59;Associazione Polisportiva Dilettantistica Primavera Buttapietra
+;2022-10-02;PENKOVA TETYANA;12/07/1970;Veterani 50-60;2187;;Piemonte;5;550;A.S. Dilettantistica T.T. A4 Verzuolo
+;2022-10-02;ENASCUT ANDREEA EMANUELA;24/12/1992;Seniores;2091;;Toscana;5;2470;A.S.Dilettantistica Villaggio Tennis Tavolo Lucca
+;2022-10-02;BANOVCI ELIANA;26/10/1990;Seniores;2086;;Lombardia;5;3278;Polisportiva Dilettantistica Fortitudo
+;2022-10-02;YONATAN ALICE IRENE;04/03/1978;Veterani 40-50;2048;;Lombardia;5;3328;A.S. Dilettantistica New TT Pieve Emanuele
+;2022-10-02;OLIINYK YELYZAVETA;09/10/1974;Veterani 40-50;2000;;Toscana;5;1246;S.S. Dilettantistica C.I.A.T.T. Firenze
+;2022-10-02;VOLKHONSKA OLENA;08/12/1991;Seniores;2000;;Toscana;5;3190;A.S. Dilettantistica Tennistavolo Firenze
+;2022-10-02;CASTILLO PERALES SCARLET FLOR;18/05/1978;Veterani 40-50;2000;;Veneto;5;3123;A.S.Dilettantistica Rovigo Tennistavolo
+;2022-10-02;QUEROZ OLVERA ILIANA;13/12/1984;Seniores;1999;;Lombardia;5;317;A. Dilettantistica Tennistavolo Saronno
+;2022-10-02;VYSHYVANA EMMA;03/08/2007;Giovanile Under 17;1428;;Toscana;5;1246;S.S. Dilettantistica C.I.A.T.T. Firenze
+;2022-10-02;STRATMANN SOPHAI VALERIA;22/01/2004;Giovanile Under 19;1392;;Alto-Adige;5;1795;Amateursportclub Sarntal / Sektion Tischtennis-Associazione Dilettantistica
+;2022-10-02;FECZKU-KOMMA BOGLARKA;02/04/2010;Giovanile Under 13;1384;;Alto-Adige;5;411;TTK Marling Raiffeisen A.S. Dilettantistica
+;2022-10-02;VOLOSHYNA YANA;17/10/2005;Giovanile Under 19;977;;Piemonte;5;101;A.S.Dilettantistica G.S.G. Regaldi
+;2022-10-02;ILEA ANNA MARTINA;06/03/2011;Giovanile Under 13;686;;Lombardia;5;3474;A.S.D. MILANO TABLE TENNIS ACADEMY
+;2022-10-02;DARMANIN SABINE;20/05/2004;Giovanile Under 19;500;;Sicilia;5;3125;A.S. Dilettantistica Tennistavolo Virtus Enna

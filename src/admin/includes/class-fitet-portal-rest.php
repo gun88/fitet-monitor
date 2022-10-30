@@ -90,9 +90,15 @@ class Fitet_Portal_Rest {
 	public function get_ranking($ranking_id, $sex, $type, $club_code = null) {
 		$sex_id = $sex['id'];
 		$type_id = $type['id'];
-		$url = "http://portale.fitet.org/fpdf2/excel_classifica.php?SESSO=$sex_id&TIPO=$type_id&CLASSIFICA=$ranking_id";
 
-		$csv_string = $this->http_service->get($url);
+
+		if (true){
+			$csv_string = file_get_contents(FITET_MONITOR_DIR . "admin/assets/rankings/". $type_id."_".$sex_id . "_$ranking_id.csv");
+		} else {
+			$url = "http://portale.fitet.org/fpdf2/excel_classifica.php?SESSO=$sex_id&TIPO=$type_id&CLASSIFICA=$ranking_id";
+			$csv_string = $this->http_service->get($url);
+		}
+
 		$csv_string = str_replace('&#220;', 'Ü', $csv_string);
 		//$csv_string = mb_convert_encoding($csv_string, "UTF-8","Windows-1252");
 		// splitting result by line
