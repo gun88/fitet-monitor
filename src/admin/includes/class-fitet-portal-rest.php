@@ -144,7 +144,7 @@ class Fitet_Portal_Rest {
 				'rank' => $r,
 				'points' => intval($rank['Punti']),
 				'category' => intval($rank['Categoria']),
-				'sector' => "X ".$rank['Settore'],
+				'sector' => $rank['Settore'],
 				'diff' => intval($rank['Diff']),
 				'birthDate' => $rank['DataNascita'],
 				'region' => $rank['RegioneComitato'],
