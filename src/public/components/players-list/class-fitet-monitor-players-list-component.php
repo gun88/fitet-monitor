@@ -18,7 +18,7 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
 	}
 
 	protected function process_data($data) {
-		$data = array_merge(['filter' => '', 'players' => [], 'tableUrl' => '#', 'capsUrl' => '#', 'showFilter' => false], $data);
+		$data = array_merge(['filter' => '', 'players' => [], 'tableUrl' => '#', 'capsUrl' => '#', 'showFilter' => true], $data);
 		return [
 			'pageMenu' => $this->menu($data['tableUrl'], $data['capsUrl']),
 			'filter' => $data['showFilter'] ? $this->getFilter($data['filter']) : '',
@@ -31,9 +31,14 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
 			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
 		$data = array_map(function ($player) {
-			return $this->components['playerCard']->render($player);
+			$inner = $this->components['playerCard']->render($player);
+			$player_type_id = str_replace(' ', '-', strtolower($player['type']));
+			return "<div class='fm-player-type-$player_type_id'>" .
+				"$inner" .
+				"<hr>" .
+				"</div>";
 		}, $data);
-		return implode('<hr>', $data);
+		return implode('', $data);
 	}
 
 	private function menu($table_url, $caps_url) {
@@ -47,14 +52,21 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
 
 
 	private function getFilter($filter): string {
-		$filters = '<div><img alt="filter" src="' . FITET_MONITOR_ICON_FILTER . '"/><span>' . __('Filter', 'fitet-monitor') . '</span>';
-		$filters .= "<select id='fm-player-list-filter'>";
-		$filters .= "<option " . empty($filter) . " value='none'>" . __('None', 'fitet-monitor') . "</option>";
-		$filters .= "<option " . ($filter == 'Italiani' ? 'selected' : '') . " value='Italiani'>" . __('Italiani', 'fitet-monitor') . "</option>";
-		$filters .= "<option " . ($filter == 'Stranieri' ? 'selected' : '') . " value='Stranieri'>" . __('Stranieri', 'fitet-monitor') . "</option>";
-		$filters .= "<option " . ($filter == 'Fuori Quadro' ? 'selected' : '') . " value='Fuori Quadro'>" . __('Fuori Quadro', 'fitet-monitor') . "</option>";
-		$filters .= "<option " . ($filter == 'Provvisori' ? 'selected' : '') . " value='Provvisori'>" . __('Provvisori', 'fitet-monitor') . "</option>";
-		$filters .= "</select>";
+		$filters = '';
+		// $filters .= '<div><img alt="filter" src="' . FITET_MONITOR_ICON_FILTER . '"/><span>' . __('Filter', 'fitet-monitor') . '</span>';
+		// $filters .= "<select id='fm-player-list-filter'>";
+		// $filters .= "<option " . empty($filter) . " value='none'>" . __('None', 'fitet-monitor') . "</option>";
+		// $filters .= "<option " . ($filter == 'Italiani' ? 'selected' : '') . " value='Italiani'>" . __('Italiani', 'fitet-monitor') . "</option>";
+		// $filters .= "<option " . ($filter == 'Stranieri' ? 'selected' : '') . " value='Stranieri'>" . __('Stranieri', 'fitet-monitor') . "</option>";
+		// $filters .= "<option " . ($filter == 'Fuori Quadro' ? 'selected' : '') . " value='Fuori Quadro'>" . __('Fuori Quadro', 'fitet-monitor') . "</option>";
+		// $filters .= "<option " . ($filter == 'Provvisori' ? 'selected' : '') . " value='Provvisori'>" . __('Provvisori', 'fitet-monitor') . "</option>";
+		// $filters .= "</select>";
+		// $filters .= '</div>';
+		$filters .= '<div><img alt="filter" src="' . FITET_MONITOR_ICON_FILTER . '"/><span>' . __('Filter', 'fitet-monitor') . '</span>';
+		$filters .= '<label for="fm-pt-it"><input type="checkbox" id="fm-pt-it" checked name="italiani"/>Italiani</label>';
+		$filters .= '<label for="fm-pt-st"><input type="checkbox" id="fm-pt-st" checked name="stranieri"/>Stranieri</label>';
+		$filters .= '<label for="fm-pt-pr"><input type="checkbox" id="fm-pt-pr" name="provvisori"/>Provvisori</label>';
+		$filters .= '<label for="fm-pt-fq"><input type="checkbox" id="fm-pt-fq" name="fuori-quadro"/>Fuori Quadro</label>';
 		$filters .= '</div>';
 		return $filters;
 	}

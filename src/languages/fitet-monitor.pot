@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-10-30 11:22:55+00:00\n"
+"POT-Creation-Date: 2022-10-30 13:57:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -432,20 +432,20 @@ msgid "Regional Tournaments"
 msgstr ""
 
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:44
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:41
+#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:46
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:42
 msgid "List"
 msgstr ""
 
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:45
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:42
+#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:47
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:43
 msgid "Table"
 msgstr ""
 
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:46
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:54
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:43
+#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:48
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:44
 msgid "Caps"
 msgstr ""
@@ -455,28 +455,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:50
+#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:65
 msgid "Filter"
-msgstr ""
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:52
-msgid "None"
-msgstr ""
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:53
-msgid "Italiani"
-msgstr ""
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:54
-msgid "Stranieri"
-msgstr ""
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:55
-msgid "Fuori Quadro"
-msgstr ""
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:56
-msgid "Provvisori"
 msgstr ""
 
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:56

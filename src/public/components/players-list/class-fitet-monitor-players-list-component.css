@@ -34,3 +34,28 @@
 .fm-player-list-filter > div select {
 	width: auto;
 }
+
+.fm-player-list-filter > div label {
+	margin-bottom: 0;
+	white-space: nowrap;
+}
+
+.fm-player-list-filter > div label input[type="checkbox"] {
+	margin-right: 0.5em;
+}
+
+.fm-hide-fuori-quadro .fm-player-type-fuori-quadro {
+	display: none;
+}
+
+.fm-hide-italiani .fm-player-type-italiani {
+	display: none;
+}
+
+.fm-hide-stranieri .fm-player-type-stranieri {
+	display: none;
+}
+
+.fm-hide-provvisori .fm-player-type-provvisori {
+	display: none;
+}

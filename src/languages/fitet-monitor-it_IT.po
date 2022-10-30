@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-09-30 19:20:34+00:00\n"
+"POT-Creation-Date: 2022-10-30 13:57:40+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -435,20 +435,20 @@ msgid "Regional Tournaments"
 msgstr "Tornei Regionali"
 
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:44
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:41
+#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:46
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:42
 msgid "List"
 msgstr "Lista"
 
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:45
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:42
+#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:47
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:43
 msgid "Table"
 msgstr "Tabella"
 
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:46
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:54
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:43
+#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:48
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:44
 msgid "Caps"
 msgstr "Presenze"
@@ -458,29 +458,9 @@ msgstr "Presenze"
 msgid "Name"
 msgstr "Nome"
 
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:50
+#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:65
 msgid "Filter"
 msgstr "Filtra"
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:52
-msgid "None"
-msgstr "Nessuno"
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:53
-msgid "Italiani"
-msgstr ""
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:54
-msgid "Stranieri"
-msgstr ""
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:55
-msgid "Fuori Quadro"
-msgstr ""
-
-#: src/public/components/players-list/class-fitet-monitor-players-list-component.php:56
-msgid "Provvisori"
-msgstr ""
 
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:56
 msgid "Diff."
@@ -604,6 +584,9 @@ msgstr "Nessun risultato"
 #: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:436
 msgid "on"
 msgstr "il"
+
+#~ msgid "None"
+#~ msgstr "Nessuno"
 
 #~ msgid "History Size"
 #~ msgstr "Taglia Cronologia"
