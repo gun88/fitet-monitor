@@ -93,7 +93,8 @@ class Fitet_Portal_Rest {
 
 
 		if (true){
-			$csv_string = file_get_contents(FITET_MONITOR_DIR . "admin/assets/rankings/". $type_id."_".$sex_id . "_$ranking_id.csv");
+			// todo terminare
+			$csv_string = file_get_contents(FITET_MONITOR_UPLOAD_DIR . "/fitet-monitor/rankings/". $type_id."_".$sex_id . "_$ranking_id.csv");
 		} else {
 			$url = "http://portale.fitet.org/fpdf2/excel_classifica.php?SESSO=$sex_id&TIPO=$type_id&CLASSIFICA=$ranking_id";
 			$csv_string = $this->http_service->get($url);

@@ -103,6 +103,21 @@ function run_fitet_monitor() {
 run_fitet_monitor();
 
 
+$x = 0;
+
+function memory_dump() {
+	if (!FITET_MONITOR_IS_DEV)
+		return;
+	global $x;
+	$x++;
+	error_log("[$x]" . ' memory usage: ' . round(memory_get_usage() / (1024 * 1024)) .
+		'M. Peak: ' . round(memory_get_peak_usage(false) / (1024 * 1024)) .
+		' - ' . round(memory_get_peak_usage(true) / (1024 * 1024)));
+}
+
+
+/*
+
 // todo !!!!!!!!!!!!!!!!!!!!!!!!!!!
 function theme_custom_rewrites() {
 	foreach (get_pages() as $page) {
@@ -117,16 +132,42 @@ function theme_custom_rewrites() {
 
 // add_action('init', 'theme_custom_rewrites');
 
-$x = 0;
 
-function memory_dump() {
-	if (!FITET_MONITOR_IS_DEV)
-		return;
-	global $x;
-	$x++;
-	error_log("[$x]" . ' memory usage: ' . round(memory_get_usage() / (1024 * 1024)) .
-		'M. Peak: ' . round(memory_get_peak_usage(false) / (1024 * 1024)) .
-		' - ' . round(memory_get_peak_usage(true) / (1024 * 1024)));
+add_filter( 'document_title_parts', function( $title_parts_array ) {
+	error_log(json_encode($title_parts_array));
+	error_log( get_the_ID() );
+
+	if (true || get_the_ID() == 2055 ) {
+		$title_parts_array['title'] = 'Custom Page Title';
+	}
+	return $title_parts_array;
+} );
+
+
+
+function change_custom_post_type_archive_title($title) {
+	//error_log(json_encode($title));
+	return $title;
 }
 
+add_filter('pre_get_document_title', 'change_custom_post_type_archive_title');*/
+
+
+/*add_filter('loop_start', function ($wp_query) {
+	error_log(json_encode($wp_query, 128));
+	$wp_query->post_count = 10;
+});*/
+
+
+/*
+/**
+		 * Fires after the main query vars have been parsed.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param WP_Query $query The WP_Query instance (passed by reference).
+		 */
+// do_action_ref_array( 'parse_query', array( &$this ) );
+
+////var/www/html/wp-includes/class-wp-query.php 1112
 
