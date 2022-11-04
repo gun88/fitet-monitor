@@ -271,11 +271,6 @@ Search.appendIndex(
             "summary": "Begins\u0020execution\u0020of\u0020the\u0020plugin.",
             "url": "namespaces/default.html#function_run_fitet_monitor"
         },                {
-            "fqsen": "\\theme_custom_rewrites\u0028\u0029",
-            "name": "theme_custom_rewrites",
-            "summary": "",
-            "url": "namespaces/default.html#function_theme_custom_rewrites"
-        },                {
             "fqsen": "\\memory_dump\u0028\u0029",
             "name": "memory_dump",
             "summary": "",
