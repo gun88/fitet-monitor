@@ -256,6 +256,7 @@ class Fitet_Monitor {
 
 		$this->set_locale();
 		$this->load_rest_api($manager);
+		$this->register_widget($manager);
 		$this->schedule_cronjob($manager);
 		if (is_admin()) {
 			$this->load_admin($manager);
@@ -304,6 +305,16 @@ class Fitet_Monitor {
 		// todo Don’t forget to clean the scheduler on deactivation:
 
 	}
+
+	private function register_widget(Fitet_Monitor_Manager $manager) {
+		require_once FITET_MONITOR_DIR . 'common/widgets/class-fitet-monitor-calendar-widget.php';
+
+		add_action( 'widgets_init', function () {
+			register_widget( 'Fitet_Monitor_Calendar_Widget' );
+		} );
+	}
+
+
 
 
 }

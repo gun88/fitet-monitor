@@ -173,6 +173,14 @@ class Fitet_Monitor_Utils {
 
 	}
 
+	public static function match_page_url($match_base_url, $match_id) {
+		if ($match_base_url == null || $match_id == null) {
+			return null;
+		}
+		return "$match_base_url&match=$match_id";
+
+	}
+
 
 	public static function club_code_by_team_id($championship_id, $season_id, $team_id) {
 		foreach (self::clubs() as $club) {

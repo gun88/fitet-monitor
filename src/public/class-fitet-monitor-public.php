@@ -75,11 +75,13 @@ class Fitet_Monitor_Public {
 		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-teams-shortcode.php';
 		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-players-shortcode.php';
 		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-titles-shortcode.php';
+		require_once FITET_MONITOR_DIR . 'public/shortcodes/class-fitet-monitor-matches-shortcode.php';
 
 		$shortcodes = [
 			new Fitet_Monitor_Teams_Shortcode($this->version, $this->plugin_name, $this->manager),
 			new Fitet_Monitor_Players_Shortcode($this->version, $this->plugin_name, $this->manager),
 			new Fitet_Monitor_Titles_Shortcode($this->version, $this->plugin_name, $this->manager),
+			new Fitet_Monitor_Matches_Shortcode($this->version, $this->plugin_name, $this->manager),
 		];
 
 		foreach ($shortcodes as $shortcode) {
