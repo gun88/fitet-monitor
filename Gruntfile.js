@@ -106,6 +106,7 @@ module.exports = function (grunt) {
 		exec: {
 			phpDocumentor: 'phpDocumentor -d ./src -t ./docs',
 			installWpTests: 'bin/install-wp-tests.sh wordpress_test wordpress_test wordpress_test localhost 6.0.0 true',
+			installWpTestsWsl: 'bin/install-wp-tests.sh wordpress_test wordpress_test wordpress_test HUFVFKMCUY.local 6.0.0 true',
 			composer: 'composer update',
 		},
 		phpunit: {
@@ -183,8 +184,10 @@ module.exports = function (grunt) {
 	// Composer command globally available needed
 	// Localhost MySql DB needed. user/password/dm_name: wordpress_test
 	grunt.registerTask('integration-tests', ['exec:installWpTests', 'phpunit:integration']);
+	grunt.registerTask('integration-tests-wsl', ['exec:installWpTestsWsl', 'phpunit:integration']);
 
 	grunt.registerTask('build-full', ['clean', 'exec:composer', 'i18n', 'docs', 'unit-tests', 'build', 'integration-tests']);
+	grunt.registerTask('build-full-wsl', ['clean', 'exec:composer', 'i18n', 'docs', 'unit-tests', 'build', 'integration-tests-wsl']);
 
 	grunt.registerTask('indexes', function () {
 		// adding index.php files to prevent direct access to directories

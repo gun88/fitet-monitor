@@ -8,6 +8,7 @@
     "unit-tests": "grunt unit-tests",
     "build": "grunt build",
     "build-full": "grunt build-full",
+    "build-full-wsl": "grunt build-full-wsl",
     "i18n": "grunt i18n",
     "docs": "grunt docs",
     "integration-tests": "grunt integration-tests",
