@@ -1,6 +1,6 @@
 <?php
 
-require_once '/var/www/html/wp-content/plugins/fitet-monitor/vendor/phpunit/phpunit/src/Framework/TestCase.php';
+require_once __DIR__ . '/../../vendor/phpunit/phpunit/src/Framework/TestCase.php';
 
 use PHPUnit\Framework\TestCase;
 

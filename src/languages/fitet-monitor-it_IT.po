@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-10-30 13:57:40+00:00\n"
+"POT-Creation-Date: 2022-11-20 14:59:47+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -327,10 +327,30 @@ msgstr "Società aggiunta correttamente"
 msgid "Club edited successfully"
 msgstr "Società modificata correttamente"
 
-#: src/common/includes/class-fitet-monitor.php:273
+#: src/common/includes/class-fitet-monitor.php:274
 #, fuzzy
 msgid "Every Five Minutes"
 msgstr "Ogni 5 secondi"
+
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:7
+msgid "WPBeginner Widget"
+msgstr ""
+
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:8
+msgid "Sample widget based on WPBeginner Tutorial"
+msgstr ""
+
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:21
+msgid "Hello, World!"
+msgstr ""
+
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:30
+msgid "New title"
+msgstr ""
+
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:35
+msgid "Title:"
+msgstr ""
 
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:73
 msgid "Best"
