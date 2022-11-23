@@ -82,6 +82,12 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
 			}));
 		}
 
+		// todo check empty seasons
+		$resources = array_values(array_filter($resources, function ($season) {
+			return !empty($season);
+		}));
+
+
 		//$resources = $resources['championships'];
 
 

@@ -1,5 +1,128 @@
-.fm-match-list {
+.fm-match-grid {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	margin-bottom: 2em;
+}
+
+.fm-match-day-label {
+	font-weight: bold;
+	margin-bottom: 1em;
+	background-color: #f3f3f3;
+	padding: 8px;
+}
+
+.fm-team-calendar-match {
 	display: flex;
-	justify-content: space-evenly;
-	flex-wrap: wrap;
+	flex-flow: column;
+	gap: .5em;
+	position: relative;
+
+}
+
+.fm-team-calendar-match > div {
+	display: flex;
+	gap: 1em;
+}
+
+.fm-team-calendar-match > div > span {
+	margin-left: auto;
+	/*min-width: 2em;*/
+	text-align: right;
+}
+
+.fm-table-column-match {
+	text-align: left;
+	padding-top: 1.2em !important;
+	width: 70%;
+}
+
+.fm-table-column-date {
+	text-align: center;
+	width: 30%;
+}
+
+.fm-team-name {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 16em;
+}
+
+.fm-team-name:hover {
+	white-space: normal;
+}
+
+.fm-match-grid-item {
+	position: relative;
+	margin: 12px 0.25em;
+}
+
+.fm-match-grid-item table,
+.fm-match-grid-item .fm-match-grid-item-label {
+	font-size: .875em;
+}
+
+.fm-match-grid-item table {
+	margin: 0; /* reset table */
+	color: #2e373b; /*todo solo ttmorelli*/
+}
+
+.fm-match-grid-item:hover table {
+	background-color: #f5f5f5;
+	cursor: pointer;
+}
+
+
+.fm-match-grid-item .fm-match-grid-item-label {
+	position: absolute;
+	top: -10px;
+	left: 10px;
+	background: white;
+	color: gray;
+	padding: 0 5px;
+	border: 1px solid transparent;
+	line-height: 1.5em;
+}
+
+.fm-match-grid-item:hover .fm-match-grid-item-label {
+	background-color: #f5f5f5;
+	border-color: #e2ecf3;
+}
+
+.fm-team-cell {
+	display: flex;
+	gap: 0.5em;
+	align-items: center;
+}
+
+@media screen and (max-width: 782px) {
+	.fm-match-grid {
+		grid-template-columns: 100%;
+	}
+
+	.fm-match-grid-item table {
+		font-size: 1.125em;
+	}
+}
+
+.fm-win-marker {
+	position: absolute;
+	right: -12px;
+	display: none;
+}
+
+.fm-win-team {
+	color: red;
+}
+
+.fm-match-won .fm-win-marker {
+	display: block;
+}
+
+.fm-match-lost {
+	color: #969696;
+}
+
+.fm-match-team-owned {
+	font-weight: 600;
 }
