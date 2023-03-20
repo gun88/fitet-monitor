@@ -1,9 +1,8 @@
 <div class="fm-match-card">
 	<a href='{{matchDetailUrl}}'>
 		<div class="fm-match-card-label">{{championshipName}}</div>
-		<table>
-			<tr>
-				<td class="fm-match-card-column-result">
+		<div class="fm-match-card-box">
+				<div class="fm-match-card-column-result">
 					<div class="fm-team-calendar-match">
 						<div class="{{homeClass}}">{{homeCell}}<span>{{homeResult}}</span>
 							<span class="fm-win-marker"><svg aria-label="Winner" height="8" role="img" width="6"><polygon
@@ -14,11 +13,10 @@
 								fill="#000" points="6,0 6,8 0,4"></polygon></svg></span>
 						</div>
 					</div>
-				</td>
-				<td class="fm-table-column-date">
+				</div>
+				<div class="fm-table-column-date">
 					{{dateCell}}
-				</td>
-			</tr>
-		</table>
+				</div>
+		</div>
 	</a>
 </div>

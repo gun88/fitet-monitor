@@ -1,106 +1,139 @@
-.fm-match-card td.fm-match-card-column-result {
-	text-align: left;
-	padding-top: 1.2em;
-	width: 70%;
+.fm-match-card {
+    /*border: 1px solid red;*/
+}
+
+.fm-match-card a {
+    color: #212121;
+}
+
+.fm-match-card a:hover {
+    color: #212121;
+    text-decoration: none;
+}
+
+.fm-match-card .fm-match-card-box {
+    display: flex;
+}
+
+.fm-match-card .fm-match-card-box > div {
+    border: 1px solid #d1d1d1;
+
+}
+
+.fm-match-card a:hover .fm-match-card-box {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.fm-match-card .fm-match-card-box .fm-match-card-column-result {
+    overflow: hidden;
+    padding: 6px 12px;
+}
+
+.fm-match-card .fm-match-card-box .fm-table-column-date {
+    overflow: hidden;
+    border-left: none;
+    padding: 0px;
+}
+
+.fm-match-card .fm-match-card-box > div.fm-match-card-column-result {
+    text-align: left;
+    padding-top: 1.2em;
+    width: 100%;
+    font-size: 14px;
+}
+
+.fm-match-card .fm-match-card-box > div.fm-table-column-date {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+    text-align: center;
+    width: 110px;
+    overflow: hidden;
 }
 
 .fm-match-card-column-result > div {
-	display: flex;
-	flex-flow: column;
-	gap: .5em;
-	position: relative;
+    display: flex;
+    flex-flow: column;
+    gap: .5em;
+    position: relative;
 
 }
 
 .fm-match-card-column-result > div > div {
-	display: flex;
-	gap: 1em;
+    display: flex;
+    gap: 1em;
 }
 
 .fm-match-card-column-result > div > div > span {
-	margin-left: auto;
-	text-align: right;
-}
-
-.fm-table-column-date {
-	text-align: center;
-	width: 30%;
-	text-align: -webkit-center;
-    font-size: .9em;
-    overflow: hidden;
-    max-width: 0;
+    margin-left: auto;
+    text-align: right;
 }
 
 .fm-team-name {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 15em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .fm-team-name:hover {
-	white-space: normal;
+    white-space: normal;
 }
 
 .fm-match-card {
-	position: relative;
-	margin: 12px 0.25em;
+    position: relative;
+    margin: 12px 0.25em;
 }
 
 .fm-match-card table,
 .fm-match-card .fm-match-card-label {
-	font-size: .875em;
+    font-size: .875em;
 }
 
 .fm-match-card table {
-	margin: 0; /* reset table */
-	color: #2e373b; /*todo solo ttmorelli*/
-}
-
-.fm-match-card:hover table {
-	background-color: #f5f5f5;
-	cursor: pointer;
+    margin: 0; /* reset table */
+    color: #2e373b; /*todo solo ttmorelli*/
 }
 
 
 .fm-match-card .fm-match-card-label {
-	position: absolute;
-	top: -10px;
-	left: 10px;
-	background: white;
-	color: gray;
-	padding: 0 5px;
-	border: 1px solid transparent;
-	line-height: 1.5em;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: white;
+    color: gray;
+    padding: 0 5px;
+    border: 1px solid transparent;
+    line-height: 1.5em;
 }
 
 .fm-match-card:hover .fm-match-card-label {
-	background-color: #f5f5f5;
-	border-color: #e2ecf3;
+    background-color: #f5f5f5;
+    border-color: #d1d1d1;
 }
 
 .fm-team-cell {
-	display: flex;
-	gap: 0.5em;
-	align-items: center;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    min-width: 0;
 }
 
 .fm-win-marker {
-	position: absolute;
-	right: -12px;
-	display: none;
+    position: absolute;
+    right: -12px;
+    display: none;
 }
 
 .fm-match-won .fm-win-marker {
-	display: block;
+    display: block;
 }
 
 .fm-match-lost {
-	color: #969696;
+    color: #969696;
 }
 
 .fm-match-team-owned {
-	font-weight: 600;
+    font-weight: 600;
 }
-
-

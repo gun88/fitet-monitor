@@ -49,4 +49,9 @@ class Fitet_Monitor_Match_List_Component extends Fitet_Monitor_Component {
 
     }
 
+    public function render_out($data) {
+        $this->initialize();
+        return $this->render($data);
+    }
+
 }

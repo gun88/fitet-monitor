@@ -33,6 +33,9 @@
 #fm-team-standings .fm-team-main-team {
 	font-weight: bold;
 }
+#fm-team-standings .fm-team-retired-team {
+    background-color: #d9d9d9;
+}
 
 .fm-standing-legend {
 	display: flex;
@@ -71,4 +74,11 @@
 	height: 1em;
 	border: 1px #505050 solid;
 	background-color: #df8484;
+}
+
+.fm-standing-legend-retired {
+	width: 1em;
+	height: 1em;
+	border: 1px #505050 solid;
+	background-color: #d9d9d9;
 }

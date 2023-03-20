@@ -387,6 +387,15 @@ class Fitet_Monitor_Utils {
         return false;
     }
 
+    public static function is_retired_team_from_standings_by_team_id($standings, $team_id) {
+        foreach ($standings as $standing) {
+            if (($standing['teamId'] == $team_id)) {
+                return $standing['retired'];
+            }
+        }
+        return false;
+    }
+
     public static function extract_club_code_from_standings_by_team_name($standings, $team_name) {
 
         foreach ($standings as $team) {
@@ -435,7 +444,7 @@ class Fitet_Monitor_Utils {
                     $match['firstLeg']['championshipId'] = $championship['championshipId'];
                     $match['firstLeg']['championshipName'] = $championship['championshipName'];
                     $match['firstLeg']['championshipDay'] = $match['championshipDay'];
-                    $match['firstLeg']['championshipDayId'] = $match['championshipDay'];
+                    $match['firstLeg']['championshipDayId'] = $match['championshipDay'] . '_' . 'firstLeg';
                     $match['firstLeg']['homeTeamName'] = $match['home'];
                     $match['firstLeg']['awayTeamName'] = $match['away'];
                     $match['firstLeg']['video'] = self::extract_video($match['firstLeg']['match']);
@@ -446,6 +455,8 @@ class Fitet_Monitor_Utils {
                     $match['firstLeg']['awayClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['firstLeg']['awayTeamName']);
                     $match['firstLeg']['ownedHomeTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['homeTeamId']);
                     $match['firstLeg']['ownedAwayTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['awayTeamId']);
+                    $match['firstLeg']['retiredHomeTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['homeTeamId']);
+                    $match['firstLeg']['retiredAwayTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['awayTeamId']);
                     $match['firstLeg']['homeResult'] = trim(explode('-', $match['firstLeg']['result'])[0]);
                     $match['firstLeg']['awayResult'] = trim(explode('-', $match['firstLeg']['result'])[1]);
                     $match['firstLeg']['phase'] = 'firstLeg';
@@ -455,7 +466,7 @@ class Fitet_Monitor_Utils {
                     $match['returnMatch']['championshipId'] = $championship['championshipId'];
                     $match['returnMatch']['championshipName'] = $championship['championshipName'];
                     $match['returnMatch']['championshipDay'] = $match['championshipDay'];
-                    $match['returnMatch']['championshipDayId'] = $match['championshipDay'] * 2;
+                    $match['returnMatch']['championshipDayId'] = $match['championshipDay'] . '_' . 'returnMatch';
                     $match['returnMatch']['homeTeamName'] = $match['away'];
                     $match['returnMatch']['awayTeamName'] = $match['home'];
                     $match['returnMatch']['video'] = self::extract_video($match['returnMatch']['match']);
@@ -466,10 +477,11 @@ class Fitet_Monitor_Utils {
                     $match['returnMatch']['awayClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['returnMatch']['awayTeamName']);
                     $match['returnMatch']['ownedHomeTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['homeTeamId']);
                     $match['returnMatch']['ownedAwayTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['awayTeamId']);
-                    $match['returnMatch']['phase'] = 'returnMatch';
-
+                    $match['returnMatch']['retiredHomeTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['homeTeamId']);
+                    $match['returnMatch']['retiredAwayTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['awayTeamId']);
                     $match['returnMatch']['homeResult'] = self::parse_result($match['returnMatch']['result'])['away'];
                     $match['returnMatch']['awayResult'] = self::parse_result($match['returnMatch']['result'])['home'];
+                    $match['returnMatch']['phase'] = 'returnMatch';
 
                     unset($match['championshipDay']);
                     unset($match['home']);
@@ -511,6 +523,10 @@ class Fitet_Monitor_Utils {
                 return $match['ownedHomeTeam'] || $match['ownedAwayTeam'];
             }));
         }
+
+        $data = array_values(array_filter($data, function ($match) {
+            return !($match['retiredHomeTeam'] || $match['retiredAwayTeam']);
+        }));
 
         foreach ($data as &$match) {
             $match['datetime'] = implode('-', array_reverse(explode('/', $match['date'])));

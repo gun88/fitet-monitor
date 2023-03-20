@@ -8,72 +8,77 @@ require_once FITET_MONITOR_DIR . 'public/utils/class-fitet-monitor-utils.php';
 
 class Fitet_Monitor_Match_Card_Component extends Fitet_Monitor_Component {
 
-	protected function components() {
-		return [
-			'teamCell' => new Fitet_Monitor_Team_Cell_Component($this->plugin_name, $this->version),
-			'videoThumbnail' => new Fitet_Monitor_Video_Thumbnail_Component($this->plugin_name, $this->version)
-		];
-	}
+    protected function components() {
+        return [
+            'teamCell' => new Fitet_Monitor_Team_Cell_Component($this->plugin_name, $this->version),
+            'videoThumbnail' => new Fitet_Monitor_Video_Thumbnail_Component($this->plugin_name, $this->version)
+        ];
+    }
 
-	protected function process_data($data) {
-		$default = [
-			'date' => '',
-			'time' => '',
-			'matchId' => '',
-			'seasonId' => '',
-			'championshipId' => '',
-			'championshipName' => '',
-			'championshipDay' => '',
-			'formula' => '',
-			'homeTeamName' => '',
-			'homeResult' => '',
-			'ownedHomeTeam' => '',
-			'awayTeamName' => '',
-			'awayResult' => '',
-			'ownedAwayTeam' => '',
-			'matchDetailUrl' => '',
-		];
 
-		$data = array_merge($default, $data);
+    protected function process_data($data) {
+        $default = [
+            'date' => '',
+            'time' => '',
+            'matchId' => '',
+            'seasonId' => '',
+            'championshipId' => '',
+            'championshipName' => '',
+            'championshipDay' => '',
+            'formula' => '',
+            'homeTeamName' => '',
+            'homeResult' => '',
+            'ownedHomeTeam' => '',
+            'awayTeamName' => '',
+            'awayResult' => '',
+            'ownedAwayTeam' => '',
+            'matchDetailUrl' => '',
+        ];
 
-		$data['homeClass'] = $this->extract_team_class($data['homeResult'], $data['awayResult']);
-		$data['awayClass'] = $this->extract_team_class($data['awayResult'], $data['homeResult']);
+        $data = array_merge($default, $data);
 
-		$data['homeClass'] .= $data['ownedHomeTeam'] ? ' fm-match-team-owned' : '';
-		$data['awayClass'] .= $data['ownedAwayTeam'] ? ' fm-match-team-owned' : '';
+        $data['homeClass'] = $this->extract_team_class($data['homeResult'], $data['awayResult']);
+        $data['awayClass'] = $this->extract_team_class($data['awayResult'], $data['homeResult']);
 
-		$data['homeCell'] = $this->teams($data['homeTeamName'], $data['homeClubCode']);
-		$data['awayCell'] = $this->teams($data['awayTeamName'], $data['awayClubCode']);
+        $data['homeClass'] .= $data['ownedHomeTeam'] ? ' fm-match-team-owned' : '';
+        $data['awayClass'] .= $data['ownedAwayTeam'] ? ' fm-match-team-owned' : '';
 
-		if (isset($data['video']) && !empty($data['video'])) {
-			$data['dateCell'] = $this->components['videoThumbnail']->render($data['video']);
-		} else {
-			$data['dateCell'] = $data['date'] . '<br>' . $data['time'];
-		}
+        $data['homeCell'] = $this->teams($data['homeTeamName'], $data['homeClubCode']);
+        $data['awayCell'] = $this->teams($data['awayTeamName'], $data['awayClubCode']);
 
-		return $data;
-	}
+        if (isset($data['video']) && !empty($data['video'])) {
+            $data['dateCell'] = $this->components['videoThumbnail']->render($data['video']);
+        } else {
+            $data['dateCell'] = $data['date'] . '<br>' . $data['time'];
+        }
 
-	private function teams($team_name, $club_code) {
-		$data = ['clubCode' => $club_code, 'teamName' => $team_name, 'teamPageUrl' => '', 'clubLogo' => Fitet_Monitor_Utils::club_logo_by_code($club_code)];
-		return $this->components['teamCell']->render($data);
-	}
+        return $data;
+    }
 
-	private function extract_team_class($home_result, $away_result) {
-		if (trim($home_result) == '' || trim($away_result) == '') {
-			return 'fm-match-pristine';
-		}
-		if ($home_result > $away_result) {
-			return 'fm-match-won';
-		}
-		if ($home_result < $away_result) {
-			return 'fm-match-lost';
-		}
+    private function teams($team_name, $club_code) {
+        $data = ['clubCode' => $club_code, 'teamName' => $team_name, 'teamPageUrl' => '', 'clubLogo' => Fitet_Monitor_Utils::club_logo_by_code($club_code)];
+        return $this->components['teamCell']->render($data);
+    }
 
-		if ($home_result == $away_result) {
-			return 'fm-match-draw';
-		}
-	}
+    private function extract_team_class($home_result, $away_result) {
+        if (trim($home_result) == '' || trim($away_result) == '') {
+            return 'fm-match-pristine';
+        }
+        if ($home_result > $away_result) {
+            return 'fm-match-won';
+        }
+        if ($home_result < $away_result) {
+            return 'fm-match-lost';
+        }
+
+        if ($home_result == $away_result) {
+            return 'fm-match-draw';
+        }
+    }
+
+    public function render_out($data) {
+        return $this->render($data);
+    }
 
 
 }

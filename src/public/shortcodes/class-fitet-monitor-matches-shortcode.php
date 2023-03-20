@@ -102,8 +102,8 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
             ];
         }, $_data['results'], array_keys($_data['results']));
 
-        $this->try_parse_double('homePlayer', $data['results']);
-        $this->try_parse_double('awayPlayer', $data['results']);
+        self::try_parse_double('homePlayer', $data['results']);
+        self::try_parse_double('awayPlayer', $data['results']);
 
         return $data;
     }
@@ -268,7 +268,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
         return ['playerName' => $player_name];
     }
 
-    private function try_parse_double_inner($players, $player) {
+    public static function try_parse_double_inner($players, $player) {
         if (!strpos($player['playerName'], '-'))
             return $player;
         $player_names = explode('-', $player['playerName']);
@@ -279,8 +279,8 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
         $players = array_filter($players, function ($p) use ($player) {
             return $p['playerName'] != $player['playerName'];
         });
-        $player_1 = $this->extract_player_by_prefix($players, trim($player_names[0]));
-        $player_2 = $this->extract_player_by_prefix($players, trim($player_names[1]));
+        $player_1 = self::extract_player_by_prefix($players, trim($player_names[0]));
+        $player_2 = self::extract_player_by_prefix($players, trim($player_names[1]));
 
         if ($player_1 == null && $player_2 == null)
             return $player;
@@ -293,7 +293,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
 
     }
 
-    private function extract_player_by_prefix($players, $name) {
+    private static function extract_player_by_prefix($players, $name) {
         foreach ($players as $player) {
             if (substr($player['playerName'], 0, strlen($name)) === $name) {
                 return $player;
@@ -302,13 +302,13 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
         return null;
     }
 
-    private function try_parse_double($team, &$results) {
+    private static function try_parse_double($team, &$results) {
         $home_players = array_map(function ($match) use ($team) {
             return $match[$team];
         }, $results);
 
         foreach ($results as &$result) {
-            $result[$team] = $this->try_parse_double_inner($home_players, $result[$team]);
+            $result[$team] = self::try_parse_double_inner($home_players, $result[$team]);
         }
     }
 
