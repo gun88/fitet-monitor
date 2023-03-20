@@ -6,7 +6,7 @@ require_once FITET_MONITOR_DIR . 'public/components/common/class-fitet-monitor-p
 
 class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 
-	private $deault_confing = [
+	private $default_confing = [
 		'showClub' => true,
 		'showClubCode' => true,
 		'showPoints' => true,
@@ -49,7 +49,7 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 	}
 
 	protected function process_data($data) {
-		$data = array_merge($this->deault_confing, $this->config, $data);
+		$data = array_merge($this->default_confing, $this->config, $data);
 		$data['playerImage'] = $this->player_image($data);
 		$data['playerContent'] = $this->player_content($data);
 

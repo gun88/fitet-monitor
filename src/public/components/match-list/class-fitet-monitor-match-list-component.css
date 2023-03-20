@@ -1,0 +1,19 @@
+.fm-match-list-filter {
+	margin-bottom: 1em;
+	display: flex;
+}
+
+.fm-match-list-filter > div {
+	display: flex;
+	gap: .5em;
+	align-items: center;
+	margin-left: auto;
+}
+
+.fm-match-list-filter > div img {
+	height: 1em;
+}
+
+.fm-match-list-filter > div select {
+	width: auto;
+}

@@ -1,0 +1,65 @@
+.fm-match-detail > * {
+    margin-bottom: 1em;
+}
+
+.fm-match-detail-head {
+    display: flex;
+}
+
+.fm-match-detail-head > span:last-child {
+    margin-left: auto;
+}
+
+.fm-match-detail-content {
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+}
+
+.fm-match-detail-content > div {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.fm-match-detail-content .fm-team-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.fm-match-detail-content .fm-team-cell .fm-team-name {
+    font-size: 1em;
+    margin-top: .8em;
+}
+
+.fm-match-detail-content .fm-team-cell .fm-team-image {
+    font-size: 4em;
+}
+
+.fm-match-detail-content .fm-match-detail-score > div {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.fm-match-detail-content .fm-match-detail-score-matches {
+    font-size: 2em;
+}
+
+.fm-match-detail-content .fm-separator-label {
+    color: gray;
+    text-transform: uppercase;
+    font-size: .8em;
+    align-items: baseline;
+}
+
+.fm-fitet-page-link {
+    text-align: right;
+
+}
+
+.fm-fitet-page-link img {
+    height: 23px;
+    width: 35px;
+
+}

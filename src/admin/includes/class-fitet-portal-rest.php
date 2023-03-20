@@ -94,7 +94,7 @@ class Fitet_Portal_Rest {
 
 		if (true){
 			// todo terminare
-			$csv_string = file_get_contents(FITET_MONITOR_UPLOAD_DIR . "/fitet-monitor/rankings/". $type_id."_".$sex_id . "_$ranking_id.csv");
+			$csv_string = file_get_contents(FITET_MONITOR_UPLOAD_DIR . "/fitet-monitor/rankings/". $type_id."_".$sex_id . ".csv");
 		} else {
 			$url = "http://portale.fitet.org/fpdf2/excel_classifica.php?SESSO=$sex_id&TIPO=$type_id&CLASSIFICA=$ranking_id";
 			$csv_string = $this->http_service->get($url);
@@ -764,6 +764,24 @@ class Fitet_Portal_Rest {
 		return [
 			'players' => $players,
 		];
+	}
+
+	public function get_match_results($matchId, $seasonId, $championshipId, $formula) {
+		$url = "https://portale.fitet.org/risultati/archivio/Giornata.asp?INCONTRO=$matchId&ANNO=$seasonId&CAM=$championshipId&FORMULA=$formula";
+
+		$html_string = $this->http_service->get($url);
+		$html = str_get_html($html_string);
+		$table = $html->find('div')[1]->find('tr');
+		$table = array_map(function ($row) {
+			return array_map(function ($cell) {
+				return trim($cell->plaintext);
+			}, $row->find('td'));
+		}, $table);
+		// remove header
+		array_shift($table);
+		// remove footer
+		array_pop($table);
+		return $table;
 	}
 
 }

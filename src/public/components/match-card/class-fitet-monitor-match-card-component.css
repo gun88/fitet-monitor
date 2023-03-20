@@ -1,17 +1,10 @@
-.fm-match-grid {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	margin-bottom: 2em;
+.fm-match-card td.fm-match-card-column-result {
+	text-align: left;
+	padding-top: 1.2em;
+	width: 70%;
 }
 
-.fm-match-day-label {
-	font-weight: bold;
-	margin-bottom: 1em;
-	background-color: #f3f3f3;
-	padding: 8px;
-}
-
-.fm-team-calendar-match {
+.fm-match-card-column-result > div {
 	display: flex;
 	flex-flow: column;
 	gap: .5em;
@@ -19,61 +12,58 @@
 
 }
 
-.fm-team-calendar-match > div {
+.fm-match-card-column-result > div > div {
 	display: flex;
 	gap: 1em;
 }
 
-.fm-team-calendar-match > div > span {
+.fm-match-card-column-result > div > div > span {
 	margin-left: auto;
-	/*min-width: 2em;*/
 	text-align: right;
-}
-
-.fm-table-column-match {
-	text-align: left;
-	padding-top: 1.2em !important;
-	width: 70%;
 }
 
 .fm-table-column-date {
 	text-align: center;
 	width: 30%;
+	text-align: -webkit-center;
+    font-size: .9em;
+    overflow: hidden;
+    max-width: 0;
 }
 
 .fm-team-name {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	max-width: 16em;
+	max-width: 15em;
 }
 
 .fm-team-name:hover {
 	white-space: normal;
 }
 
-.fm-match-grid-item {
+.fm-match-card {
 	position: relative;
 	margin: 12px 0.25em;
 }
 
-.fm-match-grid-item table,
-.fm-match-grid-item .fm-match-grid-item-label {
+.fm-match-card table,
+.fm-match-card .fm-match-card-label {
 	font-size: .875em;
 }
 
-.fm-match-grid-item table {
+.fm-match-card table {
 	margin: 0; /* reset table */
 	color: #2e373b; /*todo solo ttmorelli*/
 }
 
-.fm-match-grid-item:hover table {
+.fm-match-card:hover table {
 	background-color: #f5f5f5;
 	cursor: pointer;
 }
 
 
-.fm-match-grid-item .fm-match-grid-item-label {
+.fm-match-card .fm-match-card-label {
 	position: absolute;
 	top: -10px;
 	left: 10px;
@@ -84,7 +74,7 @@
 	line-height: 1.5em;
 }
 
-.fm-match-grid-item:hover .fm-match-grid-item-label {
+.fm-match-card:hover .fm-match-card-label {
 	background-color: #f5f5f5;
 	border-color: #e2ecf3;
 }
@@ -95,24 +85,10 @@
 	align-items: center;
 }
 
-@media screen and (max-width: 782px) {
-	.fm-match-grid {
-		grid-template-columns: 100%;
-	}
-
-	.fm-match-grid-item table {
-		font-size: 1.125em;
-	}
-}
-
 .fm-win-marker {
 	position: absolute;
 	right: -12px;
 	display: none;
-}
-
-.fm-win-team {
-	color: red;
 }
 
 .fm-match-won .fm-win-marker {
@@ -126,3 +102,5 @@
 .fm-match-team-owned {
 	font-weight: 600;
 }
+
+

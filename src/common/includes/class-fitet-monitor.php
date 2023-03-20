@@ -131,6 +131,7 @@ class Fitet_Monitor {
 			$vars[] = "championship";
 			$vars[] = "club";
 			$vars[] = "player";
+			$vars[] = "match";
 			$vars[] = "mode";
 			$vars[] = "filter";
 			return $vars;

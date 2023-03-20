@@ -46,3 +46,9 @@
 .fm-team-calendar .fm-team-calendar-main-team {
 	font-weight: bold;
 }
+.fm-match-card-label {
+    display: none;
+}
+.fm-team-calendar td.fm-match-card-column-result {
+    padding: 6px 12px !important;
+}

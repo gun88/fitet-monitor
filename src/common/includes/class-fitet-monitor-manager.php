@@ -99,6 +99,18 @@ class Fitet_Monitor_Manager {
 		return $club_info['clubName'] != 'N/A';
 	}
 
+	public function get_match_results($matchId, $seasonId, $championshipId, $formula) {
+		$match_results = get_transient($this->plugin_name . "_match_$matchId");
+		if ($match_results) {
+			return $match_results;
+		}
+		$match_results = $this->portal->get_match_results($matchId, $seasonId, $championshipId, $formula);
+
+		set_transient($this->plugin_name . "_match_$matchId", $match_results, 60/*30 * 24 * 60 * 60*/);
+
+		return $match_results;
+	}
+
 	public function get_clubs($template = null) {
 		$club_codes = $this->get_club_codes();
 		if (!$club_codes) {

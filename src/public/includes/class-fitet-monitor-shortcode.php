@@ -106,6 +106,7 @@ abstract class Fitet_Monitor_Shortcode extends Fitet_Monitor_Component {
 		$configuration = $this->defaults();
 		// loading params configuration
 		$configuration = array_merge($configuration, $this->parse_query_params());
+
 		// overwriting configuration with shortcode parameters
 		$configuration = shortcode_atts($configuration, $attributes, $this->tag);
 		return $configuration;

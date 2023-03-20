@@ -1,0 +1,34 @@
+<div class="fm-match-detail">
+    <div class="fm-match-detail-head">
+        <span>{{championshipName}} · {{dayLabel}} {{championshipDay}} · {{phaseLabel}}</span><span>{{time}} · {{date}}</span>
+    </div>
+    <div class="fm-match-detail-content">
+        <div class="fm-match-detail-team">{{homeTeamCell}}</div>
+        <div class="fm-match-detail-score {{scoreClass}}">
+            <div class="fm-match-detail-score-matches">
+                <span>{{homeResult}}</span><span class="fm-separator">-</span><span>{{awayResult}}</span>
+            </div>
+            <div class="fm-match-detail-score-sets">
+                <span>{{homeSets}}</span><span class="fm-separator-label">{{setsLabel}}</span><span>{{awaySets}}</span>
+            </div>
+            <div class="fm-match-detail-score-points">
+                <span>{{homePoints}}</span><span
+                class="fm-separator-label">{{pointsLabel}}</span><span>{{awayPoints}}</span>
+            </div>
+        </div>
+        <div class="fm-match-detail-team">{{awayTeamCell}}</div>
+    </div>
+    <div class="fm-match-detail-table">
+        {{results}}
+    </div>
+    <div class="fm-fitet-page-link">
+        <a target="_blank"
+           href="http://portale.fitet.org/risultati/campionati/giornata_home.php?INCONTRO={{matchId}}&CAM={{championshipId}}&FORMULA={{formula}}">
+            {{openFitetPage}} <img src="{{fitetIcon}}"></a>
+    </div>
+    <div class="fm-match-detail-video">
+        {{video}}
+    </div>
+
+</div>
+

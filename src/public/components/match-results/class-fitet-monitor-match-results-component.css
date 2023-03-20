@@ -1,0 +1,91 @@
+.fm-match-results {
+    overflow-x: auto;
+}
+
+.fm-match-results table {
+    margin: 0;
+}
+
+.fm-match-results table tbody {
+    font-size: 14px;
+}
+
+td.fm-match-position,
+td.fm-match-overall,
+td.fm-match-set {
+    text-align: right;
+    padding: 8px !important;
+}
+
+td.fm-match-overall {
+    text-align: center;
+}
+
+td.fm-match-win {
+    font-weight: bold;
+}
+
+td.fm-match-overall {
+    font-weight: bold;
+}
+
+th.fm-match-set,
+th.fm-match-overall {
+    text-align: center !important;
+}
+
+td.fm-match-set-not-played {
+    color: #d9d9d9;
+}
+
+.fm-player-cell {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+
+.fm-team-cell .fm-team-image img, .fm-club-cell .fm-club-image img {
+    object-fit: contain;
+}
+
+.fm-team-cell .fm-team-image img, .fm-club-cell .fm-club-image img, .fm-player-cell .fm-player-image img {
+    height: 2em;
+    width: 2em;
+    min-width: 2em;
+    min-height: 2em;
+}
+
+/*
+
+*/
+
+tfoot {
+    display: none;
+}
+
+tfoot td {
+    text-align: center;
+    font-size: .8em;
+}
+
+@media screen and (max-width: 782px) {
+    td.fm-match-position,
+    th.fm-match-position,
+    th.fm-match-set,
+    td.fm-match-set {
+        display: none;
+    }
+
+    tfoot {
+        display: table-footer-group;
+    }
+
+    .fm-show-details td.fm-match-position,
+    .fm-show-details th.fm-match-position,
+    .fm-show-details th.fm-match-set,
+    .fm-show-details td.fm-match-set {
+        display: table-cell;
+    }
+
+}
+

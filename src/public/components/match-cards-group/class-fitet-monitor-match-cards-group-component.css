@@ -1,0 +1,22 @@
+.fm-match-grid {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	margin-bottom: 2em;
+}
+
+.fm-match-day-label {
+	font-weight: bold;
+	margin-bottom: 1em;
+	background-color: #f3f3f3;
+	padding: 8px;
+}
+
+@media screen and (max-width: 782px) {
+	.fm-match-grid {
+		grid-template-columns: 100%;
+	}
+
+	.fm-match-card table {
+		font-size: 1.125em;
+	}
+}

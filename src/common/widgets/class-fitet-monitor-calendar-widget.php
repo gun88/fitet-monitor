@@ -12,13 +12,12 @@ class Fitet_Monitor_Calendar_Widget extends WP_Widget {
 	public function widget($args, $instance) {
 		$title = apply_filters('widget_title', $instance['title']);
 
-// before and after widget arguments are defined by themes
 		echo $args['before_widget'];
 		if (!empty($title))
 			echo $args['before_title'] . $title . $args['after_title'];
 
 // This is where you run the code and display the output
-		echo __('Hello, World!', 'fitet-monitor');
+		echo $this->content();
 		echo $args['after_widget'];
 	}
 
@@ -48,5 +47,12 @@ class Fitet_Monitor_Calendar_Widget extends WP_Widget {
 	}
 
 // Class Fitet_Monitor_Calendar_Widget ends here
+
+    /**
+     * @return mixed
+     */
+    public function content() {
+        return "dsadsadsa";
+    }
 }
 
