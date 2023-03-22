@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2023-03-22 12:32:34+00:00\n"
+"POT-Creation-Date: 2023-03-22 13:19:04+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -189,7 +189,7 @@ msgstr "Tipo"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:163
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:243
-#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:41
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:63
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:64
 #: src/public/components/player-detail/class-fitet-monitor-player-detail-component.php:60
 #: src/public/components/player-season/class-fitet-monitor-player-season-component.php:27
@@ -384,6 +384,83 @@ msgstr "Sesso"
 #: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:51
 msgid "Open Fitet Page"
 msgstr "Apri Portale Risultati"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:18
+msgid "Monday"
+msgstr "Lunedì"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:19
+msgid "Tuesday"
+msgstr "Martedì"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:20
+msgid "Wednesday"
+msgstr "Mercoledì"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:21
+msgid "Thursday"
+msgstr "Giovedì"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:22
+msgid "Friday"
+msgstr "Venerdì"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:23
+msgid "Saturday"
+msgstr "Sabato"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:24
+msgid "Sunday"
+msgstr "Domenica"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:26
+msgid "January"
+msgstr "Gennaio"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:27
+msgid "February"
+msgstr "Febbraio"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:28
+msgid "March"
+msgstr "Marzo"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:29
+msgid "April"
+msgstr "Aprile"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:30
+#, fuzzy
+msgid "May"
+msgstr "Maggio"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:31
+msgid "June"
+msgstr "Giugno"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:32
+msgid "July"
+msgstr "Luglio"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:33
+msgid "August"
+msgstr "Agosto"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:34
+msgid "September"
+msgstr "Settembre"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:35
+msgid "October"
+msgstr "Ottobre"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:36
+msgid "November"
+msgstr "Novembre"
+
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:37
+msgid "December"
+msgstr "Dicembre"
 
 #: src/public/components/match-results/class-fitet-monitor-match-results-component.php:29
 msgid "Show/Hide Sets"

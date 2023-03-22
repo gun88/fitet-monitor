@@ -14,7 +14,29 @@ class Fitet_Monitor_Match_List_Component extends Fitet_Monitor_Component {
     }
 
     private function to_group_label($day) {
-        return ucfirst(utf8_encode(strftime("%A %e %B %Y", strtotime(str_replace('/', '-', $day)))));
+        $label = ucfirst(utf8_encode(strftime("%A %e %B %Y", strtotime(str_replace('/', '-', $day)))));
+        $label = str_replace("Monday", __('Monday', 'fitet-monitor'), $label);
+        $label = str_replace("Tuesday", __('Tuesday', 'fitet-monitor'), $label);
+        $label = str_replace("Wednesday", __('Wednesday', 'fitet-monitor'), $label);
+        $label = str_replace("Thursday", __('Thursday', 'fitet-monitor'), $label);
+        $label = str_replace("Friday", __('Friday', 'fitet-monitor'), $label);
+        $label = str_replace("Saturday", __('Saturday', 'fitet-monitor'), $label);
+        $label = str_replace("Sunday", __('Sunday', 'fitet-monitor'), $label);
+
+        $label = str_replace("January", __('January', 'fitet-monitor'), $label);
+        $label = str_replace("February", __('February', 'fitet-monitor'), $label);
+        $label = str_replace("March", __('March', 'fitet-monitor'), $label);
+        $label = str_replace("April", __('April', 'fitet-monitor'), $label);
+        $label = str_replace("May", __('May', 'fitet-monitor'), $label);
+        $label = str_replace("June", __('June', 'fitet-monitor'), $label);
+        $label = str_replace("July", __('July', 'fitet-monitor'), $label);
+        $label = str_replace("August", __('August', 'fitet-monitor'), $label);
+        $label = str_replace("September", __('September', 'fitet-monitor'), $label);
+        $label = str_replace("October", __('October', 'fitet-monitor'), $label);
+        $label = str_replace("November", __('November', 'fitet-monitor'), $label);
+        $label = str_replace("December", __('December', 'fitet-monitor'), $label);
+
+        return $label;
     }
 
     protected function process_data($data) {
@@ -26,7 +48,6 @@ class Fitet_Monitor_Match_List_Component extends Fitet_Monitor_Component {
 
     private function main_content($groups, $scroll_to_recent) {
 
-        setlocale(LC_ALL, 'IT'); // todo fix locale
         $recent_date = Fitet_Monitor_Utils::extract_recent_date(array_map(function ($group) {
             return $group['groupId'];
         }, $groups));
