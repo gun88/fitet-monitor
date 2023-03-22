@@ -26,6 +26,7 @@ class Fitet_Monitor_Match_List_Component extends Fitet_Monitor_Component {
 
     private function main_content($groups, $scroll_to_recent) {
 
+        setlocale(LC_ALL, 'IT'); // todo fix locale
         $recent_date = Fitet_Monitor_Utils::extract_recent_date(array_map(function ($group) {
             return $group['groupId'];
         }, $groups));

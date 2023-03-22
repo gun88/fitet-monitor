@@ -568,8 +568,6 @@ class Fitet_Monitor_Utils {
 
             }, $group['matches']);
 
-            setlocale(LC_ALL, 'IT'); // todo fix locale
-
             return ['groupId' => $group['groupId'], 'matches' => $matches,];
 
         }, $data);

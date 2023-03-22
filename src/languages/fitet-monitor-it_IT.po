@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2022-11-20 14:59:47+00:00\n"
+"POT-Creation-Date: 2023-03-22 12:32:34+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,10 +153,11 @@ msgid "Diff"
 msgstr "Diff"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:134
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:41
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:71
 #: src/public/components/player-season/class-fitet-monitor-player-season-component.php:37
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:54
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:48
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:49
 msgid "Points"
 msgstr "Punti"
 
@@ -184,10 +185,11 @@ msgstr "Sesso"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:139
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:163
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:243
+#: src/public/components/match-list/class-fitet-monitor-match-list-component.php:41
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:64
 #: src/public/components/player-detail/class-fitet-monitor-player-detail-component.php:60
 #: src/public/components/player-season/class-fitet-monitor-player-season-component.php:27
@@ -252,7 +254,7 @@ msgid "Standings"
 msgstr "Classifica"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:248
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:33
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:15
 #: src/public/components/team-detail/class-fitet-monitor-team-detail-component.php:35
 msgid "Calendar"
 msgstr "Calendario"
@@ -327,30 +329,70 @@ msgstr "Società aggiunta correttamente"
 msgid "Club edited successfully"
 msgstr "Società modificata correttamente"
 
-#: src/common/includes/class-fitet-monitor.php:274
+#: src/common/includes/class-fitet-monitor.php:275
 #, fuzzy
 msgid "Every Five Minutes"
 msgstr "Ogni 5 secondi"
 
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:7
-msgid "WPBeginner Widget"
-msgstr ""
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:11
+#, fuzzy
+msgid "Fitet Monitor Match Widget"
+msgstr "Fitet Monitor"
 
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:8
-msgid "Sample widget based on WPBeginner Tutorial"
-msgstr ""
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:12
+msgid "Show recent matches"
+msgstr "Mostra ultimi incontri"
 
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:21
-msgid "Hello, World!"
-msgstr ""
-
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:30
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:33
 msgid "New title"
-msgstr ""
+msgstr "Nuovo Titolo"
 
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:35
-msgid "Title:"
-msgstr ""
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:43
+msgid "Title"
+msgstr "Titolo"
+
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:49
+msgid "Match page id:"
+msgstr "Id pagina incontri"
+
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:161
+msgid "Show more..."
+msgstr "Mostra di più..."
+
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:20
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:25
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:27
+msgid "Day"
+msgstr "Giornata"
+
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:21
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:25
+msgid "Return Match"
+msgstr "Ritorno"
+
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:21
+#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:25
+msgid "First Leg"
+msgstr "Andata"
+
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:40
+#: src/public/components/match-results/class-fitet-monitor-match-results-component.php:36
+#, fuzzy
+msgid "Set"
+msgstr "Sesso"
+
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:51
+msgid "Open Fitet Page"
+msgstr "Apri Portale Risultati"
+
+#: src/public/components/match-results/class-fitet-monitor-match-results-component.php:29
+msgid "Show/Hide Sets"
+msgstr "Mostra/Nascondi Set"
+
+#: src/public/components/match-results/class-fitet-monitor-match-results-component.php:44
+#: src/public/components/player-season/class-fitet-monitor-player-season-component.php:38
+msgid "Match"
+msgstr "Incontro"
 
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:73
 msgid "Best"
@@ -382,7 +424,7 @@ msgid "Championship"
 msgstr "Campionato"
 
 #: src/public/components/player-championships/class-fitet-monitor-player-championships-component.php:66
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:44
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:45
 msgid "Team"
 msgstr "Squadra"
 
@@ -420,17 +462,12 @@ msgstr "Storico Classifica"
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-doubles-tournaments-component.php:34
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-tournaments-component.php:36
 #: src/public/components/player-tournaments/class-fitet-monitor-player-regional-tournaments-component.php:36
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:46
 msgid "Date"
 msgstr "Data"
 
 #: src/public/components/player-season/class-fitet-monitor-player-season-component.php:36
 msgid "Opponent"
 msgstr "Avversario"
-
-#: src/public/components/player-season/class-fitet-monitor-player-season-component.php:38
-msgid "Match"
-msgstr "Incontro"
 
 #: src/public/components/player-tournaments/class-fitet-monitor-player-national-doubles-tournaments-component.php:26
 msgid "National Double Tournaments"
@@ -484,7 +521,7 @@ msgstr "Filtra"
 
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:56
 msgid "Diff."
-msgstr ""
+msgstr "Diff."
 
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:101
 msgid "Men"
@@ -494,26 +531,6 @@ msgstr "Uomini"
 msgid "Women"
 msgstr "Donne"
 
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:26
-msgid "Day"
-msgstr "Giornata"
-
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:26
-msgid "First Leg"
-msgstr "Andata"
-
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:26
-msgid "Return Match"
-msgstr "Ritorno"
-
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:45
-msgid "Home"
-msgstr "Casa"
-
-#: src/public/components/team-calendar/class-fitet-monitor-team-calendar-component.php:47
-msgid "Time"
-msgstr "Ora"
-
 #: src/public/components/team-card/class-fitet-monitor-team-card-component.php:84
 msgid "Open Team Details"
 msgstr "Apri dettaglio Squadra"
@@ -521,12 +538,12 @@ msgstr "Apri dettaglio Squadra"
 #: src/public/components/team-card/class-fitet-monitor-team-card-component.php:95
 #: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:19
 msgid "Playoff"
-msgstr ""
+msgstr "Playoff"
 
 #: src/public/components/team-card/class-fitet-monitor-team-card-component.php:98
 #: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:20
 msgid "Playout"
-msgstr ""
+msgstr "Playout"
 
 #: src/public/components/team-card/class-fitet-monitor-team-card-component.php:101
 #: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:21
@@ -543,53 +560,57 @@ msgstr "Promossa"
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:49
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:22
+msgid "Retired"
+msgstr "Ritirata"
+
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:50
 msgid "ID"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:50
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:51
 msgid "IV"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:51
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:52
 msgid "IPA"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:52
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:53
 msgid "IP"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:53
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:54
 #: src/public/components/team-statistics/class-fitet-monitor-team-statistics-component.php:42
 msgid "PAV"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:54
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:55
 #: src/public/components/team-statistics/class-fitet-monitor-team-statistics-component.php:43
 msgid "PAP"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:55
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:56
 #: src/public/components/team-statistics/class-fitet-monitor-team-statistics-component.php:44
 msgid "SV"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:56
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:57
 #: src/public/components/team-statistics/class-fitet-monitor-team-statistics-component.php:45
 msgid "SP"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:57
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:58
 #: src/public/components/team-statistics/class-fitet-monitor-team-statistics-component.php:46
 msgid "PV"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:58
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:59
 #: src/public/components/team-statistics/class-fitet-monitor-team-statistics-component.php:47
 msgid "PP"
 msgstr ""
 
-#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:59
+#: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:60
 msgid "PE"
 msgstr ""
 
@@ -604,6 +625,12 @@ msgstr "Nessun risultato"
 #: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:436
 msgid "on"
 msgstr "il"
+
+#~ msgid "Home"
+#~ msgstr "Casa"
+
+#~ msgid "Time"
+#~ msgstr "Ora"
 
 #~ msgid "None"
 #~ msgstr "Nessuno"

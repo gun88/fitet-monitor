@@ -686,6 +686,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Portal-Rest.html#method_get_team_details"
         },                {
+            "fqsen": "\\Fitet_Portal_Rest\u003A\u003Aget_match_results\u0028\u0029",
+            "name": "get_match_results",
+            "summary": "",
+            "url": "classes/Fitet-Portal-Rest.html#method_get_match_results"
+        },                {
             "fqsen": "\\Fitet_Portal_Rest\u003A\u003A\u0024ranking_types",
             "name": "ranking_types",
             "summary": "",
@@ -1596,6 +1601,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Api.html#method_update"
         },                {
+            "fqsen": "\\Fitet_Monitor_Api\u003A\u003Aexport\u0028\u0029",
+            "name": "export",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Api.html#method_export"
+        },                {
             "fqsen": "\\Fitet_Monitor_Api\u003A\u003Areset\u0028\u0029",
             "name": "reset",
             "summary": "",
@@ -1731,6 +1741,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method___construct"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Agroup_by\u0028\u0029",
+            "name": "group_by",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_group_by"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aadd_club\u0028\u0029",
             "name": "add_club",
             "summary": "",
@@ -1761,6 +1776,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_club_exist"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aget_match_results\u0028\u0029",
+            "name": "get_match_results",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_get_match_results"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aget_clubs\u0028\u0029",
             "name": "get_clubs",
             "summary": "",
@@ -1785,6 +1805,11 @@ Search.appendIndex(
             "name": "reset_season",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_reset_season"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aexport\u0028\u0029",
+            "name": "export",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_export"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
@@ -2016,6 +2041,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Calendar-Widget.html#method_update"
         },                {
+            "fqsen": "\\Fitet_Monitor_Calendar_Widget\u003A\u003Acontent\u0028\u0029",
+            "name": "content",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Calendar-Widget.html#method_content"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Calendar_Widget\u003A\u003Ato_date_string\u0028\u0029",
+            "name": "to_date_string",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Calendar-Widget.html#method_to_date_string"
+        },                {
             "fqsen": "\\FITET_MONITOR_ROOT_FILE",
             "name": "FITET_MONITOR_ROOT_FILE",
             "summary": "",
@@ -2236,35 +2271,150 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Team-Image-Component.html#method_process_data"
         },                {
-            "fqsen": "\\Fitet_Monitor_Matches_Detail_Component",
-            "name": "Fitet_Monitor_Matches_Detail_Component",
+            "fqsen": "\\Fitet_Monitor_Match_Card_Component",
+            "name": "Fitet_Monitor_Match_Card_Component",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Matches-Detail-Component.html"
+            "url": "classes/Fitet-Monitor-Match-Card-Component.html"
         },                {
-            "fqsen": "\\Fitet_Monitor_Matches_Detail_Component\u003A\u003Acomponents\u0028\u0029",
+            "fqsen": "\\Fitet_Monitor_Match_Card_Component\u003A\u003Acomponents\u0028\u0029",
             "name": "components",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Matches-Detail-Component.html#method_components"
+            "url": "classes/Fitet-Monitor-Match-Card-Component.html#method_components"
         },                {
-            "fqsen": "\\Fitet_Monitor_Matches_Detail_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "fqsen": "\\Fitet_Monitor_Match_Card_Component\u003A\u003Aprocess_data\u0028\u0029",
             "name": "process_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Matches-Detail-Component.html#method_process_data"
+            "url": "classes/Fitet-Monitor-Match-Card-Component.html#method_process_data"
         },                {
-            "fqsen": "\\Fitet_Monitor_Matches_List_Component",
-            "name": "Fitet_Monitor_Matches_List_Component",
+            "fqsen": "\\Fitet_Monitor_Match_Card_Component\u003A\u003Ateams\u0028\u0029",
+            "name": "teams",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Matches-List-Component.html"
+            "url": "classes/Fitet-Monitor-Match-Card-Component.html#method_teams"
         },                {
-            "fqsen": "\\Fitet_Monitor_Matches_List_Component\u003A\u003Acomponents\u0028\u0029",
+            "fqsen": "\\Fitet_Monitor_Match_Card_Component\u003A\u003Aextract_team_class\u0028\u0029",
+            "name": "extract_team_class",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Card-Component.html#method_extract_team_class"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Card_Component\u003A\u003Arender_out\u0028\u0029",
+            "name": "render_out",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Card-Component.html#method_render_out"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Cards_Group_Component",
+            "name": "Fitet_Monitor_Match_Cards_Group_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Cards-Group-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Cards_Group_Component\u003A\u003Acomponents\u0028\u0029",
             "name": "components",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Matches-List-Component.html#method_components"
+            "url": "classes/Fitet-Monitor-Match-Cards-Group-Component.html#method_components"
         },                {
-            "fqsen": "\\Fitet_Monitor_Matches_List_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "fqsen": "\\Fitet_Monitor_Match_Cards_Group_Component\u003A\u003Aprocess_data\u0028\u0029",
             "name": "process_data",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Matches-List-Component.html#method_process_data"
+            "url": "classes/Fitet-Monitor-Match-Cards-Group-Component.html#method_process_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Cards_Group_Component\u003A\u003Ato_anchor\u0028\u0029",
+            "name": "to_anchor",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Cards-Group-Component.html#method_to_anchor"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Detail_Component",
+            "name": "Fitet_Monitor_Match_Detail_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Detail-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Detail_Component\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Detail-Component.html#method_components"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Detail_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Detail-Component.html#method_process_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_List_Component",
+            "name": "Fitet_Monitor_Match_List_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-List-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_List_Component\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-List-Component.html#method_components"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_List_Component\u003A\u003Ato_group_label\u0028\u0029",
+            "name": "to_group_label",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-List-Component.html#method_to_group_label"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_List_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-List-Component.html#method_process_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_List_Component\u003A\u003Amain_content\u0028\u0029",
+            "name": "main_content",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-List-Component.html#method_main_content"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_List_Component\u003A\u003Afilter\u0028\u0029",
+            "name": "filter",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-List-Component.html#method_filter"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_List_Component\u003A\u003Arender_out\u0028\u0029",
+            "name": "render_out",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-List-Component.html#method_render_out"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component",
+            "name": "Fitet_Monitor_Match_Results_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component\u003A\u003Acomponents\u0028\u0029",
+            "name": "components",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html#method_components"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html#method_process_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component\u003A\u003Atable\u0028\u0029",
+            "name": "table",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html#method_table"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component\u003A\u003Acreate_sets_header\u0028\u0029",
+            "name": "create_sets_header",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html#method_create_sets_header"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component\u003A\u003Acreate_header\u0028\u0029",
+            "name": "create_header",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html#method_create_header"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component\u003A\u003Acreate_body\u0028\u0029",
+            "name": "create_body",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html#method_create_body"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component\u003A\u003Ato_set_td_pair\u0028\u0029",
+            "name": "to_set_td_pair",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html#method_to_set_td_pair"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Match_Results_Component\u003A\u003Ato_player_cell\u0028\u0029",
+            "name": "to_player_cell",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Match-Results-Component.html#method_to_player_cell"
         },                {
             "fqsen": "\\Fitet_Monitor_Player_Card_Component",
             "name": "Fitet_Monitor_Player_Card_Component",
@@ -2321,10 +2471,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Player-Card-Component.html#method_best"
         },                {
-            "fqsen": "\\Fitet_Monitor_Player_Card_Component\u003A\u003A\u0024deault_confing",
-            "name": "deault_confing",
+            "fqsen": "\\Fitet_Monitor_Player_Card_Component\u003A\u003A\u0024default_confing",
+            "name": "default_confing",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Player-Card-Component.html#property_deault_confing"
+            "url": "classes/Fitet-Monitor-Player-Card-Component.html#property_default_confing"
         },                {
             "fqsen": "\\Fitet_Monitor_Player_Card_Component\u003A\u003A\u0024config",
             "name": "config",
@@ -2721,25 +2871,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Team-Calendar-Component.html#method_process_data"
         },                {
-            "fqsen": "\\Fitet_Monitor_Team_Calendar_Component\u003A\u003Atable\u0028\u0029",
-            "name": "table",
+            "fqsen": "\\Fitet_Monitor_Team_Calendar_Component\u003A\u003Amain_content\u0028\u0029",
+            "name": "main_content",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Team-Calendar-Component.html#method_table"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Team_Calendar_Component\u003A\u003Amatch\u0028\u0029",
-            "name": "match",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Team-Calendar-Component.html#method_match"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Team_Calendar_Component\u003A\u003Ateams\u0028\u0029",
-            "name": "teams",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Team-Calendar-Component.html#method_teams"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Team_Calendar_Component\u003A\u003Ais_main_team\u0028\u0029",
-            "name": "is_main_team",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Team-Calendar-Component.html#method_is_main_team"
+            "url": "classes/Fitet-Monitor-Team-Calendar-Component.html#method_main_content"
         },                {
             "fqsen": "\\Fitet_Monitor_Team_Card_Component",
             "name": "Fitet_Monitor_Team_Card_Component",
@@ -2961,6 +3096,66 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Titles-Component.html#property_multi_club"
         },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component",
+            "name": "Fitet_Monitor_Video_Player_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Aprocess_data\u0028\u0029",
+            "name": "process_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_process_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Ayoutube_embed\u0028\u0029",
+            "name": "youtube_embed",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_youtube_embed"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Avimeo_embed\u0028\u0029",
+            "name": "vimeo_embed",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_vimeo_embed"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Adailymotion_embed\u0028\u0029",
+            "name": "dailymotion_embed",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_dailymotion_embed"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Afile_embed\u0028\u0029",
+            "name": "file_embed",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_file_embed"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Aget_url_type\u0028\u0029",
+            "name": "get_url_type",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_get_url_type"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Aextract_youtube_id\u0028\u0029",
+            "name": "extract_youtube_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_extract_youtube_id"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Aextract_vimeo_id\u0028\u0029",
+            "name": "extract_vimeo_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_extract_vimeo_id"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Aextract_dailymotion_id\u0028\u0029",
+            "name": "extract_dailymotion_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_extract_dailymotion_id"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Player_Component\u003A\u003Ato_iframe\u0028\u0029",
+            "name": "to_iframe",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Player-Component.html#method_to_iframe"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Video_Thumbnail_Component",
+            "name": "Fitet_Monitor_Video_Thumbnail_Component",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Video-Thumbnail-Component.html"
+        },                {
             "fqsen": "\\Fitet_Monitor_Shortcode",
             "name": "Fitet_Monitor_Shortcode",
             "summary": "",
@@ -3071,6 +3266,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_attributes"
         },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Ato_player\u0028\u0029",
+            "name": "to_player",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_to_player"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Asum_at_position\u0028\u0029",
+            "name": "sum_at_position",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_sum_at_position"
+        },                {
             "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Aprocess_attributes\u0028\u0029",
             "name": "process_attributes",
             "summary": "",
@@ -3081,25 +3286,65 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_wrapped_component"
         },                {
-            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Aextract_matchs\u0028\u0029",
-            "name": "extract_matchs",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_extract_matchs"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Aadd_match_url\u0028\u0029",
-            "name": "add_match_url",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_add_match_url"
-        },                {
             "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Asingle\u0028\u0029",
             "name": "single",
             "summary": "",
             "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_single"
         },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Ato_results_table_data\u0028\u0029",
+            "name": "to_results_table_data",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_to_results_table_data"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Acalculate_max_set_count\u0028\u0029",
+            "name": "calculate_max_set_count",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_calculate_max_set_count"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Ato_sets\u0028\u0029",
+            "name": "to_sets",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_to_sets"
+        },                {
             "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Alist\u0028\u0029",
             "name": "list",
             "summary": "",
             "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_list"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Aextract_match\u0028\u0029",
+            "name": "extract_match",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_extract_match"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Ato_team_page_url\u0028\u0029",
+            "name": "to_team_page_url",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_to_team_page_url"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Aextract_team_players\u0028\u0029",
+            "name": "extract_team_players",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_extract_team_players"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Aextract_team_players_by_name\u0028\u0029",
+            "name": "extract_team_players_by_name",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_extract_team_players_by_name"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Atry_parse_double_inner\u0028\u0029",
+            "name": "try_parse_double_inner",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_try_parse_double_inner"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Aextract_player_by_prefix\u0028\u0029",
+            "name": "extract_player_by_prefix",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_extract_player_by_prefix"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003Atry_parse_double\u0028\u0029",
+            "name": "try_parse_double",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Matches-Shortcode.html#method_try_parse_double"
         },                {
             "fqsen": "\\Fitet_Monitor_Matches_Shortcode\u003A\u003A\u0024manager",
             "name": "manager",
@@ -3221,11 +3466,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Teams-Shortcode.html#method___construct"
         },                {
-            "fqsen": "\\Fitet_Monitor_Teams_Shortcode\u003A\u003Alast_season_id\u0028\u0029",
-            "name": "last_season_id",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Teams-Shortcode.html#method_last_season_id"
-        },                {
             "fqsen": "\\Fitet_Monitor_Teams_Shortcode\u003A\u003Aattributes\u0028\u0029",
             "name": "attributes",
             "summary": "",
@@ -3290,11 +3530,6 @@ Search.appendIndex(
             "name": "list",
             "summary": "",
             "url": "classes/Fitet-Monitor-Teams-Shortcode.html#method_list"
-        },                {
-            "fqsen": "\\Fitet_Monitor_Teams_Shortcode\u003A\u003Aextract_seasons\u0028\u0029",
-            "name": "extract_seasons",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Teams-Shortcode.html#method_extract_seasons"
         },                {
             "fqsen": "\\Fitet_Monitor_Teams_Shortcode\u003A\u003Afilter_teams\u0028\u0029",
             "name": "filter_teams",
@@ -3451,6 +3686,56 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_index_of_championship"
         },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Alast_season_id\u0028\u0029",
+            "name": "last_season_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_last_season_id"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aextract_seasons\u0028\u0029",
+            "name": "extract_seasons",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_extract_seasons"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Ais_owned_team_from_standings_by_team_id\u0028\u0029",
+            "name": "is_owned_team_from_standings_by_team_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_is_owned_team_from_standings_by_team_id"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Ais_retired_team_from_standings_by_team_id\u0028\u0029",
+            "name": "is_retired_team_from_standings_by_team_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_is_retired_team_from_standings_by_team_id"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aextract_club_code_from_standings_by_team_name\u0028\u0029",
+            "name": "extract_club_code_from_standings_by_team_name",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_extract_club_code_from_standings_by_team_name"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aextract_video\u0028\u0029",
+            "name": "extract_video",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_extract_video"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aextract_team_id_from_standings_by_team_name\u0028\u0029",
+            "name": "extract_team_id_from_standings_by_team_name",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_extract_team_id_from_standings_by_team_name"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Ato_match_groups\u0028\u0029",
+            "name": "to_match_groups",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_to_match_groups"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aparse_result\u0028\u0029",
+            "name": "parse_result",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_parse_result"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Agroup_matches\u0028\u0029",
+            "name": "group_matches",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_group_matches"
+        },                {
             "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aindex_of_player\u0028\u0029",
             "name": "index_of_player",
             "summary": "",
@@ -3460,6 +3745,16 @@ Search.appendIndex(
             "name": "merge_standings",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_merge_standings"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aextract_recent_date\u0028\u0029",
+            "name": "extract_recent_date",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_extract_recent_date"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Utils\u003A\u003Aseconds_diff_from_now\u0028\u0029",
+            "name": "seconds_diff_from_now",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Utils.html#method_seconds_diff_from_now"
         },                {
             "fqsen": "\\",
             "name": "\\",
