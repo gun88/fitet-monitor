@@ -400,7 +400,6 @@ class Fitet_Monitor_Manager {
         $no_pending = $min_rid == $max_rid;// array_search($last_ranking['rankingId'], array_column($players, 'rankingId'));
         $update_available = $min_rid != $last_rid;
 
-
         if ($no_pending && $update_available) {
             $new_players = [];
             $standing_cursor = 0;
@@ -462,10 +461,7 @@ class Fitet_Monitor_Manager {
             $player_name = $player['playerName'];
             $this->logger->add_status($club_code, "Getting player info (" . ($i + 1) . "/$count): $player_name", 20 / $count);
 
-            error_log(json_encode($player));
-            error_log(($player['playerName']) . ' ' . ($player['birthDate']));
             $player_infos = $this->portal->find_players($player['playerName'], $player['birthDate']);
-            error_log(json_encode($player_infos));
             $player_info = $player_infos[0];
             if (count($player_infos) > 1) {
                 foreach ($player_infos as $info) {
