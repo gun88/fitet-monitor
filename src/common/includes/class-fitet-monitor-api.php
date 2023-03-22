@@ -26,15 +26,25 @@ class Fitet_Monitor_Api {
 				}
 			]
 		);
-		register_rest_route($this->plugin_name . '/v1', '/update',
-			[
-				'methods' => 'POST',
-				'callback' => [$this, 'update'],
-				'permission_callback' => function () {
-					return current_user_can('edit_pages');
-				}
-			]
-		);
+        register_rest_route($this->plugin_name . '/v1', '/update',
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'update'],
+                'permission_callback' => function () {
+                    return current_user_can('edit_pages');
+                }
+            ]
+        );
+
+        register_rest_route($this->plugin_name . '/v1', '/export',
+            [
+                'methods' => 'POST',
+                'callback' => [$this, 'export'],
+                'permission_callback' => function () {
+                    return current_user_can('edit_pages');
+                }
+            ]
+        );
 
 		register_rest_route($this->plugin_name . '/v1', '/reset',
 			[
@@ -71,10 +81,14 @@ class Fitet_Monitor_Api {
 		return rest_ensure_response($clubs);
 	}
 
-	public function update(WP_REST_Request $request) {
-		$this->manager->update($request->get_param('clubCode'), $request->get_param('mode'), $request->get_param('seasonId'));
-		return rest_ensure_response('done');
-	}
+    public function update(WP_REST_Request $request) {
+        $this->manager->update($request->get_param('clubCode'), $request->get_param('mode'), $request->get_param('seasonId'));
+        return rest_ensure_response('done');
+    }
+
+    public function export(WP_REST_Request $request) {
+        return rest_ensure_response($this->manager->export($request->get_param('clubCode')));
+    }
 
 	public function reset(WP_REST_Request $request) {
 		$this->manager->reset_season($request->get_param('clubCode'), $request->get_param('seasonId'));

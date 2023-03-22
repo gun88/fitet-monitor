@@ -152,7 +152,8 @@ class Fitet_Portal_Rest {
                 'clubCode' => intval($rank['IdSocieta']),
                 'clubName' => $rank['NomeSocieta'],
                 'sex' => $sex['id'],
-                'type' => $type['name']
+                'type' => $type['name'],
+                'typeId' => $type['id'],
             ];
         }, $ranking);
     }

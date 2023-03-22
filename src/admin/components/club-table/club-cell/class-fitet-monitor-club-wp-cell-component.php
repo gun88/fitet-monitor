@@ -52,6 +52,7 @@ class Fitet_Monitor_Club_Wp_Cell_Component extends Fitet_Monitor_Component {
 			'updateClub' => "<button type='button' class='button-link fm-btn-update' data-mode='club'>$label_update Club</button>",
 			'updatePlayers' => "<button type='button' class='button-link fm-btn-update' data-mode='players'>$label_update Players</button>",
 			'updateChampionships' => "<button type='button' class='button-link fm-btn-update' data-mode='championships'>$label_update Championships</button>",
+			'export' => "<button type='button' class='button-link fm-btn-export'>Export</button>",
 			"delete" => "<button type='button' class='button-link fm-btn-delete'>$label_delete</button>",
 		]);
 
