@@ -46,7 +46,8 @@ class Fitet_Monitor_Calendar_Widget extends WP_Widget {
                    value="<?php echo esc_attr($title); ?>"/>
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('matchPageId'); ?>"><?php _e('Match page id:', 'fitet-monitor'); ?></label>
+            <label
+                for="<?php echo $this->get_field_id('matchPageId'); ?>"><?php _e('Match page id:', 'fitet-monitor'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('matchPageId'); ?>"
                    name="<?php echo $this->get_field_name('matchPageId'); ?>" type="text"
                    value="<?php echo esc_attr($matchPageId); ?>"/>
@@ -104,15 +105,15 @@ class Fitet_Monitor_Calendar_Widget extends WP_Widget {
                             $match[$leg]['championshipId'] = $championship['championshipId'];
                             $match[$leg]['championshipName'] = $championship['championshipName'];
                             $match[$leg]['championshipDay'] = $match['championshipDay'];
-                            $match[$leg]['homeTeamName'] = $match['home'];
-                            $match[$leg]['awayTeamName'] = $match['away'];
+                            $match[$leg]['homeTeamName'] = $leg == 'returnMatch' ? $match['away'] : $match['home'];
+                            $match[$leg]['awayTeamName'] = $leg == 'returnMatch' ? $match['home'] : $match['away'];
                             $match[$leg]['homeClubCode'] = Fitet_Monitor_Utils::extract_club_code_from_standings_by_team_name($championship['standings'], $match[$leg]['homeTeamName']);
                             $match[$leg]['awayClubCode'] = Fitet_Monitor_Utils::extract_club_code_from_standings_by_team_name($championship['standings'], $match[$leg]['awayTeamName']);
                             $match[$leg]['dateX'] = strtotime($this->to_date_string($match[$leg]['date'], $match[$leg]['time']));
                             $match[$leg]['dateY'] = $this->to_date_string($match[$leg]['date'], $match[$leg]['time']);
                             $match[$leg]['dateZ'] = strtotime($this->to_date_string($match[$leg]['date'], $match[$leg]['time'])) - time();;
-                            $match[$leg]['homeTeamId'] = Fitet_Monitor_Utils::extract_team_id_from_standings_by_team_name($championship['standings'], $match['home']);
-                            $match[$leg]['awayTeamId'] = Fitet_Monitor_Utils::extract_team_id_from_standings_by_team_name($championship['standings'], $match['away']);
+                            $match[$leg]['homeTeamId'] = Fitet_Monitor_Utils::extract_team_id_from_standings_by_team_name($championship['standings'], $match[$leg]['homeTeamName']);
+                            $match[$leg]['awayTeamId'] = Fitet_Monitor_Utils::extract_team_id_from_standings_by_team_name($championship['standings'], $match[$leg]['awayTeamName']);
                             $match[$leg]['ownedHomeTeam'] = Fitet_Monitor_Utils::is_owned_team_from_standings_by_team_id($championship['standings'], $match[$leg]['homeTeamId']);
                             $match[$leg]['ownedAwayTeam'] = Fitet_Monitor_Utils::is_owned_team_from_standings_by_team_id($championship['standings'], $match[$leg]['awayTeamId']);
                             $match[$leg]['ownedMatch'] = $match[$leg]['ownedHomeTeam'] || $match[$leg]['ownedAwayTeam'];
@@ -163,7 +164,9 @@ class Fitet_Monitor_Calendar_Widget extends WP_Widget {
         $data = implode('', $data);
         return "<div class='fm-calendar-widget'>" .
             "<div class='fm-calendar-widget-content'>$data</div>" .
-            "<div class='fm-calendar-widget-show-more' style='text-align: center;margin-bottom: 1em;'><a href='$matches_link'>$show_more_label</a></div>" .
+            "<div class='fm-calendar-widget-show-more' style='text-align: center;margin-bottom: 1em;'>" .
+            "<a style='display: block;border: 1px solid;border-radius: 7px;padding: 8px' " .
+            "href='$matches_link'>$show_more_label</a></div>" .
             "</div>";
 
     }
