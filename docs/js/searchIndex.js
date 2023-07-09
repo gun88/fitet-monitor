@@ -1591,6 +1591,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Api.html#method_initialize"
         },                {
+            "fqsen": "\\Fitet_Monitor_Api\u003A\u003Areset_players_ranking_id\u0028\u0029",
+            "name": "reset_players_ranking_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Api.html#method_reset_players_ranking_id"
+        },                {
             "fqsen": "\\Fitet_Monitor_Api\u003A\u003Afind_clubs\u0028\u0029",
             "name": "find_clubs",
             "summary": "",
@@ -1830,6 +1835,11 @@ Search.appendIndex(
             "name": "_update_players",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method__update_players"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Areset_players_ranking_id\u0028\u0029",
+            "name": "reset_players_ranking_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_reset_players_ranking_id"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aupdate_players\u0028\u0029",
             "name": "update_players",

@@ -438,16 +438,17 @@ class Fitet_Monitor_Manager {
             foreach ($new_players as &$new_player) {
                 $key = $new_player['playerName'] . $new_player['birthDate'] . $new_player['typeId'];
                 if (isset($players[$key])) {
-                    $new_player['rank'] = $players[$key]['rank'];
-                    $new_player['points'] = $players[$key]['points'];
-                    $new_player['category'] = $players[$key]['category'];
-                    $new_player['sector'] = $players[$key]['sector'];
-                    $new_player['diff'] = $players[$key]['diff'];
-                    $new_player['region'] = $players[$key]['region'];
-                    $new_player['clubCode'] = $players[$key]['clubCode'];
-                    $new_player['clubName'] = $players[$key]['clubName'];
-                    $new_player['sex'] = $players[$key]['sex'];
-                    $new_player['type'] = $players[$key]['type'];
+                    $players[$key]['rank'] = $new_player['rank'];
+                    $players[$key]['points'] = $new_player['points'];
+                    $players[$key]['category'] = $new_player['category'];
+                    $players[$key]['sector'] = $new_player['sector'];
+                    $players[$key]['diff'] = $new_player['diff'];
+                    $players[$key]['region'] = $new_player['region'];
+                    $players[$key]['clubCode'] = $new_player['clubCode'];
+                    $players[$key]['clubName'] = $new_player['clubName'];
+                    $players[$key]['sex'] = $new_player['sex'];
+                    $players[$key]['type'] = $new_player['type'];
+                    $new_player = $players[$key];
                 }
             }
             $players = $new_players;
