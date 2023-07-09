@@ -36,6 +36,16 @@ class Fitet_Monitor_Api {
             ]
         );
 
+        register_rest_route($this->plugin_name . '/v1', '/resetRid',
+            [
+                'methods' => 'GET',
+                'callback' => [$this, 'reset_players_ranking_id'],
+                'permission_callback' => function () {
+                    return current_user_can('edit_pages');
+                }
+            ]
+        );
+
         register_rest_route($this->plugin_name . '/v1', '/export',
             [
                 'methods' => 'POST',
@@ -75,12 +85,16 @@ class Fitet_Monitor_Api {
 		);
 	}
 
-	public function find_clubs(WP_REST_Request $request) {
+    public function reset_players_ranking_id(WP_REST_Request $request) {
+        $this->manager->reset_players_ranking_id($request->get_param('clubCode'));
+        return rest_ensure_response('done');
+    }
+
+    public function find_clubs(WP_REST_Request $request) {
 		$club_name_contains = $request->get_param('query');
 		$clubs = $this->manager->find_clubs($club_name_contains);
 		return rest_ensure_response($clubs);
 	}
-
     public function update(WP_REST_Request $request) {
         $this->manager->update($request->get_param('clubCode'), $request->get_param('mode'), $request->get_param('seasonId'));
         return rest_ensure_response('done');

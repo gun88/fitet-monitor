@@ -373,6 +373,18 @@ class Fitet_Monitor_Manager {
 
     }
 
+    public function reset_players_ranking_id($club_code) {
+        $club = $this->get_club($club_code);
+
+        foreach ($club['players'] as &$player) {
+            $player['rankingId'] = 0;
+        }
+
+        $club = $this->all_to_utf8($club);
+
+        $this->save_club($club);
+    }
+
     public function update_players($club_code) {
         if ($club_code == null)
             throw new Exception("Club code can not be null!");
@@ -426,7 +438,16 @@ class Fitet_Monitor_Manager {
             foreach ($new_players as &$new_player) {
                 $key = $new_player['playerName'] . $new_player['birthDate'] . $new_player['typeId'];
                 if (isset($players[$key])) {
-                    $new_player = $players[$key];
+                    $new_player['rank'] = $players[$key]['rank'];
+                    $new_player['points'] = $players[$key]['points'];
+                    $new_player['category'] = $players[$key]['category'];
+                    $new_player['sector'] = $players[$key]['sector'];
+                    $new_player['diff'] = $players[$key]['diff'];
+                    $new_player['region'] = $players[$key]['region'];
+                    $new_player['clubCode'] = $players[$key]['clubCode'];
+                    $new_player['clubName'] = $players[$key]['clubName'];
+                    $new_player['sex'] = $players[$key]['sex'];
+                    $new_player['type'] = $players[$key]['type'];
                 }
             }
             $players = $new_players;

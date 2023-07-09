@@ -139,6 +139,25 @@ jQuery(function ($) {
 
     }
 
+    function resetRid($clubRow) {
+
+        let find = $clubRow.find('.fm-club-code-input');
+        // $clubRow.find('.fm-btn-export').disable();
+        const clubCode = find.val();
+        wp.apiRequest({
+            path: 'fitet-monitor/v1/resetRid',
+            type: 'GET',
+            data: {clubCode}
+        }).done(response => {
+            alert("done");
+            console.log('resetRid response', response)
+        }).error(response => {
+            alert("ERROR");
+            console.error('resetRid response', response)
+        });
+
+    }
+
     $('.fm-club-table-form').submit(function (e, a, b, c) {
         const $form = $(e.currentTarget);
         const action = $form.find('select[name="action"] option:selected').val();
@@ -169,6 +188,10 @@ jQuery(function ($) {
         const $this = $(this);
         const $clubRow = $this.closest('tr');
         exportJson($clubRow);
+    }).on('click', '.fm-btn-reset-rid', function () {
+        const $this = $(this);
+        const $clubRow = $this.closest('tr');
+        resetRid($clubRow);
     });
 
     $('.fm-club-cell .fm-delete-content').on('click', '.button-link', function () {
