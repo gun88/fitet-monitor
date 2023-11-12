@@ -41,7 +41,9 @@ if (!defined('FITET_MONITOR_DIR')) {
 }
 // Main file relative path to WP_PLUGIN_DIR
 if (!defined('FITET_MONITOR_PLUGIN_DIR_REL_PATH')) {
-	define('FITET_MONITOR_PLUGIN_DIR_REL_PATH', str_replace(trailingslashit(WP_PLUGIN_DIR), '', plugin_dir_path(__FILE__)));
+    $search = str_replace('\\','/',trailingslashit(WP_PLUGIN_DIR));
+    $subject = str_replace('\\','/',plugin_dir_path(__FILE__));
+    define('FITET_MONITOR_PLUGIN_DIR_REL_PATH', str_replace($search, '', $subject));
 }
 
 /**
@@ -101,7 +103,6 @@ function run_fitet_monitor() {
 
 run_fitet_monitor();
 
-
 $x = 0;
 
 function memory_dump() {
@@ -149,7 +150,6 @@ $fm_page_id_list = ['player'=>[], 'match'=>[], 'team'=>[]];
 
 foreach (get_pages() as $page) {
 
-    error_log(json_encode($page));
     if (strpos($page->post_content, "[fitet-monitor-players")) {
         $fm_page_id_list['player'][] = $page->ID;
     }
@@ -187,6 +187,8 @@ function change_custom_post_type_archive_title($title) {
 
 	return "ciao";
 }
+
+
 
 add_filter('wpseo_title', 'change_custom_post_type_archive_title');
 add_filter('pre_get_document_title', 'change_custom_post_type_archive_title');

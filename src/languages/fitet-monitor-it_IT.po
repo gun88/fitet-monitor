@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2023-03-22 13:19:04+00:00\n"
+"POT-Creation-Date: 2023-11-12 18:37:20+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -351,11 +351,11 @@ msgstr "Nuovo Titolo"
 msgid "Title"
 msgstr "Titolo"
 
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:49
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:50
 msgid "Match page id:"
 msgstr "Id pagina incontri"
 
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:161
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:162
 msgid "Show more..."
 msgstr "Mostra di più..."
 
