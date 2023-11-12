@@ -89,6 +89,33 @@ class Fitet_Monitor_Public {
 			add_shortcode($shortcode->tag, [$shortcode, 'render_shortcode']);
 		}
 
+        add_action( 'the_post', function ( $post_object ) {
+// modify post object here
+
+            global $fm_page_id_list;
+
+            if (in_array($post_object->ID, $fm_page_id_list['player'])) {
+                $playerSlug = get_query_var('player');
+                if ($playerSlug) {
+                    $playerName = explode('-', $playerSlug, 2)[1];
+                    if ($playerName) {
+                        // todo db search
+                        $playerName = ucwords(strtolower(str_replace('-', ' ', $playerName)));
+                        $site_title = get_bloginfo('name');
+                        $post_object->post_title = "$playerName";// - $site_title";
+                    }
+                }
+            }
+       /*     if (in_array($post_object->ID, $fm_page_id_list['team'])) {
+                $post_object->post_title = "AAAAAAAAAAAA";// - $site_title";
+            }*/
+           /* if (in_array($post_object->ID, $fm_page_id_list['match'])) {
+                $post_object->post_title = "MAAAAAAAAAAAAA";// - $site_title";
+            }*/
+
+
+        } );
+
 		//	require_once FITET_MONITOR_DIR . 'common/blocks/sample-block.php';
 	}
 }

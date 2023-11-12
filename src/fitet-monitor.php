@@ -99,7 +99,6 @@ function run_fitet_monitor() {
 	$fitet_monitor->start();
 }
 
-
 run_fitet_monitor();
 
 
@@ -116,24 +115,27 @@ function memory_dump() {
 }
 
 
-/*
+
 
 // todo !!!!!!!!!!!!!!!!!!!!!!!!!!!
-function theme_custom_rewrites() {
+/*function theme_custom_rewrites() {
 	foreach (get_pages() as $page) {
 		if (strpos($page->post_content, "fitet-monitor-teams")) {
 			add_rewrite_rule('^' . $page->post_name . '/([^/]+)/?$', 'index.php?page_id=' . $page->ID . '&team=$matches[1]', 'top');
 		}
 		if (strpos($page->post_content, "[fitet-monitor-players")) {
 			add_rewrite_rule('^' . $page->post_name . '/([^/]+)/?$', 'index.php?page_id=' . $page->ID . '&player=$matches[1]', 'top');
-		}
+			add_rewrite_rule('^' . $page->post_name . '/([^/]+)/?$', 'index.php?page_id=' . $page->ID . '&player=$matches[1]', 'top');
+            add_rewrite_rule( '^.+player=421024-POMANTE-ROCCO', 'index.php?myparamname=$matches[1]', 'top' );
+
+        }
 	}
 }
 
-// add_action('init', 'theme_custom_rewrites');
+add_action('init', 'theme_custom_rewrites');*/
 
 
-add_filter( 'document_title_parts', function( $title_parts_array ) {
+/*add_filter( 'document_title_parts', function( $title_parts_array ) {
 	error_log(json_encode($title_parts_array));
 	error_log( get_the_ID() );
 
@@ -141,33 +143,55 @@ add_filter( 'document_title_parts', function( $title_parts_array ) {
 		$title_parts_array['title'] = 'Custom Page Title';
 	}
 	return $title_parts_array;
-} );
+} );*/
+
+$fm_page_id_list = ['player'=>[], 'match'=>[], 'team'=>[]];
+
+foreach (get_pages() as $page) {
+
+    error_log(json_encode($page));
+    if (strpos($page->post_content, "[fitet-monitor-players")) {
+        $fm_page_id_list['player'][] = $page->ID;
+    }
+    if (strpos($page->post_content, "[fitet-monitor-teams")) {
+        $fm_page_id_list['team'][] = $page->ID;
+    }
+    if (strpos($page->post_content, "[fitet-monitor-matches")) {
+        $fm_page_id_list['match'][] = $page->ID;
+    }
+
+}
+
 
 
 
 function change_custom_post_type_archive_title($title) {
 	//error_log(json_encode($title));
-	return $title;
+    global $post;
+    global $fm_page_id_list;
+    // error_log(json_encode($post, 128));
+
+    if (in_array($post->ID, $fm_page_id_list['player'])) {
+        $playerSlug = get_query_var('player');
+        if ($playerSlug) {
+            $playerName = explode('-', $playerSlug, 2)[1];
+            if ($playerName) {
+                // todo db search
+                $playerName = ucwords(strtolower(str_replace('-', ' ', $playerName)));
+                $site_title = get_bloginfo('name');
+                return "$playerName - $site_title";
+            }
+        }
+    }
+
+
+	return "ciao";
 }
 
-add_filter('pre_get_document_title', 'change_custom_post_type_archive_title');*/
+add_filter('wpseo_title', 'change_custom_post_type_archive_title');
+add_filter('pre_get_document_title', 'change_custom_post_type_archive_title');
 
 
-/*add_filter('loop_start', function ($wp_query) {
-	error_log(json_encode($wp_query, 128));
-	$wp_query->post_count = 10;
-});*/
 
 
-/*
-/**
-		 * Fires after the main query vars have been parsed.
-		 *
-		 * @since 1.5.0
-		 *
-		 * @param WP_Query $query The WP_Query instance (passed by reference).
-		 */
-// do_action_ref_array( 'parse_query', array( &$this ) );
-
-////var/www/html/wp-includes/class-wp-query.php 1112
 
