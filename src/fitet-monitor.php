@@ -185,7 +185,7 @@ function change_custom_post_type_archive_title($title) {
     }
 
 
-	return "ciao";
+	return $title;
 }
 
 
