@@ -16,6 +16,10 @@ class Fitet_Monitor_Manager {
      * @var Fitet_Portal_Rest
      */
     protected $portal;
+    /**
+     * @var Fitet_Monitor_Repository
+     */
+    protected $repository;
     private $empty_club = [
         'nationalTitles' => [],
         'regionalTitles' => [],
@@ -25,7 +29,7 @@ class Fitet_Monitor_Manager {
         'lastUpdate' => '',
         'lastClubUpdate' => '',
         'lastPlayersUpdate' => '',
-        'lastChampionshipUpdate' => '',
+        'lastChampionshipsUpdate' => '',
     ];
 
 
@@ -35,11 +39,12 @@ class Fitet_Monitor_Manager {
      * @param Fitet_Monitor_Manager_Logger $logger
      * @param Fitet_Portal_Rest $portal
      */
-    public function __construct($plugin_name, $version, $logger, $portal) {
+    public function __construct($plugin_name, $version, $logger, $portal, $repository) {
         $this->plugin_name = $plugin_name;
         $this->version = $version;
         $this->logger = $logger;
         $this->portal = $portal;
+        $this->repository = $repository;
     }
 
     private static function group_by($array, ...$keys) {
@@ -55,54 +60,33 @@ class Fitet_Monitor_Manager {
 
 
     public function add_club($club) {
-        $this->save_club($club);
+        $this->repository->save_club_db($club);
         $this->logger->reset_status($club['clubCode']);
     }
 
     public function edit_club($club_update) {
-        $club = get_option($this->plugin_name . $club_update['clubCode'], []);
+        $club_code = $club_update['clubCode'];
+        $club = $this->repository->get_club_from_db($club_code);
         $club['clubName'] = $club_update['clubName'];
         $club['clubProvince'] = $club_update['clubProvince'];
         $club['clubLogo'] = $club_update['clubLogo'];
         $club['clubCron'] = $club_update['clubCron'];
-        $this->save_club($club);
+        $this->repository->save_club_db($club);
     }
 
-    private function save_club($club) {
-
-        if (empty($club['clubCode']))
-            throw new Exception("empty club code");
-
-        //$club['clubName'] = stripslashes($club['clubName']);
-
-        $club_code = $club['clubCode'];
-        $club_codes = get_option($this->plugin_name . 'clubs', []);
-        $club_codes[] = $club_code;
-        update_option($this->plugin_name . 'clubs', array_values(array_filter(array_unique($club_codes))));
-        update_option($this->plugin_name . $club_code, $club);
-
-    }
 
     public function delete_clubs($club_codes) {
         if (!is_array($club_codes))
             $club_codes = [$club_codes];
 
-        $all = get_option($this->plugin_name . 'clubs', []);
-        $toRemove = $club_codes;
-        $result = array_diff($all, $toRemove);
-
-        update_option($this->plugin_name . 'clubs', $result);
-        foreach ($toRemove as $club_code) {
-            delete_option($this->plugin_name . $club_code);
-            wp_clear_scheduled_hook('fm_cron_update_club_hook', [$club_code]);
-            wp_clear_scheduled_hook('fm_cron_update_players_hook', [$club_code]);
-            wp_clear_scheduled_hook('fm_cron_update_championships_hook', [$club_code]);
-        }
+        $this->repository->delete_clubs_db($club_codes);
+        $this->remove_scheduled_cronjob_for_clubs($club_codes);
         do_action('fm_after_change');
     }
 
     public function get_club($club_code, $template = null) {
-        $club = array_merge($this->empty_club, get_option($this->plugin_name . $club_code, []));
+        $club = $this->repository->get_club_from_db($club_code);
+        $club = array_merge($this->empty_club, $club);
         return Fitet_Monitor_Utils::intersect_template($club, $template);
     }
 
@@ -124,7 +108,7 @@ class Fitet_Monitor_Manager {
     }
 
     public function get_clubs($template = null) {
-        $club_codes = $this->get_club_codes();
+        $club_codes = $this->repository->get_club_codes_db();
         if (!$club_codes) {
             return [];
         }
@@ -167,7 +151,7 @@ class Fitet_Monitor_Manager {
             }
         }
 
-        $this->save_club($club);
+        $this->repository->save_club_db($club);
 
     }
 
@@ -358,7 +342,7 @@ class Fitet_Monitor_Manager {
 
         $club = $this->all_to_utf8($club);
 
-        $this->save_club($club);
+        $this->repository->save_club_db($club);
 
 
     }
@@ -382,7 +366,7 @@ class Fitet_Monitor_Manager {
 
         $club = $this->all_to_utf8($club);
 
-        $this->save_club($club);
+        $this->repository->save_club_db($club);
     }
 
     public function update_players($club_code) {
@@ -402,10 +386,10 @@ class Fitet_Monitor_Manager {
         $total_rankings = count(Fitet_Portal_Rest::$ranking_types) * count(Fitet_Portal_Rest::$ranking_sex);
         $players = $this->get_club($club_code, ['players' => ''])['players'];
 
-        $min_rid = min(array_map(function ($p) {
+        $min_rid = count($players) == 0 ? 0 : min(array_map(function ($p) {
             return $p['rankingId'];
         }, $players));
-        $max_rid = max(array_map(function ($p) {
+        $max_rid = count($players) == 0 ? 0 : max(array_map(function ($p) {
             return $p['rankingId'];
         }, $players));
         $last_rid = $last_ranking['rankingId'];
@@ -464,7 +448,7 @@ class Fitet_Monitor_Manager {
 
             $club['players'] = $players;
             $club = $this->all_to_utf8($club);
-            $this->save_club($club);
+            $this->repository->save_club_db($club);
 
         }
 
@@ -523,7 +507,7 @@ class Fitet_Monitor_Manager {
                 // todo ita for show more
                 $club['players'] = $players;
                 $club = $this->all_to_utf8($club);
-                $this->save_club($club);
+                $this->repository->save_club_db($club);
             }
 
         }
@@ -537,7 +521,7 @@ class Fitet_Monitor_Manager {
 
         $club = $this->all_to_utf8($club);
 
-        $this->save_club($club);
+        $this->repository->save_club_db($club);
 
 
     }
@@ -579,7 +563,7 @@ class Fitet_Monitor_Manager {
 
         $club = $this->all_to_utf8($club);
 
-        $this->save_club($club);
+        $this->repository->save_club_db($club);
     }
 
     private static function calculate_best_ranking($rankings) {
@@ -616,10 +600,6 @@ class Fitet_Monitor_Manager {
 
     }
 
-    public function get_club_codes() {
-        return array_values(get_option($this->plugin_name . 'clubs', []));
-    }
-
     public function get_club_cron_jobs($club_code) {
 
         $cron = $this->get_club($club_code, ['cron' => '']);
@@ -627,7 +607,6 @@ class Fitet_Monitor_Manager {
         if (empty($cron)) {
             $hour = 60 * 60;
             $interval_label = 'daily';
-            //$interval_label = 'fitet_monitor_dev_interval'; // todo remove
             $interval = wp_get_schedules()[$interval_label]['interval'];
             $time = time();
             $time = $interval * (1 + floor($time / $interval));
@@ -648,7 +627,7 @@ class Fitet_Monitor_Manager {
     }
 
     public function club_already_stored($club_code) {
-        return in_array($club_code, $this->get_club_codes());
+        return in_array($club_code, $this->repository->get_club_codes_db());
     }
 
     /**
@@ -662,6 +641,49 @@ class Fitet_Monitor_Manager {
             }
             return $championship;
         }, $championships);
+    }
+
+    public function schedule_cronjob() {
+        add_filter('cron_schedules', function ($schedules) {
+            $schedules['fitet_monitor_dev_interval'] = [
+                'interval' => 600,
+                'display' => esc_html__('Every Five Minutes', 'fitet-monitor'),];
+            return $schedules;
+        });
+
+        $club_codes = $this->repository->get_club_codes_db();
+
+        foreach ($club_codes as $club_code) {
+            $cron_job = [];
+            if (!wp_next_scheduled('fm_cron_update_club_hook', [$club_code])) {
+                $cron_job = empty ($cron_job) ? $this->get_club_cron_jobs($club_code) : $cron_job;
+                wp_schedule_event($cron_job['clubTime'], $cron_job['clubInterval'], 'fm_cron_update_club_hook', [$club_code]);
+            }
+
+            if (!wp_next_scheduled('fm_cron_update_players_hook', [$club_code])) {
+                $cron_job = empty ($cron_job) ? $this->get_club_cron_jobs($club_code) : $cron_job;
+                wp_schedule_event($cron_job['playersTime'], $cron_job['playersInterval'], 'fm_cron_update_players_hook', [$club_code]);
+            }
+
+            if (!wp_next_scheduled('fm_cron_update_championships_hook', [$club_code])) {
+                $cron_job = empty ($cron_job) ? $this->get_club_cron_jobs($club_code) : $cron_job;
+                wp_schedule_event($cron_job['championshipsTime'], $cron_job['championshipsInterval'], 'fm_cron_update_championships_hook', [$club_code]);
+            }
+
+            add_action('fm_cron_update_club_hook', [$this, '_update_club']);
+            add_action('fm_cron_update_players_hook', [$this, '_update_players']);
+            add_action('fm_cron_update_championships_hook', [$this, '_update_season_championships']);
+
+
+        }
+    }
+
+    private function remove_scheduled_cronjob_for_clubs($club_codes): void {
+        foreach ($club_codes as $club_code) {
+            wp_clear_scheduled_hook('fm_cron_update_club_hook', [$club_code]);
+            wp_clear_scheduled_hook('fm_cron_update_players_hook', [$club_code]);
+            wp_clear_scheduled_hook('fm_cron_update_championships_hook', [$club_code]);
+        }
     }
 
 
@@ -798,7 +820,7 @@ class Fitet_Monitor_Manager {
         $last_update->setTimestamp(time());
         $club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
 
-        $this->save_club($club);
+        $this->repository->save_club_db($club);
     }
 
     private function fixed_44_36() {

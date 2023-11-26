@@ -95,11 +95,11 @@ class Fitet_Monitor_Utils {
         return '';
     }
 
-    public static function clubs() {
+    private static function clubs() {
         // todo deve diventare private
         if (self::$clubs == null) {
-            $manager = new Fitet_Monitor_Manager(FITET_MONITOR_NAME, FITET_MONITOR_VERSION, null, null);
-
+            global $fitet_monitor_manager;
+            $manager = $fitet_monitor_manager;
 
             self::$clubs = $manager->get_clubs([
                 'clubCode' => '',
@@ -317,6 +317,10 @@ class Fitet_Monitor_Utils {
      * @return mixed
      */
     public static function merge_championships($old_championships, $championships) {
+
+        if (!$championships) {
+            $championships = [];
+        }
 
         foreach ($championships as $championship) {
             $index = self::index_of_championship($old_championships, $championship['seasonId'], $championship['championshipId']);

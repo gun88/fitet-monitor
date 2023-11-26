@@ -70,7 +70,8 @@ class Fitet_Monitor_Calendar_Widget extends WP_Widget {
      */
     public function content($match_page_id) {
 
-        $manager = new Fitet_Monitor_Manager(FITET_MONITOR_NAME, FITET_MONITOR_VERSION, null, null);
+        global $fitet_monitor_manager;
+        $manager = $fitet_monitor_manager;
 
         $data = $manager->get_clubs([
                 'championships' => [
