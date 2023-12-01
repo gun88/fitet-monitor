@@ -64,80 +64,6 @@ class Fitet_Monitor {
     }
 
     /**
-     * Plugin activation
-     *
-     * The code that runs during plugin activation.
-     * This action is documented in includes/class-fitet-monitor-activator.php
-     *
-     * @since    1.0.0
-     */
-    public function activate() {
-        error_log("################");
-        error_log("#   ACTIVATE   #");
-        error_log("################");
-
-        global $wpdb;
-
-        $table_name = $wpdb->prefix . "fitet_monitor_clubs";
-
-        $charset_collate = $wpdb->get_charset_collate();
-// todo sposta in datasource
-        $sql = "CREATE TABLE $table_name (
-  code int(10) NOT NULL,
-  name varchar(255) NOT NULL,
-  province varchar(2) NOT NULL,
-  logo varchar(2048) NOT NULL,
-  cron varchar(255) NOT NULL DEFAULT 'DEFAULT',
-  last_update varchar(20) NULL,
-  last_club_update varchar(20) NULL,
-  last_players_update varchar(20) NULL,
-  last_championships_update varchar(20) NULL,
-  nationalTitles json DEFAULT '{}',
-  regionalTitles json DEFAULT '{}',
-  caps json DEFAULT '{}',
-  players json DEFAULT '{}',
-  championships json DEFAULT '{}',
-  PRIMARY KEY  (code)
-) $charset_collate;";
-
-        // todo cambia i last update in timestamp
-        // last_update timestamp NULL,
-        // last_club_update timestamp NULL,
-        // last_players_update timestamp NULL,
-        // last_championships_update timestamp NULL,
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
-    }
-
-    /**
-     * Plugin deactivation
-     *
-     * The code that runs during plugin deactivation.
-     * This action is documented in includes/class-fitet-monitor-deactivator.php
-     *
-     * @since    1.0.0
-     */
-    public function deactivate() {
-        error_log("################");
-        error_log("#  DEACTIVATE  #");
-        error_log("################");
-        delete_option('fitet-monitor-demo'); // todo remove
-
-        // todo sposta in manager
-        global $wpdb;
-        $array_values = $wpdb->get_col("SELECT * FROM {$wpdb->prefix}fitet_monitor_clubs");
-        foreach ($array_values as $club_code) {
-            wp_clear_scheduled_hook('fm_cron_update_club_hook', [$club_code]);
-            wp_clear_scheduled_hook('fm_cron_update_players_hook', [$club_code]);
-            wp_clear_scheduled_hook('fm_cron_update_championships_hook', [$club_code]);
-        }
-
-
-
-
-    }
-
-    /**
      * Setting viewport initial-scale to 0.5 for mobile optimization in Fitet Monitor pages.
      *
      * @since    1.0.0
@@ -179,9 +105,9 @@ class Fitet_Monitor {
      * @since    1.0.0
      * @access   private
      */
-    private function register_activation_hooks() {
-        register_activation_hook(FITET_MONITOR_ROOT_FILE, [$this, 'activate']);
-        register_deactivation_hook(FITET_MONITOR_ROOT_FILE, [$this, 'deactivate']);
+    private function register_activation_hooks($manager) {
+        register_activation_hook(FITET_MONITOR_ROOT_FILE, [$manager, 'activate']);
+        register_deactivation_hook(FITET_MONITOR_ROOT_FILE, [$manager, 'deactivate']);
     }
 
 
@@ -289,13 +215,13 @@ class Fitet_Monitor {
      * @since    1.0.0
      */
     public function start() {
-        $this->register_activation_hooks();
         $this->viewport_fix();
         $this->register_query_vars();
 
         $manager = $this->build_manager();
 
         $this->set_locale();
+        $this->register_activation_hooks($manager);
         $this->load_rest_api($manager);
         $this->register_widget($manager);
         $this->schedule_cronjob($manager);
@@ -321,3 +247,5 @@ class Fitet_Monitor {
 
 
 }
+
+

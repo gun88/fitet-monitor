@@ -80,6 +80,7 @@ class Fitet_Monitor_Manager {
             $club_codes = [$club_codes];
 
         $this->repository->delete_clubs_db($club_codes);
+        $this->repository->delete_players_db($club_codes);
         $this->remove_scheduled_cronjob_for_clubs($club_codes);
         do_action('fm_after_change');
     }
@@ -340,7 +341,7 @@ class Fitet_Monitor_Manager {
         $club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
         $club['lastChampionshipsUpdate'] = $last_update->format('d/m/Y H:i:s');
 
-        $club = $this->all_to_utf8($club);
+        $club = Fitet_Monitor_Manager::all_from_ISO_8859_15_to_utf8($club);
 
         $this->repository->save_club_db($club);
 
@@ -358,18 +359,13 @@ class Fitet_Monitor_Manager {
     }
 
     public function reset_players_ranking_id($club_code) {
-        $club = $this->get_club($club_code);
-
-        foreach ($club['players'] as &$player) {
-            $player['rankingId'] = 0;
-        }
-
-        $club = $this->all_to_utf8($club);
-
-        $this->repository->save_club_db($club);
+        $this->repository->reset_players_ranking_id($club_code);
     }
 
     public function update_players($club_code) {
+        $this->update_players2($club_code);
+        return;
+        error_log("entra in update");
         if ($club_code == null)
             throw new Exception("Club code can not be null!");
 
@@ -377,14 +373,12 @@ class Fitet_Monitor_Manager {
 
         $this->logger->add_status($club_code, "Getting info for club $club_code", 0);
 
-        $club = $this->get_club($club_code);
-
         $this->logger->add_status($club_code, "Getting ranking list", 5);
 
         $last_ranking = $this->portal->find_rankings()[0];
 
         $total_rankings = count(Fitet_Portal_Rest::$ranking_types) * count(Fitet_Portal_Rest::$ranking_sex);
-        $players = $this->get_club($club_code, ['players' => ''])['players'];
+        $players = $this->repository->get_players($club_code);
 
         $min_rid = count($players) == 0 ? 0 : min(array_map(function ($p) {
             return $p['rankingId'];
@@ -396,7 +390,7 @@ class Fitet_Monitor_Manager {
         $no_pending = $min_rid == $max_rid;// array_search($last_ranking['rankingId'], array_column($players, 'rankingId'));
         $update_available = $min_rid != $last_rid;
 
-        if ($no_pending && $update_available) {
+        if (true || $no_pending && $update_available) {
             $new_players = [];
             $standing_cursor = 0;
             for ($i = 0, $count_i = count(Fitet_Portal_Rest::$ranking_types); $i < $count_i; $i++) {
@@ -416,7 +410,7 @@ class Fitet_Monitor_Manager {
                 $px['rankingId'] = 0;
             }
 
-            // $new_players = self::group_by('playerCode',$new_players);
+            // $new_players = self::group_by('playerCode', $new_players);
             $players = self::group_by($players, 'playerName', 'birthDate', 'typeId'); // qui servirebbe il code
 
             foreach ($new_players as &$new_player) {
@@ -446,9 +440,7 @@ class Fitet_Monitor_Manager {
             });
 
 
-            $club['players'] = $players;
-            $club = $this->all_to_utf8($club);
-            $this->repository->save_club_db($club);
+            $this->repository->save_players_________($players);
 
         }
 
@@ -487,7 +479,7 @@ class Fitet_Monitor_Manager {
             $player_name = $player['playerName'];
             $player_code = $player['playerCode'];
             $this->logger->add_status($club_code, "Getting player season (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
-            $players[$i]['season'] = $this->portal->get_player_season($player['playerId'], $last_ranking['rankingId']);
+            $players[$i]['season'] = $this->portal->get_player_details($player['playerId'], $last_ranking['rankingId']);
 
 
             $player = $players[$i];
@@ -505,23 +497,108 @@ class Fitet_Monitor_Manager {
                 // todo resume update timeout
                 // todo composer
                 // todo ita for show more
-                $club['players'] = $players;
-                $club = $this->all_to_utf8($club);
-                $this->repository->save_club_db($club);
+                $this->repository->save_players_________($players);
+
             }
 
         }
 
-        $club['players'] = $players;
+        $this->repository->save_players_________($players);
 
-        $last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
-        $last_update->setTimestamp(time()); //adjust the object to correct timestamp
-        $club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
-        $club['lastPlayersUpdate'] = $last_update->format('d/m/Y H:i:s');
+        /*
+        todo update timestamp in club
 
-        $club = $this->all_to_utf8($club);
+                $club['players'] = $players;
 
-        $this->repository->save_club_db($club);
+         $last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
+             $last_update->setTimestamp(time()); //adjust the object to correct timestamp
+             $club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
+             $club['lastPlayersUpdate'] = $last_update->format('d/m/Y H:i:s');
+
+             $club = Fitet_Monitor_Manager::all_to_utf8($club);
+
+             $this->repository->save_club_db($club);*/
+
+
+    }
+
+
+    public function update_players2($club_code) {
+        error_log("entra in update2");
+        if ($club_code == null)
+            throw new Exception("Club code can not be null!");
+
+        $this->logger->add_status($club_code, 'Start updating');
+
+        $this->logger->add_status($club_code, "Getting info for club $club_code", 0);
+
+        $this->logger->add_status($club_code, "Getting ranking list", 5);
+
+        $players_from_portal = $this->portal->get_db_v2($club_code);
+
+        // remove players not in portal anymore
+        $players_from_portal_codes = array_map(function ($player) {
+            return $player['code'];
+        }, $players_from_portal);
+        $this->repository->remove_player_not_in($club_code, $players_from_portal_codes);
+
+
+        $last_ranking_id = $this->portal->find_rankings()[0]['rankingId'];
+        $players_from_db = $this->repository->read_players($club_code);
+
+        // player_codes_to_update: player codes in db with old ranking id
+        $player_codes_to_update = array_map(function ($player) {
+            return $player['code'];
+        }, array_filter($players_from_db, function ($player) use ($last_ranking_id) {
+            return $player['ranking_id'] < $last_ranking_id;
+        }));
+        // players_to_update: players in db with old ranking id - with portal updated data
+        $players_to_update = array_filter($players_from_portal, function ($player) use ($player_codes_to_update) {
+            return in_array($player['code'], $player_codes_to_update);
+        });
+
+        // player_codes_to_insert: player codes in portal but not in db
+        $players_from_db_codes = array_map(function ($player) {
+            return $player['code'];
+        }, $players_from_db);
+        $player_codes_to_insert = array_filter($players_from_portal_codes, function ($code) use ($players_from_db_codes) {
+            return !in_array($code, $players_from_db_codes);
+        });
+        // players_to_insert: players in portal but not in db
+        $players_to_insert = array_filter($players_from_portal, function ($player) use ($player_codes_to_insert) {
+            return in_array($player['code'], $player_codes_to_insert);
+        });
+
+
+        foreach (array_chunk($players_to_insert, 10) as $chunk) {
+            foreach ($chunk as &$player) {
+                $player = $this->fill_portal_player_with_online_info($player, $last_ranking_id);
+            }
+            $this->repository->save_bulk($chunk);
+
+        }
+
+        foreach (array_chunk($players_to_update, 10) as $chunk) {
+            foreach ($chunk as &$player) {
+                $player = $this->fill_portal_player_with_online_info($player, $last_ranking_id);
+            }
+            $this->repository->save_bulk($chunk);
+        }
+
+
+        /*
+        todo update timestamp in club
+
+                $club['players'] = $players;
+
+         $last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
+             $last_update->setTimestamp(time()); //adjust the object to correct timestamp
+             $club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
+             $club['lastPlayersUpdate'] = $last_update->format('d/m/Y H:i:s');
+
+             $club = Fitet_Monitor_Manager::all_to_utf8($club);
+
+             $this->repository->save_club_db($club);*/
 
 
     }
@@ -561,14 +638,14 @@ class Fitet_Monitor_Manager {
         $club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
         $club['lastClubUpdate'] = $last_update->format('d/m/Y H:i:s');
 
-        $club = $this->all_to_utf8($club);
+        $club = Fitet_Monitor_Manager::all_from_ISO_8859_15_to_utf8($club);
 
         $this->repository->save_club_db($club);
     }
 
     private static function calculate_best_ranking($rankings) {
         if (empty($rankings)) {
-            return null;
+            return ['position' => null, 'date' => null];
         }
 
         $rankings = array_map(function ($ranking) {
@@ -589,12 +666,45 @@ class Fitet_Monitor_Manager {
         return isset($rankings[0]) ? $rankings[0] : null;
     }
 
-    public static function to_utf8($text) {
+    private static function extract_last_ranking($rankings) {
+        if (empty($rankings)) {
+            return ['position' => null, 'date' => null, 'points'];
+        }
+        $last = $rankings[0];
+        $last['position'] = empty($last['position']) ? null : $last['position'];
+        $last['date'] = empty($last['date']) ? null : $last['date'];
+        $last['points'] = empty($last['points']) ? null : $last['points'];
+        return $last;
+    }
+
+    private static function calculate_last_diffs($rankings) {
+        if (count($rankings) < 2) {
+            return ['position' => null, 'points' => null];
+        }
+        $last = $rankings[0];
+        $last_second = $rankings[0];
+        $diffs['position'] = (empty($last['position']) || empty($last_second['position'])) ? null : ($last_second['position'] - $last['position']);
+        $diffs['points'] = (empty($last['points']) || empty($last_second['points'])) ? null : ($last['points'] - $last_second['points']);
+        return $diffs;
+    }
+
+    public static function from_ISO_8859_15_to_utf8($text) {
         if (FITET_MONITOR_MB_CONVERT_ENCODING_EXIST) {
             return mb_convert_encoding($text, "UTF-8", "ISO-8859-15");
         }
         if (FITET_MONITOR_ICONV_EXIST) {
             return iconv("ISO-8859-15", "UTF-8", $text);
+        }
+        return utf8_encode($text);
+
+    }
+
+    public static function from_windows_1252_to_utf8($text) {
+        if (FITET_MONITOR_MB_CONVERT_ENCODING_EXIST) {
+            return mb_convert_encoding($text, "UTF-8", "Windows-1252");
+        }
+        if (FITET_MONITOR_ICONV_EXIST) {
+            return iconv("Windows-1252", "UTF-8", $text);
         }
         return utf8_encode($text);
 
@@ -686,6 +796,57 @@ class Fitet_Monitor_Manager {
         }
     }
 
+    /**
+     * @param $player
+     * @param $last_ranking_id
+     * @return mixed
+     */
+    public function fill_portal_player_with_online_info($player, $last_ranking_id) {
+        unset($player['calculation_type']);
+        unset($player['foreigner']);
+        unset($player['missing_data']);
+
+        $details = $this->portal->get_player_details($player['id'], $last_ranking_id);
+        $season = $details['season'];
+        $profile = $details['profile'];
+        $history = $this->portal->get_player_history($player['id']);
+
+        $player['season'] = json_encode($season);
+        $player['rankings'] = json_encode($history['ranking']);
+        $player['championships'] = json_encode($history['championships']);
+        $player['national_tournaments'] = json_encode($history['nationalTournaments']);
+        $player['national_doubles_tournaments'] = json_encode($history['nationalDoublesTournaments']);
+        $player['regional_tournaments'] = json_encode($history['regionalTournaments']);
+
+
+        $player['sector'] = $profile['sector'];
+
+        if ($profile['fq'] && $player['type_id'] != 9) {
+            $player['type_id'] = 2;
+            $player['type'] = 'Fuori Quadro';
+        }
+
+        $best = self::calculate_best_ranking($history['ranking']);
+        $player['best_rank'] = $best['position'];
+        $player['best_rank_date'] = $best['date'];
+
+        $last = self::extract_last_ranking($history['ranking']);
+        $player['rank'] = $last['position'];
+        $player['points'] = $last['points'];
+
+        $diffs = self::calculate_last_diffs($history['ranking']);
+        $player['diff_rank'] = $diffs['rank'];
+        $player['diff_points'] = $diffs['points'];
+
+        $player['ranking_id'] = $last_ranking_id;
+
+        $last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
+        $last_update->setTimestamp(time()); //adjust the object to correct timestamp
+        $player['last_update'] = $last_update->format('d/m/Y H:i:s');
+
+        return $player;
+    }
+
 
     private function sort_titles($a, $b): int {
         foreach (['season', 'tournament', 'competition', 'player'] as $field) {
@@ -696,18 +857,38 @@ class Fitet_Monitor_Manager {
         return 0;
     }
 
-    public function all_to_utf8($object) {
+    public static function all_from_ISO_8859_15_to_utf8($object) {
         if (is_string($object)) {
             if (empty(json_encode($object))) {
-                $to_utf8 = Fitet_Monitor_Manager::to_utf8($object);
-                error_log("not encodable  => $to_utf8");
+                $to_utf8 = Fitet_Monitor_Manager::from_ISO_8859_15_to_utf8($object);
+                if (empty(json_encode($to_utf8)))
+                    error_log("not encodable  => $to_utf8");
                 return $to_utf8;
             }
         }
         if (is_array($object) || is_object($object)) {
             $object = (array)$object;
             foreach (array_keys($object) as $array_key) {
-                $object[$array_key] = $this->all_to_utf8($object[$array_key]);
+                $object[$array_key] = Fitet_Monitor_Manager::all_from_ISO_8859_15_to_utf8($object[$array_key]);
+            }
+        }
+        return $object;
+
+    }
+
+    public static function all_from_windows_1252_to_utf8($object) {
+        if (is_string($object)) {
+            if (empty(json_encode($object))) {
+                $to_utf8 = Fitet_Monitor_Manager::from_windows_1252_to_utf8($object);
+                if (empty(json_encode($to_utf8)))
+                    error_log("not encodable  => $to_utf8");
+                return $to_utf8;
+            }
+        }
+        if (is_array($object) || is_object($object)) {
+            $object = (array)$object;
+            foreach (array_keys($object) as $array_key) {
+                $object[$array_key] = Fitet_Monitor_Manager::from_windows_1252_to_utf8($object[$array_key]);
             }
         }
         return $object;
@@ -813,7 +994,7 @@ class Fitet_Monitor_Manager {
             $championships[$i]['calendar'] = $standings;
         }
 
-        $championships = $this->all_to_utf8($championships);
+        $championships = Fitet_Monitor_Manager::all_from_ISO_8859_15_to_utf8($championships);
         $club['championships'] = $championships;
 
         $last_update = new DateTime("now", new DateTimeZone('Europe/Rome'));
@@ -831,5 +1012,49 @@ class Fitet_Monitor_Manager {
         return json_decode(file_get_contents(__DIR__ . '/85-31.json'));
     }
 
+
+    /**
+     * Plugin activation
+     *
+     * The code that runs during plugin activation.
+     * This action is documented in includes/class-fitet-monitor-activator.php
+     *
+     * @since    1.0.0
+     */
+    public function activate() {
+        error_log("################");
+        error_log("#   ACTIVATE   #");
+        error_log("################");
+
+        $this->repository->create_tables();
+    }
+
+    /**
+     * Plugin deactivation
+     *
+     * The code that runs during plugin deactivation.
+     * This action is documented in includes/class-fitet-monitor-deactivator.php
+     *
+     * @since    1.0.0
+     */
+    public function deactivate() {
+        error_log("################");
+        error_log("#  DEACTIVATE  #");
+        error_log("################");
+
+        // todo sposta in manager
+        global $wpdb;
+        $array_values = $wpdb->get_col("SELECT * FROM {$wpdb->prefix}fitet_monitor_clubs");
+        foreach ($array_values as $club_code) {
+            wp_clear_scheduled_hook('fm_cron_update_club_hook', [$club_code]);
+            wp_clear_scheduled_hook('fm_cron_update_players_hook', [$club_code]);
+            wp_clear_scheduled_hook('fm_cron_update_championships_hook', [$club_code]);
+        }
+
+        // todo ...dopo rimuovi...serve solo in uninstall
+        /*global $wpdb;
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_clubs;");
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_players;");*/
+    }
 
 }

@@ -49,6 +49,33 @@ class Fitet_Portal_Rest {
         return $marker;
     }
 
+    public function get_db_v2($club_code) {
+        $ranking = array_filter(preg_split("/[\r\n]+/", file_get_contents(FITET_MONITOR_UPLOAD_DIR . "/fitet-monitor/rankings/db-v2.csv")));
+        // converting CSV lines to array
+        $ranking = array_map(function ($csv_row) {
+            return str_getcsv($csv_row, ",");
+        }, $ranking);
+
+        // retrieving CSV header
+        $header = array_shift($ranking);
+
+        // creating tmp objects - merging lines with header
+        $ranking = array_map(function ($csv_row) use ($header) {
+            return array_combine($header, $csv_row);
+        }, $ranking);
+
+        // filter by club code if set
+        if ($club_code != null) {
+            $ranking = array_filter($ranking, function ($rank) use ($club_code) {
+                return $rank['club_code'] == $club_code;
+            });
+        }
+
+        // restoring array indexes
+        return array_values($ranking);
+    }
+
+
     private function setHttpService($http_service) {
         $this->http_service = $http_service;
     }
@@ -213,7 +240,7 @@ class Fitet_Portal_Rest {
     }
 
 
-    public function get_player_season($player_id, $ranking_id) {
+    public function get_player_details($player_id, $ranking_id) {
         $url = "http://portale.fitet.org/risultati/new_rank/dettaglioatleta_unica.php?ATLETA=$player_id&ID_CLASS=$ranking_id";
         $html_string = $this->http_service->get($url, ['X-Requested-With' => 'XMLHttpRequest']);
         $html = str_get_html($html_string);
@@ -232,7 +259,7 @@ class Fitet_Portal_Rest {
         }, $season);
 
         // mapping to history object
-        return array_map(function ($column) {
+        $season = array_map(function ($column) {
             return [
                 'opponent' => $column[0],
                 'date' => $column[1],
@@ -241,6 +268,29 @@ class Fitet_Portal_Rest {
                 'points' => doubleval(str_replace(',', '.', $column[4])),
             ];
         }, $season);
+
+
+        $profile = $html->find('table')[0];
+        if (empty($profile)) {
+            $profile = null;
+        } else {
+            $profile = $profile->find('tr');
+            $profile = [
+                'name' => trim(str_replace('&nbsp;', '', $profile[1]->find('p')[0]->text())),
+                'nation' => trim($profile[1]->find('img')[0]->attr['title']),
+                'nation_code' => preg_replace('/.+\/(..).png$/is', '$1', $profile[1]->find('img')[0]->attr['src']),
+                'sector' => trim($profile[5]->find('p')[1]->innertext()),
+                'club_name' => trim($profile[6]->find('p')[1]->innertext()),
+                'region' => trim($profile[7]->find('p')[1]->innertext()),
+                'fq' => preg_match('/FQ/i', strtoupper($profile[8]->find('p')[1]->innertext())) > 0,
+            ];
+        }
+
+
+        return Fitet_Monitor_Manager::all_from_windows_1252_to_utf8([
+            'season' => $season,
+            'profile' => $profile,
+        ]);
 
 
     }
@@ -373,13 +423,13 @@ class Fitet_Portal_Rest {
             ];
         }, $nationalDoublesTournaments);
 
-        return [
+        return  Fitet_Monitor_Manager::all_from_ISO_8859_15_to_utf8([
             'ranking' => $ranking,
             'nationalTournaments' => $nationalTournaments,
             'nationalDoublesTournaments' => $nationalDoublesTournaments,
             'regionalTournaments' => $regionalTournaments,
             'championships' => $championships,
-        ];
+        ]);
 
 
     }

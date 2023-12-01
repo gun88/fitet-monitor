@@ -31,5 +31,5 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 global $wpdb;
-$table_name = $wpdb->prefix . "fitet_monitor_clubs";
-$wpdb->query("DROP TABLE IF EXISTS $table_name;");
+$wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_clubs;");
+$wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_players;");
