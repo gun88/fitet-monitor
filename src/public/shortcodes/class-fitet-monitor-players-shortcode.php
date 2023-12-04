@@ -453,9 +453,9 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
         }, $team);
 
         return array_values(array_filter($team, function ($partner_player_name) use ($player_name) {
-            $trim = strtolower(trim(preg_replace('/[^A-Za-z]/', '', $player_name)));
-            $trim1 = strtolower(trim(preg_replace('/[^A-Za-z]/', '', $partner_player_name)));
-            return $trim != $trim1;
+            $p1 = strtolower(trim(preg_replace('/[^A-Za-z]/', '', $player_name)));
+            $p2 = strtolower(trim(preg_replace('/[^A-Za-z]/', '', $partner_player_name)));
+            return $p1 != $p2;
         }))[0];
 
     }
