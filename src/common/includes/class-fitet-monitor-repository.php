@@ -29,6 +29,10 @@ class Fitet_Monitor_Repository {
 
         $club_db = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}fitet_monitor_clubs WHERE code = %d", $club_code), ARRAY_A);
 
+        if (!$club_db) {
+            throw new Error("Club with code $club_code not found in DB");
+        }
+
         $club_new_format = [
             'nationalTitles' => json_decode($club_db['nationalTitles'], true),
             'regionalTitles' => json_decode($club_db['regionalTitles'], true),
