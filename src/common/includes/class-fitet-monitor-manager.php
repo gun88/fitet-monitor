@@ -569,10 +569,12 @@ class Fitet_Monitor_Manager {
             return in_array($player['code'], $player_codes_to_insert);
         });
 
+        $count = count($players_to_insert) + count($players_to_update);
+        $i = 0;
 
         foreach (array_chunk($players_to_insert, 10) as $chunk) {
             foreach ($chunk as &$player) {
-                $player = $this->fill_portal_player_with_online_info($player, $last_ranking_id);
+                $player = $this->fill_portal_player_with_online_info($player, $last_ranking_id, $i++, $count);
             }
             $this->repository->save_bulk($chunk);
 
@@ -580,7 +582,7 @@ class Fitet_Monitor_Manager {
 
         foreach (array_chunk($players_to_update, 10) as $chunk) {
             foreach ($chunk as &$player) {
-                $player = $this->fill_portal_player_with_online_info($player, $last_ranking_id);
+                $player = $this->fill_portal_player_with_online_info($player, $last_ranking_id, $i++, $count);
             }
             $this->repository->save_bulk($chunk);
         }
@@ -682,7 +684,7 @@ class Fitet_Monitor_Manager {
             return ['position' => null, 'points' => null];
         }
         $last = $rankings[0];
-        $last_second = $rankings[0];
+        $last_second = $rankings[1];
         $diffs['position'] = (empty($last['position']) || empty($last_second['position'])) ? null : ($last_second['position'] - $last['position']);
         $diffs['points'] = (empty($last['points']) || empty($last_second['points'])) ? null : ($last['points'] - $last_second['points']);
         return $diffs;
@@ -801,14 +803,18 @@ class Fitet_Monitor_Manager {
      * @param $last_ranking_id
      * @return mixed
      */
-    public function fill_portal_player_with_online_info($player, $last_ranking_id) {
+    public function fill_portal_player_with_online_info($player, $last_ranking_id, $i, $count) {
         unset($player['calculation_type']);
         unset($player['foreigner']);
         unset($player['missing_data']);
 
+        $player_name = $player['last_name'] . ' ' . $player['first_name'];
+        $this->logger->add_status($player['club_code'], "Getting player season (" . ($i + 1) . "/$count): $player_name - ${player['code']}", 10 / $count);
         $details = $this->portal->get_player_details($player['id'], $last_ranking_id);
         $season = $details['season'];
         $profile = $details['profile'];
+
+        $this->logger->add_status($player['club_code'], "Getting player history (" . ($i + 1) . "/$count): $player_name - ${player['code']}", 10 / $count);
         $history = $this->portal->get_player_history($player['id']);
 
         $player['season'] = json_encode($season);
@@ -835,7 +841,7 @@ class Fitet_Monitor_Manager {
         $player['points'] = $last['points'];
 
         $diffs = self::calculate_last_diffs($history['ranking']);
-        $player['diff_rank'] = $diffs['rank'];
+        $player['diff_rank'] = $diffs['position'];
         $player['diff_points'] = $diffs['points'];
 
         $player['ranking_id'] = $last_ranking_id;
@@ -1058,3 +1064,25 @@ class Fitet_Monitor_Manager {
     }
 
 }
+/*
+
+http://10.164.0.36
+http://10.164.0.36/public/img/round-flags/it-23x23.png
+wget -k https://10.164.0.36/public/img/round-flags/it-23x23.png
+
+
+
+
+curl -k https://10.164.0.36/public/img/round-flags/al-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/ce-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/cz-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/de-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/es-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/gr-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/hu-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/ie-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/it-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/pt-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/ro-23x23.png -O
+curl -k https://10.164.0.36/public/img/round-flags/uk-23x23.png -O
+ */
