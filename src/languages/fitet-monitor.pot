@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2023-11-12 18:37:20+00:00\n"
+"POT-Creation-Date: 2023-12-21 09:33:31+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -327,7 +327,7 @@ msgstr ""
 msgid "Club edited successfully"
 msgstr ""
 
-#: src/common/includes/class-fitet-monitor.php:275
+#: src/common/includes/class-fitet-monitor-manager.php:626
 msgid "Every Five Minutes"
 msgstr ""
 
@@ -351,7 +351,7 @@ msgstr ""
 msgid "Match page id:"
 msgstr ""
 
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:162
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:163
 msgid "Show more..."
 msgstr ""
 

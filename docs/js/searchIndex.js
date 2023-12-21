@@ -621,6 +621,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Portal-Rest.html#method_calculate_marker"
         },                {
+            "fqsen": "\\Fitet_Portal_Rest\u003A\u003Aget_db_v2\u0028\u0029",
+            "name": "get_db_v2",
+            "summary": "",
+            "url": "classes/Fitet-Portal-Rest.html#method_get_db_v2"
+        },                {
             "fqsen": "\\Fitet_Portal_Rest\u003A\u003AsetHttpService\u0028\u0029",
             "name": "setHttpService",
             "summary": "",
@@ -641,10 +646,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Portal-Rest.html#method_find_players"
         },                {
-            "fqsen": "\\Fitet_Portal_Rest\u003A\u003Aget_player_season\u0028\u0029",
-            "name": "get_player_season",
+            "fqsen": "\\Fitet_Portal_Rest\u003A\u003Aget_player_details\u0028\u0029",
+            "name": "get_player_details",
             "summary": "",
-            "url": "classes/Fitet-Portal-Rest.html#method_get_player_season"
+            "url": "classes/Fitet-Portal-Rest.html#method_get_player_details"
         },                {
             "fqsen": "\\Fitet_Portal_Rest\u003A\u003Aget_player_history\u0028\u0029",
             "name": "get_player_history",
@@ -1761,11 +1766,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_edit_club"
         },                {
-            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Asave_club\u0028\u0029",
-            "name": "save_club",
-            "summary": "",
-            "url": "classes/Fitet-Monitor-Manager.html#method_save_club"
-        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Adelete_clubs\u0028\u0029",
             "name": "delete_clubs",
             "summary": "",
@@ -1861,15 +1861,25 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_calculate_best_ranking"
         },                {
-            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Ato_utf8\u0028\u0029",
-            "name": "to_utf8",
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aextract_last_ranking\u0028\u0029",
+            "name": "extract_last_ranking",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Manager.html#method_to_utf8"
+            "url": "classes/Fitet-Monitor-Manager.html#method_extract_last_ranking"
         },                {
-            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aget_club_codes\u0028\u0029",
-            "name": "get_club_codes",
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Acalculate_last_diffs\u0028\u0029",
+            "name": "calculate_last_diffs",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Manager.html#method_get_club_codes"
+            "url": "classes/Fitet-Monitor-Manager.html#method_calculate_last_diffs"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Afrom_ISO_8859_15_to_utf8\u0028\u0029",
+            "name": "from_ISO_8859_15_to_utf8",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_from_ISO_8859_15_to_utf8"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Afrom_windows_1252_to_utf8\u0028\u0029",
+            "name": "from_windows_1252_to_utf8",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_from_windows_1252_to_utf8"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aget_club_cron_jobs\u0028\u0029",
             "name": "get_club_cron_jobs",
@@ -1886,15 +1896,35 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_add_empty_standings"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aschedule_cronjob\u0028\u0029",
+            "name": "schedule_cronjob",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_schedule_cronjob"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aremove_scheduled_cronjob_for_clubs\u0028\u0029",
+            "name": "remove_scheduled_cronjob_for_clubs",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_remove_scheduled_cronjob_for_clubs"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Afill_portal_player_with_online_info\u0028\u0029",
+            "name": "fill_portal_player_with_online_info",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_fill_portal_player_with_online_info"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Asort_titles\u0028\u0029",
             "name": "sort_titles",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_sort_titles"
         },                {
-            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aall_to_utf8\u0028\u0029",
-            "name": "all_to_utf8",
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aall_from_ISO_8859_15_to_utf8\u0028\u0029",
+            "name": "all_from_ISO_8859_15_to_utf8",
             "summary": "",
-            "url": "classes/Fitet-Monitor-Manager.html#method_all_to_utf8"
+            "url": "classes/Fitet-Monitor-Manager.html#method_all_from_ISO_8859_15_to_utf8"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aall_from_windows_1252_to_utf8\u0028\u0029",
+            "name": "all_from_windows_1252_to_utf8",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#method_all_from_windows_1252_to_utf8"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Afull_championships_history\u0028\u0029",
             "name": "full_championships_history",
@@ -1910,6 +1940,16 @@ Search.appendIndex(
             "name": "fixed_85_31",
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#method_fixed_85_31"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Aactivate\u0028\u0029",
+            "name": "activate",
+            "summary": "Plugin\u0020activation",
+            "url": "classes/Fitet-Monitor-Manager.html#method_activate"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003Adeactivate\u0028\u0029",
+            "name": "deactivate",
+            "summary": "Plugin\u0020deactivation",
+            "url": "classes/Fitet-Monitor-Manager.html#method_deactivate"
         },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
@@ -1931,6 +1971,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Manager.html#property_portal"
         },                {
+            "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A\u0024repository",
+            "name": "repository",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Manager.html#property_repository"
+        },                {
             "fqsen": "\\Fitet_Monitor_Manager\u003A\u003A\u0024empty_club",
             "name": "empty_club",
             "summary": "",
@@ -1945,16 +1990,6 @@ Search.appendIndex(
             "name": "__construct",
             "summary": "Define\u0020the\u0020core\u0020functionality\u0020of\u0020the\u0020plugin.",
             "url": "classes/Fitet-Monitor.html#method___construct"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003Aactivate\u0028\u0029",
-            "name": "activate",
-            "summary": "Plugin\u0020activation",
-            "url": "classes/Fitet-Monitor.html#method_activate"
-        },                {
-            "fqsen": "\\Fitet_Monitor\u003A\u003Adeactivate\u0028\u0029",
-            "name": "deactivate",
-            "summary": "Plugin\u0020deactivation",
-            "url": "classes/Fitet-Monitor.html#method_deactivate"
         },                {
             "fqsen": "\\Fitet_Monitor\u003A\u003Aviewport_fix\u0028\u0029",
             "name": "viewport_fix",
@@ -3770,6 +3805,166 @@ Search.appendIndex(
             "name": "seconds_diff_from_now",
             "summary": "",
             "url": "classes/Fitet-Monitor-Utils.html#method_seconds_diff_from_now"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository",
+            "name": "Fitet_Monitor_Repository",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method___construct"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aget_club_from_db\u0028\u0029",
+            "name": "get_club_from_db",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_get_club_from_db"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aget_club_codes_db\u0028\u0029",
+            "name": "get_club_codes_db",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_get_club_codes_db"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Asave_club_db\u0028\u0029",
+            "name": "save_club_db",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_save_club_db"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Awpdb_bulk_insert\u0028\u0029",
+            "name": "wpdb_bulk_insert",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_wpdb_bulk_insert"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Adelete_clubs_db\u0028\u0029",
+            "name": "delete_clubs_db",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_delete_clubs_db"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Adelete_players_db\u0028\u0029",
+            "name": "delete_players_db",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_delete_players_db"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Adelete_championships_db\u0028\u0029",
+            "name": "delete_championships_db",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_delete_championships_db"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Acreate_tables\u0028\u0029",
+            "name": "create_tables",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_create_tables"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Acreate_clubs_table\u0028\u0029",
+            "name": "create_clubs_table",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_create_clubs_table"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Acreate_players_table\u0028\u0029",
+            "name": "create_players_table",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_create_players_table"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Acreate_championships_table\u0028\u0029",
+            "name": "create_championships_table",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_create_championships_table"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aread_players\u0028\u0029",
+            "name": "read_players",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_read_players"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aread_championships\u0028\u0029",
+            "name": "read_championships",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_read_championships"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aconvert_temp_players\u0028\u0029",
+            "name": "convert_temp_players",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_convert_temp_players"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aconvert_temp_championships\u0028\u0029",
+            "name": "convert_temp_championships",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_convert_temp_championships"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aget_players\u0028\u0029",
+            "name": "get_players",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_get_players"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aget_championships\u0028\u0029",
+            "name": "get_championships",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_get_championships"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Areset_players_ranking_id\u0028\u0029",
+            "name": "reset_players_ranking_id",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_reset_players_ranking_id"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Aremove_player_not_in\u0028\u0029",
+            "name": "remove_player_not_in",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_remove_player_not_in"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Asave_bulk\u0028\u0029",
+            "name": "save_bulk",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_save_bulk"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003Areset_championship\u0028\u0029",
+            "name": "reset_championship",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#method_reset_championship"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#property_plugin_name"
+        },                {
+            "fqsen": "\\Fitet_Monitor_Repository\u003A\u003A\u0024version",
+            "name": "version",
+            "summary": "",
+            "url": "classes/Fitet-Monitor-Repository.html#property_version"
+        },                {
+            "fqsen": "\\WP_USE_THEMES",
+            "name": "WP_USE_THEMES",
+            "summary": "",
+            "url": "namespaces/default.html#constant_WP_USE_THEMES"
+        },                {
+            "fqsen": "\\DevLogger",
+            "name": "DevLogger",
+            "summary": "",
+            "url": "classes/DevLogger.html"
+        },                {
+            "fqsen": "\\DevLogger\u003A\u003Aget_status\u0028\u0029",
+            "name": "get_status",
+            "summary": "",
+            "url": "classes/DevLogger.html#method_get_status"
+        },                {
+            "fqsen": "\\DevLogger\u003A\u003Aadd_status\u0028\u0029",
+            "name": "add_status",
+            "summary": "",
+            "url": "classes/DevLogger.html#method_add_status"
+        },                {
+            "fqsen": "\\DevLogger\u003A\u003Areset_status\u0028\u0029",
+            "name": "reset_status",
+            "summary": "",
+            "url": "classes/DevLogger.html#method_reset_status"
+        },                {
+            "fqsen": "\\DevLogger\u003A\u003Aset_completed\u0028\u0029",
+            "name": "set_completed",
+            "summary": "",
+            "url": "classes/DevLogger.html#method_set_completed"
+        },                {
+            "fqsen": "\\get_manager\u0028\u0029",
+            "name": "get_manager",
+            "summary": "",
+            "url": "namespaces/default.html#function_get_manager"
         },                {
             "fqsen": "\\",
             "name": "\\",
