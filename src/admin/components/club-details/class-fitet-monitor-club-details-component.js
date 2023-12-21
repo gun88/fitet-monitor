@@ -23,6 +23,7 @@ jQuery(function ($) {
 		console.log(clubCode, seasonIdList);
 
 		for (const seasonId of seasonIdList) {
+            console.log(seasonId)
 
 			let promise = new Promise((resolve, reject) => {
 				wp.apiRequest({

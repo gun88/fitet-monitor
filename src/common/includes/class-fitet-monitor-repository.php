@@ -38,7 +38,7 @@ class Fitet_Monitor_Repository {
             'regionalTitles' => json_decode($club_db['regionalTitles'], true),
             'caps' => json_decode($club_db['caps'], true),
             'players' => $this->get_players($club_code), // (array)json_decode($club_db['players'], true),
-            'championships' => json_decode($club_db['championships'], true),
+            'championships' => $this->get_championships(/*$club_code*/), // json_decode($club_db['championships'], true),
             'lastUpdate' => $club_db['last_update'],
             'lastClubUpdate' => $club_db['last_club_update'],
             'lastPlayersUpdate' => $club_db['last_players_update'],
@@ -82,7 +82,7 @@ class Fitet_Monitor_Repository {
             'logo' => $club['clubLogo'],
             'cron' => $club['clubCron'],
             // 'players' => '[]',//json_encode($club['players']),
-            'championships' => json_encode($club['championships']),
+            // 'championships' => json_encode($club['championships']),
             'caps' => json_encode($club['caps']),
             'nationalTitles' => json_encode($club['nationalTitles']),
             'regionalTitles' => json_encode($club['regionalTitles']),
@@ -102,7 +102,7 @@ class Fitet_Monitor_Repository {
                 '%s',// logo
                 '%s',// cron
                 // '%s',// players
-                '%s',// championships
+                // '%s',// championships
                 '%s',// caps
                 '%s',// nationalTitles
                 '%s',// regionalTitles
@@ -182,9 +182,21 @@ class Fitet_Monitor_Repository {
 
     }
 
+    public function delete_championships_db($club_codes) {
+
+        global $wpdb;
+        foreach ($club_codes as $club_code) {
+            $wpdb->delete("{$wpdb->prefix}fitet_monitor_championships", ['club_code' => $club_code], ['%d']);
+        }
+        wp_cache_flush();
+        $wpdb->flush();
+
+    }
+
     public function create_tables() {
         $this->create_clubs_table();
         $this->create_players_table();
+        $this->create_championships_table();
     }
 
     private function create_clubs_table() {
@@ -268,59 +280,33 @@ class Fitet_Monitor_Repository {
         dbDelta($sql);
     }
 
-
-    public function save_players_________($players) {
-        error_log("SAVE PLAYERS");
+    private function create_championships_table() {
         global $wpdb;
-        if (is_array($players) && count($players) > 0) {
-            error_log(json_encode($players));
 
-            $ps = array_map(function ($p) {
-                $arr = [
-                    'code' => $p['playerCode'],
-                    'id' => $p['playerId'],
-                    'name' => $p['playerName'],
-                    'rank' => $p['rank'],
-                    'best_rank' => $p['best']['position'],
-                    'best_rank_date' => $p['best']['date'],
-                    'points' => $p['points'],
-                    'category' => $p['category'],
-                    'sector' => $p['sector'],
-                    'diff' => $p['diff'],
-                    'birth_date' => $p['birthDate'],
-                    'region' => $p['region'],
-                    'sex' => $p['sex'],
-                    'type' => $p['type'],
-                    'type_id' => $p['typeId'],
-                    'ranking_id' => $p['rankingId'],
-                    'season' => json_encode($p['season']),
-                    'ranking' => json_encode($p['history']['ranking']),
-                    'championships' => json_encode($p['history']['championships']),
-                    'national_tournaments' => json_encode($p['history']['nationalTournaments']),
-                    'national_doubles_tournaments' => json_encode($p['history']['nationalDoublesTournaments']),
-                    'regional_tournaments' => json_encode($p['history']['regionalTournaments']),
-                    'club_code' => $p['clubCode'],
-                    'club_name' => $p['clubName']
-                ];
-                error_log(json_encode($arr));
-                return $arr;
-            }, $players);
+        $table_name = $wpdb->prefix . "fitet_monitor_championships";
 
+        $charset_collate = $wpdb->get_charset_collate();
 
-            $p2 = array_map(function ($p) {
-                return $p['playerCode'];
-            }, $players);
+        $sql = "CREATE TABLE $table_name (
+  id int(10) NOT NULL,
+  season_id int(10) NOT NULL,
+  championship_id int(10) NOT NULL,
+  season_name varchar(255) NOT NULL,
+  championship_name varchar(255) NOT NULL,
+  standings json DEFAULT '{}',
+  calendar json DEFAULT '{}',
+  club_code int(10) NOT NULL,
+  visible int(1) NOT NULL DEFAULT 1,
+  override json DEFAULT '{}',
+  last_update varchar(40) NULL,
+  PRIMARY KEY  (id)
+) $charset_collate;";
 
-            error_log(json_encode($p2));
-            $wpdb->query("TRUNCATE TABLE {$wpdb->prefix}fitet_monitor_players");
-            $this->wpdb_bulk_insert("{$wpdb->prefix}fitet_monitor_players", $ps);
-
-            wp_cache_flush();
-            $wpdb->flush();
-        }
+        dbDelta($sql);
     }
 
     public function read_players($club_code) {
+        // todo tipi nell'output - sono tutte stringhe
         global $wpdb;
         return $wpdb->get_results(
             $wpdb->prepare("SELECT * FROM {$wpdb->prefix}fitet_monitor_players WHERE club_code = %d", $club_code),
@@ -328,12 +314,24 @@ class Fitet_Monitor_Repository {
         );
     }
 
+    public function read_championships($club_code = null) {
+        // todo tipi nell'output - sono tutte stringhe
+        global $wpdb;
+        if ($club_code) {
+            return $wpdb->get_results(
+                $wpdb->prepare("SELECT * FROM {$wpdb->prefix}fitet_monitor_championships WHERE JSON_CONTAINS(JSON_EXTRACT(standings, '$[*].clubCode'), %d, '$') ORDER BY id DESC", $club_code),
+                ARRAY_A
+            );
+        }
+        return $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}fitet_monitor_championships ORDER BY id DESC"), ARRAY_A);
+    }
+
     private function convert_temp_players($players) {
-        $players = array_map(function ($p) {
+        return array_map(function ($p) {
             return [
                 'playerCode' => $p['code'],
                 'playerId' => $p['id'],
-                'playerName' => $p['last_name'] .' ' . $p['first_name'],
+                'playerName' => $p['last_name'] . ' ' . $p['first_name'],
                 'rank' => $p['rank'],
                 'points' => $p['points'],
                 'category' => $p['category'],
@@ -358,17 +356,29 @@ class Fitet_Monitor_Repository {
                 'best' => ['position' => $p['best_rank'], 'date' => $p['best_rank_date']],
             ];
         }, $players);
+    }
 
-        return $players;
-        /*echo "<pre>" . json_encode($players) . "</pre>";
-        echo "<br>";
-        echo "<pre>" . json_encode($real) . "</pre>";
-        die();*/
-        //return $real;
+    private function convert_temp_championships($championships) {
+        return array_map(function ($c) {
+            return [
+                'id' => (int) $c['id'],
+                'seasonId' => (int) $c['season_id'],
+                'championshipId' => (int) $c['championship_id'],
+                'seasonName' => $c['season_name'],
+                'championshipName' => $c['championship_name'],
+                'standings' => json_decode($c['standings'], true),
+                'calendar' => json_decode($c['calendar'], true),
+                'lastUpdate' => $c['last_update']
+            ];
+        }, $championships);
     }
 
     public function get_players($club_code) {
         return $this->convert_temp_players($this->read_players($club_code));
+    }
+
+    public function get_championships($club_code = null) {
+        return $this->convert_temp_championships($this->read_championships($club_code));
     }
 
     public function reset_players_ranking_id($club_code) {
@@ -399,9 +409,16 @@ class Fitet_Monitor_Repository {
         );
     }
 
-    public function save_bulk($players) {
+    public function save_bulk($table, $players) {
         global $wpdb;
-        $this->wpdb_bulk_insert("{$wpdb->prefix}fitet_monitor_players", $players);
+        $this->wpdb_bulk_insert($wpdb->prefix . $table, $players);
     }
+
+    public function reset_championship($season_id) {
+        global $wpdb;
+        $wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}fitet_monitor_championships SET standings = '[]', calendar = '[]'  WHERE season_id = %d", $season_id));
+
+    }
+
 
 }

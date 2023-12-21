@@ -46,8 +46,8 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 			if (empty($championship['standings']))
 				$acc [] = $championship['seasonId'];
 		}
-		$acc = array_unique($acc);
-		sort($acc);
+        $acc = array_unique($acc);
+        sort($acc);
 		return $acc;
 	}
 

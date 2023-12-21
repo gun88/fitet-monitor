@@ -11,7 +11,7 @@ class Fitet_Monitor_Manager {
     /**
      * @var Fitet_Monitor_Manager_Logger
      */
-    protected $logger;
+    public $logger;
     /**
      * @var Fitet_Portal_Rest
      */
@@ -81,6 +81,9 @@ class Fitet_Monitor_Manager {
 
         $this->repository->delete_clubs_db($club_codes);
         $this->repository->delete_players_db($club_codes);
+        $this->repository->delete_championships_db($club_codes);
+        /*todo */
+       // todo cancella championships by club
         $this->remove_scheduled_cronjob_for_clubs($club_codes);
         do_action('fm_after_change');
     }
@@ -152,7 +155,8 @@ class Fitet_Monitor_Manager {
             }
         }
 
-        $this->repository->save_club_db($club);
+
+        $this->repository->reset_championship($season_id);
 
     }
 
@@ -325,7 +329,7 @@ class Fitet_Monitor_Manager {
         }
 
         for ($i = 0; $i < count($championships); $i++) {
-            if (!isset($championship['seasonId'])) {
+            if (!isset($championships[$i]['seasonId'])) {
                 unset($championships[$i]);
             }
         }
@@ -341,7 +345,29 @@ class Fitet_Monitor_Manager {
         $club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
         $club['lastChampionshipsUpdate'] = $last_update->format('d/m/Y H:i:s');
 
+        foreach ($club['championships'] as &$championship) {
+            $championship['id'] = $championship['seasonId'] * 100000 + $championship['championshipId'];
+            $championship['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
+        }
+
+
+        $championships = array_map(function ($championship) use ($club_code) {
+            return [
+                'id' => $championship['id'],
+                'season_id' => $championship['seasonId'],
+                'championship_id' => $championship['championshipId'],
+                'season_name' => $championship['seasonName'],
+                'championship_name' => $championship['championshipName'],
+                'club_code' => $club_code,
+                'last_update' => $championship['lastUpdate'],
+                'standings' => json_encode($championship['standings']),
+                'calendar' => json_encode($championship['calendar']),
+            ];
+        }, $club['championships']);
+
         $club = Fitet_Monitor_Manager::all_from_ISO_8859_15_to_utf8($club);
+
+        $this->repository->save_bulk('fitet_monitor_championships', $championships);
 
         $this->repository->save_club_db($club);
 
@@ -363,168 +389,6 @@ class Fitet_Monitor_Manager {
     }
 
     public function update_players($club_code) {
-        $this->update_players2($club_code);
-        return;
-        error_log("entra in update");
-        if ($club_code == null)
-            throw new Exception("Club code can not be null!");
-
-        $this->logger->add_status($club_code, 'Start updating');
-
-        $this->logger->add_status($club_code, "Getting info for club $club_code", 0);
-
-        $this->logger->add_status($club_code, "Getting ranking list", 5);
-
-        $last_ranking = $this->portal->find_rankings()[0];
-
-        $total_rankings = count(Fitet_Portal_Rest::$ranking_types) * count(Fitet_Portal_Rest::$ranking_sex);
-        $players = $this->repository->get_players($club_code);
-
-        $min_rid = count($players) == 0 ? 0 : min(array_map(function ($p) {
-            return $p['rankingId'];
-        }, $players));
-        $max_rid = count($players) == 0 ? 0 : max(array_map(function ($p) {
-            return $p['rankingId'];
-        }, $players));
-        $last_rid = $last_ranking['rankingId'];
-        $no_pending = $min_rid == $max_rid;// array_search($last_ranking['rankingId'], array_column($players, 'rankingId'));
-        $update_available = $min_rid != $last_rid;
-
-        if (true || $no_pending && $update_available) {
-            $new_players = [];
-            $standing_cursor = 0;
-            for ($i = 0, $count_i = count(Fitet_Portal_Rest::$ranking_types); $i < $count_i; $i++) {
-                $type = Fitet_Portal_Rest::$ranking_types[$i];
-                for ($j = 0, $count_j = count(Fitet_Portal_Rest::$ranking_sex); $j < $count_j; $j++) {
-                    $sex = Fitet_Portal_Rest::$ranking_sex[$j];
-                    $type_name = $type['name'];
-                    $sex_name = $sex['name'];
-                    $date = $last_ranking['date'];
-                    $this->logger->add_status($club_code, "Getting ranking (" . ++$standing_cursor . "/$total_rankings): $date - $type_name - $sex_name", 8 / $total_rankings);
-                    $new_players[] = $this->portal->get_ranking($last_ranking['rankingId'], $sex, $type, $club_code);
-                }
-            }
-            $new_players = array_merge(...$new_players);
-
-            foreach ($new_players as &$px) {
-                $px['rankingId'] = 0;
-            }
-
-            // $new_players = self::group_by('playerCode', $new_players);
-            $players = self::group_by($players, 'playerName', 'birthDate', 'typeId'); // qui servirebbe il code
-
-            foreach ($new_players as &$new_player) {
-                $key = $new_player['playerName'] . $new_player['birthDate'] . $new_player['typeId'];
-                if (isset($players[$key])) {
-                    $players[$key]['rank'] = $new_player['rank'];
-                    $players[$key]['points'] = $new_player['points'];
-                    $players[$key]['category'] = $new_player['category'];
-                    $players[$key]['sector'] = $new_player['sector'];
-                    $players[$key]['diff'] = $new_player['diff'];
-                    $players[$key]['region'] = $new_player['region'];
-                    $players[$key]['clubCode'] = $new_player['clubCode'];
-                    $players[$key]['clubName'] = $new_player['clubName'];
-                    $players[$key]['sex'] = $new_player['sex'];
-                    $players[$key]['type'] = $new_player['type'];
-                    $new_player = $players[$key];
-                }
-            }
-            $players = $new_players;
-
-
-            usort($players, function ($a, $b) {
-                return $b['points'] - $a['points'];
-            });
-            usort($players, function ($a, $b) {
-                return $a['typeId'] - $b['typeId'];
-            });
-
-
-            $this->repository->save_players_________($players);
-
-        }
-
-        for ($i = 0, $count = count($players); $i < $count; $i++) {
-            $player = $players[$i];
-
-            if ($player['rankingId'] == $last_ranking['rankingId']) {
-                $player_name = $player['playerName'];
-                $player_code = $player['playerCode'];
-                $this->logger->add_status($club_code, "Getting player info (" . ($i + 1) . "/$count): $player_name", 20 / $count);
-                $this->logger->add_status($club_code, "Getting player season (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
-                $this->logger->add_status($club_code, "Getting player history (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
-
-                continue;
-            }
-            $player_name = $player['playerName'];
-            $this->logger->add_status($club_code, "Getting player info (" . ($i + 1) . "/$count): $player_name", 20 / $count);
-
-            $player_infos = $this->portal->find_players($player['playerName'], $player['birthDate']);
-            $player_info = $player_infos[0];
-            if (count($player_infos) > 1) {
-                foreach ($player_infos as $info) {
-                    $ranking = $this->portal->get_player_history($info['playerId'])['ranking'];
-                    if (empty($ranking)) {
-                        continue;
-                    }
-                    if ($ranking[0]['position'] == $player['rank']) {
-                        $player_info = $info;
-                        break;
-                    }
-                }
-            }
-            $players[$i] = array_merge($player, $player_info);
-
-            $player = $players[$i];
-            $player_name = $player['playerName'];
-            $player_code = $player['playerCode'];
-            $this->logger->add_status($club_code, "Getting player season (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
-            $players[$i]['season'] = $this->portal->get_player_details($player['playerId'], $last_ranking['rankingId']);
-
-
-            $player = $players[$i];
-            $player_name = $player['playerName'];
-            $player_code = $player['playerCode'];
-            $this->logger->add_status($club_code, "Getting player history (" . ($i + 1) . "/$count): $player_name - $player_code", 10 / $count);
-            $players[$i]['history'] = $this->portal->get_player_history($player['playerId']);
-
-            $players[$i]['best'] = self::calculate_best_ranking(isset($players[$i]['history']) ? $players[$i]['history']['ranking'] : []);
-
-
-            $players[$i]['rankingId'] = $last_ranking['rankingId'];
-            if ($i % 10 == 0) {
-                // todo group by and merge
-                // todo resume update timeout
-                // todo composer
-                // todo ita for show more
-                $this->repository->save_players_________($players);
-
-            }
-
-        }
-
-        $this->repository->save_players_________($players);
-
-        /*
-        todo update timestamp in club
-
-                $club['players'] = $players;
-
-         $last_update = new DateTime("now", new DateTimeZone('Europe/Rome')); //first argument "must" be a string
-             $last_update->setTimestamp(time()); //adjust the object to correct timestamp
-             $club['lastUpdate'] = $last_update->format('d/m/Y H:i:s');
-             $club['lastPlayersUpdate'] = $last_update->format('d/m/Y H:i:s');
-
-             $club = Fitet_Monitor_Manager::all_to_utf8($club);
-
-             $this->repository->save_club_db($club);*/
-
-
-    }
-
-
-    public function update_players2($club_code) {
-        error_log("entra in update2");
         if ($club_code == null)
             throw new Exception("Club code can not be null!");
 
@@ -576,7 +440,7 @@ class Fitet_Monitor_Manager {
             foreach ($chunk as &$player) {
                 $player = $this->fill_portal_player_with_online_info($player, $last_ranking_id, $i++, $count);
             }
-            $this->repository->save_bulk($chunk);
+            $this->repository->save_bulk('fitet_monitor_players', $chunk);
 
         }
 
@@ -584,7 +448,7 @@ class Fitet_Monitor_Manager {
             foreach ($chunk as &$player) {
                 $player = $this->fill_portal_player_with_online_info($player, $last_ranking_id, $i++, $count);
             }
-            $this->repository->save_bulk($chunk);
+            $this->repository->save_bulk('fitet_monitor_players', $chunk);
         }
 
 
@@ -1058,31 +922,10 @@ class Fitet_Monitor_Manager {
         }
 
         // todo ...dopo rimuovi...serve solo in uninstall
-        /*global $wpdb;
+        global $wpdb;
         $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_clubs;");
-        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_players;");*/
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_players;");
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_championships;");
     }
 
 }
-/*
-
-http://10.164.0.36
-http://10.164.0.36/public/img/round-flags/it-23x23.png
-wget -k https://10.164.0.36/public/img/round-flags/it-23x23.png
-
-
-
-
-curl -k https://10.164.0.36/public/img/round-flags/al-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/ce-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/cz-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/de-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/es-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/gr-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/hu-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/ie-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/it-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/pt-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/ro-23x23.png -O
-curl -k https://10.164.0.36/public/img/round-flags/uk-23x23.png -O
- */
