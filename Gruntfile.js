@@ -56,8 +56,7 @@ module.exports = function (grunt) {
 			css: ['<%= pkg.name %>/**/*.css', '!<%= pkg.name %>/**/*.min.css'],
 			pot: ['<%= pkg.name %>/**/*.po', '<%= pkg.name %>/**/*.pot'],
 			tmp: ['<%= pkg.name %>'],
-			doc: ['docs'],
-			composer: ['vendor'],
+			doc: ['docs']
 		},
 		copy: {
 			default: {
@@ -103,32 +102,6 @@ module.exports = function (grunt) {
 		zip: {
 			'dist/<%= pkg.name %>.zip': ['<%= pkg.name %>/**']
 		},
-		exec: {
-			phpDocumentor: 'vendor/bin/phpdoc -d ./src -t ./docs',
-			installWpTests: 'bin/install-wp-tests.sh wordpress_test wordpress_test wordpress_test localhost 6.0.0 true',
-			installWpTestsWsl: 'bin/install-wp-tests.sh wordpress_test wordpress_test wordpress_test KTCENTWYZY.local 6.0.0 true',
-			composer: 'composer update',
-		},
-		phpunit: {
-			integration: {
-				options: {
-					bin: 'vendor/bin/phpunit',
-					configuration: 'tests/.config/integration/phpunit.xml.dist',
-					testSuffix: 'IT.php'
-
-				},
-				dir: 'tests/',
-			},
-			unit: {
-				options: {
-					bin: 'vendor/bin/phpunit',
-					configuration: 'tests/.config/unit/phpunit.xml.dist',
-					testSuffix: 'Test.php'
-
-				},
-				dir: 'tests/'
-			}
-		},
 		replace: {
 			version: {
 				options: {
@@ -161,7 +134,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('@floatwork/grunt-po2mo');
 	grunt.loadNpmTasks('grunt-zip');
 	grunt.loadNpmTasks('grunt-exec');
-	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks("grunt-replace");
 
 
@@ -169,25 +141,12 @@ module.exports = function (grunt) {
 	// https://www.gnu.org/software/gettext/
 	grunt.registerTask('i18n', ['addtextdomain', 'makepot', 'po2mo']);
 
-	// To run i18n you need to have phpdoc installed.
-	// https://docs.phpdoc.org/3.0/guide/getting-started/installing.html
-	grunt.registerTask('docs', ['clean:doc', 'exec:phpDocumentor']);
-
 	grunt.registerTask('readme', ['wp_readme_to_markdown']);
 	grunt.registerTask('assets', ['uglify', 'cssmin', 'clean:js', 'clean:css', 'clean:pot']);
 
-	// Composer command globally available needed
-	grunt.registerTask('unit-tests', ['exec:composer', 'phpunit:unit']);
-
 	grunt.registerTask('build', ['clean:dist', 'readme', 'copy', 'indexes', 'replace:version', 'assets', 'zip', 'clean:tmp']);
 
-	// Composer command globally available needed
-	// Localhost MySql DB needed. user/password/dm_name: wordpress_test
-	grunt.registerTask('integration-tests', ['exec:installWpTests', 'phpunit:integration']);
-	grunt.registerTask('integration-tests-wsl', ['exec:installWpTestsWsl', 'phpunit:integration']);
-
-	grunt.registerTask('build-full', ['clean', 'exec:composer', 'i18n', /*'docs',*/ /*'unit-tests',*/ 'build'/*, 'integration-tests'*/]);
-	grunt.registerTask('build-full-wsl', ['clean', 'exec:composer', 'i18n', /*'docs',*/ /*'unit-tests',*/ 'build'/*, 'integration-tests-wsl'*/]);
+	grunt.registerTask('build-full', ['clean', 'i18n', 'build']);
 
 	grunt.registerTask('indexes', function () {
 		// adding index.php files to prevent direct access to directories

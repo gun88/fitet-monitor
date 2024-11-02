@@ -69,6 +69,7 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 			'playerCode' => 'number',
 			'rank' => 'number',
 			'diff' => 'number',
+			'diffPt' => 'number',
 			'category' => 'number',
 		];
 	}

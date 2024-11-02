@@ -1,5 +1,0 @@
-Composer is used tu manage dev dependencies.
-WARNING: do not use composer to import plugin production dependencies.
-
-More information here:
-  https://www.smashingmagazine.com/2019/03/composer-wordpress/#possibilities-and-limitations-of-using-wordpress-and-composer-together

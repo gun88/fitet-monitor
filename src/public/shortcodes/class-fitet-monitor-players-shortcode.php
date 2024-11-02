@@ -279,6 +279,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
             'best' => '',
             'category' => '',
             'diff' => '',
+            'diffPt' => '',
             'sector' => '',
             'region' => '',
             'type' => '',
