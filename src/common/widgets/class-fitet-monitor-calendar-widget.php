@@ -156,7 +156,7 @@ class Fitet_Monitor_Calendar_Widget extends WP_Widget {
                 'awayClubCode' => $a['awayClubCode'],
                 'awayTeamName' => $a['awayTeamName'],
                 'ownedAwayTeam' => $a['ownedAwayTeam'],
-                'matchDetailUrl' => "index.php?page_id=$match_page_id&match=" . $a['match'],
+                'matchDetailUrl' => "/index.php?page_id=$match_page_id&match=" . $a['match'],
             ]);
         }, $data);
 

@@ -242,8 +242,11 @@ class Fitet_Portal_Rest {
 
     public function get_player_details($player_id, $ranking_id) {
         $url = "http://portale.fitet.org/risultati/new_rank/dettaglioatleta_unica.php?ATLETA=$player_id&ID_CLASS=$ranking_id";
+        // error_log($url);
         $html_string = $this->http_service->get($url, ['X-Requested-With' => 'XMLHttpRequest']);
         $html = str_get_html($html_string);
+        //error_log($url);
+        //error_log("HTML ---\n $html_string \n--- HTML");
 
         $season = $html->find('#fragment-2 tr');
 

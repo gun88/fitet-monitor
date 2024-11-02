@@ -32,7 +32,7 @@ class Fitet_Monitor_Match_Detail_Component extends Fitet_Monitor_Component {
             'teamName' => $data['awayTeamName'],
             'teamPageUrl' => $data['awayTeamPageUrl']]);
 
-        $data['video'] = $this->components['videoPlayer']->render(['url' => $data['video']['url']]);
+        $data['video'] = $this->components['videoPlayer']->render(['url' => isset($data['video']['url']) ? $data['video']['url'] : null]);
         $data['results'] = $this->components['matchResults']->render($data['results']);
 
         $data['scoreClass'] = $data['hasResults'] ? 'fm-has-results' : 'fm-no-results';

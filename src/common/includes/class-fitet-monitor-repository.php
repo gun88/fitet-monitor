@@ -83,13 +83,13 @@ class Fitet_Monitor_Repository {
             'cron' => $club['clubCron'],
             // 'players' => '[]',//json_encode($club['players']),
             // 'championships' => json_encode($club['championships']),
-            'caps' => json_encode($club['caps']),
-            'nationalTitles' => json_encode($club['nationalTitles']),
-            'regionalTitles' => json_encode($club['regionalTitles']),
-            'last_update' => $club['lastUpdate'],
-            'last_club_update' => $club['lastClubUpdate'],
-            'last_players_update' => $club['lastPlayersUpdate'],
-            'last_championships_update' => $club['lastChampionshipsUpdate'],
+            'caps' => json_encode(isset($club['caps'])? $club['caps']: '[]'),
+            'nationalTitles' => json_encode(isset($club['nationalTitles'])? $club['nationalTitles']: '[]'),
+            'regionalTitles' => json_encode(isset($club['regionalTitles'])? $club['regionalTitles']: '[]'),
+            'last_update' => isset($club['lastUpdate'])? $club['lastUpdate']: null,
+            'last_club_update' => isset($club['lastClubUpdate'])? $club['lastClubUpdate']: null,
+            'last_players_update' => isset($club['lastPlayersUpdate'])? $club['lastPlayersUpdate']: null,
+            'last_championships_update' => isset($club['lastChampionshipsUpdate'])? $club['lastChampionshipsUpdate']: null,
         ];
 
         $wpdb->replace(
@@ -153,7 +153,7 @@ class Fitet_Monitor_Repository {
         $sql .= implode(",\n", $placeholders);
 
         $sql .= " ON DUPLICATE KEY UPDATE " . implode(',', array_map(function ($column) {
-                return "$column=VALUES($column)";
+                return "`$column`=VALUES(`$column`)";
             }, $columns));
 
         // Run the query.  Returns number of affected rows.
@@ -216,10 +216,10 @@ class Fitet_Monitor_Repository {
   last_club_update varchar(20) NULL,
   last_players_update varchar(20) NULL,
   last_championships_update varchar(20) NULL,
-  nationalTitles json DEFAULT '{}',
-  regionalTitles json DEFAULT '{}',
-  caps json DEFAULT '{}',
-  championships json DEFAULT '{}',
+  nationalTitles json DEFAULT ('{}'),
+  regionalTitles json DEFAULT ('{}'),
+  caps json DEFAULT ('{}'),
+  championships json DEFAULT ('{}'),
   PRIMARY KEY  (code)
 ) $charset_collate;";
 
@@ -244,7 +244,7 @@ class Fitet_Monitor_Repository {
   id int(10) NOT NULL,
   last_name varchar(255) NOT NULL,
   first_name varchar(255) NOT NULL,
-  rank int(10) NULL,
+  `rank` int(10) NULL,
   best_rank int(10) NULL,
   best_rank_date varchar(20) NULL,
   points int(10) NULL,
@@ -260,16 +260,16 @@ class Fitet_Monitor_Repository {
   type_id int(10) NOT NULL,
   type varchar(255) NOT NULL,
   ranking_id int(10) NOT NULL,
-  rankings json DEFAULT '{}',
-  season json DEFAULT '{}',
-  championships json DEFAULT '{}',
-  national_tournaments json DEFAULT '{}',
-  national_doubles_tournaments json DEFAULT '{}',
-  regional_tournaments json DEFAULT '{}',
+  rankings json DEFAULT ('{}'),
+  season json DEFAULT ('{}'),
+  championships json DEFAULT ('{}'),
+  national_tournaments json DEFAULT ('{}'),
+  national_doubles_tournaments json DEFAULT ('{}'),
+  regional_tournaments json DEFAULT ('{}'),
   club_code int(10) NOT NULL,
   club_name varchar(255) NOT NULL,
   visible int(1) NOT NULL DEFAULT 1,
-  override json DEFAULT '{}',
+  override json DEFAULT ('{}'),
   last_update varchar(40) NULL,
   PRIMARY KEY  (code)
 ) $charset_collate;";
@@ -293,11 +293,11 @@ class Fitet_Monitor_Repository {
   championship_id int(10) NOT NULL,
   season_name varchar(255) NOT NULL,
   championship_name varchar(255) NOT NULL,
-  standings json DEFAULT '{}',
-  calendar json DEFAULT '{}',
+  standings json DEFAULT ('{}'),
+  calendar json DEFAULT ('{}'),
   club_code int(10) NOT NULL,
   visible int(1) NOT NULL DEFAULT 1,
-  override json DEFAULT '{}',
+  override json DEFAULT ('{}'),
   last_update varchar(40) NULL,
   PRIMARY KEY  (id)
 ) $charset_collate;";
@@ -327,16 +327,17 @@ class Fitet_Monitor_Repository {
     }
 
     private function convert_temp_players($players) {
+
         return array_map(function ($p) {
             return [
                 'playerCode' => $p['code'],
                 'playerId' => $p['id'],
                 'playerName' => $p['last_name'] . ' ' . $p['first_name'],
-                'rank' => $p['rank'],
+                'rank' => isset($p['rank']) ? $p['rank'] : "0",
                 'points' => $p['points'],
                 'category' => $p['category'],
                 'sector' => $p['sector'],
-                'diff' => $p['diff'],
+                'diff' => $p['diff_rank'],
                 'birthDate' => $p['birth_date'],
                 'region' => $p['region'],
                 'sex' => $p['sex'],
@@ -347,7 +348,7 @@ class Fitet_Monitor_Repository {
                 'clubName' => $p['club_name'],
                 'season' => json_decode($p['season'], true),
                 'history' => [
-                    'ranking' => json_decode($p['ranking'], true),
+                    'ranking' => json_decode(isset($p['rankings'])?$p['rankings']:'[]', true),
                     'championships' => json_decode($p['championships'], true),
                     'nationalTournaments' => json_decode($p['national_tournaments'], true),
                     'nationalDoublesTournaments' => json_decode($p['national_doubles_tournaments'], true),
@@ -409,9 +410,9 @@ class Fitet_Monitor_Repository {
         );
     }
 
-    public function save_bulk($table, $players) {
+    public function save_bulk($table, $rows) {
         global $wpdb;
-        $this->wpdb_bulk_insert($wpdb->prefix . $table, $players);
+        $this->wpdb_bulk_insert($wpdb->prefix . $table, $rows);
     }
 
     public function reset_championship($season_id) {

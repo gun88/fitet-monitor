@@ -30,7 +30,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-global $wpdb;
-$wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_clubs;");
-$wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_players;");
-$wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_championships;");
+// global $wpdb;
+// $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_clubs;");
+// $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_players;");
+// $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_championships;");

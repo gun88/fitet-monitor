@@ -83,7 +83,7 @@ class Fitet_Monitor_Manager {
         $this->repository->delete_players_db($club_codes);
         $this->repository->delete_championships_db($club_codes);
         /*todo */
-       // todo cancella championships by club
+        // todo cancella championships by club
         $this->remove_scheduled_cronjob_for_clubs($club_codes);
         do_action('fm_after_change');
     }
@@ -361,7 +361,7 @@ class Fitet_Monitor_Manager {
                 'club_code' => $club_code,
                 'last_update' => $championship['lastUpdate'],
                 'standings' => json_encode($championship['standings']),
-                'calendar' => json_encode($championship['calendar']),
+                'calendar' => json_encode(isset($championship['calendar']) ? $championship['calendar'] : '[]'),
             ];
         }, $club['championships']);
 
@@ -697,8 +697,8 @@ class Fitet_Monitor_Manager {
         }
 
         $best = self::calculate_best_ranking($history['ranking']);
-        $player['best_rank'] = $best['position'];
-        $player['best_rank_date'] = $best['date'];
+        $player['best_rank'] = isset($best['position']) ? $best['position'] : null;
+        $player['best_rank_date'] = isset($best['date']) ? $best['date'] : null;
 
         $last = self::extract_last_ranking($history['ranking']);
         $player['rank'] = $last['position'];

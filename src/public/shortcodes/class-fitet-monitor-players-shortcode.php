@@ -102,7 +102,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
                 $championship['clubCode'] = $club_code;
                 $championship['clubLogo'] = Fitet_Monitor_Utils::club_logo_by_code($club_code);
                 if (Fitet_Monitor_Utils::team_loaded($championship_id, $season_id, $team_id)) {
-                    $championship['teamPageUrl'] = "index.php?page_id=$team_page_id&season=$season_id&championship=$championship_id&team=$team_id";
+                    $championship['teamPageUrl'] = "/index.php?page_id=$team_page_id&season=$season_id&championship=$championship_id&team=$team_id";
                 } else {
                     $championship['teamPageUrl'] = '';
                 }

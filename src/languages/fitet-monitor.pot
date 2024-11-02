@@ -1,14 +1,14 @@
-# Copyright (C) 2023
+# Copyright (C) 2024
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2023-12-21 09:33:31+00:00\n"
+"POT-Creation-Date: 2024-11-02 08:26:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -163,7 +163,7 @@ msgstr ""
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:135
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:74
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:57
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:58
 msgid "Category"
 msgstr ""
 
@@ -174,7 +174,7 @@ msgstr ""
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:137
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:76
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:58
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:59
 msgid "Sector"
 msgstr ""
 
@@ -264,7 +264,7 @@ msgstr ""
 #: src/admin/components/club-table/class-fitet-monitor-club-table-component.php:23
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:99
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:56
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:61
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:62
 #: src/public/components/titles/class-fitet-monitor-titles-component.php:70
 msgid "Club"
 msgstr ""
@@ -594,11 +594,15 @@ msgstr ""
 msgid "Diff."
 msgstr ""
 
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:101
-msgid "Men"
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:57
+msgid "Diff. Pt."
 msgstr ""
 
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:103
+msgid "Men"
+msgstr ""
+
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:105
 msgid "Women"
 msgstr ""
 

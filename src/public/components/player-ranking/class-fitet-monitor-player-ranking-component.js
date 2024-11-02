@@ -1,5 +1,9 @@
 jQuery(function ($) {
-	const ctx = document.getElementById('fm-sc-player-detail-chart').getContext('2d');
+    let chartElement = document.getElementById('fm-sc-player-detail-chart');
+    if (!chartElement) {
+        return;
+    }
+    const ctx = chartElement.getContext('2d');
 	let chart = $('#fm-sc-player-detail-chart');
 	let labels = chart.data('labels');
 	let points = chart.data('points');

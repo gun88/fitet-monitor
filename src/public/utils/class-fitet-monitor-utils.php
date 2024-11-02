@@ -169,7 +169,7 @@ class Fitet_Monitor_Utils {
         }
         $slug = urlencode(str_replace(" ", "-", $player_name));
         $slug = "$player_code-$slug";
-        return "$player_base_url&player=$slug";
+        return "/$player_base_url&player=$slug";
 
     }
 
@@ -177,7 +177,7 @@ class Fitet_Monitor_Utils {
         if ($match_base_url == null || $match_id == null) {
             return null;
         }
-        return "$match_base_url&match=$match_id";
+        return "/$match_base_url&match=$match_id";
 
     }
 
@@ -452,7 +452,7 @@ class Fitet_Monitor_Utils {
                     $match['firstLeg']['homeTeamName'] = $match['home'];
                     $match['firstLeg']['awayTeamName'] = $match['away'];
                     $match['firstLeg']['video'] = self::extract_video($match['firstLeg']['match']);
-                    $match['firstLeg']['matchDetailUrl'] = "index.php?page_id=$match_page_id&match=" . $match['firstLeg']['match'];
+                    $match['firstLeg']['matchDetailUrl'] = "/index.php?page_id=$match_page_id&match=" . $match['firstLeg']['match'];
                     $match['firstLeg']['homeTeamId'] = self::extract_team_id_from_standings_by_team_name($championship['standings'], $match['firstLeg']['homeTeamName']);
                     $match['firstLeg']['awayTeamId'] = self::extract_team_id_from_standings_by_team_name($championship['standings'], $match['firstLeg']['awayTeamName']);
                     $match['firstLeg']['homeClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['firstLeg']['homeTeamName']);
@@ -474,7 +474,7 @@ class Fitet_Monitor_Utils {
                     $match['returnMatch']['homeTeamName'] = $match['away'];
                     $match['returnMatch']['awayTeamName'] = $match['home'];
                     $match['returnMatch']['video'] = self::extract_video($match['returnMatch']['match']);
-                    $match['returnMatch']['matchDetailUrl'] = "index.php?page_id=$match_page_id&match=" . $match['returnMatch']['match'];
+                    $match['returnMatch']['matchDetailUrl'] = "/index.php?page_id=$match_page_id&match=" . $match['returnMatch']['match'];
                     $match['returnMatch']['homeTeamId'] = self::extract_team_id_from_standings_by_team_name($championship['standings'], $match['returnMatch']['homeTeamName']);
                     $match['returnMatch']['awayTeamId'] = self::extract_team_id_from_standings_by_team_name($championship['standings'], $match['returnMatch']['awayTeamName']);
                     $match['returnMatch']['homeClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['returnMatch']['homeTeamName']);

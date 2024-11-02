@@ -25,12 +25,13 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
     private function to_player($players, $player_name, $player_page_id) {
 
         $player = $this->extract_team_players_by_name($players, $player_name);
-        $player_code = Fitet_Monitor_Utils::player_code_by_id($player['playerId']);
+        $player_id = isset($player['playerId']) ? $player['playerId'] : null;
+        $player_code = Fitet_Monitor_Utils::player_code_by_id($player_id);
         $player = [
-            'playerId' => $player['playerId'],
+            'playerId' => $player_id,
             'playerName' => $player['playerName'],
             'playerUrl' => Fitet_Monitor_Utils::player_page_url("index.php?page_id=$player_page_id", $player_code, $player['playerName']),
-            'playerImageUrl' => Fitet_Monitor_Utils::player_image_url($player['playerId']),
+            'playerImageUrl' => Fitet_Monitor_Utils::player_image_url($player_id),
         ];
 
         return $player;
@@ -236,7 +237,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
     private function to_team_page_url($championship_id, $season_id, $team_id, $owned_team, $page_id) {
         $loaded = Fitet_Monitor_Utils::team_loaded($championship_id, $season_id, $team_id);
         if ($loaded && $owned_team) {
-            return "index.php?page_id=$page_id&championship=$championship_id&season=$season_id&team=$team_id";
+            return "/index.php?page_id=$page_id&championship=$championship_id&season=$season_id&team=$team_id";
         } else {
             return '';
         }

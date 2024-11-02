@@ -86,7 +86,7 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
                             $championship_id = $championship['championshipId'];
                             $season_id = $championship['seasonId'];
                             $team_id = $standing['teamId'];
-                            $standing['teamPageUrl'] = "index.php?page_id=$post->ID&championship=$championship_id&season=$season_id&team=$team_id";
+                            $standing['teamPageUrl'] = "/index.php?page_id=$post->ID&championship=$championship_id&season=$season_id&team=$team_id";
                         } else {
                             $standing['teamPageUrl'] = '';
                         }
@@ -169,7 +169,7 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
             $championship_id = $team['championshipId'];
             $season_id = $team['seasonId'];
             $team_id = $team['teamId'];
-            $team['teamPageUrl'] = "index.php?page_id=$post->ID&championship=$championship_id&season=$season_id&team=$team_id";
+            $team['teamPageUrl'] = "/index.php?page_id=$post->ID&championship=$championship_id&season=$season_id&team=$team_id";
         }
         return $teams;
     }

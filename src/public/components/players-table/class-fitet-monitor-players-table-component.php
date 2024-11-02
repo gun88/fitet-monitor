@@ -39,9 +39,9 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 
 	private function menu($list_url, $caps_url) {
 		$menu_entries = [];
-		$menu_entries[] = '<a href="' . $list_url . '"><img alt="list" src="' . FITET_MONITOR_ICON_LIST . '"/><span>' . __('List', 'fitet-monitor') . '</span></a>';
+		$menu_entries[] = '<a href="/' . $list_url . '"><img alt="list" src="' . FITET_MONITOR_ICON_LIST . '"/><span>' . __('List', 'fitet-monitor') . '</span></a>';
 		$menu_entries[] = '<span><img alt="table" src="' . FITET_MONITOR_ICON_TABLE . '"/>' . __('Table', 'fitet-monitor') . '</span>';
-		$menu_entries[] = '<a href="' . $caps_url . '"><img alt="caps" src="' . FITET_MONITOR_ICON_HASHTAG . '"/><span>' . __('Caps', 'fitet-monitor') . '</span></a>';
+		$menu_entries[] = '<a href="/' . $caps_url . '"><img alt="caps" src="' . FITET_MONITOR_ICON_HASHTAG . '"/><span>' . __('Caps', 'fitet-monitor') . '</span></a>';
 
 		return implode('|', $menu_entries);
 	}
@@ -54,6 +54,7 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 			'points' => __('Points', 'fitet-monitor'),
 			'rank' => __('Rank', 'fitet-monitor'),
 			'diff' => __('Diff.', 'fitet-monitor'),
+			'diffPt' => __('Diff. Pt.', 'fitet-monitor'),
 			'category' => __('Category', 'fitet-monitor'),
 			'sector' => __('Sector', 'fitet-monitor'),
 		];
@@ -80,6 +81,7 @@ class Fitet_Monitor_Players_Table_Component extends Fitet_Monitor_Component {
 				'playerCode' => $player['playerCode'],
 				'rank' => $this->rank($player['rank'], $player['type']),
 				'diff' => $player['diff'],
+				'diffPt' => $player['diffPt'],
 				'category' => $player['category'],
 				'sector' => $this->sector($player['sector'], $player['sex']),
 			];

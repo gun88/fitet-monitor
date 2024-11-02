@@ -3931,41 +3931,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fitet-Monitor-Repository.html#property_version"
         },                {
-            "fqsen": "\\WP_USE_THEMES",
-            "name": "WP_USE_THEMES",
-            "summary": "",
-            "url": "namespaces/default.html#constant_WP_USE_THEMES"
-        },                {
-            "fqsen": "\\DevLogger",
-            "name": "DevLogger",
-            "summary": "",
-            "url": "classes/DevLogger.html"
-        },                {
-            "fqsen": "\\DevLogger\u003A\u003Aget_status\u0028\u0029",
-            "name": "get_status",
-            "summary": "",
-            "url": "classes/DevLogger.html#method_get_status"
-        },                {
-            "fqsen": "\\DevLogger\u003A\u003Aadd_status\u0028\u0029",
-            "name": "add_status",
-            "summary": "",
-            "url": "classes/DevLogger.html#method_add_status"
-        },                {
-            "fqsen": "\\DevLogger\u003A\u003Areset_status\u0028\u0029",
-            "name": "reset_status",
-            "summary": "",
-            "url": "classes/DevLogger.html#method_reset_status"
-        },                {
-            "fqsen": "\\DevLogger\u003A\u003Aset_completed\u0028\u0029",
-            "name": "set_completed",
-            "summary": "",
-            "url": "classes/DevLogger.html#method_set_completed"
-        },                {
-            "fqsen": "\\get_manager\u0028\u0029",
-            "name": "get_manager",
-            "summary": "",
-            "url": "namespaces/default.html#function_get_manager"
-        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",

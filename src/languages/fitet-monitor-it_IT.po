@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2023-11-12 18:37:20+00:00\n"
+"POT-Creation-Date: 2024-05-12 12:33:31+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -329,7 +329,7 @@ msgstr "Società aggiunta correttamente"
 msgid "Club edited successfully"
 msgstr "Società modificata correttamente"
 
-#: src/common/includes/class-fitet-monitor.php:275
+#: src/common/includes/class-fitet-monitor-manager.php:626
 #, fuzzy
 msgid "Every Five Minutes"
 msgstr "Ogni 5 secondi"
@@ -355,7 +355,7 @@ msgstr "Titolo"
 msgid "Match page id:"
 msgstr "Id pagina incontri"
 
-#: src/common/widgets/class-fitet-monitor-calendar-widget.php:162
+#: src/common/widgets/class-fitet-monitor-calendar-widget.php:163
 msgid "Show more..."
 msgstr "Mostra di più..."
 
