@@ -5,11 +5,29 @@
 
 .dynatable-wrapper > table {
 	margin: 0;
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.dynatable-wrapper th,
-.dynatable-wrapper td {
+.dynatable-wrapper table th,
+.dynatable-wrapper table td {
 	white-space: nowrap;
+    padding: 6px 12px;
+    border: 1px solid #e2ecf3;
+}
+
+.dynatable-wrapper table th {
+    color: #15171a;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .2px;
+    text-align: left;
+    text-transform: uppercase;
+    background-color: #f4f8fb;
+}
+
+.dynatable-wrapper table th a {
+    font-weight: inherit;
 }
 
 .dynatable-header,

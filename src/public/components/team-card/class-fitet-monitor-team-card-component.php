@@ -11,7 +11,7 @@ class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 		'showBest' => false,
 		'showCategory' => false,
 		'showDiff' => false,
-		'showPlayerCode' => false,
+		'showPlayerCode' => true,
 		'showSector' => false,
 		'showRegion' => false,
 		'showSex' => false,
