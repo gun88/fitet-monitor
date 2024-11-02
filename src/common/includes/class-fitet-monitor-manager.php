@@ -758,7 +758,7 @@ class Fitet_Monitor_Manager {
         if (is_array($object) || is_object($object)) {
             $object = (array)$object;
             foreach (array_keys($object) as $array_key) {
-                $object[$array_key] = Fitet_Monitor_Manager::from_windows_1252_to_utf8($object[$array_key]);
+                $object[$array_key] = Fitet_Monitor_Manager::all_from_windows_1252_to_utf8($object[$array_key]);
             }
         }
         return $object;
