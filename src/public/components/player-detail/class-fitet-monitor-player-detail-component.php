@@ -28,6 +28,7 @@ class Fitet_Monitor_Player_Detail_Component extends Fitet_Monitor_Component {
 		$data = array_merge(['history' => ['ranking' => [], 'championships' => [], 'nationalTournaments' => [], 'nationalDoublesTournaments' => [], 'regionalTournaments' => [],], 'season' => []], $data);
 		$player = $data;
 		$rankings = $player['history']['ranking'];
+        $player['showName'] = false;
 
 		$has_rankings = !empty($rankings);
 		$has_season = !empty($player['season']);

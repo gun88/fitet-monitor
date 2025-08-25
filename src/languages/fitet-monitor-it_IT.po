@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2024-05-12 12:33:31+00:00\n"
+"POT-Creation-Date: 2024-11-02 10:43:35+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -163,7 +163,7 @@ msgstr "Punti"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:135
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:74
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:57
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:58
 msgid "Category"
 msgstr "Categoria"
 
@@ -174,7 +174,7 @@ msgstr "Data di Nascita"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:137
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:76
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:58
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:59
 msgid "Sector"
 msgstr "Settore"
 
@@ -266,7 +266,7 @@ msgstr ""
 #: src/admin/components/club-table/class-fitet-monitor-club-table-component.php:23
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:99
 #: src/public/components/players-caps/class-fitet-monitor-players-caps-component.php:56
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:61
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:62
 #: src/public/components/titles/class-fitet-monitor-titles-component.php:70
 msgid "Club"
 msgstr "Società"
@@ -600,11 +600,16 @@ msgstr "Filtra"
 msgid "Diff."
 msgstr "Diff."
 
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:101
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:57
+#, fuzzy
+msgid "Diff. Pt."
+msgstr "Diff."
+
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:104
 msgid "Men"
 msgstr "Uomini"
 
-#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:103
+#: src/public/components/players-table/class-fitet-monitor-players-table-component.php:106
 msgid "Women"
 msgstr "Donne"
 
@@ -699,7 +704,7 @@ msgstr ""
 msgid "No results found"
 msgstr "Nessun risultato"
 
-#: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:436
+#: src/public/shortcodes/class-fitet-monitor-players-shortcode.php:437
 msgid "on"
 msgstr "il"
 

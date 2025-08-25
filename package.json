@@ -1,6 +1,6 @@
 {
   "name": "fitet-monitor",
-  "version": "0.0.7-SNAPSHOT",
+  "version": "0.0.9-SNAPSHOT",
   "main": "Gruntfile.js",
   "author": "tpomante",
   "scripts": {
@@ -8,7 +8,6 @@
     "unit-tests": "grunt unit-tests",
     "build": "grunt build",
     "build-full": "grunt build-full",
-    "build-full-wsl": "grunt build-full-wsl",
     "i18n": "grunt i18n",
     "docs": "grunt docs",
     "integration-tests": "grunt integration-tests",
