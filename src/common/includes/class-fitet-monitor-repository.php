@@ -422,5 +422,16 @@ class Fitet_Monitor_Repository {
 
     }
 
+    public function set_player_visibility($player_id, $visible) {
+        global $wpdb;
+        $wpdb->update(
+            "{$wpdb->prefix}fitet_monitor_players",
+            ['visible' => $visible],
+            ['id' => $player_id],
+            ['%d'],
+            ['%d']
+        );
+    }
+
 
 }

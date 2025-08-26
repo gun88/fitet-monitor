@@ -129,6 +129,10 @@ class Fitet_Monitor_Manager {
         return $this->logger->get_status($club_code);
     }
 
+    public function set_player_visibility($player_id, $visible) {
+        $this->repository->set_player_visibility($player_id, $visible);
+    }
+
 
     public function resetStatus($clubCode) {
         $this->logger->reset_status($clubCode);

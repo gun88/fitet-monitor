@@ -295,7 +295,14 @@ class Fitet_Monitor_Utils {
     }
 
     public static function is_hidden($player_code): bool {
-        return in_array($player_code, [515982]);
+        global $wpdb;
+        $visible = $wpdb->get_var(
+            $wpdb->prepare("SELECT visible FROM {$wpdb->prefix}fitet_monitor_players WHERE code = %d", $player_code)
+        );
+        if ($visible === null) {
+            return false;
+        }
+        return !$visible;
     }
 
     public static function belongs_to_club($player_code, $club_code) {

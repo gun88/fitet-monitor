@@ -109,11 +109,43 @@ jQuery(function ($) {
 			});
 	}
 
-	function fmToggle(event) {
-		let parentNode = event.target.parentNode;
-		parentNode.classList.toggle('fm-closed');
-		parentNode.nextElementSibling.classList.toggle('fm-closed');
-	}
+        function fmToggle(event) {
+                let parentNode = event.target.parentNode;
+                parentNode.classList.toggle('fm-closed');
+                parentNode.nextElementSibling.classList.toggle('fm-closed');
+        }
+
+        $(document).on('change', '.fm-player-visible', function () {
+                const playerId = $(this).data('player-id');
+                const visible = $(this).is(':checked') ? 1 : 0;
+                wp.apiRequest({
+                        path: 'fitet-monitor/v1/player/visible',
+                        type: 'POST',
+                        data: {playerId, visible}
+                });
+        });
+
+        $(document).on('submit', '.fm-player-upload-form', function (e) {
+                e.preventDefault();
+                const playerId = $(this).data('player-id');
+                const fileInput = $(this).find('input[type=file]')[0];
+                if (!fileInput || !fileInput.files.length) {
+                        return;
+                }
+                const formData = new FormData();
+                formData.append('playerId', playerId);
+                formData.append('image', fileInput.files[0]);
+                $.ajax({
+                        url: wpApiSettings.root + 'fitet-monitor/v1/player/image',
+                        method: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function (xhr) {
+                                xhr.setRequestHeader('X-WP-Nonce', wpApiSettings.nonce);
+                        }
+                });
+        });
 
 
 });

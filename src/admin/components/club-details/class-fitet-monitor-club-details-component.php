@@ -136,8 +136,9 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 				'birthDate' => __('Birth Date', 'fitet-monitor'),
 				'sector' => __('Sector', 'fitet-monitor'),
 				'sex' => __('Sex', 'fitet-monitor'),
-				'type' => __('Type', 'fitet-monitor'),
-			],
+                                'type' => __('Type', 'fitet-monitor'),
+                                'actions' => __('Actions', 'fitet-monitor'),
+                        ],
 
 			'sort' => [
 				'playerCode' => 'number',
@@ -146,12 +147,28 @@ class Fitet_Monitor_Club_Details_Component extends Fitet_Monitor_Component {
 				'diff' => 'number',
 				'category' => 'number',
 			],
-			'rows' => array_map(function ($player) {
-				$player['playerName'] = $this->components['playerCell']->render(['playerId' => $player['playerId'], 'playerName' => $player['playerName'], 'playerPageUrl' => '']);
-				return $player;
-			}, $players),
-		]);
-	}
+                        'rows' => array_map(function ($player) {
+                                $player['playerName'] = $this->components['playerCell']->render(['playerId' => $player['playerId'], 'playerName' => $player['playerName'], 'playerPageUrl' => '']);
+                                $player['actions'] = $this->player_actions($player);
+                                return $player;
+                        }, $players),
+                ]);
+        }
+
+        private function player_actions($player) {
+                $player_id = $player['playerId'];
+                $visible = isset($player['visible']) ? (int)$player['visible'] : 1;
+                $checked = $visible ? 'checked' : '';
+
+                $upload = "<form class='fm-player-upload-form' data-player-id='$player_id' enctype='multipart/form-data'>" .
+                        "<input type='file' name='image' accept='image/png,image/jpeg' />" .
+                        "<button type='submit'>" . __('Upload', 'fitet-monitor') . "</button>" .
+                        "</form>";
+
+                $toggle = "<input type='checkbox' class='fm-player-visible' data-player-id='$player_id' $checked title='" . __('Hide/Show', 'fitet-monitor') . "'>";
+
+                return "<div class='fm-player-actions'>$upload $toggle</div>";
+        }
 
 	public function titles_table($titles, $prefix) {
 		if (empty($titles)) {

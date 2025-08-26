@@ -74,16 +74,36 @@ class Fitet_Monitor_Api {
 				}
 			]
 		);
-		register_rest_route($this->plugin_name . '/v1', '/club',
-			[
-				'methods' => 'GET',
-				'callback' => [$this, 'get_club'],
-				'permission_callback' => function () {
-					return current_user_can('edit_pages');
-				}
-			]
-		);
-	}
+                register_rest_route($this->plugin_name . '/v1', '/club',
+                        [
+                                'methods' => 'GET',
+                                'callback' => [$this, 'get_club'],
+                                'permission_callback' => function () {
+                                        return current_user_can('edit_pages');
+                                }
+                        ]
+                );
+
+                register_rest_route($this->plugin_name . '/v1', '/player/image',
+                        [
+                                'methods' => 'POST',
+                                'callback' => [$this, 'upload_player_image'],
+                                'permission_callback' => function () {
+                                        return current_user_can('edit_pages');
+                                }
+                        ]
+                );
+
+                register_rest_route($this->plugin_name . '/v1', '/player/visible',
+                        [
+                                'methods' => 'POST',
+                                'callback' => [$this, 'set_player_visible'],
+                                'permission_callback' => function () {
+                                        return current_user_can('edit_pages');
+                                }
+                        ]
+                );
+        }
 
     public function reset_players_ranking_id(WP_REST_Request $request) {
         $this->manager->reset_players_ranking_id($request->get_param('clubCode'));
@@ -114,8 +134,38 @@ class Fitet_Monitor_Api {
 		return rest_ensure_response($club);
 	}
 
-	public function get_status(WP_REST_Request $request) {
-		$status = $this->manager->get_status($request->get_param('clubCode'));
-		return rest_ensure_response($status);
-	}
+        public function get_status(WP_REST_Request $request) {
+                $status = $this->manager->get_status($request->get_param('clubCode'));
+                return rest_ensure_response($status);
+        }
+
+        public function upload_player_image(WP_REST_Request $request) {
+                $player_id = intval($request->get_param('playerId'));
+                if (empty($player_id) || empty($_FILES['image'])) {
+                        return new WP_Error('invalid', 'Missing parameters', ['status' => 400]);
+                }
+                $file = $_FILES['image'];
+                $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+                if (!in_array($ext, ['png', 'jpg', 'jpeg'])) {
+                        return new WP_Error('invalid_type', 'Only PNG and JPG images are allowed', ['status' => 400]);
+                }
+                $upload_dir = FITET_MONITOR_UPLOAD_DIR . '/fitet-monitor/players';
+                wp_mkdir_p($upload_dir);
+                foreach (['png', 'jpg', 'jpeg'] as $e) {
+                        $existing = "$upload_dir/$player_id.$e";
+                        if (file_exists($existing)) {
+                                @unlink($existing);
+                        }
+                }
+                $target = "$upload_dir/$player_id.$ext";
+                move_uploaded_file($file['tmp_name'], $target);
+                return rest_ensure_response('done');
+        }
+
+        public function set_player_visible(WP_REST_Request $request) {
+                $player_id = intval($request->get_param('playerId'));
+                $visible = intval($request->get_param('visible')) ? 1 : 0;
+                $this->manager->set_player_visibility($player_id, $visible);
+                return rest_ensure_response('done');
+        }
 }

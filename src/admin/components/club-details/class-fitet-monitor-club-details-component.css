@@ -67,7 +67,7 @@ a.fm-reset-status:active {
 }
 
 .fm-team-players-list.fm-closed {
-	display: none;
+        display: none;
 }
 
 .fm-team-cell-wrapper.fm-closed .fm-collapse {
@@ -89,6 +89,12 @@ a.fm-reset-status:active {
 }
 
 td.fm-table-column-teams>div {
-	max-height: 10em !important;
-	overflow-y: auto;
+        max-height: 10em !important;
+        overflow-y: auto;
+}
+
+.fm-player-actions {
+        display: flex;
+        gap: .5em;
+        align-items: center;
 }
