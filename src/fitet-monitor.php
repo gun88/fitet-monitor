@@ -195,6 +195,18 @@ add_filter('wpseo_title', 'change_custom_post_type_archive_title');
 add_filter('pre_get_document_title', 'change_custom_post_type_archive_title');
 
 
+require_once FITET_MONITOR_DIR . 'public/includes/plugin-update-checker/plugin-update-checker.php';
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+
+$updateChecker = PucFactory::buildUpdateChecker(
+    'https://github.com/gun88/fitet-monitor',
+    __FILE__,
+    'fitet-monitor'
+);
+
+$updateChecker->setBranch('release');
 
 
 

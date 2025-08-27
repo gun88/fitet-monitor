@@ -1,6 +1,6 @@
 {
   "name": "fitet-monitor",
-  "version": "0.0.9-SNAPSHOT",
+  "version": "1.0.1",
   "main": "Gruntfile.js",
   "author": "tpomante",
   "scripts": {

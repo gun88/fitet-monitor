@@ -1049,7 +1049,47 @@ class Fitet_Monitor_Manager {
         error_log("################");
 
         $this->repository->create_tables();
+
+
+        $source = trailingslashit( FITET_MONITOR_DIR ) . 'data';
+        $destination = trailingslashit( FITET_MONITOR_UPLOAD_DIR ) . 'fitet-monitor';
+
+        $this->fitet_monitor_copy_dir( $source, $destination );
+
     }
+
+    /**
+     * Copia ricorsivamente una directory
+     */
+    private function fitet_monitor_copy_dir( $src, $dst ) {
+        if ( ! is_dir( $src ) ) {
+            return false;
+        }
+
+        if ( ! file_exists( $dst ) ) {
+            wp_mkdir_p( $dst ); // funzione WP che crea le cartelle necessarie
+        }
+
+        $dir = opendir( $src );
+        while ( false !== ( $file = readdir( $dir ) ) ) {
+            if ( $file == '.' || $file == '..' ) {
+                continue;
+            }
+
+            $srcPath = $src . '/' . $file;
+            $dstPath = $dst . '/' . $file;
+
+            if ( is_dir( $srcPath ) ) {
+                $this->fitet_monitor_copy_dir( $srcPath, $dstPath );
+            } else {
+                copy( $srcPath, $dstPath );
+            }
+        }
+        closedir( $dir );
+
+        return true;
+    }
+
 
     /**
      * Plugin deactivation
@@ -1074,10 +1114,10 @@ class Fitet_Monitor_Manager {
         }
 
         // todo ...dopo rimuovi...serve solo in uninstall
-        global $wpdb;
+        /*global $wpdb;
         $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_clubs;");
         $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_players;");
-        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_championships;");
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}fitet_monitor_championships;");*/
     }
 
 }
