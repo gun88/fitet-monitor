@@ -854,14 +854,7 @@ class Fitet_Monitor_Manager {
         // [fitet-monitor-teams club=718 players-page-id=237 matches-page-id=648/]
         $res = wp_update_post([
             'ID' => $teams_page_id,
-            'post_content' => '[fitet-monitor-teams club=' .
-                esc_attr($club_code) .
-                ' players-page-id=' .
-                esc_attr($players_page_id) .
-                ' matches-page-id=' .
-                esc_attr($matches_page_id) .
-                '/]',
-            'post_content' => '[fitet-monitor-teams club=' . esc_attr($club_code) . ' matches-page-id=' . esc_attr($matches_page_id) . '/]',
+            'post_content' => '[fitet-monitor-teams club=' . esc_attr($club_code) . ' players-page-id=' . esc_attr($players_page_id) . ' matches-page-id=' . esc_attr($matches_page_id) . '/]',
         ], true); // true => WP_Error su errore
 
         if (is_wp_error($res)) {
