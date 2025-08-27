@@ -318,13 +318,7 @@ class Fitet_Monitor_Manager {
 
             $this->logger->add_status($club_code, "Getting calendar (" . ($i + 1) . "/$count): $season_name - $championship_name", 8 / $count);
 
-            if ($championship_id == 85 && $season_id == 31) {
-                $standings = $this->fixed_85_31();
-            } else if ($championship_id == 44 && $season_id == 36) {
-                $standings = $this->fixed_44_36();
-            } else {
-                $standings = $this->portal->get_championship_calendar($championship_id, $season_id);
-            }
+            $standings = $this->portal->get_championship_calendar($championship_id, $season_id);
             $championships[$i]['calendar'] = $standings;
         }
 
@@ -717,6 +711,179 @@ class Fitet_Monitor_Manager {
         return $player;
     }
 
+    public function upload_player_image(mixed $file, $playerCode, string $ext) {
+
+        // Cartella custom
+        $upload_dir = wp_upload_dir();
+        $target_dir = $upload_dir['basedir'] . '/fitet-monitor/players/';
+        if (!file_exists($target_dir)) {
+            wp_mkdir_p($target_dir);
+        }
+
+        $target_file = $target_dir . $playerCode . '.' . $ext;
+
+        if (!move_uploaded_file($file['tmp_name'], $target_file)) {
+            return -1;
+        }
+
+        // URL pubblico
+        $target_url = $upload_dir['baseurl'] . '/fitet-monitor/players/' . $playerCode . '.' . $ext;
+
+        return [
+            'success' => true,
+            'url' => $target_url,
+            'code' => $playerCode,
+        ];
+    }
+
+    public function delete_player_image($playerCode) {
+
+        $upload_dir = wp_upload_dir();
+        $dir = $upload_dir['basedir'] . '/fitet-monitor/players/';
+
+        // cerchiamo i file con nome code + estensione valida
+        foreach (['png', 'jpg', 'jpeg'] as $ext) {
+            $file = $dir . $playerCode . '.' . $ext;
+            if (file_exists($file)) {
+                @unlink($file);
+            }
+        }
+
+        // restituisci URL dell’immagine default (mettila tu dove preferisci, es: in assets del plugin)
+        $default_url = plugins_url('assets/default-player.png', __FILE__);
+
+        return [
+            'success' => true,
+            'code' => $playerCode,
+            'url' => $default_url,
+        ];
+    }
+
+
+    private function fitet_monitor_get_or_create_page($args) {
+        global $wpdb;
+
+        $defaults = array(
+            'post_status' => 'publish',
+            'post_type' => 'page',
+        );
+        $args = wp_parse_args($args, $defaults);
+
+        // Verifica esistenza per slug nel post_type=page
+        if (!empty($args['post_name'])) {
+            $existing = $wpdb->get_var($wpdb->prepare(
+                "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = 'page' LIMIT 1",
+                $args['post_name']
+            ));
+
+            if ($existing) {
+                return (int)$existing;
+            }
+        }
+
+        $post_id = wp_insert_post($args, true); // true => WP_Error on failure
+        return $post_id;
+    }
+
+    public function create_pages(WP_REST_Request $request) {
+        $club_code = sanitize_text_field($request->get_param('clubCode'));
+
+        if (empty($club_code)) {
+            return new WP_REST_Response(array(
+                'success' => false,
+                'error' => 'Missing clubCode',
+            ), 400);
+        }
+
+        $club = $this->get_club($club_code);
+
+        if (empty($club)) {
+            return new WP_REST_Response(array(
+                'success' => false,
+                'error' => 'Missing club',
+            ), 400);
+        }
+
+        $players_page_id = $this->fitet_monitor_get_or_create_page([
+            'post_title' => sprintf('Giocatori - %s', $club['clubName']),
+            'post_name' => sanitize_title('giocatori-' . $club['clubCode']),
+            'post_content' => '[fitet-monitor-players club="' . esc_attr($club_code) . '"]',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+        ]);
+
+        if (is_wp_error($players_page_id)) {
+            return new WP_REST_Response(['success' => false, 'error' => $players_page_id->get_error_message(),], 500);
+        }
+
+        $teams_page_id = $this->fitet_monitor_get_or_create_page([
+            'post_title' => sprintf('Squadre - %s', $club['clubName']),
+            'post_name' => sanitize_title('squadre-' . $club['clubCode']),
+            'post_content' => '[fitet-monitor-teams club="' . esc_attr($club_code) . '"]',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+        ]);
+
+        if (is_wp_error($teams_page_id)) {
+            return new WP_REST_Response(['success' => false, 'error' => $teams_page_id->get_error_message(),], 500);
+        }
+
+        $matches_page_id = $this->fitet_monitor_get_or_create_page([
+            'post_title' => sprintf('Incontri - %s', $club['clubName']),
+            'post_name' => sanitize_title('incontri-' . $club['clubCode']),
+            'post_content' => '[fitet-monitor-matches club="' . esc_attr($club_code) . '"]',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+        ]);
+
+        if (is_wp_error($teams_page_id)) {
+            return new WP_REST_Response(['success' => false, 'error' => $teams_page_id->get_error_message(),], 500);
+        }
+
+        // [fitet-monitor-players club=718 teams-page-id=34/]
+        $res = wp_update_post([
+            'ID' => $players_page_id,
+            'post_content' => '[fitet-monitor-players=' . esc_attr($club_code) . ' teams-page-id=' . esc_attr($teams_page_id) . '/]',
+        ], true); // true => WP_Error su errore
+
+        if (is_wp_error($res)) {
+            return new WP_REST_Response(['success' => false, 'error' => $res->get_error_message(),], 500);
+        }
+
+        // [fitet-monitor-teams club=718 players-page-id=237 matches-page-id=648/]
+        $res = wp_update_post([
+            'ID' => $teams_page_id,
+            'post_content' => '[fitet-monitor-teams club=' .
+                esc_attr($club_code) .
+                ' players-page-id=' .
+                esc_attr($players_page_id) .
+                ' matches-page-id=' .
+                esc_attr($matches_page_id) .
+                '/]',
+            'post_content' => '[fitet-monitor-teams club=' . esc_attr($club_code) . ' matches-page-id=' . esc_attr($matches_page_id) . '/]',
+        ], true); // true => WP_Error su errore
+
+        if (is_wp_error($res)) {
+            return new WP_REST_Response(['success' => false, 'error' => $res->get_error_message(),], 500);
+        }
+
+        // [fitet-monitor-matches teams-page-id=34 players-page-id=237]
+        $res = wp_update_post([
+            'ID' => $matches_page_id,
+            'post_content' => '[fitet-monitor-matches teams-page-id=' . esc_attr($teams_page_id) . ' players-page-id=' . esc_attr($players_page_id) . '/]',
+        ], true); // true => WP_Error su errore
+
+        if (is_wp_error($res)) {
+            return new WP_REST_Response(['success' => false, 'error' => $res->get_error_message(),], 500);
+        }
+
+
+        return new WP_REST_Response([
+            'success' => true,
+            'message' => 'Pages created or reused successfully',
+        ], 200);
+    }
+
 
     private function sort_titles($a, $b): int {
         foreach (['season', 'tournament', 'competition', 'player'] as $field) {
@@ -854,13 +1021,7 @@ class Fitet_Monitor_Manager {
             $this->logger->add_status($club_code, "Getting calendar (" . ($i + 1) . "/$count): $season_name - $championship_name", 15 / $count);
 
 
-            if ($championship_id == 85 && $season_id == 31) {
-                $standings = $this->fixed_85_31();
-            } else if ($championship_id == 44 && $season_id == 36) {
-                $standings = $this->fixed_44_36();
-            } else {
-                $standings = $this->portal->get_championship_calendar($championship_id, $season_id, $team_names);
-            }
+            $standings = $this->portal->get_championship_calendar($championship_id, $season_id, $team_names);
             $championships[$i]['calendar'] = $standings;
         }
 
@@ -873,15 +1034,6 @@ class Fitet_Monitor_Manager {
 
         $this->repository->save_club_db($club);
     }
-
-    private function fixed_44_36() {
-        return json_decode(file_get_contents(__DIR__ . '/44-36.json'));
-    }
-
-    private function fixed_85_31() {
-        return json_decode(file_get_contents(__DIR__ . '/85-31.json'));
-    }
-
 
     /**
      * Plugin activation

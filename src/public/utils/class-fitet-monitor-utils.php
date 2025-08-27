@@ -295,7 +295,7 @@ class Fitet_Monitor_Utils {
     }
 
     public static function is_hidden($player_code): bool {
-        return in_array($player_code, [515982]);
+        return in_array($player_code, TEMP_HIDDEN_PLAYERS);
     }
 
     public static function belongs_to_club($player_code, $club_code) {
@@ -504,7 +504,9 @@ class Fitet_Monitor_Utils {
                 $calendar = array_merge(...$calendar);
 
             }
-            $championship['calendar'] = array_merge(...$championship['calendar']);
+
+            $championship['calendar'] = is_string($championship['calendar']) ? json_decode($championship['calendar']) : $championship['calendar'];
+            $championship['calendar'] = array_merge(...($championship['calendar']));
 
             unset($championship['standings']);
             unset($championship['seasonId']);

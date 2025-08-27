@@ -1,3 +1,8 @@
+<div>
+    <h3>Crea pagine</h3>
+    <p>Clicca qui per creare le pagine <i>Giocatori</i>, <i>Squadre</i>, <i>Incontri</i>: <a
+        id="fm-create-page" href="#" data-club="{{clubCode}}">Crea</a></p>
+</div>
 <table class="form-table" role="presentation">
 	<tbody>
 	<tr><th scope="row">{{statusLabel}}</th><td>{{status}}</td></tr>
@@ -28,4 +33,10 @@
 <div>
 	<h1>{{regionalTitlesLabel}}</h1>
 	{{regionalTitles}}
+</div>
+<div id="fm-overlay" style="display:none;">
+    <div id="fm-overlay-inner">
+        <div id="fm-progressbar"></div>
+        <div id="fm-label"></div>
+    </div>
 </div>
