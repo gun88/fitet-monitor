@@ -3,6 +3,7 @@
 define('FITET_MONITOR_MB_CONVERT_ENCODING_EXIST', function_exists('mb_convert_encoding'));
 define('FITET_MONITOR_ICONV_EXIST', function_exists('iconv'));
 require_once FITET_MONITOR_DIR . 'public/utils/class-fitet-monitor-utils.php';
+require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-helper.php';
 
 class Fitet_Monitor_Manager {
 
@@ -1054,40 +1055,15 @@ class Fitet_Monitor_Manager {
         $source = trailingslashit( FITET_MONITOR_DIR ) . 'data';
         $destination = trailingslashit( FITET_MONITOR_UPLOAD_DIR ) . 'fitet-monitor';
 
-        $this->fitet_monitor_copy_dir( $source, $destination );
+        Fitet_Monitor_Helper::github_download_dir_recursive(
+            'gun88',
+            'fitet-monitor',
+            'data',
+            $destination,
+            'main',
+            null // opzionale: token personale per aumentare i limiti
+        );
 
-    }
-
-    /**
-     * Copia ricorsivamente una directory
-     */
-    private function fitet_monitor_copy_dir( $src, $dst ) {
-        if ( ! is_dir( $src ) ) {
-            return false;
-        }
-
-        if ( ! file_exists( $dst ) ) {
-            wp_mkdir_p( $dst ); // funzione WP che crea le cartelle necessarie
-        }
-
-        $dir = opendir( $src );
-        while ( false !== ( $file = readdir( $dir ) ) ) {
-            if ( $file == '.' || $file == '..' ) {
-                continue;
-            }
-
-            $srcPath = $src . '/' . $file;
-            $dstPath = $dst . '/' . $file;
-
-            if ( is_dir( $srcPath ) ) {
-                $this->fitet_monitor_copy_dir( $srcPath, $dstPath );
-            } else {
-                copy( $srcPath, $dstPath );
-            }
-        }
-        closedir( $dir );
-
-        return true;
     }
 
 
