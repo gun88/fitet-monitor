@@ -4,6 +4,7 @@ require_once FITET_MONITOR_DIR . 'common/includes/class-fitet-monitor-component.
 
 class Fitet_Monitor_Team_Card_Component extends Fitet_Monitor_Component {
 	private $player_card_config = [
+		'showName' => true,
 		'showClub' => false,
 		'showClubCode' => false,
 		'showPoints' => false,

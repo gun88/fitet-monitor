@@ -81,6 +81,7 @@ define('FITET_MONITOR_ICON_ERASER', plugin_dir_url(FITET_MONITOR_DIR . "public/a
 define('FITET_MONITOR_UPLOAD_DIR', wp_upload_dir()['basedir']);
 define('FITET_MONITOR_UPLOAD_URL', wp_upload_dir()['baseurl']);
 define('TEMP_HIDDEN_PLAYERS', []);
+define('FITET_MONITOR_SHOW_NAME_IN_PLAYER_DETAIL', true);
 
 /**
  * The core plugin class that is used to define internationalization,
