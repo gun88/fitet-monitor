@@ -200,13 +200,9 @@ require_once FITET_MONITOR_DIR . 'public/includes/plugin-update-checker/plugin-u
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 
-$updateChecker = PucFactory::buildUpdateChecker(
-    'https://github.com/gun88/fitet-monitor',
+$resPongUpdateChecker = PucFactory::buildUpdateChecker(
+    'https://raw.githubusercontent.com/gun88/fitet-monitor/refs/heads/main/release/plugin.json',
     __FILE__,
-    'fitet-monitor'
+    FITET_MONITOR_NAME
 );
-
-$updateChecker->setBranch('release');
-
-
 
