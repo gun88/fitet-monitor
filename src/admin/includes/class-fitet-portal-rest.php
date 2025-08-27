@@ -282,10 +282,10 @@ class Fitet_Portal_Rest {
                 'name' => trim(str_replace('&nbsp;', '', $profile[1]->find('p')[0]->text())),
                 'nation' => trim($profile[1]->find('img')[0]->attr['title']),
                 'nation_code' => preg_replace('/.+\/(..).png$/is', '$1', $profile[1]->find('img')[0]->attr['src']),
-                'sector' => trim($profile[5]->find('p')[1]->innertext()),
-                'club_name' => trim($profile[6]->find('p')[1]->innertext()),
-                'region' => trim($profile[7]->find('p')[1]->innertext()),
-                'fq' => preg_match('/FQ/i', strtoupper($profile[8]->find('p')[1]->innertext())) > 0,
+                'sector' => trim($profile[4]->find('p')[1]->innertext()),
+                'club_name' => trim($profile[5]->find('p')[1]->innertext()),
+                'region' => trim($profile[6]->find('p')[1]->innertext()),
+                'fq' => preg_match('/FQ/i', strtoupper($profile[7]->find('p')[1]->innertext())) > 0,
             ];
         }
 
