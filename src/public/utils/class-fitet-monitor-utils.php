@@ -546,7 +546,7 @@ class Fitet_Monitor_Utils {
         $data = self::group_matches($data, $field);
 
 
-        return array_map(function ($group) {
+        $array_map = array_map(function ($group) {
             $matches = array_map(function ($match) {
                 return [
                     'date' => $match['date'],
@@ -577,6 +577,18 @@ class Fitet_Monitor_Utils {
             return ['groupId' => $group['groupId'], 'matches' => $matches,];
 
         }, $data);
+
+
+        foreach ($array_map as &$group) {
+            if (isset($group['matches']) && is_array($group['matches'])) {
+                usort($group['matches'], function($a, $b) {
+                    return $a['championshipId'] <=> $b['championshipId'];
+                });
+            }
+        }
+        unset($group);
+
+        return $array_map;
     }
 
     public static function parse_result($result) {
