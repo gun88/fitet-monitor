@@ -103,16 +103,20 @@ class Fitet_Monitor_Player_Card_Component extends Fitet_Monitor_Component {
 
 
 	private function row($label, $value) {
-		return "<div><b>$label</b>: <span>$value</span></div>";
-	}
+        $value = empty($value) ? 'N/A' : $value;
+        return "<div><b>$label</b>: <span>$value</span></div>";
+    }
 
 	private function rank($rank, $type): string {
 		return $type == 'Italiani' ? $rank : $type;
 	}
 
 
-	private function best($best) {
-		return empty($best) ? 'N/A' : $best;
-	}
+    private function best($best) {
+        if (substr($best, 0, 2) === '0 ') {
+            $best = '';
+        }
+        return empty($best) || $best == 0 ? 'N/A' : $best;
+    }
 
 }

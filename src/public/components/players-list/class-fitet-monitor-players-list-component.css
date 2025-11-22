@@ -59,3 +59,7 @@
 .fm-hide-provvisori .fm-player-type-provvisori {
 	display: none;
 }
+
+.fm-hide-promozionali .fm-player-type-promozionali {
+	display: none;
+}

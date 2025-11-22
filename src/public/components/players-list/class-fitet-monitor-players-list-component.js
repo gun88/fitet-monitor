@@ -18,6 +18,9 @@ jQuery(function ($) {
 	$('.fm-player-list-filter #fm-pt-pr').change(function () {
 		toggleFmClass('fm-hide-provvisori', this.checked);
 	});
+	$('.fm-player-list-filter #fm-pt-pz').change(function () {
+		toggleFmClass('fm-hide-promozionali', this.checked);
+	});
 	$('.fm-player-list-filter #fm-pt-fq').change(function () {
 		toggleFmClass('fm-hide-fuori-quadro', this.checked);
 	});

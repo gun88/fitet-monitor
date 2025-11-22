@@ -50,7 +50,10 @@ class Fitet_Portal_Rest {
     }
 
     public function get_db_v2($club_code) {
-        $ranking = array_filter(preg_split("/[\r\n]+/", file_get_contents("http://193.70.86.137/wp-static/db-v2.csv")));
+        $url = "http://193.70.86.137/wp-static/db-v2.csv";
+        $db_content = $this->http_service->get($url);
+
+        $ranking = array_filter(preg_split("/[\r\n]+/", $db_content));
         // converting CSV lines to array
         $ranking = array_map(function ($csv_row) {
             return str_getcsv($csv_row, ",");

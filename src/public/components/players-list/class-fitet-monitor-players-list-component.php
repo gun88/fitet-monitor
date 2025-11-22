@@ -65,7 +65,8 @@ class Fitet_Monitor_Players_List_Component extends Fitet_Monitor_Component {
         $filters .= '<div><img alt="filter" src="' . FITET_MONITOR_ICON_FILTER . '"/><span>' . __('Filter', 'fitet-monitor') . '</span>';
         $filters .= '<label for="fm-pt-it"><input type="checkbox" id="fm-pt-it" checked name="italiani"/>Italiani</label>';
         $filters .= '<label for="fm-pt-st"><input type="checkbox" id="fm-pt-st" checked name="stranieri"/>Stranieri</label>';
-        $filters .= '<label for="fm-pt-pr"><input type="checkbox" id="fm-pt-pr" name="provvisori"/>Provvisori</label>';
+        $filters .= '<label for="fm-pt-pr"><input type="checkbox" id="fm-pt-pr" checked name="provvisori"/>Provvisori</label>';
+        $filters .= '<label for="fm-pt-pz"><input type="checkbox" id="fm-pt-pz" name="promozionali"/>Promozionali</label>';
         $filters .= '<label for="fm-pt-fq"><input type="checkbox" id="fm-pt-fq" name="fuori-quadro"/>Fuori Quadro</label>';
         $filters .= '</div>';
         return $filters;
