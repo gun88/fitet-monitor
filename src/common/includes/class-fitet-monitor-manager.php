@@ -529,7 +529,7 @@ class Fitet_Monitor_Manager {
 
     private static function extract_last_ranking($rankings) {
         if (empty($rankings)) {
-            return ['position' => null, 'date' => null, 'points'];
+            return ['position' => null, 'date' => null, 'points' => null];
         }
         $last = $rankings[0];
         $last['position'] = empty($last['position']) ? null : $last['position'];
