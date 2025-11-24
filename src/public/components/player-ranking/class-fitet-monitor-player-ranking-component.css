@@ -1,0 +1,58 @@
+.chart-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+/* Base button style */
+.chart-btn {
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 30px;
+    display: flex;
+    /*align-items: center;*/
+    justify-content: center;
+    border-radius: 0.5rem;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+/* Desktop / larger screens: square centered buttons */
+@media (min-width: 768px) {
+    .chart-btn {
+        width: 2rem;          /* fixed width */
+        aspect-ratio: 1 / 1;  /* makes it perfectly square */
+    }
+}
+
+/* Mobile: full-width row, same size buttons */
+@media (max-width: 767.98px) {
+    .chart-controls {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .chart-btn {
+        flex: 1 1 0;
+        height: 2rem;         /* same height for all */
+    }
+}
+
+/* Hover / active / disabled states (optional but nice) */
+.chart-btn:hover:not(:disabled) {
+    background: #eaeaea;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.chart-btn:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.chart-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

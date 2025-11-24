@@ -13,8 +13,15 @@ jQuery(function ($) {
     let bestRanking  = chartEl.data('best-ranking');
     let bestPoints   = chartEl.data('best-points');
 
-    let step = 12;          // visible window size
+    let step = 10;          // visible window size
     let startIndex = 0;     // current start index
+    const minStep = 4;      // minimum window size
+
+    // --- DOM buttons ---
+    const $btnPrev = $('#fm-chart-prev');
+    const $btnNext = $('#fm-chart-next');
+    const $btnIncrease = $('#fm-chart-increase');
+    const $btnDecrease = $('#fm-chart-decrease');
 
     // --- Update function ---
     function updateWindow() {
@@ -35,10 +42,29 @@ jQuery(function ($) {
         chart.data.datasets[1].data = rankings;
 
         chart.update();
+        updateButtons();
+    }
+
+    // --- Button enable/disable logic ---
+    function updateButtons() {
+        const maxStart = Math.max(0, fullLabels.length - step);
+
+        // Disable prev if at start
+        $btnPrev.prop('disabled', startIndex <= 0);
+
+        // Disable next if at end
+        $btnNext.prop('disabled', startIndex >= maxStart);
+
+        // Disable decrease if at min step
+        $btnDecrease.prop('disabled', step <= minStep);
+
+        // Disable increase if window already covers all data
+        $btnIncrease.prop('disabled', step >= fullLabels.length);
     }
 
     const tension = 0.4;
     const cubicInterpolationMode = 'monotone';
+
     const data = {
         labels: [],
         datasets: [
@@ -66,37 +92,19 @@ jQuery(function ($) {
         data: data,
         options: {
             responsive: true,
-            interaction: {
-                mode: 'index',
-                intersect: false,
-            },
+            interaction: { mode: 'index', intersect: false },
             stacked: false,
-            plugins: {
-                title: {
-                    display: false,
-                    text: 'History'
-                }
-            },
+            plugins: { title: { display: false, text: 'History' } },
             scales: {
-                x: {
-                    reverse: true,
-                },
+                x: { reverse: true },
                 y: {
-                    type: 'linear',
-                    display: true,
-                    position: 'left',
-                    max: bestPoints,
-                    min: 0
+                    type: 'linear', display: true, position: 'left',
+                    max: bestPoints, min: 0
                 },
                 y1: {
-                    type: 'linear',
-                    display: true,
-                    position: 'right',
-                    reverse: true,
-                    min: bestRanking,
-                    grid: {
-                        drawOnChartArea: false,
-                    },
+                    type: 'linear', display: true, position: 'right',
+                    reverse: true, min: bestRanking,
+                    grid: { drawOnChartArea: false }
                 },
             }
         },
@@ -104,30 +112,29 @@ jQuery(function ($) {
 
     const chart = new Chart(ctx, config);
 
-    // init first window
+    // --- Initialize chart ---
     updateWindow();
 
-    // BUTTONS
-    $('#fm-chart-next').on('click', function () {
-        startIndex -= step;
-        updateWindow();
-    });
-
-    $('#fm-chart-prev').on('click', function () {
+    // --- Button handlers ---
+    $btnNext.on('click', function () {
         startIndex += step;
         updateWindow();
     });
 
-    // --- Window size adjustment ---
-    $('#fm-chart-increase').on('click', function () {
-        step += 4;
-        if (step > fullLabels.length) step = fullLabels.length; // prevent overflow
+    $btnPrev.on('click', function () {
+        startIndex -= step;
         updateWindow();
     });
 
-    $('#fm-chart-decrease').on('click', function () {
+    $btnIncrease.on('click', function () {
+        step += 4;
+        if (step > fullLabels.length) step = fullLabels.length;
+        updateWindow();
+    });
+
+    $btnDecrease.on('click', function () {
         step -= 4;
-        if (step < 4) step = 4; // minimum window size
+        if (step < minStep) step = minStep;
         updateWindow();
     });
 });
