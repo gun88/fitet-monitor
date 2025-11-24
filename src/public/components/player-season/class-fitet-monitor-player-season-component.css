@@ -1,14 +1,52 @@
 .fm-points-lost {
-	margin-left: 5px;
-	color: darkred;
+    margin-left: 5px;
+    color: darkred;
 }
 
 .fm-points-gain {
-	margin-left: 5px;
-	color: darkgreen;
+    margin-left: 5px;
+    color: darkgreen;
 }
 
 #player-season .fm-table-column-points {
-	text-align: right;
+    text-align: right;
 }
 
+.fm-season-description {
+    font-size: .8em;
+}
+
+table.fm-table-player-season {
+    margin: 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.fm-table-player-season-wrapper {
+    overflow-x: auto;
+    margin-bottom: 1em;
+
+}
+
+table.fm-table-player-season th, table.fm-table-player-season td {
+    white-space: nowrap;
+    padding: 6px 12px;
+    border: 1px solid #e2ecf3;
+}
+
+
+table.fm-table-player-season th {
+    color: #15171a;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .2px;
+    text-align: left;
+    text-transform: uppercase;
+    background-color: #f4f8fb;
+}
+
+table.fm-table-player-season th, table.fm-table-player-season td {
+    white-space: nowrap;
+    padding: 6px 12px;
+    border: 1px solid #e2ecf3;
+}

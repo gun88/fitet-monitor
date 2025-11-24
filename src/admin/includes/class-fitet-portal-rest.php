@@ -6,19 +6,6 @@ if (!class_exists('simple_html_dom_node')) {
 
 class Fitet_Portal_Rest {
 
-    public static $ranking_types = [
-        ['id' => 1, 'name' => 'Italiani'],
-        ['id' => 2, 'name' => 'Fuori Quadro'],
-        ['id' => 3, 'name' => 'Stranieri'],
-        ['id' => 9, 'name' => 'Provvisori']
-    ];
-
-    public static $ranking_sex = [
-        ['id' => 'M', 'name' => 'Maschile'],
-        ['id' => 'F', 'name' => 'Femminile']
-    ];
-
-
     /**
      * @var Fitet_Portal_Rest_Http_Service
      */
@@ -26,27 +13,6 @@ class Fitet_Portal_Rest {
 
     public function __construct($http_service) {
         $this->http_service = $http_service;
-    }
-
-    /**
-     * @param string $bgcolor
-     * @return string
-     */
-    function calculate_marker(string $bgcolor): string {
-        switch ($bgcolor) {
-            case '#FFD700':
-                $marker = 'gold';
-                break;
-            case '#C0C0C0':
-                $marker = 'silver';
-                break;
-            case '#CD7F32':
-                $marker = 'bronze';
-                break;
-            default:
-                $marker = 'blank';
-        }
-        return $marker;
     }
 
     public function get_db_v2($club_code) {
@@ -244,41 +210,36 @@ class Fitet_Portal_Rest {
 
 
     public function get_player_details($player_id, $ranking_id) {
+
         $url = "http://portale.fitet.org/risultati/new_rank/dettaglioatleta_unica.php?ATLETA=$player_id&ID_CLASS=$ranking_id&ZU=1&AVVERSARIO=0";
-        // error_log($url);
+
+        if (FITET_MONITOR_IS_DEV) {
+            error_log("Getting player details for player $player_id - ranking id $ranking_id  URL -------> $url  ");
+        }
+
         $html_string = $this->http_service->get($url, ['X-Requested-With' => 'XMLHttpRequest']);
         $html = str_get_html($html_string);
-        //error_log($url);
-        //error_log("HTML ---\n $html_string \n--- HTML");
 
-        $season = $html->find('#fragment-2 tr');
+        $season_points = $html->find('#fragment-3 iframe', 0);
+        if (!empty($season_points)) {
+            $season_points_url = $season_points->attr['src'];
+            $season_points_url = str_replace("../..", "https://portale.fitet.org", $season_points_url);
+            $season_points_url = str_replace(" ", "", $season_points_url);
+            $season_points = $this->extract_season_points($season_points_url, $player_id);
+        } else {
+            $season_points = '';
+        }
 
-        // skipping table header
-        array_shift($season);
-
-        $season = array_map(function ($row) {
-            return array_map(function ($cell) {
-                return implode(' - ', array_map(function ($p) {
-                    return $p->innertext;
-                }, $cell->find('p')));
-            }, $row->find('td'));
-        }, $season);
-
-        // mapping to history object
-        $season = array_map(function ($column) {
-            return [
-                'opponent' => $column[0],
-                'date' => $column[1],
-                'match' => $column[2],
-                'win' => $column[3] == 'V',
-                'points' => doubleval(str_replace(',', '.', $column[4])),
-            ];
-        }, $season);
+        $season = $season_points;
 
 
-        $profile = $html->find('table')[0];
+        $table = $html->find('table');
+        $profile = isset($table[0]) ? $table[0] : [];
         if (empty($profile)) {
-            $profile = null;
+            $profile = [
+                'sector' => '',
+                'fq' => false,
+            ];
         } else {
             $profile = $profile->find('tr');
             $profile = [
@@ -294,6 +255,7 @@ class Fitet_Portal_Rest {
 
 
         return Fitet_Monitor_Manager::all_from_windows_1252_to_utf8([
+            'season_points' => $season_points,
             'season' => $season,
             'profile' => $profile,
         ]);
@@ -302,6 +264,10 @@ class Fitet_Portal_Rest {
     }
 
     public function get_player_history($player_id) {
+
+        if (FITET_MONITOR_IS_DEV) {
+            error_log("Fetching player history for player $player_id");
+        }
 
         $url = "http://archivio.fitet.org/scheda_dettaglio_atleta.php?ATLETA=$player_id";
         $html_string = $this->http_service->get($url);
@@ -368,15 +334,13 @@ class Fitet_Portal_Rest {
 
         // mapping to history object
         $regionalTournaments = array_map(function ($column) {
-            $marker = $this->calculate_marker(isset($column[5]) ? $column[5]->bgcolor : '');
             return [
                 'season' => trim($column[0]->plaintext),
                 'date' => trim($column[1]->plaintext),
                 'region' => trim($column[2]->plaintext),
                 'tournament' => trim($column[3]->plaintext),
                 'competition' => trim($column[4]->plaintext),
-                'round' => isset($column[5]) ? trim($column[5]->plaintext) : '',
-                'marker' => $marker,
+                'round' => isset($column[5]) ? trim($column[5]->plaintext) : ''
             ];
         }, $regionalTournaments);
 
@@ -393,14 +357,12 @@ class Fitet_Portal_Rest {
 
         // mapping to history object
         $nationalTournaments = array_map(function ($column) {
-            $marker = $this->calculate_marker(isset($column[4]) ? $column[4]->bgcolor : '');
             return [
                 'season' => trim($column[0]->plaintext),
                 'date' => trim($column[1]->plaintext),
                 'tournament' => trim($column[2]->plaintext),
                 'competition' => trim($column[3]->plaintext),
                 'round' => isset($column[4]) ? trim($column[4]->plaintext) : '',
-                'marker' => $marker,
             ];
         }, $nationalTournaments);
 
@@ -417,7 +379,6 @@ class Fitet_Portal_Rest {
 
         // mapping to history object
         $nationalDoublesTournaments = array_map(function ($column) {
-            $marker = $this->calculate_marker(isset($column[5]) ? $column[5]->bgcolor : '');
             return [
                 'season' => trim($column[0]->plaintext),
                 'date' => trim($column[1]->plaintext),
@@ -425,11 +386,10 @@ class Fitet_Portal_Rest {
                 'tournament' => trim($column[3]->plaintext),
                 'competition' => trim($column[4]->plaintext),
                 'round' => isset($column[5]) ? trim($column[5]->plaintext) : '',
-                'marker' => $marker,
             ];
         }, $nationalDoublesTournaments);
 
-        return  Fitet_Monitor_Manager::all_from_ISO_8859_15_to_utf8([
+        return Fitet_Monitor_Manager::all_from_ISO_8859_15_to_utf8([
             'ranking' => $ranking,
             'nationalTournaments' => $nationalTournaments,
             'nationalDoublesTournaments' => $nationalDoublesTournaments,
@@ -815,7 +775,7 @@ class Fitet_Portal_Rest {
                 'sp' => intval($row->find('p', 5)->innertext),
                 'pv' => intval($row->find('p', 6)->innertext),
                 'pp' => intval($row->find('p', 7)->innertext),
-                'percentage' => doubleval(str_replace(',', '.', $row->find('p', 8)->innertext),)
+                'percentage' => doubleval(str_replace(',', '.', $row->find('p', 8)->innertext))
             ];
         }, $rows);
 
@@ -841,5 +801,43 @@ class Fitet_Portal_Rest {
         array_pop($table);
         return $table;
     }
+
+    private function extract_season_points($url, $player_id) {
+        if (FITET_MONITOR_IS_DEV) {
+            error_log("Getting season points from url $url");
+        }
+
+        $html_string = $this->http_service->get($url);
+        $html = str_get_html($html_string);
+
+        $season = $html->find("div#player_$player_id", 0)->outertext;
+        if (empty($season)) return '';
+
+        $html = str_get_html($season);
+
+        $html->firstChild()->addClass('fm-player-season');
+        $html->find('div.subtle', 0)->addClass('fm-season-description');
+        $html->find('h2', 0)->remove();
+        $html->find('div.subtle', 0)->removeClass('subtle');
+
+        foreach ($html->find('hr') as $hr) {
+            $hr->remove();
+        }
+        foreach ($html->find('table') as $table) {
+            $table->addClass('fm-table-player-season');
+            $table->setAttribute('data-paginate', 'false');
+            $table->setAttribute('data-search', 'false');
+            $table->setAttribute('data-sort', 'false');
+        }
+
+        foreach ($html->find('table.fm-table-player-season') as $table) {
+            $wrapper = str_get_html('<div class="fm-table-player-season-wrapper"></div>');
+            $wrapper->firstChild()->innertext = $table->outertext;
+            $table->outertext = $wrapper;
+        }
+
+        return $html->__toString();
+    }
+
 
 }

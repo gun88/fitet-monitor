@@ -47,20 +47,12 @@ class Fitet_Monitor_Player_National_Doubles_Tournament_Component extends Fitet_M
 
 	public function rows($data) {
 		return array_map(function ($row) use ($data) {
-			$row['round'] = $this->round($row['round'], $row['marker']);
 			$row['partner'] = $this->components['playerCell']->render(['playerId' => $row['partnerPlayerId'], 'playerName' => $row['partnerPlayerName'], 'playerPageUrl' => $row['partnerPlayerPageUrl']]);
 			$row['competition'] = $this->competition($row['competition'], $row['tournament']);
 			return $row;
 		}, $data['history']['nationalDoublesTournaments']);
 	}
 
-	private function round($round, $marker) {
-		// todo metti in updater
-		if (substr($round, 0, 2) == "1^") $marker = 'gold';
-		if (substr($round, 0, 2) == "2^") $marker = 'silver';
-		if (substr($round, 0, 2) == "3^") $marker = 'bronze';
-		return "<span class='fm-points-$marker'>" . $round . "</span>";
-	}
 
 	private function competition($competition, $tournament) {
 		return "<b>$tournament</b><br><span>$competition</span>";

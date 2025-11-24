@@ -49,18 +49,9 @@ class Fitet_Monitor_Player_National_Tournament_Component extends Fitet_Monitor_C
 
 	public function rows($data) {
 		return array_map(function ($row) use ($data) {
-			$row['round'] = $this->round($row['round'], $row['marker']);
 			$row['competition'] = $this->competition($row['competition'], $row['tournament']);
 			return $row;
 		}, $data['history']['nationalTournaments']);
-	}
-
-	private function round($round, $marker) {
-		// todo metti in updater
-		if (substr($round, 0, 2) == "1^") $marker = 'gold';
-		if (substr($round, 0, 2) == "2^") $marker = 'silver';
-		if (substr($round, 0, 2) == "3^") $marker = 'bronze';
-		return "<span class='fm-points-$marker'>" . $round . "</span>";
 	}
 
 	private function competition($competition, $tournament) {
