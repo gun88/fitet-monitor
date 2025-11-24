@@ -23,8 +23,8 @@ class Fitet_Monitor_Teams_List_Component extends Fitet_Monitor_Component {
 		if (empty($data)) {
 			return "<p style='text-align: center'>" . __('No Results', 'fitet-monitor') . "</p>";
 		}
-		$data = array_map(function ($player) {
-			return $this->components['teamCard']->render($player);
+		$data = array_map(function ($team) {
+			return $this->components['teamCard']->render($team);
 		}, $data);
 		return implode('<hr>', $data);
 	}

@@ -254,6 +254,13 @@ class Fitet_Monitor_Teams_Shortcode extends Fitet_Monitor_Shortcode {
 
         $resources = $this->fill_teams_data($resources);
 
+
+        if (!$multi_club) {
+            $resources = array_values(array_filter($resources, function ($team) use ($attributes) {
+                return $team['clubCode'] == $attributes['club'];
+            }));
+        }
+
         return [
             'teams' => $resources,
             'seasons' => $seasons,
