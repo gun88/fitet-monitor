@@ -3,75 +3,133 @@ jQuery(function ($) {
     if (!chartElement) {
         return;
     }
+
     const ctx = chartElement.getContext('2d');
-	let chart = $('#fm-sc-player-detail-chart');
-	let labels = chart.data('labels');
-	let points = chart.data('points');
-	let rankings = chart.data('rankings');
-	let bestRanking = chart.data('best-ranking');
-	let bestPoints = chart.data('best-points');
+    let chartEl = $('#fm-sc-player-detail-chart');
 
-	const data = {
-		labels: labels,
-		datasets: [
-			{
-				label: 'Points',
-				data: points,
-				borderColor: '#0288d1',
-				yAxisID: 'y',
-			},
-			{
-				label: 'Ranking',
-				data: rankings,
-				borderColor: '#ff4081',
-				yAxisID: 'y1',
-			}
-		]
-	};
+    let fullLabels = chartEl.data('labels') || [];
+    let fullPoints = chartEl.data('points') || [];
+    let fullRankings = chartEl.data('rankings') || [];
+    let bestRanking = chartEl.data('best-ranking');
+    let bestPoints = chartEl.data('best-points');
+
+    let step = 10;            // window size
+    let startIndex = 0;         // where the current window starts
+
+    // helper to clamp startIndex and recalc data
+    function updateWindow() {
+
+        console.log(step)
+        console.log(startIndex)
+
+        const maxStart = Math.max(0, fullLabels.length - step);
+
+        // clamp startIndex
+        if (startIndex < 0) startIndex = 0;
+        if (startIndex > maxStart) startIndex = maxStart;
+
+        const endIndex = startIndex + step;
+
+        const labels = fullLabels.slice(startIndex, endIndex);
+        const points = fullPoints.slice(startIndex, endIndex);
+        const rankings = fullRankings.slice(startIndex, endIndex);
+
+        chart.data.labels = labels;
+        chart.data.datasets[0].data = points;
+        chart.data.datasets[1].data = rankings;
+
+        chart.update();
+    }
+
+    const zoom = 4;
+    const tension = 0.4;
+    const cubicInterpolationMode = 'monotone';
+    const data = {
+        labels: [], // will be filled by updateWindow()
+        datasets: [
+            {
+                label: 'Points',
+                data: [],
+                borderColor: '#0288d1',
+                yAxisID: 'y',
+                cubicInterpolationMode: cubicInterpolationMode,
+                tension: tension
+            },
+            {
+                label: 'Ranking',
+                data: [],
+                borderColor: '#ff4081',
+                yAxisID: 'y1',
+                cubicInterpolationMode: cubicInterpolationMode,
+                tension: tension
+            }
+        ]
+    };
 
 
-	const config = {
-		type: 'line',
-		data: data,
-		options: {
-			responsive: true,
-			interaction: {
-				mode: 'index',
-				intersect: false,
-			},
-			stacked: false,
-			plugins: {
-				title: {
-					display: false,
-					text: 'History'
-				}
-			},
-			scales: {
-				x: {
-					reverse: true,
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            stacked: false,
+            plugins: {
+                title: {
+                    display: false,
+                    text: 'History'
+                }
+            },
+            scales: {
+                x: {
+                    reverse: true,
+                },
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    max: bestPoints,
+                    min: 0
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    reverse: true,
+                    min: bestRanking,
+                    grid: {
+                        drawOnChartArea: false,
+                    },
+                },
+            }
+        },
+    };
 
-				}, y: {
-					type: 'linear',
-					display: true,
-					position: 'left',
-					max: bestPoints,
-					min: 0
+    const chart = new Chart(ctx, config);
 
-				},
-				y1: {
-					type: 'linear',
-					display: true,
-					position: 'right',
-					reverse: true,
-					min: bestRanking,
+    // init first window
+    updateWindow();
 
-					// grid line settings
-					grid: {
-						drawOnChartArea: false, // only want the grid lines for one axis to show up
-					},
-				},
-			}
-		},
-	};
-	new Chart(ctx, config);
+    // BUTTONS
+    $('#fm-chart-next').on('click', function () {
+        startIndex -= step;
+        updateWindow();
+    });
+
+    $('#fm-chart-prev').on('click', function () {
+        startIndex += step;
+        updateWindow();
+    });
+
+    $('#fm-chart-zoom-in').on('click', function () {
+        step += zoom;
+        updateWindow();
+    });
+    $('#fm-chart-zoom-out').on('click', function () {
+        step -= zoom;
+        updateWindow();
+    });
 });
