@@ -7,31 +7,27 @@ jQuery(function ($) {
     const ctx = chartElement.getContext('2d');
     let chartEl = $('#fm-sc-player-detail-chart');
 
-    let fullLabels = chartEl.data('labels') || [];
-    let fullPoints = chartEl.data('points') || [];
+    let fullLabels   = chartEl.data('labels')   || [];
+    let fullPoints   = chartEl.data('points')   || [];
     let fullRankings = chartEl.data('rankings') || [];
-    let bestRanking = chartEl.data('best-ranking');
-    let bestPoints = chartEl.data('best-points');
+    let bestRanking  = chartEl.data('best-ranking');
+    let bestPoints   = chartEl.data('best-points');
 
-    let step = 10;            // window size
-    let startIndex = 0;         // where the current window starts
+    let step = 12;          // visible window size
+    let startIndex = 0;     // current start index
 
-    // helper to clamp startIndex and recalc data
+    // --- Update function ---
     function updateWindow() {
-
-        console.log(step)
-        console.log(startIndex)
-
         const maxStart = Math.max(0, fullLabels.length - step);
 
-        // clamp startIndex
+        // Clamp start index
         if (startIndex < 0) startIndex = 0;
         if (startIndex > maxStart) startIndex = maxStart;
 
         const endIndex = startIndex + step;
 
-        const labels = fullLabels.slice(startIndex, endIndex);
-        const points = fullPoints.slice(startIndex, endIndex);
+        const labels   = fullLabels.slice(startIndex, endIndex);
+        const points   = fullPoints.slice(startIndex, endIndex);
         const rankings = fullRankings.slice(startIndex, endIndex);
 
         chart.data.labels = labels;
@@ -41,11 +37,10 @@ jQuery(function ($) {
         chart.update();
     }
 
-    const zoom = 4;
     const tension = 0.4;
     const cubicInterpolationMode = 'monotone';
     const data = {
-        labels: [], // will be filled by updateWindow()
+        labels: [],
         datasets: [
             {
                 label: 'Points',
@@ -65,7 +60,6 @@ jQuery(function ($) {
             }
         ]
     };
-
 
     const config = {
         type: 'line',
@@ -124,12 +118,16 @@ jQuery(function ($) {
         updateWindow();
     });
 
-    $('#fm-chart-zoom-in').on('click', function () {
-        step += zoom;
+    // --- Window size adjustment ---
+    $('#fm-chart-increase').on('click', function () {
+        step += 4;
+        if (step > fullLabels.length) step = fullLabels.length; // prevent overflow
         updateWindow();
     });
-    $('#fm-chart-zoom-out').on('click', function () {
-        step -= zoom;
+
+    $('#fm-chart-decrease').on('click', function () {
+        step -= 4;
+        if (step < 4) step = 4; // minimum window size
         updateWindow();
     });
 });
