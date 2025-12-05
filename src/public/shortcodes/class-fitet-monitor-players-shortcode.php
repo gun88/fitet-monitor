@@ -24,26 +24,6 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
     }
 
 
-    public function devSeasonFix($resources_) {
-
-        foreach ($resources_ as &$resources) {
-
-            if (empty($resources['season']))
-                for ($i = 0; $i < 20; $i++) {
-                    $doubleval = doubleval(rand(-220, 220) . '.' . rand(0, 2000));
-                    $resources['season'][] = [
-                        'opponent' => ['MASSARELLI MAURIZIO', 'LUPO ROBERTO', 'PIPPO BAUDO'][rand(0, 2)],
-                        'date' => ['01-02-2021', '05-12-2021', '29-04-2022'][rand(0, 2)],
-                        'match' => ['C2', 'TN Lungo TN Lungo TN Lungo TN Lungo TN Lungo', 'Torneo 1'][rand(0, 2)],
-                        'win' => $doubleval > 0,
-                        'points' => $doubleval,
-                    ];
-                }
-        }
-
-        return $resources_;
-    }
-
     protected function process_attributes($attributes) {
 
         if (!empty($attributes['player'])) {
@@ -113,6 +93,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
     }
 
     private function add_season_data($players, $player_page_id, $multi_club) {
+        // old fitet standings - not used right now
         foreach ($players as &$player) {
             foreach ($player['season'] as &$season) {
                 $season['opponentPlayerName'] = $season['opponent'];
@@ -195,12 +176,7 @@ class Fitet_Monitor_Players_Shortcode extends Fitet_Monitor_Shortcode {
         $resources = $this->add_player_url($resources);
         $resources = $this->add_team_data($resources, $attributes['teams-page-id']);
 
-        // todo remove after dev
-        if (FITET_MONITOR_IS_DEV)
-            $resources = $this->devSeasonFix($resources);
-        // fine remove
-
-        $resources = $this->add_season_data($resources, $post->ID, $multi_club);
+        // $resources = $this->add_season_data($resources, $post->ID, $multi_club);
         $resources = $this->add_tournament_data($resources, $post->ID, $multi_club);
         $resources = $this->add_multi_club($resources, $multi_club);
 

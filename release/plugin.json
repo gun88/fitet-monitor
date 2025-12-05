@@ -1,12 +1,12 @@
 {
   "name": "FITET Monitor",
-  "version": "1.0.4",
-  "download_url": "https://raw.githubusercontent.com/gun88/fitet-monitor/refs/heads/main/release/fitet-monitor-1.0.4.zip",
+  "version": "1.0.5",
+  "download_url": "https://raw.githubusercontent.com/gun88/fitet-monitor/refs/heads/main/release/fitet-monitor-1.0.5.zip",
   "homepage": "https://github.com/gun88/fitet-monitor/",
   "requires": "4.5",
   "tested": "4.8",
   "last_updated": "2025-11-24 12:33:39",
-  "upgrade_notice": "Nuove classifiche fitet",
+  "upgrade_notice": "Fix caratteri non UTF8",
   "author": "tpomante",
   "author_homepage": "https://github.com/gun88/",
   "sections": {

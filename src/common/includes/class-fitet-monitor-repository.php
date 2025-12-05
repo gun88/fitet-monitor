@@ -323,7 +323,7 @@ class Fitet_Monitor_Repository {
                 ARRAY_A
             );
         }
-        return $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}fitet_monitor_championships ORDER BY id DESC"), ARRAY_A);
+        return $wpdb->get_results("SELECT * FROM {$wpdb->prefix}fitet_monitor_championships ORDER BY id DESC", ARRAY_A);
     }
 
     private function convert_temp_players($players) {

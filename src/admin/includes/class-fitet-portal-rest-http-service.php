@@ -10,15 +10,13 @@ class Fitet_Portal_Rest_Http_Service {
     private $wp_remote_params = ['timeout' => 10];
 
     public function get($url, $headers = []) {
-        if (FITET_MONITOR_WP_CALLS_AVAILABLE)
-            return $this->wp_get($url, $headers);
-        return $this->native_get($url, $headers);
+        $body = FITET_MONITOR_WP_CALLS_AVAILABLE ? $this->wp_get($url, $headers) : $this->native_get($url, $headers);
+        return $this->fix_charset_in_body($body);
     }
 
     public function post($url, $body) {
-        if (FITET_MONITOR_WP_CALLS_AVAILABLE)
-            return $this->wp_post($url, $body);
-        return $this->native_post($url, $body);
+        $body = FITET_MONITOR_WP_CALLS_AVAILABLE ? $this->wp_post($url, $body) : $this->native_post($url, $body);
+        return $this->fix_charset_in_body($body);
     }
 
     public function native_get($url, $headers) {
@@ -132,6 +130,53 @@ class Fitet_Portal_Rest_Http_Service {
         }
     }
 
+    public function fix_charset_in_body($body) {
+        // Se non è una stringa o è vuota, non tocchiamo niente
+        if (!is_string($body) || $body === '') {
+            return $body;
+        }
 
+        $encoding = null;
+
+        // 1. Prova a rilevare l'encoding se mb_detect_encoding è disponibile
+        if (function_exists('mb_detect_encoding')) {
+            $encoding = mb_detect_encoding(
+                $body,
+                'UTF-8, ISO-8859-1, WINDOWS-1252',
+                true
+            );
+        }
+
+        // 2. Se abbiamo rilevato un encoding e NON è UTF-8, convertiamo
+        if ($encoding && strtoupper($encoding) !== 'UTF-8') {
+
+            if (function_exists('mb_convert_encoding')) {
+                // Conversione "di lusso" con mbstring
+                $body = mb_convert_encoding($body, 'UTF-8', $encoding);
+
+            } elseif (function_exists('iconv')) {
+                // Fallback usando iconv
+                $converted = @iconv($encoding, 'UTF-8//IGNORE', $body);
+                if ($converted !== false) {
+                    $body = $converted;
+                }
+            }
+
+        } elseif (!$encoding && function_exists('iconv')) {
+            // 3. Se NON siamo riusciti a rilevare l'encoding ma iconv c'è,
+            //    facciamo un tentativo best-effort assumendo ISO-8859-1
+            $converted = @iconv('ISO-8859-1', 'UTF-8//IGNORE', $body);
+            if ($converted !== false) {
+                $body = $converted;
+            }
+        }
+
+        // 4. Ripulisci eventuali byte non validi in UTF-8
+        $body = wp_check_invalid_utf8($body, true);
+
+        return $body;
+
+
+    }
 }
 
