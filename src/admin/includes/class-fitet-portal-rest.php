@@ -810,15 +810,25 @@ class Fitet_Portal_Rest {
         $html_string = $this->http_service->get($url);
         $html = str_get_html($html_string);
 
-        $season = $html->find("div#player_$player_id", 0)->outertext;
-        if (empty($season)) return '';
+        $player = $html->find("div#player_$player_id", 0);
+        if (!$player) {
+            return '';
+        }
 
-        $html = str_get_html($season);
+        $html = str_get_html($player->outertext);
 
         $html->firstChild()->addClass('fm-player-season');
-        $html->find('div.subtle', 0)->addClass('fm-season-description');
-        $html->find('h2', 0)->remove();
-        $html->find('div.subtle', 0)->removeClass('subtle');
+
+        $description = $html->find('div.subtle', 0);
+        if ($description) {
+            $description->addClass('fm-season-description');
+            $description->removeClass('subtle');
+        }
+
+        $title = $html->find('h2', 0);
+        if ($title) {
+            $title->remove();
+        }
 
         foreach ($html->find('hr') as $hr) {
             $hr->remove();
