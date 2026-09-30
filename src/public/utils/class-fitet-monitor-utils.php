@@ -445,7 +445,7 @@ class Fitet_Monitor_Utils {
         return '';
     }
 
-    public static function to_match_groups($data, $clubCodes, $field, $match_page_id) {
+    public static function to_match_groups($data, $ownedClubCodes, $field, $match_page_id) {
         $data = array_merge(...$data);
 
         foreach ($data as &$championship) {
@@ -465,8 +465,8 @@ class Fitet_Monitor_Utils {
                     $match['firstLeg']['awayTeamId'] = self::extract_team_id_from_standings_by_team_name($championship['standings'], $match['firstLeg']['awayTeamName']);
                     $match['firstLeg']['homeClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['firstLeg']['homeTeamName']);
                     $match['firstLeg']['awayClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['firstLeg']['awayTeamName']);
-                    $match['firstLeg']['ownedHomeTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['homeTeamId'], $clubCodes);
-                    $match['firstLeg']['ownedAwayTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['awayTeamId'], $clubCodes);
+                    $match['firstLeg']['ownedHomeTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['homeTeamId'], $ownedClubCodes);
+                    $match['firstLeg']['ownedAwayTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['awayTeamId'], $ownedClubCodes);
                     $match['firstLeg']['retiredHomeTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['homeTeamId']);
                     $match['firstLeg']['retiredAwayTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['awayTeamId']);
                     $match['firstLeg']['homeResult'] = trim(explode('-', $match['firstLeg']['result'])[0]);
@@ -487,8 +487,8 @@ class Fitet_Monitor_Utils {
                     $match['returnMatch']['awayTeamId'] = self::extract_team_id_from_standings_by_team_name($championship['standings'], $match['returnMatch']['awayTeamName']);
                     $match['returnMatch']['homeClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['returnMatch']['homeTeamName']);
                     $match['returnMatch']['awayClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['returnMatch']['awayTeamName']);
-                    $match['returnMatch']['ownedHomeTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['homeTeamId']);
-                    $match['returnMatch']['ownedAwayTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['awayTeamId']);
+                    $match['returnMatch']['ownedHomeTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['homeTeamId'], $ownedClubCodes);
+                    $match['returnMatch']['ownedAwayTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['awayTeamId'], $ownedClubCodes);
                     $match['returnMatch']['retiredHomeTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['homeTeamId']);
                     $match['returnMatch']['retiredAwayTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['returnMatch']['awayTeamId']);
                     $match['returnMatch']['homeResult'] = self::parse_result($match['returnMatch']['result'])['away'];
@@ -532,7 +532,7 @@ class Fitet_Monitor_Utils {
         $data = array_merge(...$data);
 
 
-        if ($clubCodes) {
+        if ($ownedClubCodes) {
             $data = array_values(array_filter($data, function ($match) {
                 return $match['ownedHomeTeam'] || $match['ownedAwayTeam'];
             }));
