@@ -130,7 +130,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
 
 
     private function list($attributes) {
-        $template = ['championships' => []];
+        $template = ['championships' => [],'clubCode' => -1];
         $multi_club = empty($attributes['club']);
         if ($multi_club) {
             // no club found - keeping all
@@ -138,6 +138,10 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
         } else {
             $resources = [$this->manager->get_club($attributes['club'], $template)];
         }
+
+        $clubCodes = array_map(function ($c) {
+            return $c['clubCode'];
+        }, $resources);
 
         $last_season_id = Fitet_Monitor_Utils::last_season_id($resources);
         if (empty($attributes['season'])) {
@@ -163,7 +167,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
         }));
 
         global $post;
-        $data = Fitet_Monitor_Utils::to_match_groups($data, true, 'date', $post->ID);
+        $data = Fitet_Monitor_Utils::to_match_groups($data, $clubCodes, 'date', $post->ID);
         return [
             'scrollToRecent' => $last_season_id == $season_id,
             'groups' => $data, 'seasonId' => $season_id, 'seasons' => $seasons

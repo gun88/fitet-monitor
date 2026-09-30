@@ -382,7 +382,15 @@ class Fitet_Monitor_Utils {
         return $resources;
     }
 
-    public static function is_owned_team_from_standings_by_team_id($standings, $team_id) {
+    public static function is_owned_team_from_standings_by_team_id($standings, $team_id, $club_codes = false) {
+
+        if ($club_codes) {
+            foreach ($standings as $standing) {
+                if (($standing['teamId'] == $team_id) && in_array($standing['clubCode'], $club_codes)) {
+                    return true;
+                }
+            }
+        }
         foreach ($standings as $standing) {
             if (($standing['teamId'] == $team_id) && !empty($standing['players'])) {
                 return true;
@@ -437,7 +445,7 @@ class Fitet_Monitor_Utils {
         return '';
     }
 
-    public static function to_match_groups($data, $only_owned_teams, $field, $match_page_id) {
+    public static function to_match_groups($data, $clubCodes, $field, $match_page_id) {
         $data = array_merge(...$data);
 
         foreach ($data as &$championship) {
@@ -457,8 +465,8 @@ class Fitet_Monitor_Utils {
                     $match['firstLeg']['awayTeamId'] = self::extract_team_id_from_standings_by_team_name($championship['standings'], $match['firstLeg']['awayTeamName']);
                     $match['firstLeg']['homeClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['firstLeg']['homeTeamName']);
                     $match['firstLeg']['awayClubCode'] = self::extract_club_code_from_standings_by_team_name($championship['standings'], $match['firstLeg']['awayTeamName']);
-                    $match['firstLeg']['ownedHomeTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['homeTeamId']);
-                    $match['firstLeg']['ownedAwayTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['awayTeamId']);
+                    $match['firstLeg']['ownedHomeTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['homeTeamId'], $clubCodes);
+                    $match['firstLeg']['ownedAwayTeam'] = self::is_owned_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['awayTeamId'], $clubCodes);
                     $match['firstLeg']['retiredHomeTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['homeTeamId']);
                     $match['firstLeg']['retiredAwayTeam'] = self::is_retired_team_from_standings_by_team_id($championship['standings'], $match['firstLeg']['awayTeamId']);
                     $match['firstLeg']['homeResult'] = trim(explode('-', $match['firstLeg']['result'])[0]);
@@ -524,7 +532,7 @@ class Fitet_Monitor_Utils {
         $data = array_merge(...$data);
 
 
-        if ($only_owned_teams) {
+        if ($clubCodes) {
             $data = array_values(array_filter($data, function ($match) {
                 return $match['ownedHomeTeam'] || $match['ownedAwayTeam'];
             }));
@@ -581,7 +589,7 @@ class Fitet_Monitor_Utils {
 
         foreach ($array_map as &$group) {
             if (isset($group['matches']) && is_array($group['matches'])) {
-                usort($group['matches'], function($a, $b) {
+                usort($group['matches'], function ($a, $b) {
                     return $a['championshipId'] <=> $b['championshipId'];
                 });
             }
