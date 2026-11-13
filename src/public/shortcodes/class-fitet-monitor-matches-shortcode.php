@@ -79,7 +79,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
         $home_team_players = $this->extract_team_players($resources, $data['seasonId'], $data['championshipId'], $data['homeTeamId']);
         $away_team_players = $this->extract_team_players($resources, $data['seasonId'], $data['championshipId'], $data['awayTeamId']);
 
-        $data['hasResults'] = empty($data['results']);
+        $data['hasResults'] = !empty($data['results']);
         $data['results'] = $this->to_results_table_data($data, $home_team_players, $away_team_players, $attributes['players-page-id']);
 
         return $data;

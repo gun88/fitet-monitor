@@ -785,20 +785,40 @@ class Fitet_Portal_Rest {
     }
 
     public function get_match_results($matchId, $seasonId, $championshipId, $formula) {
-        $url = "https://portale.fitet.org/risultati/archivio/Giornata.asp?INCONTRO=$matchId&ANNO=$seasonId&CAM=$championshipId&FORMULA=$formula";
+        $url = "https://portale.fitet.org/risultati/campionati/giornata_home.php?INCONTRO=$matchId&CAM=$championshipId&FORMULA=$formula";
 
-        $html_string = $this->http_service->get($url);
-        $html = str_get_html($html_string);
-        $table = $html->find('div')[1]->find('tr');
+        try {
+            $html_string = $this->http_service->get($url, [], 2, 5);
+        } catch (Exception $e) {
+            error_log("Fitet Monitor: match $matchId could not be fetched: " . $e->getMessage());
+            return [];
+        }
+
+        $html = is_string($html_string) && $html_string !== ''
+            ? str_get_html($html_string)
+            : false;
+        $tables = $html ? $html->find('table') : [];
+        $table = [];
+        foreach ($tables as $candidate) {
+            $rows = array_values(array_filter($candidate->find('tr'), function ($row) {
+                return count($row->find('td')) >= 6;
+            }));
+            if (count($rows) > count($table)) {
+                $table = $rows;
+            }
+        }
+
+        if (!$table) {
+            error_log("Fitet Monitor: match $matchId has no results table in the Fitet response");
+            return [];
+        }
+
         $table = array_map(function ($row) {
             return array_map(function ($cell) {
                 return trim($cell->plaintext);
             }, $row->find('td'));
         }, $table);
-        // remove header
-        array_shift($table);
-        // remove footer
-        array_pop($table);
+
         return $table;
     }
 

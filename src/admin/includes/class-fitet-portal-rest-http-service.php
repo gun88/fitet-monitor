@@ -9,8 +9,8 @@ class Fitet_Portal_Rest_Http_Service {
     private $sleep_interval_list = [0, 0, 50, 100, 250, 500, 1000, 2000]; /// retry after x sec.
     private $wp_remote_params = ['timeout' => 10];
 
-    public function get($url, $headers = []) {
-        $body = FITET_MONITOR_WP_CALLS_AVAILABLE ? $this->wp_get($url, $headers) : $this->native_get($url, $headers);
+    public function get($url, $headers = [], $max_retries = null, $timeout = null) {
+        $body = FITET_MONITOR_WP_CALLS_AVAILABLE ? $this->wp_get($url, $headers, $max_retries, $timeout) : $this->native_get($url, $headers, $max_retries, $timeout);
         return $this->fix_charset_in_body($body);
     }
 
@@ -19,14 +19,18 @@ class Fitet_Portal_Rest_Http_Service {
         return $this->fix_charset_in_body($body);
     }
 
-    public function native_get($url, $headers) {
-        // to native headers
+    public function native_get($url, $headers, $max_retries = null, $timeout = null) {
         $headers = array_map(function ($key, $value) {
             return "$key: $value";
         }, array_keys($headers), array_values($headers));
 
-        for ($i = 0; $i < $this->retry; $i++) {
-            $response = empty($headers) ? file_get_contents($url) : file_get_contents($url, true, stream_context_create(["http" => ["header" => $headers]]));
+        $context = stream_context_create(["http" => [
+            "header" => $headers,
+            "timeout" => $timeout ?? (float) ini_get('default_socket_timeout'),
+        ]]);
+
+        for ($i = 0; $i < ($max_retries ?? $this->retry); $i++) {
+            $response = @file_get_contents($url, false, $context);
             if (!$response) {
                 $sleep = $this->get_sleep_interval($i);
                 error_log("wp error - waiting $sleep ms timeout");
@@ -62,10 +66,14 @@ class Fitet_Portal_Rest_Http_Service {
     }
 
 
-    public function wp_get($url, $headers) {
+    public function wp_get($url, $headers, $max_retries = null, $timeout = null) {
         $response = null;
-        for ($i = 0; $i < $this->retry; $i++) {
+        for ($i = 0; $i < ($max_retries ?? $this->retry); $i++) {
             $parameters = array_merge($this->wp_remote_params, ['headers' => $headers]);
+            if ($timeout !== null) {
+                $parameters['timeout'] = $timeout;
+            }
+
             $response = wp_remote_get($url, $parameters);
             $http_code = wp_remote_retrieve_response_code($response);
             if (is_wp_error($response)) {
@@ -115,11 +123,13 @@ class Fitet_Portal_Rest_Http_Service {
     }
 
     public function wp_createMessage($response) {
-        $message = "";
-        foreach ($response->errors as $key => $value) {
-            $message .= "$key: " . implode("\n", $value) . "\n";
+        if (is_wp_error($response)) {
+            return $response->get_error_message();
         }
-        return $message;
+        if (is_array($response)) {
+            return 'HTTP ' . wp_remote_retrieve_response_code($response);
+        }
+        return 'No response from Fitet';
     }
 
     private function get_sleep_interval(int $i) {

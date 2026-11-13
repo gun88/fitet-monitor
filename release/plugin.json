@@ -1,7 +1,7 @@
 {
   "name": "FITET Monitor",
-  "version": "1.0.8",
-  "download_url": "https://raw.githubusercontent.com/gun88/fitet-monitor/refs/heads/main/release/fitet-monitor-1.0.8.zip",
+  "version": "1.0.9",
+  "download_url": "https://raw.githubusercontent.com/gun88/fitet-monitor/refs/heads/main/release/fitet-monitor-1.0.9.zip",
   "homepage": "https://github.com/gun88/fitet-monitor/",
   "requires": "4.5",
   "tested": "4.8",
