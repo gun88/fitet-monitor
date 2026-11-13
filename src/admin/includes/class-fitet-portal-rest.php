@@ -789,7 +789,7 @@ class Fitet_Portal_Rest {
         $url = "https://portale.fitet.org/risultati/campionati/giornata.php?INCONTRO=$matchId&CAM=$championshipId&FORMULA=$formula";
 
         try {
-            $html_string = $this->http_service->get($url, [], 2, 5);
+            $html_string = $this->http_service->get($url, [], 2, 10);
         } catch (Exception $e) {
             error_log("Fitet Monitor: match $matchId could not be fetched: " . $e->getMessage());
             return [];

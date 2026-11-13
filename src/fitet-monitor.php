@@ -173,7 +173,7 @@ function change_custom_post_type_archive_title($title) {
     global $fm_page_id_list;
     // error_log(json_encode($post, 128));
 
-    if (in_array($post->ID, $fm_page_id_list['player'])) {
+    if ($post instanceof WP_Post && in_array($post->ID, $fm_page_id_list['player'])) {
         $playerSlug = get_query_var('player');
         if ($playerSlug) {
             $playerName = explode('-', $playerSlug, 2)[1];

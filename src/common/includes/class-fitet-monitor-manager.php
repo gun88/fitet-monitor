@@ -73,6 +73,9 @@ class Fitet_Monitor_Manager {
         $club['clubLogo'] = $club_update['clubLogo'];
         $club['clubCron'] = $club_update['clubCron'];
         $this->repository->save_club_db($club);
+        if (strtoupper(trim($club_update['clubCron'])) === 'PAUSED') {
+            $this->remove_scheduled_cronjob_for_clubs([$club_code]);
+        }
     }
 
 
@@ -110,6 +113,9 @@ class Fitet_Monitor_Manager {
 
         if (!empty($match_results)) {
             set_transient($cache_key, $match_results, 5 * 60);
+        } else {
+            // Avoid repeated outbound requests while the Fitet portal is unreachable.
+            set_transient($cache_key, [], 60);
         }
 
         return $match_results;
@@ -576,9 +582,9 @@ class Fitet_Monitor_Manager {
 
     public function get_club_cron_jobs($club_code) {
 
-        $cron = $this->get_club($club_code, ['cron' => '']);
+        $cron = $this->get_club($club_code, ['clubCron' => '']);
 
-        if (empty($cron)) {
+        if (empty($cron['clubCron']) || strtoupper(trim($cron['clubCron'])) === 'DEFAULT') {
             $hour = 60 * 60;
             $interval_label = 'daily';
             $interval = wp_get_schedules()[$interval_label]['interval'];
@@ -628,6 +634,11 @@ class Fitet_Monitor_Manager {
         $club_codes = $this->repository->get_club_codes_db();
 
         foreach ($club_codes as $club_code) {
+            $club = $this->get_club($club_code, ['clubCron' => '']);
+            if (strtoupper(trim($club['clubCron'])) === 'PAUSED') {
+                $this->remove_scheduled_cronjob_for_clubs([$club_code]);
+                continue;
+            }
             $cron_job = [];
             if (!wp_next_scheduled('fm_cron_update_club_hook', [$club_code])) {
                 $cron_job = empty ($cron_job) ? $this->get_club_cron_jobs($club_code) : $cron_job;
