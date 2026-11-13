@@ -785,7 +785,8 @@ class Fitet_Portal_Rest {
     }
 
     public function get_match_results($matchId, $seasonId, $championshipId, $formula) {
-        $url = "https://portale.fitet.org/risultati/campionati/giornata_home.php?INCONTRO=$matchId&CAM=$championshipId&FORMULA=$formula";
+        // giornata_home.php contains only frames; giornata.php contains the results table.
+        $url = "https://portale.fitet.org/risultati/campionati/giornata.php?INCONTRO=$matchId&CAM=$championshipId&FORMULA=$formula";
 
         try {
             $html_string = $this->http_service->get($url, [], 2, 5);
@@ -801,7 +802,8 @@ class Fitet_Portal_Rest {
         $table = [];
         foreach ($tables as $candidate) {
             $rows = array_values(array_filter($candidate->find('tr'), function ($row) {
-                return count($row->find('td')) >= 6;
+                $cells = $row->find('td');
+                return count($cells) === 15 && ctype_digit(trim($cells[0]->plaintext));
             }));
             if (count($rows) > count($table)) {
                 $table = $rows;
@@ -816,7 +818,7 @@ class Fitet_Portal_Rest {
         $table = array_map(function ($row) {
             return array_map(function ($cell) {
                 return trim($cell->plaintext);
-            }, $row->find('td'));
+            }, array_slice($row->find('td'), 1));
         }, $table);
 
         return $table;

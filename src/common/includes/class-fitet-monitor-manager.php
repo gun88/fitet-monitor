@@ -101,13 +101,16 @@ class Fitet_Monitor_Manager {
     }
 
     public function get_match_results($matchId, $seasonId, $championshipId, $formula) {
-        $match_results = get_transient($this->plugin_name . "_match_$matchId");
+        $cache_key = $this->plugin_name . "_match_v2_$matchId";
+        $match_results = get_transient($cache_key);
         if ($match_results !== false) {
             return $match_results;
         }
         $match_results = $this->portal->get_match_results($matchId, $seasonId, $championshipId, $formula);
 
-        set_transient($this->plugin_name . "_match_$matchId", $match_results, 5 * 60);
+        if (!empty($match_results)) {
+            set_transient($cache_key, $match_results, 5 * 60);
+        }
 
         return $match_results;
     }
