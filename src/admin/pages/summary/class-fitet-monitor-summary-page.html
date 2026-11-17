@@ -5,13 +5,16 @@
 	</button>
 	<hr class="wp-header-end">
 	{{messagePool}}
-	<form method="post" action="{{proxyAction}}">
-		<input type="hidden" name="action" value="saveProxy">
-		{{proxyNonce}}
-		<label for="fm-proxy-url">Proxy FITeT</label>
-		<input type="url" id="fm-proxy-url" name="proxyUrl" class="regular-text" placeholder="http://93.49.76.69:18080/" value="{{proxyUrl}}">
-		<button type="submit" class="button button-primary">Salva proxy</button>
-		<p class="description">Lascia vuoto per collegarti direttamente a FITeT.</p>
-	</form>
+	<details style="margin: 16px 0; padding: 12px; border: 1px solid #c3c4c7; background: #fff;">
+		<summary style="cursor: pointer; font-weight: 600;">Proxy FITeT</summary>
+		<form method="post" action="{{proxyAction}}" style="margin-top: 12px;">
+			{{proxyNonce}}
+			<label for="fm-proxy-url">URL proxy</label>
+			<input type="url" id="fm-proxy-url" name="proxyUrl" class="regular-text" placeholder="http://93.49.76.69:18080/" value="{{proxyUrl}}">
+			<button type="submit" name="action" value="saveProxy" class="button button-primary">Salva proxy</button>
+			<button type="submit" name="action" value="testProxy" class="button">Test</button>
+			<p class="description">Il test usa l’URL salvato. Lascia vuoto per collegarti direttamente a FITeT.</p>
+		</form>
+	</details>
 	{{table}}
 </div>

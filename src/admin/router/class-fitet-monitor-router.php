@@ -52,6 +52,29 @@ class Fitet_Monitor_Router {
 			exit();
 		}
 
+		if ($action === 'testProxy' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+			check_admin_referer('fitet_monitor_save_proxy');
+			if (!current_user_can('edit_pages')) {
+				wp_die(__('You are not allowed to edit these settings.', 'fitet-monitor'));
+			}
+			$proxy = rtrim((string) get_option('fitet_monitor_proxy_url', ''), '/');
+			$results = [];
+			if ($proxy === '') {
+				$results[] = 'Prima salva un URL proxy.';
+			} else {
+				foreach (['Portale' => '/', 'Archivio' => '/archivio/'] as $label => $path) {
+					$response = wp_remote_get($proxy . $path, ['timeout' => 5, 'redirection' => 0]);
+					$code = is_wp_error($response) ? 0 : wp_remote_retrieve_response_code($response);
+					$results[] = $label . ': ' . ($code === 200 ? 'OK - HTTP 200' : 'KO - ' . (is_wp_error($response)
+						? $response->get_error_message()
+						: 'HTTP ' . $code));
+				}
+			}
+			set_transient('fitet_monitor_proxy_test_' . get_current_user_id(), $results, 60);
+			wp_safe_redirect(add_query_arg(['message' => 'proxy_test'], menu_page_url('fitet-monitor', false)));
+			exit();
+		}
+
 
 		if ($action == 'add') {
 

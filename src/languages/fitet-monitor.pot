@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2026-11-17 12:40:54+00:00\n"
+"POT-Creation-Date: 2026-11-17 13:27:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -326,19 +326,20 @@ msgstr ""
 msgid "Add Club"
 msgstr ""
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:40
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:48
 msgid "Delete operation completed"
 msgstr ""
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:43
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:51
 msgid "Club added successfully"
 msgstr ""
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:46
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:54
 msgid "Club edited successfully"
 msgstr ""
 
 #: src/admin/router/class-fitet-monitor-router.php:38
+#: src/admin/router/class-fitet-monitor-router.php:58
 msgid "You are not allowed to edit these settings."
 msgstr ""
 

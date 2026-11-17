@@ -36,6 +36,14 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 		if (isset($_GET['message']) && 'invalid_proxy' === $_GET['message']) {
 			$messagePool = '<div class="error notice is-dismissible"><p>Inserisci un URL HTTP o HTTPS senza percorso, ad esempio http://93.49.76.69:18080/.</p></div>';
 		}
+		if (isset($_GET['message']) && 'proxy_test' === $_GET['message']) {
+			$key = 'fitet_monitor_proxy_test_' . get_current_user_id();
+			$results = get_transient($key);
+			delete_transient($key);
+			if (is_array($results)) {
+				$messagePool = '<div class="notice notice-info is-dismissible"><p>' . implode('<br>', array_map('esc_html', $results)) . '</p></div>';
+			}
+		}
 		if (isset($_GET['message']) && 'deleted' === $_GET['message']) {
 			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Delete operation completed', 'fitet-monitor') . '</p></div>';
 		}
