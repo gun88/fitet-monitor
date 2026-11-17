@@ -20,6 +20,9 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 
 		return [
 			'pageTitle' => get_admin_page_title(),
+			'proxyUrl' => esc_attr(get_option('fitet_monitor_proxy_url', '')),
+			'proxyAction' => esc_url(menu_page_url('fitet-monitor', false)),
+			'proxyNonce' => wp_nonce_field('fitet_monitor_save_proxy', '_wpnonce', true, false),
 			'addButton' => __('Add Club', 'fitet-monitor'),
 			'messagePool' => $this->prepare_messages(),
 			'table' => $this->components['table']->render($this->clubs)];
@@ -27,6 +30,12 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 
 	public function prepare_messages() {
 		$messagePool = '';
+		if (isset($_GET['message']) && 'proxy_saved' === $_GET['message']) {
+			$messagePool = '<div class="updated notice is-dismissible"><p>Proxy salvato.</p></div>';
+		}
+		if (isset($_GET['message']) && 'invalid_proxy' === $_GET['message']) {
+			$messagePool = '<div class="error notice is-dismissible"><p>Inserisci un URL HTTP o HTTPS senza percorso, ad esempio http://93.49.76.69:18080/.</p></div>';
+		}
 		if (isset($_GET['message']) && 'deleted' === $_GET['message']) {
 			$messagePool = '<div id="message" class="updated notice is-dismissible"><p>' . __('Delete operation completed', 'fitet-monitor') . '</p></div>';
 		}

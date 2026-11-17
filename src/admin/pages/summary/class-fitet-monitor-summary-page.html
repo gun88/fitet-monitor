@@ -5,5 +5,13 @@
 	</button>
 	<hr class="wp-header-end">
 	{{messagePool}}
+	<form method="post" action="{{proxyAction}}">
+		<input type="hidden" name="action" value="saveProxy">
+		{{proxyNonce}}
+		<label for="fm-proxy-url">Proxy FITeT</label>
+		<input type="url" id="fm-proxy-url" name="proxyUrl" class="regular-text" placeholder="http://93.49.76.69:18080/" value="{{proxyUrl}}">
+		<button type="submit" class="button button-primary">Salva proxy</button>
+		<p class="description">Lascia vuoto per collegarti direttamente a FITeT.</p>
+	</form>
 	{{table}}
 </div>

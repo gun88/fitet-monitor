@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2026-11-13 22:42:32+00:00\n"
+"POT-Creation-Date: 2026-11-17 12:40:54+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,21 +323,25 @@ msgstr "La Società selezionata già esiste"
 msgid "Invalid club code"
 msgstr "Codice Società non valido"
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:23
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:26
 msgid "Add Club"
 msgstr "Aggiungi Società"
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:31
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:40
 msgid "Delete operation completed"
 msgstr "Rimozione completata"
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:34
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:43
 msgid "Club added successfully"
 msgstr "Società aggiunta correttamente"
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:37
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:46
 msgid "Club edited successfully"
 msgstr "Società modificata correttamente"
+
+#: src/admin/router/class-fitet-monitor-router.php:38
+msgid "You are not allowed to edit these settings."
+msgstr ""
 
 #: src/common/includes/class-fitet-monitor-manager.php:630
 #, fuzzy

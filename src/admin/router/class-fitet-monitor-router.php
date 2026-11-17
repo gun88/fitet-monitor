@@ -32,6 +32,26 @@ class Fitet_Monitor_Router {
 
 		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 
+		if ($action === 'saveProxy' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+			check_admin_referer('fitet_monitor_save_proxy');
+			if (!current_user_can('edit_pages')) {
+				wp_die(__('You are not allowed to edit these settings.', 'fitet-monitor'));
+			}
+			$url = trim(sanitize_text_field(wp_unslash($_POST['proxyUrl'] ?? '')));
+			$parts = wp_parse_url($url);
+			$valid = $url === '' || (is_array($parts)
+				&& in_array(strtolower($parts['scheme'] ?? ''), ['http', 'https'], true)
+				&& !empty($parts['host'])
+				&& empty($parts['user']) && empty($parts['pass'])
+				&& empty($parts['query']) && empty($parts['fragment'])
+				&& (!isset($parts['path']) || $parts['path'] === '/'));
+			if ($valid) {
+				update_option('fitet_monitor_proxy_url', rtrim($url, '/'));
+			}
+			wp_safe_redirect(add_query_arg(['message' => $valid ? 'proxy_saved' : 'invalid_proxy'], menu_page_url('fitet-monitor', false)));
+			exit();
+		}
+
 
 		if ($action == 'add') {
 

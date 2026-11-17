@@ -10,13 +10,38 @@ class Fitet_Portal_Rest_Http_Service {
     private $wp_remote_params = ['timeout' => 10];
 
     public function get($url, $headers = [], $max_retries = null, $timeout = null) {
+        $url = $this->proxy_url($url);
         $body = FITET_MONITOR_WP_CALLS_AVAILABLE ? $this->wp_get($url, $headers, $max_retries, $timeout) : $this->native_get($url, $headers, $max_retries, $timeout);
         return $this->fix_charset_in_body($body);
     }
 
     public function post($url, $body) {
+        $url = $this->proxy_url($url);
         $body = FITET_MONITOR_WP_CALLS_AVAILABLE ? $this->wp_post($url, $body) : $this->native_post($url, $body);
         return $this->fix_charset_in_body($body);
+    }
+
+    private function proxy_url($url) {
+        $proxy = function_exists('get_option') ? rtrim((string) get_option('fitet_monitor_proxy_url', ''), '/') : '';
+        if ($proxy === '') {
+            return $url;
+        }
+
+        $parts = parse_url($url);
+        if (!is_array($parts) || !isset($parts['host'])) {
+            return $url;
+        }
+
+        $host = strtolower($parts['host']);
+        if ($host === 'portale.fitet.org') {
+            $prefix = '';
+        } elseif ($host === 'archivio.fitet.org') {
+            $prefix = '/archivio';
+        } else {
+            return $url;
+        }
+
+        return $proxy . $prefix . ($parts['path'] ?? '/') . (isset($parts['query']) ? '?' . $parts['query'] : '');
     }
 
     public function native_get($url, $headers, $max_retries = null, $timeout = null) {
