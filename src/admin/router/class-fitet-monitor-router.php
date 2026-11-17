@@ -32,6 +32,16 @@ class Fitet_Monitor_Router {
 
 		$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
 
+		if ($action === 'saveMatchDisplay' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+			check_admin_referer('fitet_monitor_match_display');
+			if (!current_user_can('edit_pages')) {
+				wp_die(__('You are not allowed to edit these settings.', 'fitet-monitor'));
+			}
+			update_option('fitet_monitor_match_display', isset($_POST['matchIframe']) ? 'iframe' : 'native');
+			wp_safe_redirect(add_query_arg(['message' => 'match_display_saved'], menu_page_url('fitet-monitor', false)));
+			exit();
+		}
+
 		if ($action === 'saveProxy' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 			check_admin_referer('fitet_monitor_save_proxy');
 			if (!current_user_can('edit_pages')) {

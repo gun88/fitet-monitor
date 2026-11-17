@@ -16,5 +16,14 @@
 			<p class="description">Il test usa l’URL salvato. Lascia vuoto per collegarti direttamente a FITeT.</p>
 		</form>
 	</details>
+	<details style="margin: 16px 0; padding: 12px; border: 1px solid #c3c4c7; background: #fff;">
+		<summary style="cursor: pointer; font-weight: 600;">Visualizzazione incontri</summary>
+		<form method="post" action="{{proxyAction}}" style="margin-top: 12px;">
+			{{matchDisplayNonce}}
+			<label><input type="checkbox" name="matchIframe" value="1" {{matchIframeChecked}}> Mostra il referto FITeT in un iframe</label>
+			<p class="description">Quando è attivo, la pagina incontro non scarica le partite dal portale tramite il server WordPress. Il browser del visitatore carica il referto FITeT.</p>
+			<button type="submit" name="action" value="saveMatchDisplay" class="button button-primary">Salva modalità incontri</button>
+		</form>
+	</details>
 	{{table}}
 </div>

@@ -33,7 +33,16 @@ class Fitet_Monitor_Match_Detail_Component extends Fitet_Monitor_Component {
             'teamPageUrl' => $data['awayTeamPageUrl']]);
 
         $data['video'] = $this->components['videoPlayer']->render(['url' => isset($data['video']['url']) ? $data['video']['url'] : null]);
-        $data['results'] = $this->components['matchResults']->render($data['results']);
+        if (!empty($data['iframeMode'])) {
+            $iframe_url = add_query_arg([
+                'INCONTRO' => (int) $data['matchId'],
+                'CAM' => (int) $data['championshipId'],
+                'FORMULA' => (int) $data['formula'],
+            ], 'https://portale.fitet.org/risultati/campionati/giornata_home.php');
+            $data['results'] = '<iframe title="Referto FITeT" src="' . esc_url($iframe_url) . '" style="width:100%;height:800px;border:0" loading="lazy"></iframe>';
+        } else {
+            $data['results'] = $this->components['matchResults']->render($data['results']);
+        }
 
         $data['scoreClass'] = $data['hasResults'] ? 'fm-has-results' : 'fm-no-results';
 

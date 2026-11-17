@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fitet-monitor\n"
-"POT-Creation-Date: 2026-11-17 13:27:24+00:00\n"
+"POT-Creation-Date: 2026-11-17 18:00:40+00:00\n"
 "PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,7 +152,7 @@ msgid "Diff"
 msgstr "Diff"
 
 #: src/admin/components/club-details/class-fitet-monitor-club-details-component.php:149
-#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:41
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:50
 #: src/public/components/player-card/class-fitet-monitor-player-card-component.php:72
 #: src/public/components/players-table/class-fitet-monitor-players-table-component.php:54
 #: src/public/components/team-standings/class-fitet-monitor-team-standings-component.php:49
@@ -323,24 +323,25 @@ msgstr "La Società selezionata già esiste"
 msgid "Invalid club code"
 msgstr "Codice Società non valido"
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:26
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:28
 msgid "Add Club"
 msgstr "Aggiungi Società"
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:48
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:53
 msgid "Delete operation completed"
 msgstr "Rimozione completata"
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:51
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:56
 msgid "Club added successfully"
 msgstr "Società aggiunta correttamente"
 
-#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:54
+#: src/admin/pages/summary/class-fitet-monitor-summary-page.php:59
 msgid "Club edited successfully"
 msgstr "Società modificata correttamente"
 
 #: src/admin/router/class-fitet-monitor-router.php:38
-#: src/admin/router/class-fitet-monitor-router.php:58
+#: src/admin/router/class-fitet-monitor-router.php:48
+#: src/admin/router/class-fitet-monitor-router.php:68
 msgid "You are not allowed to edit these settings."
 msgstr ""
 
@@ -390,13 +391,13 @@ msgstr "Ritorno"
 msgid "First Leg"
 msgstr "Andata"
 
-#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:40
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:49
 #: src/public/components/match-results/class-fitet-monitor-match-results-component.php:36
 #, fuzzy
 msgid "Set"
 msgstr "Sesso"
 
-#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:51
+#: src/public/components/match-detail/class-fitet-monitor-match-detail-component.php:60
 msgid "Open Fitet Page"
 msgstr "Apri Portale Risultati"
 

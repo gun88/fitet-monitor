@@ -65,6 +65,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
     }
 
     private function single($attributes) {
+        $iframe_mode = get_option('fitet_monitor_match_display', 'native') === 'iframe';
         $template = ['championships' => []];
         $multi_club = empty($attributes['club']);
         if ($multi_club) {
@@ -74,7 +75,8 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
             $resources = [$this->manager->get_club($attributes['club'], $template)];
         }
 
-        $data = $this->extract_match($resources, $attributes['match'], $attributes['teams-page-id']);
+        $data = $this->extract_match($resources, $attributes['match'], $attributes['teams-page-id'], $iframe_mode);
+        $data['iframeMode'] = $iframe_mode;
 
         $home_team_players = $this->extract_team_players($resources, $data['seasonId'], $data['championshipId'], $data['homeTeamId']);
         $away_team_players = $this->extract_team_players($resources, $data['seasonId'], $data['championshipId'], $data['awayTeamId']);
@@ -175,7 +177,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
 
     }
 
-    private function extract_match($clubs, $match_id, $team_page_id) {
+    private function extract_match($clubs, $match_id, $team_page_id, $iframe_mode = false) {
 
         foreach ($clubs as $club) {
             foreach ($club['championships'] as $championship) {
@@ -189,7 +191,7 @@ class Fitet_Monitor_Matches_Shortcode extends Fitet_Monitor_Shortcode {
                                 $away_team_name = $phase == 'firstLeg' ? $match['away'] : $match['home'];
                                 $home_team_id = Fitet_Monitor_Utils::extract_team_id_from_standings_by_team_name($championship['standings'], $home_team_name);
                                 $away_team_id = Fitet_Monitor_Utils::extract_team_id_from_standings_by_team_name($championship['standings'], $away_team_name);
-                                $match_results = $this->manager->get_match_results($match_id, $championship['seasonId'], $championship['championshipId'], $match[$phase]['formula']);
+                                $match_results = $iframe_mode ? [] : $this->manager->get_match_results($match_id, $championship['seasonId'], $championship['championshipId'], $match[$phase]['formula']);
 
 
                                 $home_club_code = Fitet_Monitor_Utils::extract_club_code_from_standings_by_team_name($championship['standings'], $home_team_name);

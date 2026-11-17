@@ -12,6 +12,8 @@ if (!function_exists('curl_init')) {
 $targets = [
     'IP pubblico in uscita' => 'https://api.ipify.org/',
     'Sito di controllo' => 'https://www.google.com/generate_204',
+    'tt morelli' => 'https://tennistavolomorelli.it/',
+    'dev' => 'http://93.49.76.69:18080/',
     'Portale FITeT' => 'https://portale.fitet.org/',
     'Archivio FITeT' => 'http://archivio.fitet.org/',
     'Referto FITeT' => 'https://portale.fitet.org/risultati/campionati/giornata.php?INCONTRO=388127&CAM=417&FORMULA=19',

@@ -23,6 +23,8 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 			'proxyUrl' => esc_attr(get_option('fitet_monitor_proxy_url', '')),
 			'proxyAction' => esc_url(menu_page_url('fitet-monitor', false)),
 			'proxyNonce' => wp_nonce_field('fitet_monitor_save_proxy', '_wpnonce', true, false),
+			'matchDisplayNonce' => wp_nonce_field('fitet_monitor_match_display', '_wpnonce', true, false),
+			'matchIframeChecked' => get_option('fitet_monitor_match_display', 'native') === 'iframe' ? 'checked' : '',
 			'addButton' => __('Add Club', 'fitet-monitor'),
 			'messagePool' => $this->prepare_messages(),
 			'table' => $this->components['table']->render($this->clubs)];
@@ -32,6 +34,9 @@ class Fitet_Monitor_Summary_Page extends Fitet_Monitor_Page {
 		$messagePool = '';
 		if (isset($_GET['message']) && 'proxy_saved' === $_GET['message']) {
 			$messagePool = '<div class="updated notice is-dismissible"><p>Proxy salvato.</p></div>';
+		}
+		if (isset($_GET['message']) && 'match_display_saved' === $_GET['message']) {
+			$messagePool = '<div class="updated notice is-dismissible"><p>Modalità incontri salvata.</p></div>';
 		}
 		if (isset($_GET['message']) && 'invalid_proxy' === $_GET['message']) {
 			$messagePool = '<div class="error notice is-dismissible"><p>Inserisci un URL HTTP o HTTPS senza percorso, ad esempio http://93.49.76.69:18080/.</p></div>';
